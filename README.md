@@ -47,4 +47,5 @@ The app has two main parts:
 
 ---
 > PRs, ideas, and feedback always welcome — this is a learning project, so anything that makes it cooler is a win. Cheers! 🍻
+
 > Lastly, for the record, no i was not in a frat. 
