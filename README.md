@@ -1,6 +1,6 @@
 # FlipQuiz 🎉
 
-FlipQuiz is a real-time team quiz game inspired by the college frat classic **Flip Cup** — but instead of just flipping cups, you have to **answer questions correctly** before flipping!
+FlipQuiz is a real-time team quiz game inspired by the college party classic **Flip Cup** — but instead of just flipping cups, you have to **answer questions correctly** before flipping!
 
 ## What is this?
 
