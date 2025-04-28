@@ -43,7 +43,7 @@ The app has two main parts:
 - Full game play loop working end-to-end on the frontend
 - Polish the UI / UX for mobile and desktop
 - Add sound effects, timers, and animations 🎵⏳✨
-- Deploy a hosted version for people to play with friends
+- Deploy a dockerized, hosted version for people to play with friends
 
 ---
 > PRs, ideas, and feedback always welcome — this is a learning project, so anything that makes it cooler is a win. Cheers! 🍻
