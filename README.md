@@ -3,10 +3,7 @@
 FlipQuiz is a real-time team quiz game inspired by the college party classic **Flip Cup** — but instead of just flipping cups, you have to **answer questions correctly** before flipping!
 
 ## What is this?
-
-At its core, FlipQuiz is a mix of:
-- Team-based trivia
-- Fast-paced racing (via "flip" mechanics)
+Team-based flip-cup
 
 Players join a lobby, get assigned to teams, and race through a set of quiz questions. Answer right → your cup flip's → pass the turn. First team to finish wins!
 
