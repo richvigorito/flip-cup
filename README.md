@@ -1,6 +1,6 @@
-# FlipQuiz 🎉
+# FlipCup 🎉
 
-FlipQuiz is a real-time team quiz game inspired by the college party classic **Flip Cup** — but instead of just flipping cups, you have to **answer questions correctly** before flipping!
+This FlipCup game is a real-time team quiz game inspired by the college party classic **Flip Cup** — but instead of just flipping cups, you have to **answer questions correctly** before flipping!
 
 ## What is this?
 Team-based flip-cup
@@ -32,17 +32,39 @@ The app has two main parts:
   - Lobby screen functional
   - Team assignment functional
   - Game table (flip cup style) layout work-in-progress
-  - Cup flipping / game flow is the current focus!
+  - Cups flips and next question/player is broadcasted
+
+---
+## To Play
+### run servers
+```bash
+cd game-server
+go run main.go
+cd ../ui
+npm run dev
+```
+### game play
+find an equal number of friends, go to your ui
+1) each person joins game
+1) after everyone joins 'assign' teams
+1) start game
+1) the ui defintely done by a BE engineer but should be obvious whose turn it is
+1) (as of right now, restart functionality doesnt work, need to restart go server)
+
 
 ---
 ## What's next?
 
+- Better error handling with websocket disconnects
+- Cleanup up game/team assignment
 - Full game play loop working end-to-end on the frontend
-- Polish the UI / UX for mobile and desktop
-- Add sound effects, timers, and animations 🎵⏳✨
-- Deploy a dockerized, hosted version for people to play with friends
+-- restart needs to clear room
+- Add abilty to create multiple games with different questions
+- Polish the UI / UX 
+-- Add sound effects, timers, and animations 🎵⏳✨
+- Dockerize
+- Possibley deploy, hosted version for people to play with friends
 
 ---
 > PRs, ideas, and feedback always welcome — this is a learning project, so anything that makes it cooler is a win. Cheers! 🍻
-
 > Lastly, for the record, no i was not in a frat. 

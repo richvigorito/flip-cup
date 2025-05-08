@@ -47,7 +47,32 @@ func (g *Game) LoadQuestions(filename string) error {
     return nil
 }
 
+func (g *Game) DisplayGameSnapshot() {
+    fmt.Printf("Game Active: %v\n", g.Active)
 
+    // Log Lobby
+    fmt.Println("Lobby:")
+    for _, player := range g.Lobby {
+        fmt.Printf("  '%s' [#%s]\n", player.Name, player.ID)
+    }
+
+    // Get team snapshots
+    snapA := g.TeamA.snapshot()
+    snapB := g.TeamB.snapshot()
+
+    // Log Teams
+    fmt.Printf("TeamA (Turn %d): %v\n", snapA.Turn, snapA.Players)
+    fmt.Printf("TeamB (Turn %d): %v\n", snapB.Turn, snapB.Players)
+
+    // Broadcast to all players
+    g.Broadcast(types.Message{
+        Type: "teams_update",
+        Answer: map[string]any{
+            "teamA": g.TeamA.snapshot(),
+            "teamB": g.TeamB.snapshot(),
+        },
+    })
+}
 
 func (g *Game) GetTeam(p *Player) *Team {
     for _, player := range g.TeamB.Players {
@@ -202,48 +227,29 @@ func (g *Game) HandleMessage(p *Player, m types.Message) {
 		g.ReassignTeams()
 		fallthrough
 	case "show_players":
-    fmt.Printf("Game Active: %v\n", g.Active)
-
-    // Log Lobby
-    fmt.Println("Lobby:")
-    for _, player := range g.Lobby {
-        fmt.Printf("  '%s' [#%s]\n", player.Name, player.ID)
-    }
-
-    // Get team snapshots
-    snapA := g.TeamA.snapshot()
-    snapB := g.TeamB.snapshot()
-
-    // Log Teams
-    fmt.Printf("TeamA (Turn %d): %v\n", snapA.Turn, snapA.Players)
-    fmt.Printf("TeamB (Turn %d): %v\n", snapB.Turn, snapB.Players)
-
-    // Broadcast to all players
-    g.Broadcast(types.Message{
-        Type: "teams_update",
-        Answer: map[string]any{
-            "teamA": g.TeamA.snapshot(),
-            "teamB": g.TeamB.snapshot(),
-        },
-    }) 
+    g.DisplayGameSnapshot()
 	case "join":
 		p.Name = m.Name
 		g.Broadcast(types.Message{Type: "player_joined", Name: p.Name})
+		g.PlayerBroadcast(types.Message{Type: "joined_success", Name: p.Name}, p)
 	case "answer":
 		if g.Active == false {
 		    fmt.Println("🚫 Cannot check answer for inactive games.")
     } else if g.CheckAnswer(p, team, m) {
-			g.Broadcast(types.Message{Type: "correct", Name: p.Name})
+			g.PlayerBroadcast(types.Message{Type: "correct", Name: p.Name}, p)
 			if false ==  g.NextQuestion(team) {
         g.EndGame(team)
       }
+      g.DisplayGameSnapshot() 
 		} else {
 			g.TeamBroadcast(types.Message{Type: "incorrect_answer", Name: p.Name}, team)
     }
 	case "start":
-        	g.StartGame()
-  case "restart":
-        	g.RestartGame()
+    g.StartGame()
+    g.DisplayGameSnapshot()
+  //case "restart":
+  //  g.RestartGame()
+  //  g.DisplayGameSnapshot()
 	}
 }
 
@@ -277,10 +283,10 @@ func (g *Game) NextQuestion(t *Team) bool{
 	  if t.Turn > (len(t.Players) - 1) {
 	  	  return false
 	  }
+    currentPlayer := t.GetCurrentPlayer()
 	  q := g.Questions[t.Turn]
-    //p = t.Players[t
-    //TODO LEFT OFF HERE
-    g.Broadcast(types.Message{Type: "question", Name: q.Prompt})
+
+    g.PlayerBroadcast(types.Message{Type: "question", Name: q.Prompt}, currentPlayer)
     return true
 }
 
