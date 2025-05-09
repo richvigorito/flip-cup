@@ -29,6 +29,7 @@ The app has two main parts:
   - Tracks team progress
   - Determines and announces the winning team
 - 🛠️ **Frontend (Svelte):**
+  - Game Log
   - Lobby screen functional
   - Team assignment functional
   - Game table (flip cup style) layout work-in-progress
