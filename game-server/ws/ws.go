@@ -23,35 +23,17 @@ func HandleWebSocket(game *g.Game, w http.ResponseWriter, r *http.Request) {
         log.Println("Upgrade error:", err)
         return
     }
-
     defer conn.Close()
 
-    // Read initial join message first to get name before calling AddPlayer
-    _, msg, err := conn.ReadMessage()
-    if err != nil {
-        log.Println("Read error during join:", err)
-        return
-    }
-
-    var joinMsg t.Message
-    if err := json.Unmarshal(msg, &joinMsg); err != nil {
-        log.Println("JSON unmarshal error on join:", err)
-        return
-    }
-
-    if joinMsg.Type != "join" {
-        log.Println("Expected join message, got:", joinMsg.Type)
-        return
-    }
-
-    player := game.AddPlayer(conn, joinMsg.Name)
-    log.Printf("Player '%s'[#%s] joined the game\n", player.Name, player.ID)
+    var player *g.Player
 
     for {
         messageType, msg, err := conn.ReadMessage()
         if err != nil {
             log.Println("Read error:", err)
-            game.RemovePlayer(player)
+            if player != nil {
+                game.RemovePlayer(player)
+            }
             return
         }
 
@@ -63,6 +45,18 @@ func HandleWebSocket(game *g.Game, w http.ResponseWriter, r *http.Request) {
             continue
         }
 
+        if m.Type == "join" && player == nil {
+            player = game.AddPlayer(conn, m.Name)
+            log.Printf("Player '%s'[#%s] joined the game\n", player.Name, player.ID)
+            continue
+        }
+
+        if player == nil {
+            log.Println("Message received before join; ignoring")
+            continue
+        }
+
         game.HandleMessage(player, m)
     }
 }
+

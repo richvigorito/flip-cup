@@ -20,8 +20,12 @@
   $: tableColor = userTeam === 'team1' ? '#563517' : '#9c6f44';
   
   // WebSocket connection setup
-  onMount(() => {
-    socket = new WebSocket('ws://localhost:8080/ws'); // Replace with your real URL
+onMount(() => {
+
+    const wsUrl = 'ws://'+import.meta.env.VITE_WS_URL+'/ws' || 'ws://localhost:8080/ws';
+    console.log(wsUrl)
+
+    socket = new WebSocket(wsUrl);
 
     socket.onopen = () => {
       console.log('Connected to WebSocket');

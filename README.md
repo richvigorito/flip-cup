@@ -36,6 +36,9 @@ The app has two main parts:
 
 ---
 ## To Play
+### edit env 
+add ``VITE_WS_URL=<your_ip>:8080`` to ``ui/.env``
+
 ### run servers
 ```bash
 cd game-server
