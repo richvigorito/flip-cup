@@ -1,0 +1,49 @@
+title: Easy
+
+category: Star Wars 
+questions:
+  - prompt: "Who is Luke Skywalker's father?"
+    answer: "Darth Vader"
+
+  - prompt: "What is the name of Han Solo's ship?"
+    answer: "Millennium Falcon"
+
+  - prompt: "What color is Yoda’s lightsaber?"
+    answer: "Green"
+
+  - prompt: "Who says, 'May the Force be with you'?"
+    answer: "Multiple characters"
+
+  - prompt: "What is the name of the desert planet where Luke grows up?"
+    answer: "Tatooine"
+
+  - prompt: "What is the name of Han Solo's best friend and co-pilot?"
+    answer: "Chewbacca"
+
+  - prompt: "Who is the Sith Lord who trained Darth Vader?"
+    answer: "Emperor Palpatine"
+
+  - prompt: "What is the name of the small, green Jedi Master?"
+    answer: "Yoda"
+
+  - prompt: "Which princess is a main character in Star Wars?"
+    answer: "Leia Organa"
+
+  - prompt: "What species is Jar Jar Binks?"
+    answer: "Gungan"
+
+  - prompt: "What type of creature does Luke Skywalker milk in The Last Jedi?"
+    answer: "Thala-siren"
+
+  - prompt: "What is the name of the robot who speaks fluent binary in the Star Wars series?"
+    answer: "R2-D2"
+
+  - prompt: "Which planet is destroyed by the Death Star in Episode IV?"
+    answer: "Alderaan"
+
+  - prompt: "What was the name of the first Star Wars movie released?"
+    answer: "Star Wars: A New Hope"
+
+  - prompt: "Who is the leader of the Rebel Alliance?"
+    answer: "Princess Leia"
+

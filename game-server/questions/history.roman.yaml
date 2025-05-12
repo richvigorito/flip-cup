@@ -1,0 +1,151 @@
+title: Roman History Easy
+category: History
+
+questions:
+  - prompt: "Who was the first emperor of Rome?"
+    answer: "Augustus"
+
+  - prompt: "What was the capital of the Roman Empire?"
+    answer: "Rome"
+
+  - prompt: "What language did the Romans speak?"
+    answer: "Latin"
+
+  - prompt: "What was a Roman military unit called?"
+    answer: "Legion"
+
+  - prompt: "Who was assassinated on the Ides of March?"
+    answer: "Julius Caesar"
+
+  - prompt: "What structure did Romans build to transport water?"
+    answer: "Aqueduct"
+
+  - prompt: "What is the name of the Roman arena where gladiators fought?"
+    answer: "Colosseum"
+
+  - prompt: "What famous volcano destroyed Pompeii in 79 AD?"
+    answer: "Mount Vesuvius"
+
+  - prompt: "What kind of government did Rome have before becoming an empire?"
+    answer: "Republic"
+
+  - prompt: "What title did Roman emperors often take?"
+    answer: "Caesar"
+
+  - prompt: "Who was the Roman god of war?"
+    answer: "Mars"
+
+  - prompt: "What was the Roman marketplace called?"
+    answer: "Forum"
+
+  - prompt: "Who were Romulus and Remus?"
+    answer: "Founders of Rome"
+
+  - prompt: "What Roman road connected Rome to southern Italy?"
+    answer: "Appian Way"
+
+  - prompt: "What river runs through Rome?"
+    answer: "Tiber"
+
+  - prompt: "What was the name of Rome’s elite fighting soldiers?"
+    answer: "Praetorian Guard"
+
+  - prompt: "What large Roman province was in modern-day France?"
+    answer: "Gaul"
+
+  - prompt: "Which Roman general invaded Britain in 43 AD?"
+    answer: "Claudius"
+
+  - prompt: "What was the basic clothing worn by Roman men?"
+    answer: "Tunic"
+
+  - prompt: "What large building housed Roman public baths?"
+    answer: "Thermae"
+
+  - prompt: "Which religion became dominant in the later Roman Empire?"
+    answer: "Christianity"
+
+  - prompt: "What animal symbolized the Roman Empire?"
+    answer: "Eagle"
+
+  - prompt: "What was a Roman senate?"
+    answer: "A governing council"
+
+  - prompt: "What famous Carthaginian general fought Rome?"
+    answer: "Hannibal"
+
+  - prompt: "What kind of entertainment did Roman amphitheaters host?"
+    answer: "Gladiator fights"
+
+  - prompt: "What was a Roman dictator?"
+    answer: "A leader given temporary total power"
+
+  - prompt: "Who was Cleopatra’s Roman lover?"
+    answer: "Mark Antony"
+
+  - prompt: "What was the Pax Romana?"
+    answer: "A period of Roman peace"
+
+  - prompt: "Who divided the Roman Empire into East and West?"
+    answer: "Diocletian"
+
+  - prompt: "What was the Eastern Roman Empire called?"
+    answer: "Byzantine Empire"
+
+  - prompt: "Who made Christianity legal in the Roman Empire?"
+    answer: "Constantine"
+
+  - prompt: "What was the Colosseum used for?"
+    answer: "Public entertainment"
+
+  - prompt: "What was a Roman god of love called?"
+    answer: "Cupid"
+
+  - prompt: "Who led a slave rebellion against Rome?"
+    answer: "Spartacus"
+
+  - prompt: "What Roman numeral represents 100?"
+    answer: "C"
+
+  - prompt: "What Roman numeral represents 50?"
+    answer: "L"
+
+  - prompt: "Which Roman emperor supposedly played the fiddle while Rome burned?"
+    answer: "Nero"
+
+  - prompt: "What was a Roman aquila?"
+    answer: "Military standard"
+
+  - prompt: "What region is modern-day Turkey that was once part of Rome?"
+    answer: "Asia Minor"
+
+  - prompt: "Who wrote 'The Aeneid' about Rome’s founding?"
+    answer: "Virgil"
+
+  - prompt: "What is a triumph in Roman culture?"
+    answer: "A military victory parade"
+
+  - prompt: "What year is traditionally considered the fall of the Western Roman Empire?"
+    answer: "476 AD"
+
+  - prompt: "What Roman building inspired many modern government buildings?"
+    answer: "Pantheon"
+
+  - prompt: "Who were plebeians?"
+    answer: "Common citizens"
+
+  - prompt: "Who were patricians?"
+    answer: "Wealthy elite class"
+
+  - prompt: "What was the purpose of Roman roads?"
+    answer: "Military and trade travel"
+
+  - prompt: "What Roman leader crossed the Rubicon River?"
+    answer: "Julius Caesar"
+
+  - prompt: "Who was Caligula?"
+    answer: "A Roman emperor known for cruelty"
+
+  - prompt: "What did Romans use to clean themselves in baths?"
+    answer: "Strigil"
+

@@ -1,0 +1,64 @@
+title: Gen Sports (Easy)
+
+category: Sports
+questions:
+- prompt: "Which country hosted the 2012 Summer Olympics?"
+  answer: "United Kingdom"
+
+- prompt: "Who is known as 'The King' in basketball?"
+  answer: "LeBron James"
+
+- prompt: "Which country won the 2018 FIFA World Cup?"
+  answer: "France"
+
+- prompt: "Who has won the most Olympic gold medals?"
+  answer: "Michael Phelps"
+
+- prompt: "Which sport is associated with Wimbledon?"
+  answer: "Tennis"
+
+- prompt: "What is the highest score possible in a single frame of bowling?"
+  answer: "30"
+
+- prompt: "In which country was the sport of judo developed?"
+  answer: "Japan"
+
+- prompt: "What is the name of the baseball championship series in the US?"
+  answer: "World Series"
+
+- prompt: "Who is known as the 'Great One' in hockey?"
+  answer: "Wayne Gretzky"
+
+- prompt: "Which country invented soccer?"
+  answer: "England"
+
+- prompt: "What number is used to identify a touchdown in football?"
+  answer: "6"
+
+- prompt: "How many players are on a basketball court for one team?"
+  answer: "5"
+
+- prompt: "What is Muhammad Ali’s birth name?"
+  answer: "Cassius Clay"
+
+- prompt: "Which country has won the most World Cups?"
+  answer: "Brazil"
+
+- prompt: "What color jersey is worn by the Tour de France leader?"
+  answer: "Yellow"
+
+- prompt: "Which female tennis player has won the most Grand Slams?"
+  answer: "Serena Williams"
+
+- prompt: "In golf, what is a score of one under par on a hole called?"
+  answer: "Birdie"
+
+- prompt: "What is the term for a score of zero in tennis?"
+  answer: "Love"
+
+- prompt: "Which NFL team has won the most Super Bowls?"
+  answer: "Pittsburgh Steelers"
+
+- prompt: "Which sport uses a pommel horse?"
+  answer: "Gymnastics"
+

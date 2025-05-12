@@ -1,0 +1,67 @@
+title: LOTR (Medium)
+category: Lord of the Rings
+
+questions:
+  - prompt: "What is the name of the wizard who turns Saruman’s staff white?"
+    answer: "Gandalf"
+
+  - prompt: "What is the name of the tree that speaks to Merry and Pippin in Fangorn Forest?"
+    answer: "Treebeard"
+
+  - prompt: "What race is Gollum?"
+    answer: "Stoor Hobbit"
+
+  - prompt: "What is the name of the dwarf who accompanies the Fellowship?"
+    answer: "Gimli"
+
+  - prompt: "Who is the steward of Gondor at the time of the War of the Ring?"
+    answer: "Denethor"
+
+  - prompt: "Who is the elven lord who helps guide the Fellowship?"
+    answer: "Elrond"
+
+  - prompt: "What is the name of the golden ring that controls the other Rings of Power?"
+    answer: "The One Ring"
+
+  - prompt: "What language does Aragorn speak when he reveals his true identity?"
+    answer: "Elvish"
+
+  - prompt: "Who is the lady of the wood that gives gifts to the Fellowship?"
+    answer: "Galadriel"
+
+  - prompt: "What is the name of the elven realm that the Fellowship travels through?"
+    answer: "Lothlórien"
+
+  - prompt: "Who is the leader of the Riders of Rohan after King Theoden?"
+    answer: "Éomer"
+
+  - prompt: "Who is the commander of the Uruk-hai army?"
+    answer: "Lurtz"
+
+  - prompt: "Who are the two hobbits that leave the Shire with Frodo?"
+    answer: "Samwise and Pippin"
+
+  - prompt: "Who does Aragorn marry?"
+    answer: "Arwen"
+
+  - prompt: "What is the name of the first battle where Aragorn proves himself as a warrior?"
+    answer: "Helm's Deep"
+
+  - prompt: "What is the name of the land where Gollum takes Frodo and Sam?"
+    answer: "Mordor"
+
+  - prompt: "Which elf prince leads the elves to Helm’s Deep?"
+    answer: "Legolas"
+
+  - prompt: "What is the name of the hobbit who borrows Bilbo’s sword, Sting?"
+    answer: "Frodo Baggins"
+
+  - prompt: "Who destroys the One Ring?"
+    answer: "Frodo Baggins, but Gollum bites it off his finger"
+
+  - prompt: "What is the name of the mountain where the One Ring must be destroyed?"
+    answer: "Mount Doom"
+
+  - prompt: "Who says, 'There is some good in this world, Mr. Frodo, and it’s worth fighting for'?"
+    answer: "Samwise Gamgee"
+

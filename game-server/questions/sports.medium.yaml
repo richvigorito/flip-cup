@@ -1,0 +1,64 @@
+title: Gen Sports (Medium)
+
+category: Sports
+questions:
+  - prompt: "Which country has hosted the most Summer Olympic Games?"
+    answer: "United States"
+
+  - prompt: "Who was the first female gymnast to score a perfect 10?"
+    answer: "Nadia Comăneci"
+
+  - prompt: "Who broke the MLB home run record with 73 in a single season?"
+    answer: "Barry Bonds"
+
+  - prompt: "Which golfer is nicknamed 'The Golden Bear'?"
+    answer: "Jack Nicklaus"
+
+  - prompt: "What year were the first modern Olympic Games held?"
+    answer: "1896"
+
+  - prompt: "Which country won the first FIFA World Cup in 1930?"
+    answer: "Uruguay"
+
+  - prompt: "Who won the NBA MVP in 2021?"
+    answer: "Nikola Jokic"
+
+  - prompt: "In what year did women first compete in the Olympics?"
+    answer: "1900"
+
+  - prompt: "Which boxer bit an opponent’s ear during a fight?"
+    answer: "Mike Tyson"
+
+  - prompt: "Which city hosted the 1996 Summer Olympics?"
+    answer: "Atlanta"
+
+  - prompt: "Who was the youngest Formula One world champion?"
+    answer: "Sebastian Vettel"
+
+  - prompt: "Which tennis tournament is played on clay courts?"
+    answer: "French Open"
+
+  - prompt: "What athlete lit the Olympic torch in Barcelona 1992?"
+    answer: "Antonio Rebollo"
+
+  - prompt: "Which team did Joe Montana play for most of his career?"
+    answer: "San Francisco 49ers"
+
+  - prompt: "In what decade did the NBA form?"
+    answer: "1940s"
+
+  - prompt: "Who holds the record for the fastest 100m sprint?"
+    answer: "Usain Bolt"
+
+  - prompt: "Which cricket player is known as 'The Little Master'?"
+    answer: "Sachin Tendulkar"
+
+  - prompt: "Who was the first African American to win a Grand Slam in tennis?"
+    answer: "Althea Gibson"
+
+  - prompt: "Who won the FIFA Women's World Cup in 2015?"
+    answer: "USA"
+
+  - prompt: "What event did Bruce Jenner win in the 1976 Olympics?"
+    answer: "Decathlon"
+

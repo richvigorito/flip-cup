@@ -1,0 +1,154 @@
+title: Computer Science Trivia
+category: Software Development
+
+questions:
+  - prompt: "Who is known as the father of the computer?"
+    answer: "Charles Babbage"
+
+  - prompt: "Who wrote the first computer algorithm?"
+    answer: "Ada Lovelace"
+
+  - prompt: "What year was the World Wide Web invented?"
+    answer: "1989"
+
+  - prompt: "Who invented the World Wide Web?"
+    answer: "Tim Berners-Lee"
+
+  - prompt: "What company created the first widely used personal computer?"
+    answer: "Apple"
+
+  - prompt: "What does ENIAC stand for?"
+    answer: "Electronic Numerical Integrator and Computer"
+
+  - prompt: "What was the first programmable digital computer?"
+    answer: "Z3"
+
+  - prompt: "What programming language is known for its use in web development and starts with J?"
+    answer: "JavaScript"
+
+  - prompt: "What does 'CPU' stand for?"
+    answer: "Central Processing Unit"
+
+  - prompt: "Which operating system was developed by Linus Torvalds?"
+    answer: "Linux"
+
+  - prompt: "What does 'GUI' stand for?"
+    answer: "Graphical User Interface"
+
+  - prompt: "What was the first widely used programming language?"
+    answer: "Fortran"
+
+  - prompt: "Who co-founded Microsoft?"
+    answer: "Bill Gates"
+
+  - prompt: "What company created the Macintosh computer?"
+    answer: "Apple"
+
+  - prompt: "Which social network was launched by Mark Zuckerberg in 2004?"
+    answer: "Facebook"
+
+  - prompt: "What is the binary number for decimal 2?"
+    answer: "10"
+
+  - prompt: "What computer virus was one of the first to spread through email?"
+    answer: "ILOVEYOU"
+
+  - prompt: "What year was the first iPhone released?"
+    answer: "2007"
+
+  - prompt: "Which company created the Windows operating system?"
+    answer: "Microsoft"
+
+  - prompt: "What programming language was developed by Dennis Ritchie?"
+    answer: "C"
+
+  - prompt: "What does HTML stand for?"
+    answer: "HyperText Markup Language"
+
+  - prompt: "Which search engine became dominant in the early 2000s?"
+    answer: "Google"
+
+  - prompt: "What was the name of IBM's chess-playing computer that beat Garry Kasparov?"
+    answer: "Deep Blue"
+
+  - prompt: "What company originally created the Java programming language?"
+    answer: "Sun Microsystems"
+
+  - prompt: "What year did the first email get sent?"
+    answer: "1971"
+
+  - prompt: "Who sent the first email?"
+    answer: "Ray Tomlinson"
+
+  - prompt: "What does 'URL' stand for?"
+    answer: "Uniform Resource Locator"
+
+  - prompt: "What does 'HTTP' stand for?"
+    answer: "HyperText Transfer Protocol"
+
+  - prompt: "What was the first web browser called?"
+    answer: "WorldWideWeb"
+
+  - prompt: "What year was the first computer mouse invented?"
+    answer: "1964"
+
+  - prompt: "Who invented the computer mouse?"
+    answer: "Douglas Engelbart"
+
+  - prompt: "What is Moore’s Law?"
+    answer: "Transistors double roughly every two years"
+
+  - prompt: "What does IBM stand for?"
+    answer: "International Business Machines"
+
+  - prompt: "Which computer language is most associated with artificial intelligence in early development?"
+    answer: "LISP"
+
+  - prompt: "What kind of machine did Alan Turing propose to formalize computation?"
+    answer: "Turing Machine"
+
+  - prompt: "What does 'DOS' stand for in MS-DOS?"
+    answer: "Disk Operating System"
+
+  - prompt: "What was the first video game?"
+    answer: "Pong"
+
+  - prompt: "Which tech giant was started in a garage in California?"
+    answer: "Apple"
+
+  - prompt: "What company created the first commercial microprocessor?"
+    answer: "Intel"
+
+  - prompt: "What does 'ASCII' stand for?"
+    answer: "American Standard Code for Information Interchange"
+
+  - prompt: "What programming language did Bjarne Stroustrup create?"
+    answer: "C++"
+
+  - prompt: "What year did the dot-com bubble burst?"
+    answer: "2000"
+
+  - prompt: "What does 'SQL' stand for?"
+    answer: "Structured Query Language"
+
+  - prompt: "Who developed the Unix operating system?"
+    answer: "Ken Thompson and Dennis Ritchie"
+
+  - prompt: "What device stores data permanently?"
+    answer: "Hard Drive"
+
+  - prompt: "What does RAM stand for?"
+    answer: "Random Access Memory"
+
+  - prompt: "What does 'compiler' mean?"
+    answer: "A program that translates code to machine language"
+
+  - prompt: "What does ROM stand for?" 
+    answer: "Read Only Memory"
+
+  - prompt: "What does RAM stand for?" 
+    answer: "Random Access Memory"
+
+  - prompt: "Which was the first spreadsheet program?"
+    answer: "VisiCalc"
+

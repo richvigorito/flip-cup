@@ -1,7 +1,7 @@
 //game/team.go
 package game 
 
-type teamSnapshot struct {
+type TeamSnapshot struct {
     Name    string   `json:"name"`
     Turn    int      `json:"turn"`
     Players []string `json:"players"`
@@ -11,6 +11,19 @@ type Team struct {
 	Players	[]*Player
 	Name		string
 	Turn		int
+}
+
+func (t *Team) AddPlayer (p *Player) {
+    t.Players = append(t.Players, p)
+}
+
+func (t *Team) RemovePlayer(p *Player) {
+    for i, pl := range t.Players {
+		if pl == p {
+			t.Players = append(t.Players[:i], t.Players[i+1:]...)
+			break
+		}
+	}
 }
 
 func (t *Team) GetCurrentPlayer() *Player {
@@ -47,8 +60,8 @@ func (t *Team) ExtractPlayerNames() []string {
     return names
 }
 
-func (t *Team) snapshot() teamSnapshot {
-    return teamSnapshot{
+func (t *Team) Snapshot() TeamSnapshot {
+    return TeamSnapshot{
         Name:    t.Name,
         Turn:    t.Turn,
         Players: t.ExtractPlayerNames(),

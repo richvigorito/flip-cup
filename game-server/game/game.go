@@ -10,67 +10,54 @@ import (
 	  "time"
     "flip-cup/types" 
 	  "github.com/gorilla/websocket"
-	  "io/ioutil"
-    "gopkg.in/yaml.v2"
 )
 
-type QuestionFile struct {
-    Questions []*types.Question `yaml:"questions"`
+type GameSnapshot struct {
+    ID    string            `json:"id"`
+	  TeamA TeamSnapshot      `json:"teamA"`
+	  TeamB TeamSnapshot      `json:"teamB"`
+    Active bool             `json:"active"`
 }
 
 type Game struct {
-	  Lobby     	[]*Player
-	  TeamA     	*Team
-	  TeamB     	*Team
-	  Questions  	[]*types.Question
-	  Active  	  bool
-	  mu        	sync.Mutex
+	  ID              string
+	  //Lobby     	    []*Player
+	  TeamA     	    *Team
+	  TeamB     	    *Team
+	  QuestionFile  	*types.QuestionFile
+	  Active  	      bool
+	  mu        	    sync.Mutex
 }
 
-func (g *Game) LoadQuestions(filename string) error {
-    data, err := ioutil.ReadFile(filename) // Read the YAML file
-    if err != nil {
-        return fmt.Errorf("error reading YAML file: %v", err)
+func NewGame(questionFile *types.QuestionFile) *Game {
+    return &Game{
+        //Lobby: []*Player{},
+        TeamA: &Team{Players: []*Player{}, Name: "A-Team",  Turn: 0},
+        TeamB: &Team{Players: []*Player{}, Name: "B-squad", Turn: 0},
+        QuestionFile: questionFile,
+        Active: false,
     }
+}
 
-    var questions []*types.Question  // Make sure this matches the expected structure
-    err = yaml.Unmarshal(data, &questions)
-    if err != nil {
-        return fmt.Errorf("error unmarshaling YAML: %v", err)
+func (g *Game) Snapshot() GameSnapshot {
+    return GameSnapshot{ 
+        ID: g.ID,
+        TeamA: g.TeamA.Snapshot(),
+        TeamB: g.TeamB.Snapshot(),
+        Active: g.Active,
     }
-
-    g.Questions = questions  // Assign questions to the Game struct
-    fmt.Println("Questions Loaded:")
-    for _,q := range g.Questions {
-	    fmt.Println("-",q.Prompt)
-    }
-    return nil
 }
 
 func (g *Game) DisplayGameSnapshot() {
     fmt.Printf("Game Active: %v\n", g.Active)
 
-    // Log Lobby
-    fmt.Println("Lobby:")
-    for _, player := range g.Lobby {
-        fmt.Printf("  '%s' [#%s]\n", player.Name, player.ID)
-    }
-
-    // Get team snapshots
-    snapA := g.TeamA.snapshot()
-    snapB := g.TeamB.snapshot()
-
-    // Log Teams
-    fmt.Printf("TeamA (Turn %d): %v\n", snapA.Turn, snapA.Players)
-    fmt.Printf("TeamB (Turn %d): %v\n", snapB.Turn, snapB.Players)
+     // Log Teams
+     fmt.Printf("📸 Game Snapshot: %+v\n", g.Snapshot())
 
     // Broadcast to all players
     g.Broadcast(types.Message{
         Type: "teams_update",
-        Answer: map[string]any{
-            "teamA": g.TeamA.snapshot(),
-            "teamB": g.TeamB.snapshot(),
-        },
+        Answer: g.Snapshot(),
     })
 }
 
@@ -104,27 +91,19 @@ func (g *Game) GetPlayer(ID string) *Player {
 
 
 
-func NewGame() *Game {
-    return &Game{
-        Lobby: []*Player{},
-        TeamA: &Team{Players: []*Player{}, Name: "A-Team",  Turn: 0},
-        TeamB: &Team{Players: []*Player{}, Name: "B-squad", Turn: 0},
-        Questions: []*types.Question{},
-        Active: false,
-    }
-}
-
 func (g *Game) AddPlayer(conn *websocket.Conn, name string) *Player {
 	g.mu.Lock()
 	defer g.mu.Unlock()
 
-	player := &Player{
-		ID:   RandID(),
-		Conn: conn,
-		Name: name,
-	//	Index: len(g.Lobby),
-	}
-	g.Lobby = append(g.Lobby, player)
+	player := NewPlayer(conn, name)
+	
+  //g.Lobby = append(g.Lobby, player)
+  if len(g.TeamB.Players) <  len(g.TeamA.Players) {
+      g.TeamB.AddPlayer(player)
+  } else {
+      g.TeamA.AddPlayer(player)
+  }
+    
   g.Broadcast(types.Message{Type: "player_joined", Name: player.Name})
 	return player
 }
@@ -132,20 +111,12 @@ func (g *Game) AddPlayer(conn *websocket.Conn, name string) *Player {
 func (g *Game) RemovePlayer(p *Player) {
 	g.mu.Lock()
 	defer g.mu.Unlock()
-	for i, pl := range g.Lobby {
-		if pl == p {
-			g.Lobby = append(g.Lobby[:i], g.Lobby[i+1:]...)
-			break
-		}
-	}
+  g.TeamA.RemovePlayer(p)
+  g.TeamB.RemovePlayer(p)
 }
 
-func (g *Game) StartGame() {
-    if len(g.Questions) == 0 {
-        fmt.Println("No questions loaded.")
-        return
-    }
 
+func (g *Game) StartGame() {
     // reset everything
     g.Active = true
     g.TeamA.Turn = 0 
@@ -164,11 +135,6 @@ func (g *Game) StartGame() {
 }
 
 func (g *Game) RestartGame() {
-    if len(g.Questions) == 0 {
-        fmt.Println("No questions loaded.")
-        return
-    }
-
     // Start first question for both teams
     g.TeamA.Turn = 0
     g.TeamB.Turn = 0
@@ -186,24 +152,27 @@ func (g *Game) ReassignTeams() {
 		fmt.Println("🚫 Cannot reassign teams in the middle of a game.")
 	 	return
   }
+    
+   // Move players from both teams back into the temp lobby
+  tmp := []*Player{}
 
-   	// Move players from both teams back into the lobby
-    	g.Lobby = append(g.Lobby, g.TeamA.Players...)
-    	g.Lobby = append(g.Lobby, g.TeamB.Players...)
+  tmp = append(tmp, g.TeamA.Players...)
+  tmp = append(tmp, g.TeamB.Players...)
 
-    	g.TeamA.Players = []*Player{}
-    	g.TeamB.Players = []*Player{}
+  g.TeamA.Players = []*Player{}
+  g.TeamB.Players = []*Player{}
 
-	shufflePlayers(g.Lobby)
-
+	shufflePlayers(tmp)
+/*
 	if len(g.Lobby) % 2 != 0 {
 	 	// its odd, we need an even team someone needs to leave
 		fmt.Println("🚫 Cannot proceed: uneven number of players in the lobby.")
 	 	return
  	}	
+*/
 
 	i := 0 
-	for _, player := range g.Lobby{
+	for _, player := range tmp{
 		if i % 2 == 0 {
 			g.TeamA.Players = append(g.TeamA.Players, player)
 		} else {
@@ -211,7 +180,7 @@ func (g *Game) ReassignTeams() {
 		}
 		i++
 	}
-	g.Lobby = []*Player{}
+	tmp = []*Player{}
 }
 
 func (g *Game) HandleMessage(p *Player, m types.Message) {
@@ -261,14 +230,17 @@ func (g *Game) TeamBroadcast(msg types.Message, t *Team) {
 
 func (g *Game) PlayerBroadcast(msg types.Message, p *Player) {
     data, _ := json.Marshal(msg)
+    fmt.Print(msg)
 		p.Conn.WriteMessage(websocket.TextMessage, data)
 }
 
 func (g *Game) Broadcast(msg types.Message) {
-	data, _ := json.Marshal(msg)
+	/*data, _ := json.Marshal(msg)
 	for _, p := range g.Lobby {
 		p.Conn.WriteMessage(websocket.TextMessage, data)
 	}
+  */
+  fmt.Printf("Broadcast following Message: %+v\n", msg)
   g.TeamBroadcast(msg, g.TeamA)
   g.TeamBroadcast(msg, g.TeamB)
 }
@@ -284,7 +256,7 @@ func (g *Game) NextQuestion(t *Team) bool{
 	  	  return false
 	  }
     currentPlayer := t.GetCurrentPlayer()
-	  q := g.Questions[t.Turn]
+	  q := g.QuestionFile.Questions[t.Turn]
 
     g.PlayerBroadcast(types.Message{Type: "question", Name: q.Prompt}, currentPlayer)
     return true
@@ -297,7 +269,7 @@ func (g *Game) CheckAnswer(p *Player, t *Team, answer types.Message) bool {
         return false // the wrong player attempted to answer
 	  }
 
-    currentQuestion := g.Questions[t.Turn] 
+    currentQuestion := g.QuestionFile.Questions[t.Turn] 
     if answer.Answer == currentQuestion.Answer {
         fmt.Println("correct answer")
 	      t.Turn++

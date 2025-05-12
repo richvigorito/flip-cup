@@ -9,5 +9,12 @@ type Player struct {
 	ID   string
 	Name string
 	Conn *websocket.Conn
-//	Index int
+}
+
+func NewPlayer(conn *websocket.Conn, name string) * Player {
+	 return &Player{
+		ID:   RandID(),
+		Conn: conn,
+		Name: name,
+	};
 }
