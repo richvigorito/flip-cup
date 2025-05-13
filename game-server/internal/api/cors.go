@@ -1,5 +1,5 @@
 // http/cors.go
-package http
+package api
 
 import "net/http"
 

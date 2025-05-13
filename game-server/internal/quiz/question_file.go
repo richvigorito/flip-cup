@@ -1,4 +1,4 @@
-package types
+package quiz
 
 import (
     "fmt"
@@ -8,9 +8,9 @@ import (
 )
 
 type QuestionFile struct {
-    ID        string             `yaml:"id"`
-    Name      string             `yaml:"name"`
-    Questions []*Question  `yaml:"questions"`
+    ID        string        `yaml:"id"`
+    Name      string        `yaml:"name"`
+    Questions []*Question   `yaml:"questions"`
 }
 
 func NewQuestionFile(filename string) (*QuestionFile, error) {

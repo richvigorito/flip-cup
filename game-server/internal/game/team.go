@@ -1,5 +1,10 @@
-//game/team.go
+// internal/game/team.go
 package game 
+
+import (
+	"math/rand"
+	"time"
+)
 
 type TeamSnapshot struct {
     Name    string   `json:"name"`
@@ -58,6 +63,14 @@ func (t *Team) ExtractPlayerNames() []string {
         names = append(names, p.Name)
     }
     return names
+}
+
+
+func (t *Team) Shuffle() {
+    rand.Seed(time.Now().UnixNano()) // Seed only once
+    rand.Shuffle(len(t.Players), func(i, j int) {
+        t.Players[i], t.Players[j] = t.Players[j], t.Players[i]
+    })
 }
 
 func (t *Team) Snapshot() TeamSnapshot {

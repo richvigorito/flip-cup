@@ -2,7 +2,7 @@ package game
 
 import (
     "sync"
-    "flip-cup/types" 
+    "flip-cup/internal/quiz" 
 )
 
 type GameManager struct {
@@ -16,7 +16,7 @@ func NewGameManager() *GameManager {
     }
 }
 
-func (gm *GameManager) NewGame(questionFile *types.QuestionFile) *Game {
+func (gm *GameManager) NewGame(questionFile *quiz.QuestionFile) *Game {
     g := NewGame(questionFile)
     g.ID = RandID()
 

@@ -1,4 +1,4 @@
-package types
+package quiz
 
 type Question struct {
     Prompt string `yaml:"prompt"`
