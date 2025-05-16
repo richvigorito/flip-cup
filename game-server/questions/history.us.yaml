@@ -1,0 +1,151 @@
+title: U.S. History Basics Quiz
+category: History
+
+questions:
+  - prompt: "Who was the first President of the United States?"
+    answer: "George Washington"
+
+  - prompt: "What year was the Declaration of Independence signed?"
+    answer: "1776"
+
+  - prompt: "Who wrote the Declaration of Independence?"
+    answer: "Thomas Jefferson"
+
+  - prompt: "What war was fought for American independence?"
+    answer: "Revolutionary War"
+
+  - prompt: "What country did the U.S. gain independence from?"
+    answer: "Great Britain"
+
+  - prompt: "Who was the 16th President of the United States?"
+    answer: "Abraham Lincoln"
+
+  - prompt: "What war ended slavery in the U.S.?"
+    answer: "Civil War"
+
+  - prompt: "What year did the Civil War start?"
+    answer: "1861"
+
+  - prompt: "What year did the Civil War end?"
+    answer: "1865"
+
+  - prompt: "What document freed the slaves?"
+    answer: "Emancipation Proclamation"
+
+  - prompt: "Who was the main author of the U.S. Constitution?"
+    answer: "James Madison"
+
+  - prompt: "What are the first ten amendments called?"
+    answer: "Bill of Rights"
+
+  - prompt: "What is the highest court in the United States?"
+    answer: "Supreme Court"
+
+  - prompt: "How many states are in the United States?"
+    answer: "50"
+
+  - prompt: "What is the capital of the United States?"
+    answer: "Washington, D.C."
+
+  - prompt: "What ocean is on the east coast of the U.S.?"
+    answer: "Atlantic Ocean"
+
+  - prompt: "What ocean is on the west coast of the U.S.?"
+    answer: "Pacific Ocean"
+
+  - prompt: "Which U.S. state was the first to join the Union?"
+    answer: "Delaware"
+
+  - prompt: "Which U.S. state was the last to join the Union?"
+    answer: "Hawaii"
+
+  - prompt: "What year did women gain the right to vote?"
+    answer: "1920"
+
+  - prompt: "What amendment gave women the right to vote?"
+    answer: "19th"
+
+  - prompt: "Who was President during World War I?"
+    answer: "Woodrow Wilson"
+
+  - prompt: "Who was President during World War II?"
+    answer: "Franklin D. Roosevelt"
+
+  - prompt: "Who was the U.S. fighting in World War II in Europe?"
+    answer: "Germany"
+
+  - prompt: "Who was the U.S. fighting in World War II in the Pacific?"
+    answer: "Japan"
+
+  - prompt: "What event caused the U.S. to enter World War II?"
+    answer: "Pearl Harbor"
+
+  - prompt: "What year did Pearl Harbor happen?"
+    answer: "1941"
+
+  - prompt: "Who was the civil rights leader who gave the 'I Have a Dream' speech?"
+    answer: "Martin Luther King Jr."
+
+  - prompt: "What law ended segregation in public places?"
+    answer: "Civil Rights Act"
+
+  - prompt: "What year was the Civil Rights Act passed?"
+    answer: "1964"
+
+  - prompt: "Who was the first African American President?"
+    answer: "Barack Obama"
+
+  - prompt: "What year was Barack Obama elected?"
+    answer: "2008"
+
+  - prompt: "What U.S. President resigned after the Watergate scandal?"
+    answer: "Richard Nixon"
+
+  - prompt: "What state is Mount Rushmore located in?"
+    answer: "South Dakota"
+
+  - prompt: "Who was known as the 'Father of the Constitution'?"
+    answer: "James Madison"
+
+  - prompt: "What was the name of the ship that brought the Pilgrims to America?"
+    answer: "Mayflower"
+
+  - prompt: "In what year did the Pilgrims arrive in America?"
+    answer: "1620"
+
+  - prompt: "What war was fought between the North and South?"
+    answer: "Civil War"
+
+  - prompt: "What side was the Union in the Civil War?"
+    answer: "North"
+
+  - prompt: "What side was the Confederacy in the Civil War?"
+    answer: "South"
+
+  - prompt: "What was the main cause of the Civil War?"
+    answer: "Slavery"
+
+  - prompt: "Who discovered America in 1492?"
+    answer: "Christopher Columbus"
+
+  - prompt: "What city did the Boston Tea Party happen in?"
+    answer: "Boston"
+
+  - prompt: "What document starts with 'We the People'?"
+    answer: "Constitution"
+
+  - prompt: "Who was the third President of the United States?"
+    answer: "Thomas Jefferson"
+
+  - prompt: "Which state is the Liberty Bell in?"
+    answer: "Pennsylvania"
+
+  - prompt: "What U.S. holiday celebrates independence?"
+    answer: "Fourth of July"
+
+  - prompt: "Who was President during the Great Depression?"
+    answer: "Herbert Hoover"
+
+  - prompt: "What project built dams and created jobs in the 1930s?"
+    answer: "New Deal"
+

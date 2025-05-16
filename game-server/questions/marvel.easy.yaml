@@ -1,0 +1,64 @@
+title: MCU (Easy)
+category: Marvel Universe
+
+questions:
+  - prompt: "What is the real name of Iron Man?"
+    answer: "Tony Stark"
+
+  - prompt: "What metal is bonded to Wolverine's skeleton?"
+    answer: "Adamantium"
+
+  - prompt: "Who is the Norse god of thunder in Marvel?"
+    answer: "Thor"
+
+  - prompt: "What color is the Hulk?"
+    answer: "Green"
+
+  - prompt: "Who is Tony Stark's AI assistant?"
+    answer: "JARVIS"
+
+  - prompt: "What is Captain America's shield made of?"
+    answer: "Vibranium"
+
+  - prompt: "What superhero uses a web to swing between buildings?"
+    answer: "Spider-Man"
+
+  - prompt: "What city is Spider-Man from?"
+    answer: "New York"
+
+  - prompt: "What is Black Panther’s real name?"
+    answer: "T'Challa"
+
+  - prompt: "What is the name of Thor’s hammer?"
+    answer: "Mjolnir"
+
+  - prompt: "Who is the leader of the Avengers?"
+    answer: "Captain America"
+
+  - prompt: "What is the real name of Black Widow?"
+    answer: "Natasha Romanoff"
+
+  - prompt: "What raccoon-like character is part of the Guardians of the Galaxy?"
+    answer: "Rocket"
+
+  - prompt: "What tree-like character only says 'I am Groot'?"
+    answer: "Groot"
+
+  - prompt: "What is the name of the green Infinity Stone?"
+    answer: "Time Stone"
+
+  - prompt: "Who plays Iron Man in the MCU?"
+    answer: "Robert Downey Jr."
+
+  - prompt: "Who is Thanos trying to impress with his actions?"
+    answer: "Death"
+
+  - prompt: "Who is Spider-Man’s aunt?"
+    answer: "Aunt May"
+
+  - prompt: "What’s the real name of Ant-Man?"
+    answer: "Scott Lang"
+
+  - prompt: "Who turns big and green when angry?"
+    answer: "Hulk"
+

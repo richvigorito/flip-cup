@@ -1,0 +1,150 @@
+title: World War II History
+category: History
+
+questions:
+  - prompt: "What year did Germany invade Poland, starting World War II?"
+    answer: "1939"
+
+  - prompt: "Which British Prime Minister is most associated with WWII?"
+    answer: "Winston Churchill"
+
+  - prompt: "What was the codename for the Allied invasion of Normandy?"
+    answer: "Operation Overlord"
+
+  - prompt: "Which country was invaded during Operation Barbarossa?"
+    answer: "Soviet Union"
+
+  - prompt: "What was the name of the alliance between Germany, Italy, and Japan?"
+    answer: "Axis Powers"
+
+  - prompt: "Which U.S. battleship sank during the Pearl Harbor attack?"
+    answer: "USS Arizona"
+
+  - prompt: "Who was the dictator of Italy during World War II?"
+    answer: "Benito Mussolini"
+
+  - prompt: "What conference in 1945 planned post-war Europe?"
+    answer: "Yalta Conference"
+
+  - prompt: "Which battle marked the turning point on the Eastern Front?"
+    answer: "Battle of Stalingrad"
+
+  - prompt: "Who was the U.S. President when WWII ended?"
+    answer: "Harry S. Truman"
+
+  - prompt: "Which Nazi leader was in charge of the Luftwaffe?"
+    answer: "Hermann Göring"
+
+  - prompt: "What was the name of the German air campaign against Britain?"
+    answer: "The Blitz"
+
+  - prompt: "What kind of warfare did Germany use in early WWII?"
+    answer: "Blitzkrieg"
+
+  - prompt: "Which Pacific battle is considered the turning point against Japan?"
+    answer: "Battle of Midway"
+
+  - prompt: "What was Hitler’s autobiographical manifesto?"
+    answer: "Mein Kampf"
+
+  - prompt: "Which American general led the invasion of Normandy?"
+    answer: "Dwight D. Eisenhower"
+
+  - prompt: "What country switched from the Axis to the Allies in 1943?"
+    answer: "Italy"
+
+  - prompt: "What battle was fought in Belgium in winter 1944-45?"
+    answer: "Battle of the Bulge"
+
+  - prompt: "What agreement gave Hitler part of Czechoslovakia in 1938?"
+    answer: "Munich Agreement"
+
+  - prompt: "What was the secret U.S. project to develop the atomic bomb?"
+    answer: "Manhattan Project"
+
+  - prompt: "What was the name of the German secret police?"
+    answer: "Gestapo"
+
+  - prompt: "What was the Holocaust?"
+    answer: "The genocide of Jews and other groups by Nazi Germany"
+
+  - prompt: "What kind of camps did Nazis use for mass murder?"
+    answer: "Concentration camps"
+
+  - prompt: "What beach did American forces land on during D-Day?"
+    answer: "Omaha Beach"
+
+  - prompt: "What was the main fighter aircraft used by Britain in the Battle of Britain?"
+    answer: "Supermarine Spitfire"
+
+  - prompt: "What pact did Germany and the Soviet Union sign in 1939?"
+    answer: "Molotov-Ribbentrop Pact"
+
+  - prompt: "Which Axis power was last to surrender?"
+    answer: "Japan"
+
+  - prompt: "What ship did Japan formally surrender on?"
+    answer: "USS Missouri"
+
+  - prompt: "What was V-E Day?"
+    answer: "Victory in Europe Day"
+
+  - prompt: "What city did the U.S. drop the first atomic bomb on?"
+    answer: "Hiroshima"
+
+  - prompt: "Who was the Emperor of Japan during WWII?"
+    answer: "Hirohito"
+
+  - prompt: "Which battle saw U.S. Marines raise a flag on Mount Suribachi?"
+    answer: "Battle of Iwo Jima"
+
+  - prompt: "Who commanded Allied forces in the Pacific?"
+    answer: "Douglas MacArthur"
+
+  - prompt: "What country was home to the Maginot Line?"
+    answer: "France"
+
+  - prompt: "What was the German invasion of the Soviet Union called?"
+    answer: "Operation Barbarossa"
+
+  - prompt: "Which U.S. island base was attacked on December 7, 1941?"
+    answer: "Pearl Harbor"
+
+  - prompt: "What group judged Nazi war crimes after WWII?"
+    answer: "Nuremberg Trials"
+
+  - prompt: "Which German city was heavily bombed in 1945?"
+    answer: "Dresden"
+
+  - prompt: "Which German general was known as the 'Desert Fox'?"
+    answer: "Erwin Rommel"
+
+  - prompt: "Which U.S. general later became President after WWII?"
+    answer: "Dwight D. Eisenhower"
+
+  - prompt: "What did the Lend-Lease Act allow?"
+    answer: "Supplying Allies with weapons and supplies"
+
+  - prompt: "Which country was invaded during the Winter War by the USSR?"
+    answer: "Finland"
+
+  - prompt: "What was the name of Nazi Germany's puppet government in France?"
+    answer: "Vichy France"
+
+  - prompt: "Which city was the site of the Warsaw Uprising?"
+    answer: "Warsaw"
+
+  - prompt: "Which battle halted Japanese expansion in 1942?"
+    answer: "Battle of Coral Sea"
+
+  - prompt: "What was the nickname for WWII American female factory workers?"
+    answer: "Rosie the Riveter"
+
+  - prompt: "What agreement split Germany into four zones post-war?"
+    answer: "Yalta Agreement"
+
+  - prompt: "What new international organization was founded after WWII?"
+    answer: "United Nations"
+
+  - prompt: "Which country suffered the most military deaths in WWII?"
+    answer: "Soviet Union"

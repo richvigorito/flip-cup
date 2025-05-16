@@ -1,0 +1,34 @@
+title: Gen Philosopy (Hard)
+
+category: Philosophy
+questions:
+  - prompt: "Who developed the concepts 'Being-in-itself' and 'Being-for-itself'?"
+    answer: "Jean-Paul Sartre"
+
+  - prompt: "What paradox involves a ship being replaced piece by piece?"
+    answer: "Ship of Theseus"
+
+  - prompt: "Who introduced the 'veil of ignorance' in political philosophy?"
+    answer: "John Rawls"
+
+  - prompt: "What is 'modus tollens' in logic?"
+    answer: "Denying the consequent"
+
+  - prompt: "Who is known for the concept of 'eternal recurrence'?"
+    answer: "Friedrich Nietzsche"
+
+  - prompt: "What is the focus of Wittgenstein’s 'Tractatus Logico-Philosophicus'?"
+    answer: "The limits of language"
+
+  - prompt: "Who developed the idea of 'difference and repetition'?"
+    answer: "Gilles Deleuze"
+
+  - prompt: "What is the Gettier problem concerned with?"
+    answer: "Justified true belief"
+
+  - prompt: "Who wrote 'Phenomenology of Spirit'?"
+    answer: "Georg Wilhelm Friedrich Hegel"
+
+  - prompt: "What does 'epiphenomenalism' refer to?"
+    answer: "Mental states are by-products of physical processes"
+

@@ -1,0 +1,145 @@
+title: U.S. Civil War History 
+category: History
+
+questions:
+  - prompt: "In what year did the U.S. Civil War begin?"
+    answer: "1861"
+
+  - prompt: "What event officially started the Civil War?"
+    answer: "The attack on Fort Sumter"
+
+  - prompt: "Who was President of the Confederate States of America?"
+    answer: "Jefferson Davis"
+
+  - prompt: "Which general led the Confederate Army of Northern Virginia?"
+    answer: "Robert E. Lee"
+
+  - prompt: "What Union general became famous for his March to the Sea?"
+    answer: "William Tecumseh Sherman"
+
+  - prompt: "What was the main cause of the Civil War?"
+    answer: "Slavery"
+
+  - prompt: "Which battle is considered the bloodiest single day in American history?"
+    answer: "Battle of Antietam"
+
+  - prompt: "Who was the President of the United States during the Civil War?"
+    answer: "Abraham Lincoln"
+
+  - prompt: "What document did Lincoln issue that freed slaves in the Confederacy?"
+    answer: "Emancipation Proclamation"
+
+  - prompt: "Which amendment to the Constitution abolished slavery?"
+    answer: "13th Amendment"
+
+  - prompt: "Where did General Lee surrender to General Grant?"
+    answer: "Appomattox Court House"
+
+  - prompt: "What Union general accepted Lee's surrender?"
+    answer: "Ulysses S. Grant"
+
+  - prompt: "Which battle is considered the turning point of the war?"
+    answer: "Battle of Gettysburg"
+
+  - prompt: "What famous speech did Lincoln deliver after the Battle of Gettysburg?"
+    answer: "Gettysburg Address"
+
+  - prompt: "Which Confederate general was accidentally shot by his own men?"
+    answer: "Stonewall Jackson"
+
+  - prompt: "What was the name of the Union’s strategy to blockade Southern ports?"
+    answer: "Anaconda Plan"
+
+  - prompt: "Which battle gave the Union control of the Mississippi River?"
+    answer: "Siege of Vicksburg"
+
+  - prompt: "What was the capital of the Confederacy?"
+    answer: "Richmond, Virginia"
+
+  - prompt: "What was the name of the ironclad Union warship?"
+    answer: "USS Monitor"
+
+  - prompt: "What was the Confederate ironclad ship called?"
+    answer: "CSS Virginia"
+
+  - prompt: "Which state was the first to secede from the Union?"
+    answer: "South Carolina"
+
+  - prompt: "What border state did Lincoln consider crucial to keep in the Union?"
+    answer: "Kentucky"
+
+  - prompt: "Who assassinated Abraham Lincoln?"
+    answer: "John Wilkes Booth"
+
+  - prompt: "Where was Lincoln assassinated?"
+    answer: "Ford’s Theatre"
+
+  - prompt: "What was the name of the Confederate prison with terrible conditions?"
+    answer: "Andersonville"
+
+  - prompt: "What nickname was given to Confederate soldiers?"
+    answer: "Rebels"
+
+  - prompt: "What nickname was given to Union soldiers?"
+    answer: "Yankees"
+
+  - prompt: "Which state split from Virginia and joined the Union during the war?"
+    answer: "West Virginia"
+
+  - prompt: "What was the Union army's first major defeat?"
+    answer: "First Battle of Bull Run"
+
+  - prompt: "What famous African American regiment fought in the war?"
+    answer: "54th Massachusetts Infantry"
+
+  - prompt: "What law allowed African Americans to join the Union army?"
+    answer: "Militia Act of 1862"
+
+  - prompt: "What was the last battle of the Civil War?"
+    answer: "Battle of Palmito Ranch"
+
+  - prompt: "Which Union general was criticized for his cautious tactics early in the war?"
+    answer: "George B. McClellan"
+
+  - prompt: "Which Confederate general defended Atlanta before it fell?"
+    answer: "John Bell Hood"
+
+  - prompt: "Which Confederate state was most devastated by Sherman’s campaign?"
+    answer: "Georgia"
+
+  - prompt: "What major river was key to controlling the western theater?"
+    answer: "Mississippi River"
+
+  - prompt: "Which battle saw Pickett’s Charge?"
+    answer: "Battle of Gettysburg"
+
+  - prompt: "What war-time order made freedmen eligible for military service?"
+    answer: "General Order No. 143"
+
+  - prompt: "Which Union general burned Columbia, South Carolina?"
+    answer: "William T. Sherman"
+
+  - prompt: "What battle is known for trench warfare near Richmond?"
+    answer: "Siege of Petersburg"
+
+  - prompt: "What city did Sherman give Lincoln as a Christmas gift?"
+    answer: "Savannah"
+
+  - prompt: "What was the Confederate strategy to win foreign support called?"
+    answer: "King Cotton Diplomacy"
+
+  - prompt: "Who replaced McClellan as Union commander in 1862?"
+    answer: "Ambrose Burnside"
+
+  - prompt: "What was the main Confederate army called?"
+    answer: "Army of Northern Virginia"
+
+  - prompt: "Which Union general led a failed assault at Fredericksburg?"
+    answer: "Ambrose Burnside"
+
+  - prompt: "What was the role of Clara Barton during the Civil War?"
+    answer: "Nurse and founder of the American Red Cross"
+
+  - prompt: "What did the Conscription Act of 1863 establish?"
+    answer: "Military draft for the Union"
+

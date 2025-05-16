@@ -1,0 +1,133 @@
+.game-layout {
+  margin-right: 320px; /* give space for the log sidebar */
+  padding: 1rem;
+}
+
+.event-log {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 75px;
+  background: rgba(20, 20, 20, 0.95);
+  color: white;
+  padding: 1rem;
+  border-left: 2px solid #333;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.event-log h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #ddd;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.25rem;
+}
+
+.log-entries {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.log-entry {
+  padding: 0.4rem;
+  border-bottom: 1px solid #333;
+  line-height: 1.0;
+  font-weight: 300;
+  font-size: x-small;
+}
+
+.log-entry.info {
+  color: #aaa;
+}
+
+.log-entry.success {
+  color: #22c55e;
+}
+
+.log-entry.error {
+  color: #ef4444;
+}
+
+.table {
+  min-width: 200px;
+  width: 80vw;
+  max-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: var(--table-color);
+}
+
+.team-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border:2px black;
+  gap: 1rem;
+  border-radius: 25px;
+  border: 2px solid #08080845;
+  padding: 11px;
+  width: 64px;
+}
+  
+.team-cups {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cup {
+  width: 60px;
+  height: 60px;
+  background-image: url('/solo-cup.png');
+  background-size: cover;
+  transition: transform 0.3s ease;
+}
+
+.cup.flipped {
+  transform: rotate(180deg);
+  opacity: 0.6;
+}
+
+
+.cup.current {
+  border:4px solid black;
+}
+
+.player-name {
+  font-size: 0.85rem;
+  text-align: center;
+  color: white;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 80px;
+  z-index: 999;
+}
+
+.banner-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+ 

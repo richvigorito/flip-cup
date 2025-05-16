@@ -1,0 +1,85 @@
+title: LOTR (Hard)
+category: Lord of the Rings
+
+questions:
+  - prompt: "What is the name of the horse that Gandalf rides in The Two Towers?"
+    answer: "Shadowfax"
+
+  - prompt: "What is the name of the sword that was reforged from the shards of Narsil?"
+    answer: "Andúril"
+
+  - prompt: "Who killed the Witch-king of Angmar?"
+    answer: "Éowyn"
+
+  - prompt: "What elven city did Galadriel and Celeborn rule over?"
+    answer: "Lothlórien"
+
+  - prompt: "What is the name of the orc that betrayed Saruman and led the Uruk-hai?"
+    answer: "Gríma Wormtongue"
+
+  - prompt: "What is the name of the giant spider that resides in Mirkwood?"
+    answer: "Shelob"
+
+  - prompt: "What gift does Galadriel give Frodo in Lothlórien?"
+    answer: "Phial of Galadriel"
+
+  - prompt: "Who is the Lord of the Rings that created the One Ring?"
+    answer: "Sauron"
+
+  - prompt: "Who was the first king of Númenor?"
+    answer: "Elros Tar-Minyatur"
+
+  - prompt: "What is the name of the race that lives in the Undying Lands?"
+    answer: "Elves"
+
+  - prompt: "What is the name of the dwarf city that was destroyed by the dragon Smaug?"
+    answer: "Erebor"
+
+  - prompt: "What is the elvish language that was spoken by the high elves?"
+    answer: "Quenya"
+
+  - prompt: "What is the name of Aragorn's mother?"
+    answer: "Gilraen"
+
+  - prompt: "What was the name of the fortress in the land of Gondor that was once the seat of the kings?"
+    answer: "Minas Tirith"
+
+  - prompt: "Who speaks the prophecy of the One Ring before the Council of Elrond?"
+    answer: "Gandalf"
+
+  - prompt: "What was the name of the ship that carried the Ring-bearers to the Undying Lands at the end of The Return of the King?"
+    answer: "The Grey Havens"
+
+  - prompt: "What is the name of the sword that cuts the Ring from Sauron’s hand in the Battle of Dagorlad?"
+    answer: "Andúril"
+
+  - prompt: "What is the name of the creature who acts as a guide to Frodo and Sam in Mordor?"
+    answer: "Gollum"
+
+  - prompt: "Who is the rightful heir to the throne of Gondor?"
+    answer: "Aragorn"
+
+  - prompt: "Who is the chief of the Balrog encountered by Gandalf in Moria?"
+    answer: "Durin's Bane"
+
+  - prompt: "Which Elven lord creates the first Ring of Power?"
+    answer: "Celebrimbor"
+
+  - prompt: "What language is the inscription on the One Ring written in?"
+    answer: "Black Speech"
+
+  - prompt: "What event did Saruman attempt to cause by using the palantír?"
+    answer: "He tried to communicate with Sauron"
+
+  - prompt: "Who was the captain of the corsairs who sailed to Minas Tirith?"
+    answer: "Pirates of Umbar"
+
+  - prompt: "What is the name of the dark fortress in Mordor?"
+    answer: "Barad-dûr"
+
+  - prompt: "What was the name of the hobbit who attempted to resist Saruman's influence and was killed in The Two Towers?"
+    answer: "Saruman’s spy, Gríma Wormtongue"
+
+  - prompt: "What is the elvish word for 'friend' that opens the doors of Moria?"
+    answer: "Mellon"
+

@@ -1,0 +1,151 @@
+title: World History Basics Quiz
+category: History
+
+questions:
+  - prompt: "Who was the first emperor of Rome?"
+    answer: "Augustus"
+
+  - prompt: "Which ancient civilization built the pyramids?"
+    answer: "Egyptians"
+
+  - prompt: "Who was the queen of ancient Egypt known for her beauty?"
+    answer: "Cleopatra"
+
+  - prompt: "What writing system did the Sumerians develop?"
+    answer: "Cuneiform"
+
+  - prompt: "Who was the founder of Buddhism?"
+    answer: "Siddhartha Gautama"
+
+  - prompt: "In which country did the Industrial Revolution begin?"
+    answer: "England"
+
+  - prompt: "Who conquered much of the known world and died at 32?"
+    answer: "Alexander the Great"
+
+  - prompt: "What wall was built to protect China from invaders?"
+    answer: "Great Wall"
+
+  - prompt: "Who painted the Mona Lisa?"
+    answer: "Leonardo da Vinci"
+
+  - prompt: "What was the name of the ship Darwin sailed on?"
+    answer: "Beagle"
+
+  - prompt: "Which empire ruled India before British colonization?"
+    answer: "Mughal"
+
+  - prompt: "Who was the first man to walk on the moon?"
+    answer: "Neil Armstrong"
+
+  - prompt: "Which city was destroyed by a volcano in 79 AD?"
+    answer: "Pompeii"
+
+  - prompt: "Who discovered America in 1492?"
+    answer: "Christopher Columbus"
+
+  - prompt: "Which war was fought between the Allies and Axis powers?"
+    answer: "World War II"
+
+  - prompt: "What country was Adolf Hitler the leader of?"
+    answer: "Germany"
+
+  - prompt: "What event started World War I?"
+    answer: "Assassination of Archduke Franz Ferdinand"
+
+  - prompt: "Who led the Soviet Union during World War II?"
+    answer: "Joseph Stalin"
+
+  - prompt: "Who was the Prime Minister of Britain during WWII?"
+    answer: "Winston Churchill"
+
+  - prompt: "Which country dropped atomic bombs on Japan?"
+    answer: "United States"
+
+  - prompt: "What is the name of the period with renewed interest in art and learning?"
+    answer: "Renaissance"
+
+  - prompt: "Who invented the printing press?"
+    answer: "Johannes Gutenberg"
+
+  - prompt: "What empire did Genghis Khan found?"
+    answer: "Mongol"
+
+  - prompt: "Who was the first female Prime Minister of the UK?"
+    answer: "Margaret Thatcher"
+
+  - prompt: "What country built the Colosseum?"
+    answer: "Italy"
+
+  - prompt: "What was the capital of the Aztec Empire?"
+    answer: "Tenochtitlan"
+
+  - prompt: "Which French general became emperor in 1804?"
+    answer: "Napoleon"
+
+  - prompt: "Which ancient city was known for its hanging gardens?"
+    answer: "Babylon"
+
+  - prompt: "Who was the main god in ancient Greek mythology?"
+    answer: "Zeus"
+
+  - prompt: "Which famous scientist proposed the theory of gravity?"
+    answer: "Isaac Newton"
+
+  - prompt: "Who was the famous nurse in the Crimean War?"
+    answer: "Florence Nightingale"
+
+  - prompt: "What structure was built to divide East and West Berlin?"
+    answer: "Berlin Wall"
+
+  - prompt: "Which ancient civilization invented democracy?"
+    answer: "Greeks"
+
+  - prompt: "Which German monk started the Protestant Reformation?"
+    answer: "Martin Luther"
+
+  - prompt: "Who was the leader of the nonviolent movement in India?"
+    answer: "Mahatma Gandhi"
+
+  - prompt: "What was the medieval plague that killed millions?"
+    answer: "Black Death"
+
+  - prompt: "Which country was once ruled by tsars?"
+    answer: "Russia"
+
+  - prompt: "Who was the famous queen who ruled during England’s golden age?"
+    answer: "Elizabeth I"
+
+  - prompt: "What was the name of Hitler’s political party?"
+    answer: "Nazi"
+
+  - prompt: "What ocean did Magellan's crew first circumnavigate?"
+    answer: "Pacific"
+
+  - prompt: "Which Chinese philosopher emphasized respect and order?"
+    answer: "Confucius"
+
+  - prompt: "What is the name of the first human civilization?"
+    answer: "Sumer"
+
+  - prompt: "Who was the famous Greek philosopher who taught Plato?"
+    answer: "Socrates"
+
+  - prompt: "What is the name of the ship that sank in 1912?"
+    answer: "Titanic"
+
+  - prompt: "Which American document was signed in 1776?"
+    answer: "Declaration of Independence"
+
+  - prompt: "Which country colonized Australia?"
+    answer: "Britain"
+
+  - prompt: "What ancient civilization built Machu Picchu?"
+    answer: "Inca"
+
+  - prompt: "What religion was spread by Muhammad?"
+    answer: "Islam"
+
+  - prompt: "Who was the Roman god of war?"
+    answer: "Mars"
+

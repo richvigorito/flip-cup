@@ -1,0 +1,33 @@
+title: MCU (Medium)
+category: Marvel Universe
+
+questions:
+  - prompt: "Who was the first Avenger chronologically in the MCU timeline?"
+    answer: "Captain America"
+
+  - prompt: "Which Marvel hero was a surgeon before becoming a superhero?"
+    answer: "Doctor Strange"
+
+  - prompt: "Who was the villain in Black Panther?"
+    answer: "Killmonger"
+
+  - prompt: "Which Infinity Stone was in Loki’s scepter?"
+    answer: "Mind Stone"
+
+  - prompt: "What is the name of Peter Quill's father?"
+    answer: "Ego"
+
+  - prompt: "Which Avenger can shrink and grow in size?"
+    answer: "Ant-Man"
+
+  - prompt: "What’s the name of Thor’s sister in Ragnarok?"
+    answer: "Hela"
+
+  - prompt: "What alien race invaded New York in the first Avengers movie?"
+    answer: "Chitauri"
+
+  - prompt: "Who destroyed Tony Stark’s house in Iron Man 3?"
+    answer: "The Mandarin"
+
+  - prompt: "What group is led by Nick Fury?"
+    answer: "S.H.I.E.L.D."

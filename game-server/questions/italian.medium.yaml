@@ -1,0 +1,64 @@
+title: Italian Language (Medium)
+category: Foreign Languages
+
+questions:
+  - prompt: "How do you say 'I am going to the store' in Italian?"
+    answer: "Vado al negozio"
+
+  - prompt: "Translate: 'She is my sister.'"
+    answer: "Lei è mia sorella"
+
+  - prompt: "What does 'posso aiutarti?' mean?"
+    answer: "Can I help you?"
+
+  - prompt: "How do you say 'I don't have any money' in Italian?"
+    answer: "Non ho soldi"
+
+  - prompt: "Translate: 'We live in Rome.'"
+    answer: "Abitiamo a Roma"
+
+  - prompt: "What does 'Sto imparando l'italiano' mean?"
+    answer: "I am learning Italian"
+
+  - prompt: "Translate: 'He works at the hospital.'"
+    answer: "Lui lavora all'ospedale"
+
+  - prompt: "What is the Italian word for 'rain'?"
+    answer: "Pioggia"
+
+  - prompt: "Translate: 'The coffee is hot.'"
+    answer: "Il caffè è caldo"
+
+  - prompt: "How do you say 'I lost my keys' in Italian?"
+    answer: "Ho perso le mie chiavi"
+
+  - prompt: "What does 'Mi piace questo posto' mean?"
+    answer: "I like this place"
+
+  - prompt: "Translate: 'They are eating pasta.'"
+    answer: "Stanno mangiando la pasta"
+
+  - prompt: "What is the Italian word for 'floor' (of a building)?"
+    answer: "Piano"
+
+  - prompt: "Translate: 'Do you understand me?'"
+    answer: "Mi capisci?"
+
+  - prompt: "What is the Italian word for 'trip' or 'journey'?"
+    answer: "Viaggio"
+
+  - prompt: "Translate: 'She needs help.'"
+    answer: "Lei ha bisogno di aiuto"
+
+  - prompt: "What does 'Sono stanco ma felice' mean?"
+    answer: "I am tired but happy"
+
+  - prompt: "How do you say 'We want to go out tonight' in Italian?"
+    answer: "Vogliamo uscire stasera"
+
+  - prompt: "Translate: 'This is my favorite book.'"
+    answer: "Questo è il mio libro preferito"
+
+  - prompt: "How do you say 'Be careful!' in Italian?"
+    answer: "Stai attento!"
+

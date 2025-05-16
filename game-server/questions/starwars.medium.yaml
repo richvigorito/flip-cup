@@ -1,0 +1,49 @@
+title: Medium
+
+category: Star Wars 
+questions:
+- prompt: "What is the name of Han Solo's ship?"
+  answer: "Millennium Falcon"
+
+- prompt: "Who kills Jabba the Hutt?"
+  answer: "Leia Organa"
+
+- prompt: "What is the name of Anakin Skywalker's apprentice?"
+  answer: "Ahsoka Tano"
+
+- prompt: "What is the home planet of the Wookiees?"
+  answer: "Kashyyyk"
+
+- prompt: "What is the name of the city where Obi-Wan and Anakin duel in Episode III?"
+  answer: "Mustafar"
+
+- prompt: "What is the name of the creature that lives in the Sarlacc Pit?"
+  answer: "Sarlacc"
+
+- prompt: "Who is the Sith Lord who kills Qui-Gon Jinn?"
+  answer: "Darth Maul"
+
+- prompt: "What is the name of the ice planet in The Empire Strikes Back?"
+  answer: "Hoth"
+
+- prompt: "What does Darth Vader say to Luke when revealing his true identity?"
+  answer: "'I am your father'"
+
+- prompt: "What planet does the Empire destroy with the second Death Star?"
+  answer: "Endor"
+
+- prompt: "Which clone trooper is known for his distinctive helmet and armor?"
+  answer: "Captain Rex"
+
+- prompt: "Who becomes the Emperor after Darth Sidious?"
+  answer: "No one (Palpatine returns in Episode IX, 'The Rise of Skywalker')"
+
+- prompt: "What type of droid is C-3PO?"
+  answer: "Protocol droid"
+
+- prompt: "Who becomes the leader of the Resistance after the death of Leia?"
+  answer: "Rey"
+
+- prompt: "Which Jedi Master trained Anakin Skywalker?"
+  answer: "Obi-Wan Kenobi"
+
