@@ -9,7 +9,8 @@ import (
 type TeamSnapshot struct {
     Name    string   `json:"name"`
     Turn    int      `json:"turn"`
-    Players []string `json:"players"`
+    Players []PlayerSnapshot `json:"players"`
+
 }
 
 type Team struct {
@@ -77,6 +78,17 @@ func (t *Team) Snapshot() TeamSnapshot {
     return TeamSnapshot{
         Name:    t.Name,
         Turn:    t.Turn,
-        Players: t.ExtractPlayerNames(),
+        Players: t.ExtractPlayerSnapshots(),
     }
+}
+
+func (t *Team) ExtractPlayerSnapshots() []PlayerSnapshot {
+    snapshots := make([]PlayerSnapshot, 0, len(t.Players))
+    for _, p := range t.Players {
+        snapshots = append(snapshots, PlayerSnapshot{
+            ID:   p.ID,
+            Name: p.Name,
+        })
+    }
+    return snapshots
 }

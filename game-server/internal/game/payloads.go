@@ -18,12 +18,11 @@ type JoinExistingGamePayload struct {
 }
 
 
-/*
 // Step 2, 'join' aka give us your name
 type AddPlayerPayload struct {
 	Name string `json:"name"`
 }
-*/
+
 
 type AnswerPayload struct {
 	Answer string `json:"answer"`

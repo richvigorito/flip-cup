@@ -15,12 +15,10 @@ import (
 	"flip-cup/internal/utils"
 )
 
-// Upgrader for WebSocket connection
 var Upgrader = websocket.Upgrader{
 	CheckOrigin: func(r *http.Request) bool { return true },
 }
 
-// create a game OR a join an existing one THEN enter game play
 func HandleWebSocketConnection(manager *game.GameManager) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 
@@ -40,7 +38,7 @@ func HandleWebSocketConnection(manager *game.GameManager) http.HandlerFunc {
 		var envelope types.Envelope
 		utils.MustUnmarshal(conn, msg, &envelope)
 
-		//utils.MustWriteJSON(msg, &encoding, "envelope")
+		utils.MustWriteJSON(conn, &envelope)
 	
 		// step 1, either create or join game
 		// step 2, add player
@@ -50,23 +48,28 @@ func HandleWebSocketConnection(manager *game.GameManager) http.HandlerFunc {
 		var p *game.Player
 		var name string
 
+
 		switch envelope.Type {
 			case "join_existing_game":
 				var joinPayload game.JoinExistingGamePayload
 				utils.MustUnmarshal(conn, envelope.Payload, &joinPayload)
+
+                log.Printf("Join Existing Game: %+v", envelope)
 				
 				// Handle joining an existing game
 				g = manager.GetGame(joinPayload.GameID)
+                g.DisplayGameSnapshot("joined_existing_game", p)
 
 				if g == nil {
 					log.Println("Error joining existing game:", err)
 					return
 				}
 
-			case "start_game":
+			case "create_game":
 				// It's a Start Game payload
 				var startPayload game.StartGamePayload
 				utils.MustUnmarshal(conn, envelope.Payload, &startPayload)
+  			    utils.LogPrettyJSON("Start New Game", envelope)
 		
 				var qf *quiz.QuestionFile
 				qf, err := quiz.NewQuestionFile(startPayload.QuizFilename)
@@ -77,6 +80,7 @@ func HandleWebSocketConnection(manager *game.GameManager) http.HandlerFunc {
 
 				g = manager.NewGame(qf)
 				log.Println("game_created: ", g.ID)
+                g.DisplayGameSnapshot("ignore_created", p)
 
 				conn.WriteJSON(
 					types.Envelope{
