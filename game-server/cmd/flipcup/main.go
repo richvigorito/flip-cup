@@ -19,11 +19,11 @@ func main() {
 	// Create a new router
 	r := mux.NewRouter()
 
-	//  HTTP routes
-	api.SetupRoutes(manager, r)
-
 	//  WebSocket route *  handler
 	r.HandleFunc("/ws", ws.HandleWebSocketConnection(manager))
+
+	//  HTTP routes
+	api.SetupRoutes(manager, r)
 
 	// Start the server
 	fmt.Println("Server running at http://localhost:8080")
