@@ -15,6 +15,7 @@ func HandleError(conn *websocket.Conn, err error, msg string) {
 	// Optionally, you can send an error message to the client
 	errorMessage := fmt.Sprintf("Error: %s", err.Error())
 	if conn != nil {
+        log.Println(errorMessage)
 		conn.WriteMessage(websocket.TextMessage, []byte(errorMessage))
 	}
 }

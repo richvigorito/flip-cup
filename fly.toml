@@ -1,0 +1,33 @@
+# fly.toml app configuration file generated for flip-cup on 2025-05-16T12:53:47-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'flip-cup'
+    primary_region = 'sea'
+
+[build]
+    dockerfile = 'Dockerfile.fly'
+
+[env]
+    PORT = '8080'
+
+[[services]]
+    protocol = 'tcp'
+    internal_port = 8080
+
+  [[services.ports]]
+    port = 80
+    handlers = ['http']
+
+  [[services.ports]]
+    port = 443
+    handlers = ['tls', 'http']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+[deploy]
+  strategy = "immediate"

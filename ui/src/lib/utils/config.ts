@@ -1,19 +1,14 @@
-// src/lib/utils/config.ts
-
 const rawUrl = import.meta.env.VITE_WS_URL || 'localhost:8080';
 const cleanUrl = stripProtocol(rawUrl);
 
-console.log('rawurl:', rawUrl);
-console.log('cleanurl:', cleanUrl);
+const isSecure = window.location.protocol === 'https:';
 
-export const baseHttpUrl = `http://${cleanUrl}`;
-export const baseWsUrl = `ws://${cleanUrl}/ws`;
+export const baseHttpUrl = `${isSecure ? 'https' : 'http'}://${cleanUrl}`;
+export const baseWsUrl = `${isSecure ? 'wss' : 'ws'}://${cleanUrl}/ws`;
 
-
-console.log('baseurl:', baseHttpUrl);
-console.log('wsurl:', baseWsUrl);
+console.log('baseHttpUrl:', baseHttpUrl);
+console.log('baseWsUrl:', baseWsUrl);
 
 function stripProtocol(url: string) {
   return url.replace(/^wss?:\/\//, '').replace(/^https?:\/\//, '');
 }
-

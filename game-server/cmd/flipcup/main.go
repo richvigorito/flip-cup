@@ -2,7 +2,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"flip-cup/internal/game"
@@ -13,6 +12,7 @@ import (
 )
 
 func main() {
+    log.Println("✅ Flip Cup server started")
 	
 	manager := game.NewGameManager()
 
@@ -26,7 +26,7 @@ func main() {
 	api.SetupRoutes(manager, r)
 
 	// Start the server
-	fmt.Println("Server running at http://localhost:8080")
+	log.Println("Server running at http://localhost:8080")
 	log.Fatal(http.ListenAndServe("0.0.0.0:8080", api.WithCORS(r)))
 }
 

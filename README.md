@@ -36,9 +36,12 @@ The app has two main parts:
   - Cups flips and next question/player is broadcasted
 
 ---
-## To Play
+## To Play Local
 ### edit env 
 add ``VITE_WS_URL=<your_ip>:8080`` to ``ui/.env``
+### run docker
+rootdir> docker-compose build --no-cache
+rootdir> docker-compose up -d
 
 ### run servers
 ```bash
