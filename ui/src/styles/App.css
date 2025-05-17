@@ -27,6 +27,14 @@
   padding-bottom: 0.25rem;
 }
 
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* force 3 per row */
+    gap: 1rem;
+    padding: 1rem;
+}
+
+
 .log-entries {
   flex: 1;
   overflow-y: auto;
