@@ -1,66 +1,66 @@
 title: Gen Science (Medium)
-
 category: Science
 questions:
 - prompt: "What is the most abundant gas in the Earth's atmosphere?"
-  answer: "Nitrogen"
+  answer: ["Nitrogen", "N2", "N₂"]
 
 - prompt: "Which organ in the human body is primarily responsible for pumping blood?"
-  answer: "Heart"
+  answer: ["Heart"]
 
 - prompt: "What element has the atomic number 1?"
-  answer: "Hydrogen"
+  answer: ["Hydrogen"]
 
 - prompt: "What is the process by which plants release water vapor into the atmosphere?"
-  answer: "Transpiration"
+  answer: ["Transpiration"]
 
 - prompt: "What is the chemical formula for carbon dioxide?"
-  answer: "CO2"
+  answer: ["CO2", "CO₂"]
 
 - prompt: "What is the second-largest planet in our solar system?"
-  answer: "Saturn"
+  answer: ["Saturn"]
 
 - prompt: "What type of energy is stored in food?"
-  answer: "Chemical energy"
+  answer: ["Chemical energy"]
 
 - prompt: "What is the term for a solid turning into a liquid?"
-  answer: "Melting"
+  answer: ["Melting"]
 
 - prompt: "What is the process by which green plants make food using sunlight?"
-  answer: "Photosynthesis"
+  answer: ["Photosynthesis"]
 
 - prompt: "What part of the cell contains genetic material?"
-  answer: "Nucleus"
+  answer: ["Nucleus"]
 
 - prompt: "What is the unit of electric current?"
-  answer: "Ampere"
+  answer: ["Ampere", "Amp"]
 
 - prompt: "Which planet is known as the 'Giant Planet' and has a Great Red Spot?"
-  answer: "Jupiter"
+  answer: ["Jupiter"]
 
 - prompt: "What is the name of the nearest galaxy to the Milky Way?"
-  answer: "Andromeda Galaxy"
+  answer: ["Andromeda Galaxy", "Andromeda"]
 
 - prompt: "What is the process of water changing from a gas to a liquid called?"
-  answer: "Condensation"
+  answer: ["Condensation"]
 
 - prompt: "Which element is most commonly used in light bulbs?"
-  answer: "Tungsten"
+  answer: ["Tungsten"]
 
 - prompt: "What is the common name for the substance H2O in its solid form?"
-  answer: "Ice"
+  answer: ["Ice"]
 
 - prompt: "Which type of electromagnetic wave is used for communication?"
-  answer: "Radio waves"
+  answer: ["Radio waves", "Radio wave"]
 
 - prompt: "What type of bond is formed when two atoms share electrons?"
-  answer: "Covalent bond"
+  answer: ["Covalent bond", "Covalent"]
 
 - prompt: "What is the force that causes objects to fall to Earth?"
-  answer: "Gravity"
+  answer: ["Gravity"]
 
 - prompt: "Which organ in the human body is responsible for producing insulin?"
-  answer: "Pancreas"
+  answer: ["Pancreas"]
 
 - prompt: "What type of rock is formed from cooled and solidified magma?"
-  answer: "Igneous rock"
+  answer: ["Igneous rock", "Igneous"]
+

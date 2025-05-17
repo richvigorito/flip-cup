@@ -1,45 +1,46 @@
-title: 2000s 
-
+title: 2020s
 category: Pop-Culture
+
 questions:
   - prompt: "Which social media platform became extremely popular in the 2020s for its short-form videos?"
-    answer: "TikTok"
+    answer: ["TikTok"]
 
   - prompt: "Which 2020s show features characters like Joe Goldberg?"
-    answer: "You"
+    answer: ["You"]
 
   - prompt: "Which film won the Academy Award for Best Picture in 2021?"
-    answer: "Nomadland"
+    answer: ["Nomadland"]
 
   - prompt: "What popular 2020s TV show revolves around a group of people trying to survive a zombie apocalypse?"
-    answer: "The Walking Dead"
+    answer: ["The Walking Dead"]
 
   - prompt: "Which 2020s movie features the character Harley Quinn?"
-    answer: "Birds of Prey"
+    answer: ["Birds of Prey"]
 
   - prompt: "Which Netflix series was based on the video game 'The Witcher'?"
-    answer: "The Witcher"
+    answer: ["The Witcher"]
 
   - prompt: "Which Marvel movie, released in 2021, features the character Shang-Chi?"
-    answer: "Shang-Chi and the Legend of the Ten Rings"
+    answer: ["Shang-Chi and the Legend of the Ten Rings", "Shang-Chi"]
 
   - prompt: "Which 2020s artist released the hit song 'Blinding Lights'?"
-    answer: "The Weeknd"
+    answer: ["The Weeknd", "Abel Tesfaye"]
 
   - prompt: "Which Disney+ series features the characters Wanda and Vision?"
-    answer: "WandaVision"
+    answer: ["WandaVision"]
 
   - prompt: "What popular 2020s game became a worldwide sensation involving building and surviving in a virtual world?"
-    answer: "Minecraft"
-    
+    answer: ["Minecraft"]
+
   - prompt: "Which 2020s film became the highest-grossing movie after its release in 2022?"
-    answer: "Avatar: The Way of Water"
-    
+    answer: ["Avatar: The Way of Water", "Avatar 2"]
+
   - prompt: "Which 2020s artist is known for the album 'Sour'?"
-    answer: "Olivia Rodrigo"
-    
+    answer: ["Olivia Rodrigo"]
+
   - prompt: "Which popular 2020s animated series features a futuristic family?"
-    answer: "Rick and Morty"
-    
+    answer: ["Rick and Morty"]
+
   - prompt: "Which 2020s film franchise brought back the character 'Jurassic Park'?"
-    answer: "Jurassic World: Dominion"
+    answer: ["Jurassic World: Dominion", "Jurassic World"]
+

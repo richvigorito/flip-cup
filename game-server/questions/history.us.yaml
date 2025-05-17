@@ -3,149 +3,148 @@ category: History
 
 questions:
   - prompt: "Who was the first President of the United States?"
-    answer: "George Washington"
+    answers: ["George Washington"]
 
   - prompt: "What year was the Declaration of Independence signed?"
-    answer: "1776"
+    answers: ["1776"]
 
   - prompt: "Who wrote the Declaration of Independence?"
-    answer: "Thomas Jefferson"
+    answers: ["Thomas Jefferson"]
 
   - prompt: "What war was fought for American independence?"
-    answer: "Revolutionary War"
+    answers: ["Revolutionary War", "American Revolutionary War", "American War of Independence"]
 
   - prompt: "What country did the U.S. gain independence from?"
-    answer: "Great Britain"
+    answers: ["Great Britain", "Britain", "United Kingdom"]
 
   - prompt: "Who was the 16th President of the United States?"
-    answer: "Abraham Lincoln"
+    answers: ["Abraham Lincoln"]
 
   - prompt: "What war ended slavery in the U.S.?"
-    answer: "Civil War"
+    answers: ["Civil War", "American Civil War"]
 
   - prompt: "What year did the Civil War start?"
-    answer: "1861"
+    answers: ["1861"]
 
   - prompt: "What year did the Civil War end?"
-    answer: "1865"
+    answers: ["1865"]
 
   - prompt: "What document freed the slaves?"
-    answer: "Emancipation Proclamation"
+    answers: ["Emancipation Proclamation"]
 
   - prompt: "Who was the main author of the U.S. Constitution?"
-    answer: "James Madison"
+    answers: ["James Madison"]
 
   - prompt: "What are the first ten amendments called?"
-    answer: "Bill of Rights"
+    answers: ["Bill of Rights"]
 
   - prompt: "What is the highest court in the United States?"
-    answer: "Supreme Court"
+    answers: ["Supreme Court"]
 
   - prompt: "How many states are in the United States?"
-    answer: "50"
+    answers: ["50", "fifty"]
 
   - prompt: "What is the capital of the United States?"
-    answer: "Washington, D.C."
+    answers: ["Washington, D.C.", "Washington DC", "D.C.", "DC"]
 
   - prompt: "What ocean is on the east coast of the U.S.?"
-    answer: "Atlantic Ocean"
+    answers: ["Atlantic Ocean", "Atlantic"]
 
   - prompt: "What ocean is on the west coast of the U.S.?"
-    answer: "Pacific Ocean"
+    answers: ["Pacific Ocean", "Pacific"]
 
   - prompt: "Which U.S. state was the first to join the Union?"
-    answer: "Delaware"
+    answers: ["Delaware"]
 
   - prompt: "Which U.S. state was the last to join the Union?"
-    answer: "Hawaii"
+    answers: ["Hawaii"]
 
   - prompt: "What year did women gain the right to vote?"
-    answer: "1920"
+    answers: ["1920"]
 
   - prompt: "What amendment gave women the right to vote?"
-    answer: "19th"
+    answers: ["19th", "Nineteenth"]
 
   - prompt: "Who was President during World War I?"
-    answer: "Woodrow Wilson"
+    answers: ["Woodrow Wilson"]
 
   - prompt: "Who was President during World War II?"
-    answer: "Franklin D. Roosevelt"
+    answers: ["Franklin D. Roosevelt", "FDR"]
 
   - prompt: "Who was the U.S. fighting in World War II in Europe?"
-    answer: "Germany"
+    answers: ["Germany"]
 
   - prompt: "Who was the U.S. fighting in World War II in the Pacific?"
-    answer: "Japan"
+    answers: ["Japan"]
 
   - prompt: "What event caused the U.S. to enter World War II?"
-    answer: "Pearl Harbor"
+    answers: ["Pearl Harbor", "Attack on Pearl Harbor"]
 
   - prompt: "What year did Pearl Harbor happen?"
-    answer: "1941"
+    answers: ["1941"]
 
   - prompt: "Who was the civil rights leader who gave the 'I Have a Dream' speech?"
-    answer: "Martin Luther King Jr."
+    answers: ["Martin Luther King Jr.", "MLK Jr.", "Martin Luther King"]
 
   - prompt: "What law ended segregation in public places?"
-    answer: "Civil Rights Act"
+    answers: ["Civil Rights Act", "Civil Rights Act of 1964"]
 
   - prompt: "What year was the Civil Rights Act passed?"
-    answer: "1964"
+    answers: ["1964"]
 
   - prompt: "Who was the first African American President?"
-    answer: "Barack Obama"
+    answers: ["Barack Obama"]
 
   - prompt: "What year was Barack Obama elected?"
-    answer: "2008"
+    answers: ["2008"]
 
   - prompt: "What U.S. President resigned after the Watergate scandal?"
-    answer: "Richard Nixon"
+    answers: ["Richard Nixon", "Nixon"]
 
   - prompt: "What state is Mount Rushmore located in?"
-    answer: "South Dakota"
+    answers: ["South Dakota"]
 
   - prompt: "Who was known as the 'Father of the Constitution'?"
-    answer: "James Madison"
+    answers: ["James Madison"]
 
   - prompt: "What was the name of the ship that brought the Pilgrims to America?"
-    answer: "Mayflower"
+    answers: ["Mayflower"]
 
   - prompt: "In what year did the Pilgrims arrive in America?"
-    answer: "1620"
+    answers: ["1620"]
 
   - prompt: "What war was fought between the North and South?"
-    answer: "Civil War"
+    answers: ["Civil War", "American Civil War"]
 
   - prompt: "What side was the Union in the Civil War?"
-    answer: "North"
+    answers: ["North"]
 
   - prompt: "What side was the Confederacy in the Civil War?"
-    answer: "South"
+    answers: ["South"]
 
   - prompt: "What was the main cause of the Civil War?"
-    answer: "Slavery"
+    answers: ["Slavery"]
 
   - prompt: "Who discovered America in 1492?"
-    answer: "Christopher Columbus"
+    answers: ["Christopher Columbus", "Columbus"]
 
   - prompt: "What city did the Boston Tea Party happen in?"
-    answer: "Boston"
+    answers: ["Boston"]
 
   - prompt: "What document starts with 'We the People'?"
-    answer: "Constitution"
+    answers: ["Constitution", "U.S. Constitution", "United States Constitution"]
 
   - prompt: "Who was the third President of the United States?"
-    answer: "Thomas Jefferson"
+    answers: ["Thomas Jefferson"]
 
   - prompt: "Which state is the Liberty Bell in?"
-    answer: "Pennsylvania"
+    answers: ["Pennsylvania"]
 
   - prompt: "What U.S. holiday celebrates independence?"
-    answer: "Fourth of July"
+    answers: ["Fourth of July", "Independence Day", "4th of July"]
 
   - prompt: "Who was President during the Great Depression?"
-    answer: "Herbert Hoover"
+    answers: ["Herbert Hoover"]
 
   - prompt: "What project built dams and created jobs in the 1930s?"
-    answer: "New Deal"
-
+    answers: ["New Deal"]

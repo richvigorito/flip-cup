@@ -1,64 +1,63 @@
 title: Gen Sports (Medium)
-
 category: Sports
 questions:
   - prompt: "Which country has hosted the most Summer Olympic Games?"
-    answer: "United States"
+    answer: ["United States", "USA"]
 
   - prompt: "Who was the first female gymnast to score a perfect 10?"
-    answer: "Nadia Comăneci"
+    answer: ["Nadia Comăneci", "Nadia Comaneci"]
 
   - prompt: "Who broke the MLB home run record with 73 in a single season?"
-    answer: "Barry Bonds"
+    answer: ["Barry Bonds"]
 
   - prompt: "Which golfer is nicknamed 'The Golden Bear'?"
-    answer: "Jack Nicklaus"
+    answer: ["Jack Nicklaus", "Nicklaus"]
 
   - prompt: "What year were the first modern Olympic Games held?"
-    answer: "1896"
+    answer: ["1896"]
 
   - prompt: "Which country won the first FIFA World Cup in 1930?"
-    answer: "Uruguay"
+    answer: ["Uruguay"]
 
   - prompt: "Who won the NBA MVP in 2021?"
-    answer: "Nikola Jokic"
+    answer: ["Nikola Jokic", "Jokic"]
 
   - prompt: "In what year did women first compete in the Olympics?"
-    answer: "1900"
+    answer: ["1900"]
 
   - prompt: "Which boxer bit an opponent’s ear during a fight?"
-    answer: "Mike Tyson"
+    answer: ["Mike Tyson", "Tyson"]
 
   - prompt: "Which city hosted the 1996 Summer Olympics?"
-    answer: "Atlanta"
+    answer: ["Atlanta"]
 
   - prompt: "Who was the youngest Formula One world champion?"
-    answer: "Sebastian Vettel"
+    answer: ["Sebastian Vettel", "Vettel"]
 
   - prompt: "Which tennis tournament is played on clay courts?"
-    answer: "French Open"
+    answer: ["French Open"]
 
   - prompt: "What athlete lit the Olympic torch in Barcelona 1992?"
-    answer: "Antonio Rebollo"
+    answer: ["Antonio Rebollo", "Rebollo"]
 
   - prompt: "Which team did Joe Montana play for most of his career?"
-    answer: "San Francisco 49ers"
+    answer: ["San Francisco 49ers", "49ers"]
 
   - prompt: "In what decade did the NBA form?"
-    answer: "1940s"
+    answer: ["1940s", "1940's", "1940"]
 
   - prompt: "Who holds the record for the fastest 100m sprint?"
-    answer: "Usain Bolt"
+    answer: ["Usain Bolt", "Bolt"]
 
   - prompt: "Which cricket player is known as 'The Little Master'?"
-    answer: "Sachin Tendulkar"
+    answer: ["Sachin Tendulkar", "Tendulkar"]
 
   - prompt: "Who was the first African American to win a Grand Slam in tennis?"
-    answer: "Althea Gibson"
+    answer: ["Althea Gibson", "Gibson"]
 
   - prompt: "Who won the FIFA Women's World Cup in 2015?"
-    answer: "USA"
+    answer: ["USA", "United States"]
 
   - prompt: "What event did Bruce Jenner win in the 1976 Olympics?"
-    answer: "Decathlon"
+    answer: ["Decathlon"]
 

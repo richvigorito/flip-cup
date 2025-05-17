@@ -205,7 +205,7 @@ func (g *Game) handleCheckAnswer(p *Player, answer *AnswerPayload) {
 	  }
 
     currentQuestion := g.QuestionFile.Questions[t.Turn] 
-    if answer.Answer == currentQuestion.Answer {
+    if currentQuestion.CheckAnswer(answer.Answer) {
         log.Println("correct answer")
 	      t.Turn++
         if false ==  g.NextQuestion(t) {
