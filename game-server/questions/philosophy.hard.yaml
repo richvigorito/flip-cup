@@ -1,34 +1,33 @@
-title: Gen Philosopy (Hard)
-
+title: Gen Philosophy (Hard)
 category: Philosophy
+
 questions:
   - prompt: "Who developed the concepts 'Being-in-itself' and 'Being-for-itself'?"
-    answer: "Jean-Paul Sartre"
+    answer: ["Jean-Paul Sartre", "Sartre"]
 
   - prompt: "What paradox involves a ship being replaced piece by piece?"
-    answer: "Ship of Theseus"
+    answer: ["Ship of Theseus"]
 
   - prompt: "Who introduced the 'veil of ignorance' in political philosophy?"
-    answer: "John Rawls"
+    answer: ["John Rawls", "Rawls"]
 
   - prompt: "What is 'modus tollens' in logic?"
-    answer: "Denying the consequent"
+    answer: ["Denying the consequent"]
 
   - prompt: "Who is known for the concept of 'eternal recurrence'?"
-    answer: "Friedrich Nietzsche"
+    answer: ["Friedrich Nietzsche", "Nietzsche"]
 
   - prompt: "What is the focus of Wittgenstein’s 'Tractatus Logico-Philosophicus'?"
-    answer: "The limits of language"
+    answer: ["The limits of language", "Limits of language"]
 
   - prompt: "Who developed the idea of 'difference and repetition'?"
-    answer: "Gilles Deleuze"
+    answer: ["Gilles Deleuze", "Deleuze"]
 
   - prompt: "What is the Gettier problem concerned with?"
-    answer: "Justified true belief"
+    answer: ["Justified true belief"]
 
   - prompt: "Who wrote 'Phenomenology of Spirit'?"
-    answer: "Georg Wilhelm Friedrich Hegel"
+    answer: ["Georg Wilhelm Friedrich Hegel", "Hegel"]
 
   - prompt: "What does 'epiphenomenalism' refer to?"
-    answer: "Mental states are by-products of physical processes"
-
+    answer: ["Mental states are by-products of physical processes", "Mental states as by-products of physical processes"]

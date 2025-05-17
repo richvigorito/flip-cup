@@ -1,67 +1,65 @@
 title: Gen Science (Easy)
-
 category: Science
 questions:
 - prompt: "What is the chemical symbol for water?"
-  answer: "H2O"
+  answer: ["H2O", "H₂O"]
 
 - prompt: "What planet is closest to the Sun?"
-  answer: "Mercury"
+  answer: ["Mercury"]
 
 - prompt: "How many continents are there on Earth?"
-  answer: "Seven"
+  answer: ["7", "seven"]
 
 - prompt: "What is the largest organ in the human body?"
-  answer: "Skin"
+  answer: ["Skin"]
 
 - prompt: "What gas do plants absorb from the atmosphere during photosynthesis?"
-  answer: "Carbon dioxide"
+  answer: ["Carbon dioxide", "CO2", "CO₂"]
 
 - prompt: "What is the hardest natural substance on Earth?"
-  answer: "Diamond"
+  answer: ["Diamond"]
 
 - prompt: "Which part of the plant conducts photosynthesis?"
-  answer: "Leaves"
+  answer: ["Leaves", "Leaf"]
 
 - prompt: "What is the main source of energy for the Earth?"
-  answer: "The Sun"
+  answer: ["The Sun", "Sun"]
 
 - prompt: "What is the process by which water vapor turns into liquid?"
-  answer: "Condensation"
+  answer: ["Condensation"]
 
 - prompt: "What is the name of the force that pulls objects toward the center of the Earth?"
-  answer: "Gravity"
+  answer: ["Gravity"]
 
 - prompt: "What is the chemical symbol for gold?"
-  answer: "Au"
+  answer: ["Au"]
 
 - prompt: "What is the freezing point of water in Celsius?"
-  answer: "0°C"
+  answer: ["0°C", "0 degrees Celsius", "0 C"]
 
 - prompt: "What is the term for animals that only eat plants?"
-  answer: "Herbivores"
+  answer: ["Herbivores", "Herbivore"]
 
 - prompt: "What do we call the process of changing a solid directly into a gas?"
-  answer: "Sublimation"
+  answer: ["Sublimation"]
 
 - prompt: "What is the closest star to Earth?"
-  answer: "The Sun"
+  answer: ["The Sun", "Sun"]
 
 - prompt: "Which planet is known as the Red Planet?"
-  answer: "Mars"
+  answer: ["Mars"]
 
 - prompt: "What type of animal is a frog?"
-  answer: "Amphibian"
+  answer: ["Amphibian"]
 
 - prompt: "What is the process by which plants make their own food?"
-  answer: "Photosynthesis"
+  answer: ["Photosynthesis"]
 
 - prompt: "What is the chemical formula for methane?"
-  answer: "CH4"
+  answer: ["CH4", "CH₄"]
 
 - prompt: "What is the main component of the air we breathe?"
-  answer: "Nitrogen"
+  answer: ["Nitrogen", "N2", "N₂"]
 
 - prompt: "Which element is essential for breathing and is the most abundant gas in Earth's atmosphere?"
-  answer: "Oxygen"
-
+  answer: ["Oxygen", "O2", "O₂"]

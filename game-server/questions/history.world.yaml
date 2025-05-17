@@ -3,149 +3,148 @@ category: History
 
 questions:
   - prompt: "Who was the first emperor of Rome?"
-    answer: "Augustus"
+    answers: ["Augustus", "Octavian"]
 
   - prompt: "Which ancient civilization built the pyramids?"
-    answer: "Egyptians"
+    answers: ["Egyptians", "Ancient Egyptians"]
 
   - prompt: "Who was the queen of ancient Egypt known for her beauty?"
-    answer: "Cleopatra"
+    answers: ["Cleopatra", "Cleopatra VII"]
 
   - prompt: "What writing system did the Sumerians develop?"
-    answer: "Cuneiform"
+    answers: ["Cuneiform"]
 
   - prompt: "Who was the founder of Buddhism?"
-    answer: "Siddhartha Gautama"
+    answers: ["Siddhartha Gautama", "Buddha"]
 
   - prompt: "In which country did the Industrial Revolution begin?"
-    answer: "England"
+    answers: ["England", "Great Britain", "United Kingdom"]
 
   - prompt: "Who conquered much of the known world and died at 32?"
-    answer: "Alexander the Great"
+    answers: ["Alexander the Great"]
 
   - prompt: "What wall was built to protect China from invaders?"
-    answer: "Great Wall"
+    answers: ["Great Wall", "Great Wall of China"]
 
   - prompt: "Who painted the Mona Lisa?"
-    answer: "Leonardo da Vinci"
+    answers: ["Leonardo da Vinci", "Da Vinci"]
 
   - prompt: "What was the name of the ship Darwin sailed on?"
-    answer: "Beagle"
+    answers: ["Beagle", "HMS Beagle"]
 
   - prompt: "Which empire ruled India before British colonization?"
-    answer: "Mughal"
+    answers: ["Mughal", "Mughal Empire"]
 
   - prompt: "Who was the first man to walk on the moon?"
-    answer: "Neil Armstrong"
+    answers: ["Neil Armstrong"]
 
   - prompt: "Which city was destroyed by a volcano in 79 AD?"
-    answer: "Pompeii"
+    answers: ["Pompeii"]
 
   - prompt: "Who discovered America in 1492?"
-    answer: "Christopher Columbus"
+    answers: ["Christopher Columbus", "Columbus"]
 
   - prompt: "Which war was fought between the Allies and Axis powers?"
-    answer: "World War II"
+    answers: ["World War II", "WWII", "Second World War"]
 
   - prompt: "What country was Adolf Hitler the leader of?"
-    answer: "Germany"
+    answers: ["Germany"]
 
   - prompt: "What event started World War I?"
-    answer: "Assassination of Archduke Franz Ferdinand"
+    answers: ["Assassination of Archduke Franz Ferdinand", "Assassination of Franz Ferdinand"]
 
   - prompt: "Who led the Soviet Union during World War II?"
-    answer: "Joseph Stalin"
+    answers: ["Joseph Stalin", "Stalin"]
 
   - prompt: "Who was the Prime Minister of Britain during WWII?"
-    answer: "Winston Churchill"
+    answers: ["Winston Churchill", "Churchill"]
 
   - prompt: "Which country dropped atomic bombs on Japan?"
-    answer: "United States"
+    answers: ["United States", "USA", "America"]
 
   - prompt: "What is the name of the period with renewed interest in art and learning?"
-    answer: "Renaissance"
+    answers: ["Renaissance"]
 
   - prompt: "Who invented the printing press?"
-    answer: "Johannes Gutenberg"
+    answers: ["Johannes Gutenberg", "Gutenberg"]
 
   - prompt: "What empire did Genghis Khan found?"
-    answer: "Mongol"
+    answers: ["Mongol", "Mongol Empire"]
 
   - prompt: "Who was the first female Prime Minister of the UK?"
-    answer: "Margaret Thatcher"
+    answers: ["Margaret Thatcher", "Thatcher"]
 
   - prompt: "What country built the Colosseum?"
-    answer: "Italy"
+    answers: ["Italy", "Roman Empire"]
 
   - prompt: "What was the capital of the Aztec Empire?"
-    answer: "Tenochtitlan"
+    answers: ["Tenochtitlan"]
 
   - prompt: "Which French general became emperor in 1804?"
-    answer: "Napoleon"
+    answers: ["Napoleon", "Napoleon Bonaparte"]
 
   - prompt: "Which ancient city was known for its hanging gardens?"
-    answer: "Babylon"
+    answers: ["Babylon"]
 
   - prompt: "Who was the main god in ancient Greek mythology?"
-    answer: "Zeus"
+    answers: ["Zeus"]
 
   - prompt: "Which famous scientist proposed the theory of gravity?"
-    answer: "Isaac Newton"
+    answers: ["Isaac Newton", "Newton"]
 
   - prompt: "Who was the famous nurse in the Crimean War?"
-    answer: "Florence Nightingale"
+    answers: ["Florence Nightingale", "Nightingale"]
 
   - prompt: "What structure was built to divide East and West Berlin?"
-    answer: "Berlin Wall"
+    answers: ["Berlin Wall"]
 
   - prompt: "Which ancient civilization invented democracy?"
-    answer: "Greeks"
+    answers: ["Greeks", "Ancient Greeks"]
 
   - prompt: "Which German monk started the Protestant Reformation?"
-    answer: "Martin Luther"
+    answers: ["Martin Luther"]
 
   - prompt: "Who was the leader of the nonviolent movement in India?"
-    answer: "Mahatma Gandhi"
+    answers: ["Mahatma Gandhi", "Gandhi"]
 
   - prompt: "What was the medieval plague that killed millions?"
-    answer: "Black Death"
+    answers: ["Black Death", "Bubonic Plague"]
 
   - prompt: "Which country was once ruled by tsars?"
-    answer: "Russia"
+    answers: ["Russia", "Russian Empire"]
 
   - prompt: "Who was the famous queen who ruled during England’s golden age?"
-    answer: "Elizabeth I"
+    answers: ["Elizabeth I", "Queen Elizabeth I"]
 
   - prompt: "What was the name of Hitler’s political party?"
-    answer: "Nazi"
+    answers: ["Nazi", "Nazi Party", "National Socialist German Workers' Party"]
 
   - prompt: "What ocean did Magellan's crew first circumnavigate?"
-    answer: "Pacific"
+    answers: ["Pacific", "Pacific Ocean"]
 
   - prompt: "Which Chinese philosopher emphasized respect and order?"
-    answer: "Confucius"
+    answers: ["Confucius"]
 
   - prompt: "What is the name of the first human civilization?"
-    answer: "Sumer"
+    answers: ["Sumer", "Sumerians"]
 
   - prompt: "Who was the famous Greek philosopher who taught Plato?"
-    answer: "Socrates"
+    answers: ["Socrates"]
 
   - prompt: "What is the name of the ship that sank in 1912?"
-    answer: "Titanic"
+    answers: ["Titanic", "RMS Titanic"]
 
   - prompt: "Which American document was signed in 1776?"
-    answer: "Declaration of Independence"
+    answers: ["Declaration of Independence"]
 
   - prompt: "Which country colonized Australia?"
-    answer: "Britain"
+    answers: ["Britain", "United Kingdom", "England"]
 
   - prompt: "What ancient civilization built Machu Picchu?"
-    answer: "Inca"
+    answers: ["Inca", "Inca Empire"]
 
   - prompt: "What religion was spread by Muhammad?"
-    answer: "Islam"
+    answers: ["Islam"]
 
   - prompt: "Who was the Roman god of war?"
-    answer: "Mars"
-
+    answers: ["Mars"]

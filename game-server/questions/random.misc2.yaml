@@ -1,63 +1,62 @@
 title: Random Questions -2
 category: Potent potables
-
 questions:
   - prompt: "What is the capital of Japan?"
-    answer: "Tokyo"
+    answer: ["Tokyo"]
 
   - prompt: "How many continents are there?"
-    answer: "7"
+    answer: ["7", "seven"]
 
   - prompt: "Who discovered penicillin?"
-    answer: "Alexander Fleming"
+    answer: ["Alexander Fleming", "Fleming"]
 
   - prompt: "Which planet is known as the Red Planet?"
-    answer: "Mars"
+    answer: ["Mars"]
 
   - prompt: "What is the boiling point of water in Celsius?"
-    answer: "100"
+    answer: ["100", "100°C", "100 degrees Celsius"]
 
   - prompt: "Which country gifted the Statue of Liberty to the USA?"
-    answer: "France"
+    answer: ["France"]
 
   - prompt: "What is the hardest natural substance on Earth?"
-    answer: "Diamond"
+    answer: ["Diamond"]
 
   - prompt: "What is the name of the fairy in Peter Pan?"
-    answer: "Tinker Bell"
+    answer: ["Tinker Bell", "Tink"]
 
   - prompt: "Which language has the most native speakers worldwide?"
-    answer: "Mandarin Chinese"
+    answer: ["Mandarin Chinese", "Mandarin"]
 
   - prompt: "What is the currency of the United Kingdom?"
-    answer: "Pound Sterling"
+    answer: ["Pound Sterling", "Pound", "GBP"]
 
   - prompt: "Who painted the ceiling of the Sistine Chapel?"
-    answer: "Michelangelo"
+    answer: ["Michelangelo"]
 
   - prompt: "What is the square root of 81?"
-    answer: "9"
+    answer: ["9", "nine"]
 
   - prompt: "Which ocean is the largest?"
-    answer: "Pacific Ocean"
+    answer: ["Pacific Ocean", "Pacific"]
 
   - prompt: "In what year did World War II end?"
-    answer: "1945"
+    answer: ["1945"]
 
   - prompt: "What is the chemical symbol for gold?"
-    answer: "Au"
+    answer: ["Au"]
 
   - prompt: "Which organ pumps blood through the body?"
-    answer: "Heart"
+    answer: ["Heart"]
 
   - prompt: "What is the national sport of Japan?"
-    answer: "Sumo wrestling"
+    answer: ["Sumo wrestling", "Sumo"]
 
   - prompt: "Who wrote '1984'?"
-    answer: "George Orwell"
+    answer: ["George Orwell", "Orwell"]
 
   - prompt: "How many legs does a spider have?"
-    answer: "8"
+    answer: ["8", "eight"]
 
   - prompt: "What is the largest mammal in the world?"
-    answer: "Blue whale"
+    answer: ["Blue whale", "Blue Whale"]

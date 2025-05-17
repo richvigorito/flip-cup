@@ -1,145 +1,145 @@
-title: U.S. Civil War History 
+title: U.S. Civil War History
 category: History
 
 questions:
   - prompt: "In what year did the U.S. Civil War begin?"
-    answer: "1861"
+    answers: ["1861"]
 
   - prompt: "What event officially started the Civil War?"
-    answer: "The attack on Fort Sumter"
+    answers: ["The attack on Fort Sumter"]
 
   - prompt: "Who was President of the Confederate States of America?"
-    answer: "Jefferson Davis"
+    answers: ["Jefferson Davis"]
 
   - prompt: "Which general led the Confederate Army of Northern Virginia?"
-    answer: "Robert E. Lee"
+    answers: ["Robert E. Lee", "Lee"]
 
   - prompt: "What Union general became famous for his March to the Sea?"
-    answer: "William Tecumseh Sherman"
+    answers: ["William Tecumseh Sherman", "William Sherman"]
 
   - prompt: "What was the main cause of the Civil War?"
-    answer: "Slavery"
+    answers: ["Slavery"]
 
   - prompt: "Which battle is considered the bloodiest single day in American history?"
-    answer: "Battle of Antietam"
+    answers: ["Battle of Antietam"]
 
   - prompt: "Who was the President of the United States during the Civil War?"
-    answer: "Abraham Lincoln"
+    answers: ["Abraham Lincoln", "Lincoln"]
 
   - prompt: "What document did Lincoln issue that freed slaves in the Confederacy?"
-    answer: "Emancipation Proclamation"
+    answers: ["Emancipation Proclamation"]
 
   - prompt: "Which amendment to the Constitution abolished slavery?"
-    answer: "13th Amendment"
+    answers: ["13th Amendment", "Thirteenth Amendment"]
 
   - prompt: "Where did General Lee surrender to General Grant?"
-    answer: "Appomattox Court House"
+    answers: ["Appomattox Court House", "Appomattox Courthouse"]
 
   - prompt: "What Union general accepted Lee's surrender?"
-    answer: "Ulysses S. Grant"
+    answers: ["Ulysses S. Grant", "Grant"]
 
   - prompt: "Which battle is considered the turning point of the war?"
-    answer: "Battle of Gettysburg"
+    answers: ["Battle of Gettysburg"]
 
   - prompt: "What famous speech did Lincoln deliver after the Battle of Gettysburg?"
-    answer: "Gettysburg Address"
+    answers: ["Gettysburg Address"]
 
   - prompt: "Which Confederate general was accidentally shot by his own men?"
-    answer: "Stonewall Jackson"
+    answers: ["Stonewall Jackson"]
 
   - prompt: "What was the name of the Union’s strategy to blockade Southern ports?"
-    answer: "Anaconda Plan"
+    answers: ["Anaconda Plan"]
 
   - prompt: "Which battle gave the Union control of the Mississippi River?"
-    answer: "Siege of Vicksburg"
+    answers: ["Siege of Vicksburg"]
 
   - prompt: "What was the capital of the Confederacy?"
-    answer: "Richmond, Virginia"
+    answers: ["Richmond, Virginia", "Richmond Virginia"]
 
   - prompt: "What was the name of the ironclad Union warship?"
-    answer: "USS Monitor"
+    answers: ["USS Monitor"]
 
   - prompt: "What was the Confederate ironclad ship called?"
-    answer: "CSS Virginia"
+    answers: ["CSS Virginia"]
 
   - prompt: "Which state was the first to secede from the Union?"
-    answer: "South Carolina"
+    answers: ["South Carolina"]
 
   - prompt: "What border state did Lincoln consider crucial to keep in the Union?"
-    answer: "Kentucky"
+    answers: ["Kentucky"]
 
   - prompt: "Who assassinated Abraham Lincoln?"
-    answer: "John Wilkes Booth"
+    answers: ["John Wilkes Booth"]
 
   - prompt: "Where was Lincoln assassinated?"
-    answer: "Ford’s Theatre"
+    answers: ["Ford’s Theatre", "Fords Theatre"]
 
   - prompt: "What was the name of the Confederate prison with terrible conditions?"
-    answer: "Andersonville"
+    answers: ["Andersonville"]
 
   - prompt: "What nickname was given to Confederate soldiers?"
-    answer: "Rebels"
+    answers: ["Rebels"]
 
   - prompt: "What nickname was given to Union soldiers?"
-    answer: "Yankees"
+    answers: ["Yankees"]
 
   - prompt: "Which state split from Virginia and joined the Union during the war?"
-    answer: "West Virginia"
+    answers: ["West Virginia"]
 
   - prompt: "What was the Union army's first major defeat?"
-    answer: "First Battle of Bull Run"
+    answers: ["First Battle of Bull Run"]
 
   - prompt: "What famous African American regiment fought in the war?"
-    answer: "54th Massachusetts Infantry"
+    answers: ["54th Massachusetts Infantry"]
 
   - prompt: "What law allowed African Americans to join the Union army?"
-    answer: "Militia Act of 1862"
+    answers: ["Militia Act of 1862"]
 
   - prompt: "What was the last battle of the Civil War?"
-    answer: "Battle of Palmito Ranch"
+    answers: ["Battle of Palmito Ranch"]
 
   - prompt: "Which Union general was criticized for his cautious tactics early in the war?"
-    answer: "George B. McClellan"
+    answers: ["George B. McClellan"]
 
   - prompt: "Which Confederate general defended Atlanta before it fell?"
-    answer: "John Bell Hood"
+    answers: ["John Bell Hood"]
 
   - prompt: "Which Confederate state was most devastated by Sherman’s campaign?"
-    answer: "Georgia"
+    answers: ["Georgia"]
 
   - prompt: "What major river was key to controlling the western theater?"
-    answer: "Mississippi River"
+    answers: ["Mississippi River"]
 
   - prompt: "Which battle saw Pickett’s Charge?"
-    answer: "Battle of Gettysburg"
+    answers: ["Battle of Gettysburg"]
 
   - prompt: "What war-time order made freedmen eligible for military service?"
-    answer: "General Order No. 143"
+    answers: ["General Order No. 143", "General Order Number 143"]
 
   - prompt: "Which Union general burned Columbia, South Carolina?"
-    answer: "William T. Sherman"
+    answers: ["William T. Sherman"]
 
   - prompt: "What battle is known for trench warfare near Richmond?"
-    answer: "Siege of Petersburg"
+    answers: ["Siege of Petersburg"]
 
   - prompt: "What city did Sherman give Lincoln as a Christmas gift?"
-    answer: "Savannah"
+    answers: ["Savannah"]
 
   - prompt: "What was the Confederate strategy to win foreign support called?"
-    answer: "King Cotton Diplomacy"
+    answers: ["King Cotton Diplomacy"]
 
   - prompt: "Who replaced McClellan as Union commander in 1862?"
-    answer: "Ambrose Burnside"
+    answers: ["Ambrose Burnside"]
 
   - prompt: "What was the main Confederate army called?"
-    answer: "Army of Northern Virginia"
+    answers: ["Army of Northern Virginia"]
 
   - prompt: "Which Union general led a failed assault at Fredericksburg?"
-    answer: "Ambrose Burnside"
+    answers: ["Ambrose Burnside"]
 
   - prompt: "What was the role of Clara Barton during the Civil War?"
-    answer: "Nurse and founder of the American Red Cross"
+    answers: ["Nurse and founder of the American Red Cross"]
 
   - prompt: "What did the Conscription Act of 1863 establish?"
-    answer: "Military draft for the Union"
+    answers: ["Military draft for the Union"]
 

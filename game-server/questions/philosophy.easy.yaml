@@ -1,33 +1,33 @@
-title: Gen Philosopy (Easy)
-
+title: Gen Philosophy (Easy)
 category: Philosophy
+
 questions:
   - prompt: "Who is known as the father of Western philosophy?"
-    answer: "Socrates"
+    answer: ["Socrates"]
 
   - prompt: "Which philosopher wrote 'The Republic'?"
-    answer: "Plato"
+    answer: ["Plato"]
 
   - prompt: "Who said 'I think, therefore I am'?"
-    answer: "René Descartes"
+    answer: ["René Descartes", "Descartes", "Rene Descartes"]
 
   - prompt: "What branch of philosophy studies knowledge?"
-    answer: "Epistemology"
+    answer: ["Epistemology"]
 
   - prompt: "Which philosopher is known for the 'categorical imperative'?"
-    answer: "Immanuel Kant"
+    answer: ["Immanuel Kant", "Kant"]
 
   - prompt: "What is the study of morality in philosophy called?"
-    answer: "Ethics"
+    answer: ["Ethics"]
 
   - prompt: "Who wrote 'Critique of Pure Reason'?"
-    answer: "Immanuel Kant"
+    answer: ["Immanuel Kant", "Kant"]
 
   - prompt: "Which philosopher proposed the theory of forms?"
-    answer: "Plato"
+    answer: ["Plato"]
 
   - prompt: "What is the philosophical study of beauty and taste?"
-    answer: "Aesthetics"
+    answer: ["Aesthetics"]
 
   - prompt: "Who wrote 'Thus Spoke Zarathustra'?"
-    answer: "Friedrich Nietzsche"
+    answer: ["Friedrich Nietzsche", "Nietzsche"]

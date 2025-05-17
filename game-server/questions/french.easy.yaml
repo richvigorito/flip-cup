@@ -3,59 +3,59 @@ category: Foreign Languages
 
 questions:
   - prompt: "How do you say 'hello' in French?"
-    answer: "Bonjour"
+    answers: ["Bonjour"]
 
   - prompt: "How do you say 'goodbye' in French?"
-    answer: "Au revoir"
+    answers: ["Au revoir"]
 
   - prompt: "What is the French word for 'friend'?"
-    answer: "Ami"
+    answers: ["Ami"]
 
   - prompt: "How do you say 'thank you' in French?"
-    answer: "Merci"
+    answers: ["Merci"]
 
   - prompt: "How do you say 'please' in French?"
-    answer: "S'il vous plaît"
+    answers: ["S'il vous plaît", "Sil vous plait"]
 
   - prompt: "What is the French word for 'water'?"
-    answer: "Eau"
+    answers: ["Eau"]
 
   - prompt: "How do you say 'yes' in French?"
-    answer: "Oui"
+    answers: ["Oui"]
 
   - prompt: "How do you say 'no' in French?"
-    answer: "Non"
+    answers: ["Non"]
 
   - prompt: "What is the French word for 'apple'?"
-    answer: "Pomme"
+    answers: ["Pomme"]
 
   - prompt: "What is the French word for 'book'?"
-    answer: "Livre"
+    answers: ["Livre"]
 
   - prompt: "How do you say 'good morning' in French?"
-    answer: "Bonjour"
+    answers: ["Bonjour"]
 
   - prompt: "How do you say 'good night' in French?"
-    answer: "Bonne nuit"
+    answers: ["Bonne nuit"]
 
   - prompt: "What is the French word for 'dog'?"
-    answer: "Chien"
+    answers: ["Chien"]
 
   - prompt: "What is the French word for 'cat'?"
-    answer: "Chat"
+    answers: ["Chat"]
 
   - prompt: "How do you say 'I love you' in French?"
-    answer: "Je t'aime"
+    answers: ["Je t'aime", "Je taime"]
 
   - prompt: "What is the French word for 'school'?"
-    answer: "École"
+    answers: ["École", "Ecole"]
 
   - prompt: "What is the French word for 'house'?"
-    answer: "Maison"
+    answers: ["Maison"]
 
   - prompt: "How do you say 'I don't understand' in French?"
-    answer: "Je ne comprends pas"
+    answers: ["Je ne comprends pas"]
 
   - prompt: "How do you say 'How are you?' in French?"
-    answer: "Comment ça va?"
+    answers: ["Comment ça va?", "Comment ca va?"]
 

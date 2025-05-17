@@ -3,152 +3,148 @@ category: Software Development
 
 questions:
   - prompt: "Who is known as the father of the computer?"
-    answer: "Charles Babbage"
+    answers: ["Charles Babbage"]
 
   - prompt: "Who wrote the first computer algorithm?"
-    answer: "Ada Lovelace"
+    answers: ["Ada Lovelace"]
 
   - prompt: "What year was the World Wide Web invented?"
-    answer: "1989"
+    answers: ["1989"]
 
   - prompt: "Who invented the World Wide Web?"
-    answer: "Tim Berners-Lee"
+    answers: ["Tim Berners-Lee", "Tim Berners Lee"]
 
   - prompt: "What company created the first widely used personal computer?"
-    answer: "Apple"
+    answers: ["Apple", "Apple Inc", "Apple Inc."]
 
   - prompt: "What does ENIAC stand for?"
-    answer: "Electronic Numerical Integrator and Computer"
+    answers: ["Electronic Numerical Integrator and Computer"]
 
   - prompt: "What was the first programmable digital computer?"
-    answer: "Z3"
+    answers: ["Z3"]
 
   - prompt: "What programming language is known for its use in web development and starts with J?"
-    answer: "JavaScript"
+    answers: ["JavaScript"]
 
   - prompt: "What does 'CPU' stand for?"
-    answer: "Central Processing Unit"
+    answers: ["Central Processing Unit"]
 
   - prompt: "Which operating system was developed by Linus Torvalds?"
-    answer: "Linux"
+    answers: ["Linux"]
 
   - prompt: "What does 'GUI' stand for?"
-    answer: "Graphical User Interface"
+    answers: ["Graphical User Interface"]
 
   - prompt: "What was the first widely used programming language?"
-    answer: "Fortran"
+    answers: ["Fortran"]
 
   - prompt: "Who co-founded Microsoft?"
-    answer: "Bill Gates"
+    answers: ["Bill Gates"]
 
   - prompt: "What company created the Macintosh computer?"
-    answer: "Apple"
+    answers: ["Apple", "Apple Inc", "Apple Inc."]
 
   - prompt: "Which social network was launched by Mark Zuckerberg in 2004?"
-    answer: "Facebook"
+    answers: ["Facebook"]
 
   - prompt: "What is the binary number for decimal 2?"
-    answer: "10"
+    answers: ["10"]
 
   - prompt: "What computer virus was one of the first to spread through email?"
-    answer: "ILOVEYOU"
+    answers: ["ILOVEYOU", "I Love You", "I-Love-You"]
 
   - prompt: "What year was the first iPhone released?"
-    answer: "2007"
+    answers: ["2007"]
 
   - prompt: "Which company created the Windows operating system?"
-    answer: "Microsoft"
+    answers: ["Microsoft"]
 
   - prompt: "What programming language was developed by Dennis Ritchie?"
-    answer: "C"
+    answers: ["C"]
 
   - prompt: "What does HTML stand for?"
-    answer: "HyperText Markup Language"
+    answers: ["HyperText Markup Language"]
 
   - prompt: "Which search engine became dominant in the early 2000s?"
-    answer: "Google"
+    answers: ["Google"]
 
   - prompt: "What was the name of IBM's chess-playing computer that beat Garry Kasparov?"
-    answer: "Deep Blue"
+    answers: ["Deep Blue"]
 
   - prompt: "What company originally created the Java programming language?"
-    answer: "Sun Microsystems"
+    answers: ["Sun Microsystems"]
 
   - prompt: "What year did the first email get sent?"
-    answer: "1971"
+    answers: ["1971"]
 
   - prompt: "Who sent the first email?"
-    answer: "Ray Tomlinson"
+    answers: ["Ray Tomlinson"]
 
   - prompt: "What does 'URL' stand for?"
-    answer: "Uniform Resource Locator"
+    answers: ["Uniform Resource Locator"]
 
   - prompt: "What does 'HTTP' stand for?"
-    answer: "HyperText Transfer Protocol"
+    answers: ["HyperText Transfer Protocol"]
 
   - prompt: "What was the first web browser called?"
-    answer: "WorldWideWeb"
+    answers: ["WorldWideWeb", "World Wide Web"]
 
   - prompt: "What year was the first computer mouse invented?"
-    answer: "1964"
+    answers: ["1964"]
 
   - prompt: "Who invented the computer mouse?"
-    answer: "Douglas Engelbart"
+    answers: ["Douglas Engelbart"]
 
   - prompt: "What is Moore’s Law?"
-    answer: "Transistors double roughly every two years"
+    answers: ["Transistors double roughly every two years", "The number of transistors doubles every two years"]
 
   - prompt: "What does IBM stand for?"
-    answer: "International Business Machines"
+    answers: ["International Business Machines"]
 
   - prompt: "Which computer language is most associated with artificial intelligence in early development?"
-    answer: "LISP"
+    answers: ["LISP"]
 
   - prompt: "What kind of machine did Alan Turing propose to formalize computation?"
-    answer: "Turing Machine"
+    answers: ["Turing Machine"]
 
   - prompt: "What does 'DOS' stand for in MS-DOS?"
-    answer: "Disk Operating System"
+    answers: ["Disk Operating System"]
 
   - prompt: "What was the first video game?"
-    answer: "Pong"
+    answers: ["Pong"]
 
   - prompt: "Which tech giant was started in a garage in California?"
-    answer: "Apple"
+    answers: ["Apple"]
 
   - prompt: "What company created the first commercial microprocessor?"
-    answer: "Intel"
+    answers: ["Intel"]
 
   - prompt: "What does 'ASCII' stand for?"
-    answer: "American Standard Code for Information Interchange"
+    answers: ["American Standard Code for Information Interchange"]
 
   - prompt: "What programming language did Bjarne Stroustrup create?"
-    answer: "C++"
+    answers: ["C++"]
 
   - prompt: "What year did the dot-com bubble burst?"
-    answer: "2000"
+    answers: ["2000"]
 
   - prompt: "What does 'SQL' stand for?"
-    answer: "Structured Query Language"
+    answers: ["Structured Query Language"]
 
   - prompt: "Who developed the Unix operating system?"
-    answer: "Ken Thompson and Dennis Ritchie"
+    answers: ["Ken Thompson and Dennis Ritchie", "Dennis Ritchie and Ken Thompson"]
 
   - prompt: "What device stores data permanently?"
-    answer: "Hard Drive"
+    answers: ["Hard Drive", "Hard Disk", "HDD"]
 
   - prompt: "What does RAM stand for?"
-    answer: "Random Access Memory"
+    answers: ["Random Access Memory"]
 
   - prompt: "What does 'compiler' mean?"
-    answer: "A program that translates code to machine language"
+    answers: ["A program that translates code to machine language"]
 
-  - prompt: "What does ROM stand for?" 
-    answer: "Read Only Memory"
-
-  - prompt: "What does RAM stand for?" 
-    answer: "Random Access Memory"
+  - prompt: "What does ROM stand for?"
+    answers: ["Read Only Memory"]
 
   - prompt: "Which was the first spreadsheet program?"
-    answer: "VisiCalc"
-
+    answers: ["VisiCalc"]
