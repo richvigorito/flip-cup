@@ -1,20 +1,18 @@
 <script lang="ts">
     import { get } from 'svelte/store';
     import { mode, gameId, joined, currentPlayerName, gameState } from '$lib/store';
-    import { socket } from '$lib/transport/socket';
+    import { send } from '$lib/transport/socket';
 
     let localPlayerName = '';
 
-    const ws = get(socket);
-
     const assignTeams = () => {
-        ws.send(JSON.stringify({ type: 'assign_teams' }));
+        send({ type: 'assign_teams' });
     };
 
     const startGame = () => {
         if ($gameState.canStart()){
             console.log("Sending start message");
-            ws.send(JSON.stringify({ type: 'start' }));
+            send({ type: 'start' });
             mode.set('game');
         } else {
             console.log("Please assign teams before starting the game.");
@@ -25,20 +23,14 @@
     const joinGame = (playerName: string) => {
         const newPlayer = { name: playerName, team: null };
 
-        // Send message to the server to join
-        if (ws && ws.readyState === WebSocket.OPEN) {
-         joined.set(true);
+        joined.set(true);
         console.log(JSON.stringify({ type: "add_player", name: playerName }));
-        ws.send(JSON.stringify({ 
-          type: "add_player", 
-          payload: {
-              name: playerName 
-          }
-        }));
-        console.log("Sent join message:", playerName);
-        } else {
-        console.error("WebSocket not connected!");
-        }
+        send({ 
+            type: "add_player", 
+            payload: {
+                name: playerName 
+            }
+        });
     };
 
 </script>

@@ -3,21 +3,9 @@
     import { send } from '$lib/transport/socket';
     import { mode, gameId, currentQuestion, currentPlayerName, gameState, myTeam, me, winner} from '$lib/store';
 
-    // const ws = get(socket);
-    
     let currentAnswer: string = '';
 
     $: tableColor = $myTeam.color;
-
-    /*
-    const submitAnswer = () => {
-        ws.send(JSON.stringify({ 
-            type: 'check_answer',
-            payload: {answer: currentAnswer }
-        }));
-        currentAnswer = ''; 
-    };
-    */
 
     const submitAnswer = () => {
         send({ 

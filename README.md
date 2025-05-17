@@ -40,8 +40,8 @@ The app has two main parts:
 ### edit env 
 add ``VITE_WS_URL=<your_ip>:8080`` to ``ui/.env``
 ### run docker
-rootdir> docker-compose build --no-cache
-rootdir> docker-compose up -d
+rootdir> docker-compose build --no-cache &&  docker-compose up -d
+rootdir> 
 
 ### run servers
 ```bash

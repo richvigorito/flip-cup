@@ -26,38 +26,35 @@
 </script>
 
 <div class="join-game">
-     <h2>Join a Game</h2>
-     <input type="text" value={$gameId} on:input={(e) => gameId.set(e.target.value)} />
-
-  <button on:click={joinExistingGame}>Join</button>
-
-  <h3>Available Games:</h3>
+  <h2>Available Games:</h2>
   {#if $loadingGames}
     <p>Loading games...</p>
   {:else if availableGames.length === 0}
     <p>No games found.</p>
   {:else}
-    <ul style="list-style-type: none; padding-left: 0;">
+    <div class="game-grid">
       {#each availableGames as game}
-        <li>
-          <button on:click={() => {gameId.set(game.id); currentPlayerName.set(''); }}>
-          <strong>{game.id}</strong><br />
-          {game.teamA.name}: 
-          {#if game.teamA.players.length > 0}
-              {game.teamA.players.map(p => p.name).join(', ')}
-          {:else}
-            — No players —
-          {/if}
-          <br />
-          {game.teamB.name}: 
-          {#if game.teamB.players.length > 0}
-            {game.teamB.players.map(p => p.name).join(', ')}
-          {:else}
-            — No players —
-          {/if}
-          </button>
-        </li>
+        <button on:click={() => {
+            gameId.set(game.id);
+            currentPlayerName.set('');
+            joinExistingGame();
+            }}>
+                <strong>Join {game.id}</strong><br />
+                {game.teamA.name}: 
+                {#if game.teamA.players.length > 0}
+                    {game.teamA.players.map(p => p.name).join(', ')}
+                {:else}
+                    — No players —
+                {/if}
+                <br />
+                {game.teamB.name}: 
+                {#if game.teamB.players.length > 0}
+                    {game.teamB.players.map(p => p.name).join(', ')}
+                {:else}
+                    — No players —
+                {/if}
+        </button>
       {/each}
-    </ul>
+    </div>
   {/if} 
   </div>
