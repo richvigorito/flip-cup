@@ -4,15 +4,16 @@ import { Team } from '$lib/models/Team';
 import { Player } from '$lib/models/Player';
 import { gameState, myTeam, me, mode, joined, eventLog, currentQuestion, winner } from '$lib/store';
 
+
+import { baseWsUrl } from '$lib/utils/config';
+
 export const socket = writable<WebSocket | null>(null);
 
 let ws: WebSocket;
 
 export function connectSocket(initmsg: object) {
 
-    const baseWsUrl = import.meta.env.VITE_WS_URL || 'localhost:8080';
-    const wsUrl = `ws://${baseWsUrl}/ws`;
-    ws = new WebSocket(wsUrl);
+    ws = new WebSocket(baseWsUrl);
 
     socket.set(ws);
     

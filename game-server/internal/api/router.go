@@ -6,10 +6,11 @@ import (
 	"flip-cup/internal/game"
 )
 
-// SetupRoutes sets up HTTP endpoints
+// SetupRoutes sets up HTTP endpoints 
 func SetupRoutes(manager *game.GameManager, r *mux.Router) {
 	inactive := false /* ie get inactive games only */
 	r.HandleFunc("/games/active", fetchGames(manager, &inactive))
 	r.HandleFunc("/quizzes", fetchQuestionFiles())
+    r.PathPrefix("/").Handler(SPAHandler("public"))
 }
 

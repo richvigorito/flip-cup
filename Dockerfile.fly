@@ -1,0 +1,32 @@
+# ---------- UI BUILD ----------
+FROM node:20-alpine AS ui-builder
+WORKDIR /ui
+
+COPY ui/package*.json ./
+RUN npm install
+
+COPY ui ./
+COPY ui/.env.prod ./.env.production
+RUN npm run build
+
+# ---------- GO BUILD ----------
+FROM golang:1.24-alpine AS go-builder
+WORKDIR /app
+
+COPY game-server/go.mod game-server/go.sum ./
+RUN go mod download
+
+COPY game-server ./
+COPY game-server/questions ./questions
+RUN go build -o game-server ./cmd/flipcup
+
+# ---------- FINAL IMAGE ----------
+FROM alpine:latest
+WORKDIR /app
+
+COPY --from=go-builder /app/game-server .
+COPY --from=go-builder /app/questions ./questions
+COPY --from=ui-builder /ui/dist ./public
+
+EXPOSE 8080
+CMD ["./game-server"]

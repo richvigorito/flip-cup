@@ -3,7 +3,7 @@ package api
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -20,6 +20,7 @@ type QuizMeta struct {
 
 func fetchQuestionFiles() http.HandlerFunc {
     return func(w http.ResponseWriter, r *http.Request) {
+        log.Println("🎯 fetchQuestionFiles called") 
 
         files, err := os.ReadDir("questions")
         if err != nil {
@@ -34,13 +35,13 @@ func fetchQuestionFiles() http.HandlerFunc {
                 fullPath := filepath.Join("questions", f.Name())
                 content, err := os.ReadFile(fullPath)
                 if err != nil {
-                    fmt.Println("skip unreadable file: ", fullPath)
+                    log.Println("skip unreadable file: ", fullPath)
                     continue // skip unreadable file
                 }
 
                 var parsed map[string]interface{}
                 if err := yaml.Unmarshal(content, &parsed); err != nil {
-                    fmt.Println("skip unparsable YAML: ", fullPath)
+                    log.Println("skip unparsable YAML: ", fullPath)
                     continue // skip unparsable YAML
                 }
 

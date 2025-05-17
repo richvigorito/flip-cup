@@ -2,8 +2,6 @@
 package ws
 
 import (
-	//"encoding/json"
-	//"fmt"
 	"log"
 	"net/http"
 
@@ -21,6 +19,7 @@ var Upgrader = websocket.Upgrader{
 
 func HandleWebSocketConnection(manager *game.GameManager) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
+        log.Println("Incoming WS connection")
 
 		conn, err := Upgrader.Upgrade(w, req, nil)
 		if err != nil {

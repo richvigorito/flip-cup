@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"time"
 	"math/rand"
-	//"log"
+	"log"
 	"sync"
 
 	"github.com/gorilla/websocket"
@@ -67,7 +67,7 @@ func (g *Game) DisplayTeamSnapshots() {
 }
 
 func (g *Game) DisplayGameSnapshot(action string, p *Player) {
-    fmt.Printf("Game Active: %v\n", g.Active)
+    log.Printf("Game Active: %v\n", g.Active)
 
     var performedBy interface{}
     if p != nil {
@@ -81,7 +81,7 @@ func (g *Game) DisplayGameSnapshot(action string, p *Player) {
         "action_performed_by":  performedBy,
     }
 
-    fmt.Printf("Game Snapshot: %+v\n", snapshot)
+    log.Printf("Game Snapshot: %+v\n", snapshot)
    
     snapshotBytes, _ := json.Marshal(snapshot)
     g.Broadcast(types.Envelope{
@@ -105,62 +105,29 @@ func (g *Game) GetTeam(p *Player) *Team {
 
     return nil
 }
-/*
-func (g *Game) GetPlayerByConn(conn *websocket.Conn) *Player {
-	for _, p := range g.TeamA.Players {
-		if p.Conn == conn {
-			return p
-		}
-	}
-	for _, p := range g.TeamB.Players {
-		if p.Conn == conn {
-			return p
-		}
-	}
-	return nil
-}
-*/
 
-
-/*
-func (g *Game) GetPlayer(ID string) *Player {
-    if player := g.TeamA.GetPlayer(ID); player != nil {
-        return player
-    }
-    if player := g.TeamB.GetPlayer(ID); player != nil {
-        return player
-    }
-    return nil
-}
-*/
-
-
-
-//func (g *Game) handleAddPlayer(conn *websocket.Conn, payload *AddPlayerPayload) *Player {
 func (g *Game) AddPlayer(conn *websocket.Conn, name string) *Player {
 	g.mu.Lock()
 	defer g.mu.Unlock()
 
-	//player := NewPlayer(conn, payload.Name)
 	player := NewPlayer(conn, name)
 	
   if len(g.TeamB.Players) <  len(g.TeamA.Players) {
-		 fmt.Println("%s to team A: ", name)
+		 log.Println("%s to team A: ", name)
       g.TeamB.AddPlayer(player)
   } else {
-		 fmt.Println("%s to team B: ", name)
+		 log.Println("%s to team B: ", name)
       g.TeamA.AddPlayer(player)
   }
     
-  //g.Broadcast(types.Envelope{Type: "player_joined", Name: player.Name})
 	return player
 }
 
 func (g *Game) RemovePlayer(p *Player) {
 	g.mu.Lock()
 	defer g.mu.Unlock()
-  g.TeamA.RemovePlayer(p)
-  g.TeamB.RemovePlayer(p)
+    g.TeamA.RemovePlayer(p)
+    g.TeamB.RemovePlayer(p)
 }
 
 
@@ -171,8 +138,6 @@ func (g *Game) StartGame() {
     g.TeamB.Turn = 0 
     g.QuestionFile.ShuffleQuestions()
 
-
-    //g.Broadcast(types.Envelope{Type: "game_started"})
 
     // Start first question for both teams
     if len(g.TeamA.Players) > 0 {
@@ -196,7 +161,7 @@ func (g *Game) handleReassignTeams() {
     defer g.mu.Unlock()
 
     if g.Active == true {
-        fmt.Println("🚫 Cannot reassign teams in the middle of a game.")
+        log.Println("🚫 Cannot reassign teams in the middle of a game.")
         return
     }
         
@@ -229,19 +194,19 @@ func (g *Game) handleReassignTeams() {
 
 func (g *Game) handleCheckAnswer(p *Player, answer *AnswerPayload) {
     if g.Active == false {
-        fmt.Println("🚫 Cannot check answer for inactive games.")
+        log.Println("🚫 Cannot check answer for inactive games.")
         return //  cannot answer active games
     }
 
     t := g.GetTeam(p)
     if ! t.IsPlayerAllowedToAnswer(p) {
-        fmt.Println("wrong player answered")
+        log.Println("wrong player answered")
         return // the wrong player attempted to answer
 	  }
 
     currentQuestion := g.QuestionFile.Questions[t.Turn] 
     if answer.Answer == currentQuestion.Answer {
-        fmt.Println("correct answer")
+        log.Println("correct answer")
 	      t.Turn++
         if false ==  g.NextQuestion(t) {
             g.EndGame(t)
@@ -261,8 +226,8 @@ func (g *Game) handleAssignPlayerName(p *Player, addPlayerPayload *AddPlayerPayl
 //func (g *Game) HandleMessage(conn *websocket.Conn, msg types.Envelope) {
 func (g *Game) HandleConnection(player *Player) {
 
-   //  player has entered game loop
-   //  boardcast they joined then 
+   // player has entered game loop
+   // boardcast they joined then 
    // start reading messages
     payload := PlayerJoinedPayload{
         PlayerID: player.ID,
@@ -276,8 +241,7 @@ func (g *Game) HandleConnection(player *Player) {
     for{     
         _, msg, err := player.Conn.ReadMessage()
         if err != nil {
-			      fmt.Println("Error reading message:", err)
-			      //log.Println("Error reading message:", err)
+			      log.Println("Error reading message:", err)
 			      return
 		    }
 
@@ -311,18 +275,9 @@ func (g *Game) HandleMessage(p *Player, msg types.Envelope) {
                 g.DisplayGameSnapshot("teams_reassigned", p)
             case "show_players":
                 g.DisplayGameSnapshot("show_players", p)
-            //case "add_player":
-                //var addPlayerPayload AddPlayerPayload
-                //utils.MustUnmarshal(conn, envelope.Payload, &addPlayerPayload)
-                //g.handleAddPlayer(conn, &addPlayerPayload)
             case "check_answer":
                 var answerPayload AnswerPayload
                 utils.MustUnmarshal(p.Conn, msg.Payload, &answerPayload)
-                //p := g.GetPlayerByConn(conn)
-                //if p == nil {
-                    //fmt.Println("Could not find player for connection")
-                //return
-            //}  
                 g.handleCheckAnswer(p,  &answerPayload)
             case "start":
                 g.StartGame()
@@ -368,23 +323,6 @@ func (g *Game) NextQuestion(t *Team) bool{
     return true
 }
 
-/*
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
-}
-*/
 func RandID() string {
 	return fmt.Sprintf("%x", rand.Intn(999999))
 }
-/*
-func mustJSON(v any) string {
-    b, err := json.Marshal(v)
-    if err != nil {
-        log.Fatalf("failed to marshal broadcast payload: %v", err)
-    }
-    return string(b)
-}
-*/
