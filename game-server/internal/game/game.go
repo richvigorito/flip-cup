@@ -21,6 +21,7 @@ type GameSnapshot struct {
     TeamB               TeamSnapshot    `json:"teamB"`
     Action              string          `json:"action,omitempty"'`
     QuizFile  	        string          `json:"quizfile,omitempty"'`
+    CupsPerPerson       int            `json:"cups"`
     Active              bool            `json:"active"`
 }
 
@@ -29,6 +30,7 @@ type Game struct {
 	  TeamA         *Team
 	  TeamB         *Team
 	  QuestionFile  *quiz.QuestionFile
+	  CupsPerPerson int
 	  Active  	    bool
 	  mu            sync.Mutex
 }
@@ -38,6 +40,7 @@ func NewGame(questionFile *quiz.QuestionFile) *Game {
         TeamA: &Team{Players: []*Player{}, Name: "A-Team",  Turn: 0},
         TeamB: &Team{Players: []*Player{}, Name: "B-squad", Turn: 0},
         QuestionFile: questionFile,
+        CupsPerPerson: 3,
         Active: false,
     }
 }
@@ -48,6 +51,7 @@ func (g *Game) Snapshot() GameSnapshot {
         TeamA: g.TeamA.Snapshot(),
         TeamB: g.TeamB.Snapshot(),
         QuizFile: g.QuestionFile.Filename,
+        CupsPerPerson: g.CupsPerPerson,
         Active: g.Active,
     }
 }
@@ -208,16 +212,12 @@ func (g *Game) handleCheckAnswer(p *Player, answer *AnswerPayload) {
 	  }
 
     currentQuestion := g.QuestionFile.Questions[t.Turn] 
-    fmt.Println("currentQuestion: ",currentQuestion)
-    fmt.Println("t.Turn: ",t.Turn)
-    for _, q := range g.QuestionFile.Questions {
-        fmt.Println("q: ",q)
-    }
 
     if currentQuestion.CheckAnswer(answer.Answer) {
         log.Println("correct answer")
 	      t.Turn++
         if false ==  g.NextQuestion(t) {
+            fmt.Println("wtf-xxxxx")
             g.EndGame(t)
         }
         g.DisplayGameSnapshot("answered_correctly", p)
@@ -329,10 +329,17 @@ func (g *Game) EndGame(t *Team) {
 }
 
 func (g *Game) NextQuestion(t *Team) bool{
-    if t.Turn > (len(t.Players) - 1) {
+    //var cupTurns   = t.Turn * g.CupsPerPerson
+    var totalCups = len(t.Players) * g.CupsPerPerson
+    if (t.Turn >= totalCups){
+        fmt.Println("exiting", g.CupsPerPerson * t.Turn,  totalCups)
         return false
     }
-    currentPlayer := t.GetCurrentPlayer()
+    
+    playerIndex := t.Turn % len(t.Players)
+    currentPlayer := t.Players[playerIndex]
+
+    //currentPlayer := t.GetCurrentPlayer(g.CupsPerPerson)
     q := g.QuestionFile.Questions[t.Turn]
 
     g.PlayerBroadcast(types.Envelope{Type: "question", Name: q.Prompt}, currentPlayer)

@@ -4,6 +4,7 @@ package game
 import (
 	"math/rand"
 	"time"
+	"fmt"
 )
 
 type TeamSnapshot struct {
@@ -32,9 +33,13 @@ func (t *Team) RemovePlayer(p *Player) {
 	}
 }
 
-func (t *Team) GetCurrentPlayer() *Player {
-	return t.Players[t.Turn]
-}
+func (t *Team) GetCurrentPlayer(modLen ...int) *Player {
+    if len(modLen) > 0 && modLen[0] > 0 {
+    fmt.Println("xxxxx", t.Turn, modLen[0], t.Turn % modLen[0], t.Players);
+        return t.Players[t.Turn % modLen[0]]
+    }
+    return t.Players[t.Turn]
+}	
 
 func (t *Team) IsPlayerAllowedToAnswer(p *Player) bool {
 	return t.GetPlayerIndex(p) == t.Turn 
