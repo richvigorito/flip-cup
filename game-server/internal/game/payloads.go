@@ -23,9 +23,12 @@ type AddPlayerPayload struct {
 	Name string `json:"name"`
 }
 
-
 type AnswerPayload struct {
 	Answer string `json:"answer"`
+}
+
+type UpdateQuiz struct {
+	Filename string `json:"quizfile"`
 }
 
 

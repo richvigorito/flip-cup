@@ -14,6 +14,16 @@
     import GameView from './components/GameView.svelte';
     import EventLog from './components/EventLog.svelte';
 
+    import { fetchQuizzes } from '$lib/transport/http/Quizzes';
+    import { questionSets } from '$lib/store';
+
+
+    onMount(async () => {
+        const tmp = await fetchQuizzes();
+        questionSets.set(tmp);
+    });
+
+
 </script>
 
 {#if $mode === 'welcome'}

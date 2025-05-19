@@ -2,7 +2,7 @@ import { get, writable } from 'svelte/store';
 import { GameState } from '$lib/models/GameState';
 import { Team } from '$lib/models/Team';
 import { Player } from '$lib/models/Player';
-import { gameState, myTeam, me, mode, joined, eventLog, currentQuestion, winner } from '$lib/store';
+import { gameState, myTeam, me, mode, joined, eventLog, currentQuestion, winner, gamesCompleted } from '$lib/store';
 
 
 import { baseWsUrl } from '$lib/utils/config';
@@ -108,6 +108,8 @@ function handleMessage(message: any) {
 
     case 'winner':
       winner.set(message.name);
+      var tmp = 1 + get(gamesCompleted);
+      gamesCompleted.set(tmp);
       //eventLog.update((log) => [...log, { message: `🏆 Winner: ${message.name}`, type: 'success' }]);
       logEvent(`🏆 Winner: ${message.name}`,'success');
       break;

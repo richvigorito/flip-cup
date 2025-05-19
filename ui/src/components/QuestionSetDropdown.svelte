@@ -1,37 +1,35 @@
+<!-- src/lib/components/QuestionSetDropdown.svelte -->
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, createEventDispatcher } from 'svelte';
     import { writable } from 'svelte/store';
-    import { mode } from '$lib/store';
+    import { mode, gameState } from '$lib/store';
     import { connectSocket } from '$lib/transport/socket';
 
     import { fetchQuizzes } from '$lib/transport/http/Quizzes';
 
-    import type { QuestionSet } from '$lib/types/QuestionSet'; 
+    import type { QuestionSet } from '$lib/types/QuestionSet';
     import { questionSets } from '$lib/store';
 
+    console.log('gs', $gameState)
+    let selectedQuestionSet = $gameState?.quizfile ? $gameState.quizfile : '';
 
-    let selectedQuestionSet = '';
-    let localName = '';
+     export let onSelect: ((file: string) => void) | null = null;
 
-    const createGame = () => {
-        connectSocket({
-            type: 'create_game',
-            payload: {
-                file: selectedQuestionSet
-            }
-        });
-        mode.set('lobby');
-    };
+  const dispatch = createEventDispatcher();
+
+  function handleChange(event: Event) {
+    const value = (event.target as HTMLSelectElement).value;
+    selectedQuestionSet = value;
+    dispatch('select', value);
+  };
+
 
 </script>
-
-<div class="new-game">
-    <h2>Create New Game</h2>
-
-    <label for="qs-select">Choose Question Set:</label>
+<div>
     <select
       id="qs-select"
       bind:value={selectedQuestionSet}
+      on:change={handleChange}
     >
       <option value="" disabled>-- Select a set --</option>
 
@@ -50,11 +48,4 @@
         </optgroup>
       {/each}
     </select>
-
-    <button
-      on:click={createGame}
-      disabled={!selectedQuestionSet}
-    >
-      Create Game
-    </button>
 </div>

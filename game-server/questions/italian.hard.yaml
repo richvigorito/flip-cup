@@ -3,61 +3,61 @@ category: Foreign Languages
 
 questions:
   - prompt: "Translate: 'Even though it was raining, we went for a walk.'"
-    answer: ["Anche se pioveva, siamo andati a fare una passeggiata", "Anche se pioveva siamo andati a fare una passeggiata"]
+    answers: ["Anche se pioveva, siamo andati a fare una passeggiata", "Anche se pioveva siamo andati a fare una passeggiata"]
 
   - prompt: "What does 'Non appena sarò libero, ti chiamerò' mean?"
-    answer: ["As soon as I’m free, I will call you", "As soon as I am free, I will call you"]
+    answers: ["As soon as I’m free, I will call you", "As soon as I am free, I will call you"]
 
   - prompt: "Translate: 'Had I known, I wouldn’t have come.'"
-    answer: ["Se lo avessi saputo, non sarei venuto", "Se lo avessi saputo non sarei venuto"]
+    answers: ["Se lo avessi saputo, non sarei venuto", "Se lo avessi saputo non sarei venuto"]
 
   - prompt: "What is the Italian subjunctive form of 'essere' (they form)?"
-    answer: ["Siano"]
+    answers: ["Siano"]
 
   - prompt: "Translate: 'She was afraid that he wouldn't arrive in time.'"
-    answer: ["Aveva paura che lui non arrivasse in tempo", "Aveva paura che non arrivasse in tempo"]
+    answers: ["Aveva paura che lui non arrivasse in tempo", "Aveva paura che non arrivasse in tempo"]
 
   - prompt: "What does 'È importante che tu venga' mean?"
-    answer: ["It’s important that you come", "It is important that you come"]
+    answers: ["It’s important that you come", "It is important that you come"]
 
   - prompt: "Translate: 'If I had more time, I would study more.'"
-    answer: ["Se avessi più tempo, studierei di più", "Se avessi piu tempo, studierei di piu"]
+    answers: ["Se avessi più tempo, studierei di più", "Se avessi piu tempo, studierei di piu"]
 
   - prompt: "What is the conditional future of 'fare' (I form)?"
-    answer: ["Farei"]
+    answers: ["Farei"]
 
   - prompt: "Translate: 'We would have left earlier if we had known.'"
-    answer: ["Saremmo partiti prima se lo avessimo saputo", "Saremmo partiti prima, se lo avessimo saputo"]
+    answers: ["Saremmo partiti prima se lo avessimo saputo", "Saremmo partiti prima, se lo avessimo saputo"]
 
   - prompt: "What does 'Avrei voluto vedere quel film' mean?"
-    answer: ["I would have liked to see that movie"]
+    answers: ["I would have liked to see that movie"]
 
   - prompt: "Translate: 'Despite being tired, he kept working.'"
-    answer: ["Nonostante fosse stanco, ha continuato a lavorare", "Nonostante fosse stanco ha continuato a lavorare"]
+    answers: ["Nonostante fosse stanco, ha continuato a lavorare", "Nonostante fosse stanco ha continuato a lavorare"]
 
   - prompt: "What is the past participle of 'scegliere'?"
-    answer: ["Scelto"]
+    answers: ["Scelto"]
 
   - prompt: "Translate: 'I doubt he has already finished.'"
-    answer: ["Dubito che abbia già finito", "Dubito che abbia gia finito"]
+    answers: ["Dubito che abbia già finito", "Dubito che abbia gia finito"]
 
   - prompt: "What does 'Speravo che tu venissi' mean?"
-    answer: ["I hoped that you would come"]
+    answers: ["I hoped that you would come"]
 
   - prompt: "Translate: 'Let’s hope everything goes well.'"
-    answer: ["Speriamo che tutto vada bene"]
+    answers: ["Speriamo che tutto vada bene"]
 
   - prompt: "What is the imperfect subjunctive of 'andare' (we form)?"
-    answer: ["Andassimo"]
+    answers: ["Andassimo"]
 
   - prompt: "Translate: 'If it hadn’t rained, we would have gone to the beach.'"
-    answer: ["Se non avesse piovuto, saremmo andati al mare", "Se non avesse piovuto saremmo andati al mare"]
+    answers: ["Se non avesse piovuto, saremmo andati al mare", "Se non avesse piovuto saremmo andati al mare"]
 
   - prompt: "What does 'Temo che sia troppo tardi' mean?"
-    answer: ["I fear it is too late", "I’m afraid it is too late"]
+    answers: ["I fear it is too late", "I’m afraid it is too late"]
 
   - prompt: "Translate: 'He wanted you to tell the truth.'"
-    answer: ["Voleva che tu dicessi la verità", "Voleva che tu dicessi la verita"]
+    answers: ["Voleva che tu dicessi la verità", "Voleva che tu dicessi la verita"]
 
   - prompt: "What is the Italian word for 'regret' (noun)?"
-    answer: ["Rimpianto"]
+    answers: ["Rimpianto"]

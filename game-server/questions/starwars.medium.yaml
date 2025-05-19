@@ -2,47 +2,47 @@ title: Medium
 category: Star Wars
 questions:
   - prompt: "What is the name of Han Solo's ship?"
-    answer: ["Millennium Falcon", "Falcon"]
+    answers: ["Millennium Falcon", "Falcon"]
 
   - prompt: "Who kills Jabba the Hutt?"
-    answer: ["Leia Organa", "Princess Leia"]
+    answers: ["Leia Organa", "Princess Leia"]
 
   - prompt: "What is the name of Anakin Skywalker's apprentice?"
-    answer: ["Ahsoka Tano"]
+    answers: ["Ahsoka Tano"]
 
   - prompt: "What is the home planet of the Wookiees?"
-    answer: ["Kashyyyk"]
+    answers: ["Kashyyyk"]
 
   - prompt: "What is the name of the city where Obi-Wan and Anakin duel in Episode III?"
-    answer: ["Mustafar"]
+    answers: ["Mustafar"]
 
   - prompt: "What is the name of the creature that lives in the Sarlacc Pit?"
-    answer: ["Sarlacc"]
+    answers: ["Sarlacc"]
 
   - prompt: "Who is the Sith Lord who kills Qui-Gon Jinn?"
-    answer: ["Darth Maul"]
+    answers: ["Darth Maul"]
 
   - prompt: "What is the name of the ice planet in The Empire Strikes Back?"
-    answer: ["Hoth"]
+    answers: ["Hoth"]
 
   - prompt: "What does Darth Vader say to Luke when revealing his true identity?"
-    answer: ["I am your father", "No, I am your father"]
+    answers: ["I am your father", "No, I am your father"]
 
   - prompt: "What planet does the Empire destroy with the second Death Star?"
-    answer: ["Endor"]
+    answers: ["Endor"]
 
   - prompt: "Which clone trooper is known for his distinctive helmet and armor?"
-    answer: ["Captain Rex", "Rex"]
+    answers: ["Captain Rex", "Rex"]
 
   - prompt: "Who becomes the Emperor after Darth Sidious?"
-    answer: ["No one", "Palpatine returns in Episode IX, The Rise of Skywalker"]
+    answers: ["No one", "Palpatine returns in Episode IX, The Rise of Skywalker"]
 
   - prompt: "What type of droid is C-3PO?"
-    answer: ["Protocol droid"]
+    answers: ["Protocol droid"]
 
   - prompt: "Who becomes the leader of the Resistance after the death of Leia?"
-    answer: ["Rey"]
+    answers: ["Rey"]
 
   - prompt: "Which Jedi Master trained Anakin Skywalker?"
-    answer: ["Obi-Wan Kenobi", "Obi-Wan"]
+    answers: ["Obi-Wan Kenobi", "Obi-Wan"]
 

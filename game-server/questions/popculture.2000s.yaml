@@ -2,58 +2,58 @@ title: 2000s
 category: Pop-Culture
 questions:
   - prompt: "Which movie franchise featured the character Harry Potter?"
-    answer: ["Harry Potter", "Harry Potter Series", "Harry Potter Films"]
+    answers: ["Harry Potter", "Harry Potter Series", "Harry Potter Films"]
 
   - prompt: "What 2000s TV show starred Hugh Laurie as Dr. Gregory House?"
-    answer: ["House", "House M.D."]
+    answers: ["House", "House M.D."]
 
   - prompt: "Which rapper famously said 'Yo, VIP, let's kick it' in his hit song?"
-    answer: ["Vanilla Ice"]
+    answers: ["Vanilla Ice"]
 
   - prompt: "Which movie featured a character named Jack Sparrow?"
-    answer: ["Pirates of the Caribbean"]
+    answers: ["Pirates of the Caribbean"]
 
   - prompt: "Which artist released the hit song 'Umbrella' in 2007?"
-    answer: ["Rihanna"]
+    answers: ["Rihanna"]
 
   - prompt: "Which social media platform was founded in 2004?"
-    answer: ["Facebook"]
+    answers: ["Facebook"]
 
   - prompt: "Which pop star married Kevin Federline in the 2000s?"
-    answer: ["Britney Spears"]
+    answers: ["Britney Spears"]
 
   - prompt: "Which film featured the famous line 'I am the king of the world'?"
-    answer: ["Titanic"]
+    answers: ["Titanic"]
 
   - prompt: "Which 2000s band released the hit song 'Hey Ya!'?"
-    answer: ["OutKast", "Outkast"]
+    answers: ["OutKast", "Outkast"]
 
   - prompt: "Which 2002 movie features a character named Gollum?"
-    answer: ["The Lord of the Rings: The Two Towers", "LOTR: The Two Towers", "The Two Towers"]
+    answers: ["The Lord of the Rings: The Two Towers", "LOTR: The Two Towers", "The Two Towers"]
 
   - prompt: "Who was the star of the TV show 'The OC'?"
-    answer: ["Ben McKenzie", "Benjamin McKenzie"]
+    answers: ["Ben McKenzie", "Benjamin McKenzie"]
 
   - prompt: "Which 2000s film featured a character named Shrek?"
-    answer: ["Shrek"]
+    answers: ["Shrek"]
 
   - prompt: "Which reality TV show became a huge sensation in the 2000s?"
-    answer: ["Survivor"]
+    answers: ["Survivor"]
 
   - prompt: "What was the name of the iPhone introduced in 2007?"
-    answer: ["iPhone", "Apple iPhone"]
+    answers: ["iPhone", "Apple iPhone"]
 
   - prompt: "Which 2000s movie series starred Robert Pattinson as Edward Cullen?"
-    answer: ["Twilight", "The Twilight Saga"]
+    answers: ["Twilight", "The Twilight Saga"]
 
   - prompt: "Which company introduced the first iPod in 2001?"
-    answer: ["Apple", "Apple Inc."]
+    answers: ["Apple", "Apple Inc."]
 
   - prompt: "Which animated TV show first aired in the 2000s and features the characters Peter, Lois, and Stewie?"
-    answer: ["Family Guy"]
+    answers: ["Family Guy"]
 
   - prompt: "Who released the 2000s hit song 'Poker Face'?"
-    answer: ["Lady Gaga"]
+    answers: ["Lady Gaga"]
 
   - prompt: "Which 2000s TV show featured the character Lorelai Gilmore?"
-    answer: ["Gilmore Girls", "Gilmore Girls: A Year in the Life"]
+    answers: ["Gilmore Girls", "Gilmore Girls: A Year in the Life"]

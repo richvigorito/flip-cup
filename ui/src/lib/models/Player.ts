@@ -1,12 +1,12 @@
 export interface RawPlayer {
-  id: string;
-  name: string;
+  id:       string;
+  name:     string;
   isMyTurn: boolean;
 }
 
 export class Player {
-  id: string;
-  name: string;
+  id:       string;
+  name:     string;
   isMyTurn: boolean;
  
   constructor(data: RawPlayer | {player_id: string; name: string }) {

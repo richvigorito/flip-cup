@@ -7,19 +7,22 @@ export interface RawGameState {
   teamA: Team;
   teamB: Team;
   active: boolean;
+  quizfile: string;
 }
 
 export class GameState {
-  id: string;
-  teamA: Team;
-  teamB: Team;
-  active: boolean;
+  id:       string;
+  teamA:    Team;
+  teamB:    Team;
+  active:   boolean;
+  quizfile: string;
 
   constructor(data: RawGameState) {
-    this.id = data.id;
-    this.teamA = data.teamA;
-    this.teamB = data.teamB;
-    this.active = data.active;
+    this.id         = data.id;
+    this.teamA      = data.teamA;
+    this.teamB      = data.teamB;
+    this.active     = data.active;
+    this.quizfile   = data.quizfile;
   }
 
   get currentTurn(): 'teamA' | 'teamB' {

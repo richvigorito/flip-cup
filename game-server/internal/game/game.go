@@ -16,20 +16,21 @@ import (
 )
 
 type GameSnapshot struct {
-    ID    string            `json:"id"`
-	  TeamA TeamSnapshot      `json:"teamA"`
-	  TeamB TeamSnapshot      `json:"teamB"`
-    Action    string            `json:"action,omitempty"'`
-    Active bool             `json:"active"`
+    ID                  string          `json:"id"`
+    TeamA               TeamSnapshot    `json:"teamA"`
+    TeamB               TeamSnapshot    `json:"teamB"`
+    Action              string          `json:"action,omitempty"'`
+    QuizFile  	        string          `json:"quizfile,omitempty"'`
+    Active              bool            `json:"active"`
 }
 
 type Game struct {
-	  ID              string
-	  TeamA     	    *Team
-	  TeamB     	    *Team
-	  QuestionFile  	*quiz.QuestionFile
-	  Active  	      bool
-	  mu        	    sync.Mutex
+	  ID            string
+	  TeamA         *Team
+	  TeamB         *Team
+	  QuestionFile  *quiz.QuestionFile
+	  Active  	    bool
+	  mu            sync.Mutex
 }
 
 func NewGame(questionFile *quiz.QuestionFile) *Game {
@@ -46,6 +47,7 @@ func (g *Game) Snapshot() GameSnapshot {
         ID: g.ID,
         TeamA: g.TeamA.Snapshot(),
         TeamB: g.TeamB.Snapshot(),
+        QuizFile: g.QuestionFile.Filename,
         Active: g.Active,
     }
 }
@@ -193,6 +195,7 @@ func (g *Game) handleReassignTeams() {
 }
 
 func (g *Game) handleCheckAnswer(p *Player, answer *AnswerPayload) {
+    fmt.Println("checkanswer: ",answer)
     if g.Active == false {
         log.Println("🚫 Cannot check answer for inactive games.")
         return //  cannot answer active games
@@ -205,6 +208,12 @@ func (g *Game) handleCheckAnswer(p *Player, answer *AnswerPayload) {
 	  }
 
     currentQuestion := g.QuestionFile.Questions[t.Turn] 
+    fmt.Println("currentQuestion: ",currentQuestion)
+    fmt.Println("t.Turn: ",t.Turn)
+    for _, q := range g.QuestionFile.Questions {
+        fmt.Println("q: ",q)
+    }
+
     if currentQuestion.CheckAnswer(answer.Answer) {
         log.Println("correct answer")
 	      t.Turn++
@@ -276,15 +285,22 @@ func (g *Game) HandleMessage(p *Player, msg types.Envelope) {
             case "show_players":
                 g.DisplayGameSnapshot("show_players", p)
             case "check_answer":
+                fmt.Println("msg.Payload---: ",msg.Payload)
                 var answerPayload AnswerPayload
+                fmt.Println("answerPayload---: ",answerPayload)
                 utils.MustUnmarshal(p.Conn, msg.Payload, &answerPayload)
                 g.handleCheckAnswer(p,  &answerPayload)
             case "start":
                 g.StartGame()
                 g.DisplayGameSnapshot("game_started", p)
-          case "restart_game":
-              g.RestartGame()
-              g.DisplayGameSnapshot("game_restarted", p)
+            case "restart_game":
+                g.RestartGame()
+                g.DisplayGameSnapshot("game_restarted", p)
+            case "update_quiz":
+                var updateQuizPayload UpdateQuiz
+                utils.MustUnmarshal(p.Conn, msg.Payload, &updateQuizPayload)
+                g.UpdateQuiz(p, &updateQuizPayload)
+                g.DisplayGameSnapshot("quiz_updated", p)
         }
 }
 
@@ -313,14 +329,23 @@ func (g *Game) EndGame(t *Team) {
 }
 
 func (g *Game) NextQuestion(t *Team) bool{
-	  if t.Turn > (len(t.Players) - 1) {
-	  	  return false
-	  }
+    if t.Turn > (len(t.Players) - 1) {
+        return false
+    }
     currentPlayer := t.GetCurrentPlayer()
-	  q := g.QuestionFile.Questions[t.Turn]
+    q := g.QuestionFile.Questions[t.Turn]
 
     g.PlayerBroadcast(types.Envelope{Type: "question", Name: q.Prompt}, currentPlayer)
     return true
+}
+
+func (g *Game) UpdateQuiz(p *Player, payload *UpdateQuiz) {
+    qf, err := quiz.NewQuestionFile(payload.Filename)
+    if err != nil {
+        log.Println("Error reading quiz file:", err)
+        return
+    }
+    g.QuestionFile = qf;
 }
 
 func RandID() string {

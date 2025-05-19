@@ -138,4 +138,22 @@
   object-fit: cover;
 }
 
+#qs-select {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: #111;
+  color: white;
+  border: 1px solid #333;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 200px;
+}
+
+label[for="qs-select"] {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #fff;
+  font-size: 1rem;
+}
  

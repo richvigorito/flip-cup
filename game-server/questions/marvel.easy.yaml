@@ -3,61 +3,61 @@ category: Marvel Universe
 
 questions:
   - prompt: "What is the real name of Iron Man?"
-    answer: ["Tony Stark"]
+    answers: ["Tony Stark"]
 
   - prompt: "What metal is bonded to Wolverine's skeleton?"
-    answer: ["Adamantium"]
+    answers: ["Adamantium"]
 
   - prompt: "Who is the Norse god of thunder in Marvel?"
-    answer: ["Thor"]
+    answers: ["Thor"]
 
   - prompt: "What color is the Hulk?"
-    answer: ["Green"]
+    answers: ["Green"]
 
   - prompt: "Who is Tony Stark's AI assistant?"
-    answer: ["JARVIS"]
+    answers: ["JARVIS"]
 
   - prompt: "What is Captain America's shield made of?"
-    answer: ["Vibranium"]
+    answers: ["Vibranium"]
 
   - prompt: "What superhero uses a web to swing between buildings?"
-    answer: ["Spider-Man", "Spiderman"]
+    answers: ["Spider-Man", "Spiderman"]
 
   - prompt: "What city is Spider-Man from?"
-    answer: ["New York"]
+    answers: ["New York"]
 
   - prompt: "What is Black Panther’s real name?"
-    answer: ["T'Challa", "T’Challa"]
+    answers: ["T'Challa", "T’Challa"]
 
   - prompt: "What is the name of Thor’s hammer?"
-    answer: ["Mjolnir"]
+    answers: ["Mjolnir"]
 
   - prompt: "Who is the leader of the Avengers?"
-    answer: ["Captain America", "Steve Rogers"]
+    answers: ["Captain America", "Steve Rogers"]
 
   - prompt: "What is the real name of Black Widow?"
-    answer: ["Natasha Romanoff", "Natasha Rostova"]
+    answers: ["Natasha Romanoff", "Natasha Rostova"]
 
   - prompt: "What raccoon-like character is part of the Guardians of the Galaxy?"
-    answer: ["Rocket", "Rocket Raccoon"]
+    answers: ["Rocket", "Rocket Raccoon"]
 
   - prompt: "What tree-like character only says 'I am Groot'?"
-    answer: ["Groot"]
+    answers: ["Groot"]
 
   - prompt: "What is the name of the green Infinity Stone?"
-    answer: ["Time Stone"]
+    answers: ["Time Stone"]
 
   - prompt: "Who plays Iron Man in the MCU?"
-    answer: ["Robert Downey Jr.", "RDJ"]
+    answers: ["Robert Downey Jr.", "RDJ"]
 
   - prompt: "Who is Thanos trying to impress with his actions?"
-    answer: ["Death"]
+    answers: ["Death"]
 
   - prompt: "Who is Spider-Man’s aunt?"
-    answer: ["Aunt May", "May Parker"]
+    answers: ["Aunt May", "May Parker"]
 
   - prompt: "What’s the real name of Ant-Man?"
-    answer: ["Scott Lang"]
+    answers: ["Scott Lang"]
 
   - prompt: "Who turns big and green when angry?"
-    answer: ["Incredible Hulk", "Hulk", "Bruce Banner"]
+    answers: ["Incredible Hulk", "Hulk", "Bruce Banner"]

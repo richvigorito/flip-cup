@@ -2,32 +2,32 @@ title: Random Questions -1
 category: Potent potables
 questions:
   - prompt: "What is the capital of France?"
-    answer: ["Paris"]
+    answers: ["Paris"]
 
   - prompt: "What is 2 + 2?"
-    answer: ["4", "four"]
+    answers: ["4", "four"]
 
   - prompt: "Who wrote 'Hamlet'?"
-    answer: ["William Shakespeare", "Shakespeare"]
+    answers: ["William Shakespeare", "Shakespeare"]
 
   - prompt: "What is the largest planet in our solar system?"
-    answer: ["Jupiter"]
+    answers: ["Jupiter"]
 
   - prompt: "In which year did the Titanic sink?"
-    answer: ["1912"]
+    answers: ["1912"]
 
   - prompt: "What is the smallest country in the world?"
-    answer: ["Vatican City", "The Vatican"]
+    answers: ["Vatican City", "The Vatican"]
 
   - prompt: "What is the tallest mountain in the world?"
-    answer: ["Mount Everest", "Everest"]
+    answers: ["Mount Everest", "Everest"]
 
   - prompt: "Who painted the Mona Lisa?"
-    answer: ["Leonardo da Vinci", "Da Vinci"]
+    answers: ["Leonardo da Vinci", "Da Vinci"]
 
   - prompt: "Which element has the chemical symbol 'O'?"
-    answer: ["Oxygen"]
+    answers: ["Oxygen"]
 
   - prompt: "What is the longest river in the world?"
-    answer: ["Amazon River", "Amazon"]
+    answers: ["Amazon River", "Amazon"]
 

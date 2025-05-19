@@ -1,13 +1,17 @@
 <script lang="ts">
     import { get } from 'svelte/store';
-    import { mode, gameId, joined, currentPlayerName, gameState } from '$lib/store';
+    import { mode, gameId, joined, currentPlayerName, gameState, gamesCompleted } from '$lib/store';
     import { send } from '$lib/transport/socket';
 
     let localPlayerName = '';
+    
+    import QuestionSetDropdown from './QuestionSetDropdown.svelte';
 
     const assignTeams = () => {
         send({ type: 'assign_teams' });
     };
+
+    console.log('gsx', $gameState);
 
     const startGame = () => {
         if ($gameState.canStart()){
@@ -32,6 +36,18 @@
             }
         });
     };
+    console.log('completed', $gamesCompleted, $gamesCompleted > 0 );
+
+    function handleNewQuiz(selectedFile: string) {
+        console.log("New quiz selected:", selectedFile);
+        send({
+            type: "update_quiz",
+            payload: {
+                quizfile: selectedFile
+            }
+        });
+
+    };
 
 </script>
 
@@ -45,7 +61,16 @@
         }}>Join Game</button>
 
     {:else}
-      <button on:click={assignTeams}>Assign Teams</button>
-            <button on:click={startGame}>Start Game</button>
+        <button on:click={assignTeams}>Assign Teams</button>
+        <button on:click={startGame}>Start Game</button>
     {/if}
-  </div>
+
+    {#if $gamesCompleted > 0 }
+        <br/>
+        <label for="qs-select" class="quiz-label">
+            Current Quiz (you can change it):
+        </label>
+        <QuestionSetDropdown on:select={(e) => handleNewQuiz(e.detail)} />
+    {/if}
+
+</div>

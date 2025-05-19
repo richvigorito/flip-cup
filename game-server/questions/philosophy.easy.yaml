@@ -3,31 +3,31 @@ category: Philosophy
 
 questions:
   - prompt: "Who is known as the father of Western philosophy?"
-    answer: ["Socrates"]
+    answers: ["Socrates"]
 
   - prompt: "Which philosopher wrote 'The Republic'?"
-    answer: ["Plato"]
+    answers: ["Plato"]
 
   - prompt: "Who said 'I think, therefore I am'?"
-    answer: ["René Descartes", "Descartes", "Rene Descartes"]
+    answers: ["René Descartes", "Descartes", "Rene Descartes"]
 
   - prompt: "What branch of philosophy studies knowledge?"
-    answer: ["Epistemology"]
+    answers: ["Epistemology"]
 
   - prompt: "Which philosopher is known for the 'categorical imperative'?"
-    answer: ["Immanuel Kant", "Kant"]
+    answers: ["Immanuel Kant", "Kant"]
 
   - prompt: "What is the study of morality in philosophy called?"
-    answer: ["Ethics"]
+    answers: ["Ethics"]
 
   - prompt: "Who wrote 'Critique of Pure Reason'?"
-    answer: ["Immanuel Kant", "Kant"]
+    answers: ["Immanuel Kant", "Kant"]
 
   - prompt: "Which philosopher proposed the theory of forms?"
-    answer: ["Plato"]
+    answers: ["Plato"]
 
   - prompt: "What is the philosophical study of beauty and taste?"
-    answer: ["Aesthetics"]
+    answers: ["Aesthetics"]
 
   - prompt: "Who wrote 'Thus Spoke Zarathustra'?"
-    answer: ["Friedrich Nietzsche", "Nietzsche"]
+    answers: ["Friedrich Nietzsche", "Nietzsche"]
