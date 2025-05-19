@@ -4,10 +4,11 @@ import type { Player } from './Player';
 
 export interface RawGameState {
   id: string;
-  teamA: Team;
-  teamB: Team;
-  active: boolean;
+  teamA:    Team;
+  teamB:    Team;
+  active:   boolean;
   quizfile: string;
+  cups:     int;
 }
 
 export class GameState {
@@ -16,6 +17,7 @@ export class GameState {
   teamB:    Team;
   active:   boolean;
   quizfile: string;
+  cups:     int;
 
   constructor(data: RawGameState) {
     this.id         = data.id;
@@ -23,6 +25,7 @@ export class GameState {
     this.teamB      = data.teamB;
     this.active     = data.active;
     this.quizfile   = data.quizfile;
+    this.cups       = data.cups;
   }
 
   get currentTurn(): 'teamA' | 'teamB' {

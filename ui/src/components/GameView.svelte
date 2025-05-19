@@ -16,7 +16,14 @@
 
     const resetGame = () => {
         send({ type: 'restart_game' });
-    };
+};
+
+
+             console.log(Array($gameState.cups));
+             console.log($gameState.cups);
+             console.log('gs', $gameState);
+
+
 
 </script>
 <div class="game-layout">
@@ -35,26 +42,36 @@
     <div class="table" style="--table-color: {tableColor}">
       <!-- Team A -->
       <div class="team-column">
-        <div class>{$gameState.teamA.name}</div>
+          <div class>{$gameState.teamA.name}</div>
+            {#each Array($gameState.cups) as _, cupRound}
         {#each $gameState.teamA.players as player, index}
           <div class="team-cups">
             <div class="player-name">{player.name}</div>
-            <div class="cup {$gameState.teamA.turn > index ? 'flipped' : ''} {$gameState.teamA.turn == (index) ? "current" : ''}">
+            <div class="cup 
+                {(cupRound * $gameState.teamA.turn) > (cupRound * index) ? 'flipped' : ''} 
+                {(cupRound * $gameState.teamA.turn) == (cupRound * index) ? "current" : ''}"
+            >
             </div>
           </div>
           <hr>
+        {/each}
         {/each}
       </div>
 
       <!-- Team B -->
       <div class="team-column">
         <div class>{$gameState.teamB.name}</div>
+            {#each Array($gameState.cups) as _, cupRound}
         {#each $gameState.teamB.players as player, index}
           <div class="team-cups">
             <div class="player-name">{player.name}</div>
-            <div class="cup {$gameState.teamB.turn > index ? 'flipped' : ''} {$gameState.teamB.turn == (index) ? "current" : ''}"></div>
+            <div class="cup 
+                {(cupRound * $gameState.teamB.turn) > (cupRound * index) ? 'flipped' : ''} 
+                {(cupRound * $gameState.teamB.turn) == (cupRound * index) ? "current" : ''}">
+            </div>
           </div>
           <hr>
+        {/each}
         {/each}
       </div> 
 
