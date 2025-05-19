@@ -1,77 +1,42 @@
-# FlipCup 🎉
+# FlipCup
 
-This FlipCup game is a real-time team quiz game inspired by the college party classic **Flip Cup** — but instead of just flipping cups, you have to **answer questions correctly** before flipping!
+A multiplayer quiz game where teams compete by flipping cups—by answering questions correctly. Inspired by Flip Cup, minus the beers. 🧠🥤
 
-## What is this?
-Team-based flip-cup
+## 🚀 Live Demo
 
-Players join a lobby, get assigned to teams, and race through a set of quiz questions. Answer right → your cup flip's → pass the turn. First team to finish wins!
+Try it out here: https://flipcup.fly.dev
 
-The app has two main parts:
-- A **game server** (written in Go) handling players, lobbies, teams, and real-time communication
-- A **web UI** (built with Svelte) managing lobby creation, team assignments, and (soon) full game play
+## 🎯 Purpose
 
----
-## Why am I building this?
-- I'm currently unemployed and wanted to dive into a **fun, challenging project** 🎯
-- I wanted an excuse to **learn Go** 
-- I wanted to **level up** my Node.js + websockets knowledge
+This was a fun side project to explore Go and Svelte — my first functionaly project in either. It's still a work in progress, so be gentle with the feedback 😄. That said, all contributions and ideas are welcome!
 
----
-## Current Progress 🚀
-- ✅ **Game server:**  
-  - Built in Go
-  - Ingests and stores quiz questions
-  - Accepts players into a lobby
-  - Randomly assigns teams
-  - Transmits questions to the correct player
-  - Accepts player answers
-  - Tracks team progress
-  - Determines and announces the winning team
-- 🛠️ **Frontend (Svelte):**
-  - Game Log
-  - Lobby screen functional
-  - Team assignment functional
-  - Game table (flip cup style) layout work-in-progress
-  - Cups flips and next question/player is broadcasted
+## 🛠 Local Development
 
----
-## To Play Local
-### edit env 
-add ``VITE_WS_URL=<your_ip>:8080`` to ``ui/.env``
-### run docker
-rootdir> docker-compose build --no-cache &&  docker-compose up -d
-rootdir> 
+To run the game locally using Docker Compose:
 
-### run servers
+1. Clone the repo:
+
+   git clone https://github.com/yourname/flip-cup.git  
+   cd flip-cup
+
+2. Update your `.env` file with your machine’s local IP address (needed for WebSocket connection):
+
 ```bash
-cd game-server
-go run main.go
-cd ../ui
-npm run dev
+cd ui
+cat "VITE_WS_URL=<your-local-ip>:8080" > .env
 ```
-### game play
-find an equal number of friends, go to your ui
-1) each person joins game
-1) after everyone joins 'assign' teams
-1) start game
-1) the ui defintely done by a BE engineer but should be obvious whose turn it is
-1) (as of right now, restart functionality doesnt work, need to restart go server)
 
+###   Example:
+``VITE_WS_URL=192.168.1.12:8080``
 
----
-## What's next?
+3. Start the app locally:
 
-- Better error handling with websocket disconnects
-- Cleanup up game/team assignment
-- Full game play loop working end-to-end on the frontend
--- restart needs to clear room
-- Add abilty to create multiple games with different questions
-- Polish the UI / UX 
--- Add sound effects, timers, and animations 🎵⏳✨
-- Dockerize
-- Possibley deploy, hosted version for people to play with friends
+   docker-compose down && docker-compose build --no-cache && docker-compose up -d
 
----
-> PRs, ideas, and feedback always welcome — this is a learning project, so anything that makes it cooler is a win. Cheers! 🍻
-> Lastly, for the record, no i was not in a frat. 
+4. Open your browser and go to:
+
+   http://<your-local-ip>:5173 or 
+   http://localhost:5173
+
+## 🤝 Contributing
+Got feedback, ideas, or issues? Open an issue or a pull request — would love to hear what you think! Lastly, for the record, no i was not in a frat. 
