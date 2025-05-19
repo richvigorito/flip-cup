@@ -2,62 +2,62 @@ title: Gen Sports (Medium)
 category: Sports
 questions:
   - prompt: "Which country has hosted the most Summer Olympic Games?"
-    answer: ["United States", "USA"]
+    answers: ["United States", "USA"]
 
   - prompt: "Who was the first female gymnast to score a perfect 10?"
-    answer: ["Nadia Comăneci", "Nadia Comaneci"]
+    answers: ["Nadia Comăneci", "Nadia Comaneci"]
 
   - prompt: "Who broke the MLB home run record with 73 in a single season?"
-    answer: ["Barry Bonds"]
+    answers: ["Barry Bonds"]
 
   - prompt: "Which golfer is nicknamed 'The Golden Bear'?"
-    answer: ["Jack Nicklaus", "Nicklaus"]
+    answers: ["Jack Nicklaus", "Nicklaus"]
 
   - prompt: "What year were the first modern Olympic Games held?"
-    answer: ["1896"]
+    answers: ["1896"]
 
   - prompt: "Which country won the first FIFA World Cup in 1930?"
-    answer: ["Uruguay"]
+    answers: ["Uruguay"]
 
   - prompt: "Who won the NBA MVP in 2021?"
-    answer: ["Nikola Jokic", "Jokic"]
+    answers: ["Nikola Jokic", "Jokic"]
 
   - prompt: "In what year did women first compete in the Olympics?"
-    answer: ["1900"]
+    answers: ["1900"]
 
   - prompt: "Which boxer bit an opponent’s ear during a fight?"
-    answer: ["Mike Tyson", "Tyson"]
+    answers: ["Mike Tyson", "Tyson"]
 
   - prompt: "Which city hosted the 1996 Summer Olympics?"
-    answer: ["Atlanta"]
+    answers: ["Atlanta"]
 
   - prompt: "Who was the youngest Formula One world champion?"
-    answer: ["Sebastian Vettel", "Vettel"]
+    answers: ["Sebastian Vettel", "Vettel"]
 
   - prompt: "Which tennis tournament is played on clay courts?"
-    answer: ["French Open"]
+    answers: ["French Open"]
 
   - prompt: "What athlete lit the Olympic torch in Barcelona 1992?"
-    answer: ["Antonio Rebollo", "Rebollo"]
+    answers: ["Antonio Rebollo", "Rebollo"]
 
   - prompt: "Which team did Joe Montana play for most of his career?"
-    answer: ["San Francisco 49ers", "49ers"]
+    answers: ["San Francisco 49ers", "49ers"]
 
   - prompt: "In what decade did the NBA form?"
-    answer: ["1940s", "1940's", "1940"]
+    answers: ["1940s", "1940's", "1940"]
 
   - prompt: "Who holds the record for the fastest 100m sprint?"
-    answer: ["Usain Bolt", "Bolt"]
+    answers: ["Usain Bolt", "Bolt"]
 
   - prompt: "Which cricket player is known as 'The Little Master'?"
-    answer: ["Sachin Tendulkar", "Tendulkar"]
+    answers: ["Sachin Tendulkar", "Tendulkar"]
 
   - prompt: "Who was the first African American to win a Grand Slam in tennis?"
-    answer: ["Althea Gibson", "Gibson"]
+    answers: ["Althea Gibson", "Gibson"]
 
   - prompt: "Who won the FIFA Women's World Cup in 2015?"
-    answer: ["USA", "United States"]
+    answers: ["USA", "United States"]
 
   - prompt: "What event did Bruce Jenner win in the 1976 Olympics?"
-    answer: ["Decathlon"]
+    answers: ["Decathlon"]
 

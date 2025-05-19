@@ -3,64 +3,64 @@ category: Lord of the Rings
 
 questions:
   - prompt: "What is the name of the wizard who turns Saruman’s staff white?"
-    answer: ["Gandalf"]
+    answers: ["Gandalf"]
 
   - prompt: "What is the name of the tree that speaks to Merry and Pippin in Fangorn Forest?"
-    answer: ["Treebeard"]
+    answers: ["Treebeard"]
 
   - prompt: "What race is Gollum?"
-    answer: ["Stoor Hobbit", "Stoor"]
+    answers: ["Stoor Hobbit", "Stoor"]
 
   - prompt: "What is the name of the dwarf who accompanies the Fellowship?"
-    answer: ["Gimli"]
+    answers: ["Gimli"]
 
   - prompt: "Who is the steward of Gondor at the time of the War of the Ring?"
-    answer: ["Denethor", "Denethor II"]
+    answers: ["Denethor", "Denethor II"]
 
   - prompt: "Who is the elven lord who helps guide the Fellowship?"
-    answer: ["Elrond"]
+    answers: ["Elrond"]
 
   - prompt: "What is the name of the golden ring that controls the other Rings of Power?"
-    answer: ["The One Ring", "One Ring", "The Ring"]
+    answers: ["The One Ring", "One Ring", "The Ring"]
 
   - prompt: "What language does Aragorn speak when he reveals his true identity?"
-    answer: ["Elvish", "Sindarin"]
+    answers: ["Elvish", "Sindarin"]
 
   - prompt: "Who is the lady of the wood that gives gifts to the Fellowship?"
-    answer: ["Galadriel"]
+    answers: ["Galadriel"]
 
   - prompt: "What is the name of the elven realm that the Fellowship travels through?"
-    answer: ["Lothlórien", "Lothlorien"]
+    answers: ["Lothlórien", "Lothlorien"]
 
   - prompt: "Who is the leader of the Riders of Rohan after King Theoden?"
-    answer: ["Éomer", "Eomer"]
+    answers: ["Éomer", "Eomer"]
 
   - prompt: "Who is the commander of the Uruk-hai army?"
-    answer: ["Lurtz"]
+    answers: ["Lurtz"]
 
   - prompt: "Who are the two hobbits that leave the Shire with Frodo?"
-    answer: ["Samwise and Pippin", "Samwise Gamgee and Peregrin Took", "Sam and Pippin"]
+    answers: ["Samwise and Pippin", "Samwise Gamgee and Peregrin Took", "Sam and Pippin"]
 
   - prompt: "Who does Aragorn marry?"
-    answer: ["Arwen"]
+    answers: ["Arwen"]
 
   - prompt: "What is the name of the first battle where Aragorn proves himself as a warrior?"
-    answer: ["Helm's Deep", "The Battle of Helm's Deep", "Battle of the Hornburg"]
+    answers: ["Helm's Deep", "The Battle of Helm's Deep", "Battle of the Hornburg"]
 
   - prompt: "What is the name of the land where Gollum takes Frodo and Sam?"
-    answer: ["Mordor"]
+    answers: ["Mordor"]
 
   - prompt: "Which elf prince leads the elves to Helm’s Deep?"
-    answer: ["Legolas"]
+    answers: ["Legolas"]
 
   - prompt: "What is the name of the hobbit who borrows Bilbo’s sword, Sting?"
-    answer: ["Frodo Baggins", "Frodo"]
+    answers: ["Frodo Baggins", "Frodo"]
 
   - prompt: "Who destroys the One Ring?"
-    answer: ["Frodo Baggins", "Gollum", "Frodo Baggins, but Gollum bites it off his finger"]
+    answers: ["Frodo Baggins", "Gollum", "Frodo Baggins, but Gollum bites it off his finger"]
 
   - prompt: "What is the name of the mountain where the One Ring must be destroyed?"
-    answer: ["Mount Doom", "Orodruin"]
+    answers: ["Mount Doom", "Orodruin"]
 
   - prompt: "Who says, 'There is some good in this world, Mr. Frodo, and it’s worth fighting for'?"
-    answer: ["Samwise Gamgee", "Sam"]
+    answers: ["Samwise Gamgee", "Sam"]

@@ -3,166 +3,166 @@ category: Foreign Languages
 
 questions:
   - prompt: "How do you say 'hello' in Italian?"
-    answer: ["Ciao"]
+    answers: ["Ciao"]
 
   - prompt: "How do you say 'goodbye' in Italian?"
-    answer: ["Addio"]
+    answers: ["Addio"]
 
   - prompt: "What is the Italian word for 'friend'?"
-    answer: ["Amico"]
+    answers: ["Amico"]
 
   - prompt: "How do you say 'thank you' in Italian?"
-    answer: ["Grazie"]
+    answers: ["Grazie"]
 
   - prompt: "How do you say 'please' in Italian?"
-    answer: ["Per favore"]
+    answers: ["Per favore"]
 
   - prompt: "What is the Italian word for 'water'?"
-    answer: ["Acqua"]
+    answers: ["Acqua"]
 
   - prompt: "How do you say 'yes' in Italian?"
-    answer: ["Sì", "Si"]
+    answers: ["Sì", "Si"]
 
   - prompt: "How do you say 'no' in Italian?"
-    answer: ["No"]
+    answers: ["No"]
 
   - prompt: "What is the Italian word for 'apple'?"
-    answer: ["Mela"]
+    answers: ["Mela"]
 
   - prompt: "What is the Italian word for 'book'?"
-    answer: ["Libro"]
+    answers: ["Libro"]
 
   - prompt: "How do you say 'good morning' in Italian?"
-    answer: ["Buongiorno"]
+    answers: ["Buongiorno"]
 
   - prompt: "How do you say 'good night' in Italian?"
-    answer: ["Buona notte"]
+    answers: ["Buona notte"]
 
   - prompt: "What is the Italian word for 'dog'?"
-    answer: ["Cane"]
+    answers: ["Cane"]
 
   - prompt: "What is the Italian word for 'cat'?"
-    answer: ["Gatto"]
+    answers: ["Gatto"]
 
   - prompt: "How do you say 'I love you' in Italian?"
-    answer: ["Ti amo"]
+    answers: ["Ti amo"]
 
   - prompt: "What is the Italian word for 'school'?"
-    answer: ["Scuola"]
+    answers: ["Scuola"]
 
   - prompt: "What is the Italian word for 'house'?"
-    answer: ["Casa"]
+    answers: ["Casa"]
 
   - prompt: "How do you say 'good' in Italian?"
-    answer: ["Bene"]
+    answers: ["Bene"]
 
   - prompt: "What is the Italian word for 'food'?"
-    answer: ["Cibo"]
+    answers: ["Cibo"]
 
   - prompt: "How do you say 'I don't understand' in Italian?"
-    answer: ["Non capisco"]
+    answers: ["Non capisco"]
 
   - prompt: "What is the Italian word for 'family'?"
-    answer: ["Famiglia"]
+    answers: ["Famiglia"]
 
   - prompt: "What is the Italian word for 'city'?"
-    answer: ["Città", "Citta"]
+    answers: ["Città", "Citta"]
 
   - prompt: "How do you say 'Where are you from?' in Italian?"
-    answer: ["Di dove sei?"]
+    answers: ["Di dove sei?"]
 
   - prompt: "How do you say 'How are you?' in Italian?"
-    answer: ["Come stai?"]
+    answers: ["Come stai?"]
 
   - prompt: "What is the Italian word for 'money'?"
-    answer: ["Denaro"]
+    answers: ["Denaro"]
 
   - prompt: "How do you say 'friend' (feminine) in Italian?"
-    answer: ["Amica"]
+    answers: ["Amica"]
 
   - prompt: "What is the Italian word for 'boy'?"
-    answer: ["Ragazzo"]
+    answers: ["Ragazzo"]
 
   - prompt: "What is the Italian word for 'girl'?"
-    answer: ["Ragazza"]
+    answers: ["Ragazza"]
 
   - prompt: "How do you say 'today' in Italian?"
-    answer: ["Oggi"]
+    answers: ["Oggi"]
 
   - prompt: "How do you say 'tomorrow' in Italian?"
-    answer: ["Domani"]
+    answers: ["Domani"]
 
   - prompt: "How do you say 'yesterday' in Italian?"
-    answer: ["Ieri"]
+    answers: ["Ieri"]
 
   - prompt: "How do you say 'good evening' in Italian?"
-    answer: ["Buona sera"]
+    answers: ["Buona sera"]
 
   - prompt: "What is the Italian word for 'store'?"
-    answer: ["Negozio"]
+    answers: ["Negozio"]
 
   - prompt: "How do you say 'I am hungry' in Italian?"
-    answer: ["Ho fame"]
+    answers: ["Ho fame"]
 
   - prompt: "What is the Italian word for 'car'?"
-    answer: ["Auto"]
+    answers: ["Auto"]
 
   - prompt: "What is the Italian word for 'train'?"
-    answer: ["Treno"]
+    answers: ["Treno"]
 
   - prompt: "How do you say 'I'm sorry' in Italian?"
-    answer: ["Mi dispiace"]
+    answers: ["Mi dispiace"]
 
   - prompt: "What is the Italian word for 'music'?"
-    answer: ["Musica"]
+    answers: ["Musica"]
 
   - prompt: "How do you say 'I am tired' in Italian?"
-    answer: ["Sono stanco"]
+    answers: ["Sono stanco"]
 
   - prompt: "What is the Italian word for 'shoe'?"
-    answer: ["Scarpa"]
+    answers: ["Scarpa"]
 
   - prompt: "How do you say 'I don't know' in Italian?"
-    answer: ["Non so"]
+    answers: ["Non so"]
 
   - prompt: "How do you say 'my name is' in Italian?"
-    answer: ["Mi chiamo"]
+    answers: ["Mi chiamo"]
 
   - prompt: "What is the Italian word for 'television'?"
-    answer: ["Televisione"]
+    answers: ["Televisione"]
 
   - prompt: "What is the Italian word for 'computer'?"
-    answer: ["Computer"]
+    answers: ["Computer"]
 
   - prompt: "How do you say 'see you later' in Italian?"
-    answer: ["A dopo"]
+    answers: ["A dopo"]
 
   - prompt: "What is the Italian word for 'beach'?"
-    answer: ["Spiaggia"]
+    answers: ["Spiaggia"]
 
   - prompt: "What is the Italian word for 'mountain'?"
-    answer: ["Montagna"]
+    answers: ["Montagna"]
 
   - prompt: "How do you say 'where' in Italian?"
-    answer: ["Dove"]
+    answers: ["Dove"]
 
   - prompt: "What is the Italian word for 'friend' (male)?"
-    answer: ["Amico"]
+    answers: ["Amico"]
 
   - prompt: "What is the Italian word for 'song'?"
-    answer: ["Canzone"]
+    answers: ["Canzone"]
 
   - prompt: "How do you say 'I am tired' in Italian?"
-    answer: ["Sono stanco"]
+    answers: ["Sono stanco"]
 
   - prompt: "What is the Italian word for 'table'?"
-    answer: ["Tavolo"]
+    answers: ["Tavolo"]
 
   - prompt: "What is the Italian word for 'window'?"
-    answer: ["Finestra"]
+    answers: ["Finestra"]
 
   - prompt: "How do you say 'I am thirsty' in Italian?"
-    answer: ["Ho sete"]
+    answers: ["Ho sete"]
 
   - prompt: "How do you say 'today is a good day' in Italian?"
-    answer: ["Oggi è una buona giornata", "Oggi e una buona giornata"]
+    answers: ["Oggi è una buona giornata", "Oggi e una buona giornata"]

@@ -3,10 +3,10 @@ category: Software Development
 
 questions:
   - prompt: "Who is known as the father of the computer?"
-    answers: ["Charles Babbage"]
+    answers: ["Charles Babbage", "Babbage"]
 
   - prompt: "Who wrote the first computer algorithm?"
-    answers: ["Ada Lovelace"]
+    answers: ["Ada Lovelace", "Lovelace"]
 
   - prompt: "What year was the World Wide Web invented?"
     answers: ["1989"]
@@ -29,8 +29,8 @@ questions:
   - prompt: "What does 'CPU' stand for?"
     answers: ["Central Processing Unit"]
 
-  - prompt: "Which operating system was developed by Linus Torvalds?"
-    answers: ["Linux"]
+  - prompt: "Who invended the Linux operating system? was developed by Linus Torvalds?"
+    answers: ["Linus Torvalds", "Linus", "Torvalds"]
 
   - prompt: "What does 'GUI' stand for?"
     answers: ["Graphical User Interface"]
@@ -93,10 +93,10 @@ questions:
     answers: ["1964"]
 
   - prompt: "Who invented the computer mouse?"
-    answers: ["Douglas Engelbart"]
+    answers: ["Douglas Engelbart", "Engelbart"]
 
   - prompt: "What is Moore’s Law?"
-    answers: ["Transistors double roughly every two years", "The number of transistors doubles every two years"]
+    answers: ["Transistors double roughly every two years", "The number of transistors doubles every two years", "Transistors double every two years"]
 
   - prompt: "What does IBM stand for?"
     answers: ["International Business Machines"]
@@ -132,7 +132,7 @@ questions:
     answers: ["Structured Query Language"]
 
   - prompt: "Who developed the Unix operating system?"
-    answers: ["Ken Thompson and Dennis Ritchie", "Dennis Ritchie and Ken Thompson"]
+    answers: ["Ken Thompson and Dennis Ritchie", "Dennis Ritchie and Ken Thompson", "Ritchie Thompson", "Tompson Ritchie"]
 
   - prompt: "What device stores data permanently?"
     answers: ["Hard Drive", "Hard Disk", "HDD"]
@@ -140,8 +140,8 @@ questions:
   - prompt: "What does RAM stand for?"
     answers: ["Random Access Memory"]
 
-  - prompt: "What does 'compiler' mean?"
-    answers: ["A program that translates code to machine language"]
+  - prompt: "What is a program that translates code to machine language?"
+    answers: ["A Compiler", "Compiler"]
 
   - prompt: "What does ROM stand for?"
     answers: ["Read Only Memory"]

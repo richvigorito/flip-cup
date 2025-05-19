@@ -3,32 +3,32 @@ category: Marvel Universe
 
 questions:
   - prompt: "What is the real name of Moon Knight?"
-    answer: ["Marc Spector", "Marc Specter"]
+    answers: ["Marc Spector", "Marc Specter"]
 
   - prompt: "Which Marvel character was a KGB assassin before defecting to S.H.I.E.L.D.?"
-    answer: ["Black Widow", "Natasha Romanoff", "Natasha Romanova"]
+    answers: ["Black Widow", "Natasha Romanoff", "Natasha Romanova"]
 
   - prompt: "Who replaced Thor as the wielder of Mjolnir in the comics?"
-    answer: ["Jane Foster"]
+    answers: ["Jane Foster"]
 
   - prompt: "What is the name of the alien symbiote that bonds with Eddie Brock?"
-    answer: ["Venom"]
+    answers: ["Venom"]
 
   - prompt: "What planet is Ronan the Accuser from?"
-    answer: ["Hala"]
+    answers: ["Hala"]
 
   - prompt: "In the comics, who kills Thanos?"
-    answer: ["Drax", "Drax the Destroyer"]
+    answers: ["Drax", "Drax the Destroyer"]
 
   - prompt: "What is the name of the group formed by Doctor Strange, Iron Man, and others to make high-level decisions?"
-    answer: ["The Illuminati"]
+    answers: ["The Illuminati"]
 
   - prompt: "What does S.W.O.R.D. stand for?"
-    answer: ["Sentient Weapon Observation and Response Division"]
+    answers: ["Sentient Weapon Observation and Response Division"]
 
   - prompt: "What is the full name of the Winter Soldier?"
-    answer: ["James Buchanan Barnes", "Bucky Barnes"]
+    answers: ["James Buchanan Barnes", "Bucky Barnes"]
 
   - prompt: "What is the name of the AI that replaces JARVIS?"
-    answer: ["F.R.I.D.A.Y.", "Friday"]
+    answers: ["F.R.I.D.A.Y.", "Friday"]
 

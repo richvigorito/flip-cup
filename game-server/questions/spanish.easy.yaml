@@ -2,163 +2,163 @@ title: Spanish Language (Easy)
 category: Foreign Languages
 questions:
   - prompt: "How do you say 'hello' in Spanish?"
-    answer: ["Hola"]
+    answers: ["Hola"]
 
   - prompt: "How do you say 'goodbye' in Spanish?"
-    answer: ["Adiós", "Adios"]
+    answers: ["Adiós", "Adios"]
 
   - prompt: "What is the Spanish word for 'friend'?"
-    answer: ["Amigo"]
+    answers: ["Amigo"]
 
   - prompt: "How do you say 'thank you' in Spanish?"
-    answer: ["Gracias"]
+    answers: ["Gracias"]
 
   - prompt: "How do you say 'please' in Spanish?"
-    answer: ["Por favor"]
+    answers: ["Por favor"]
 
   - prompt: "What is the Spanish word for 'water'?"
-    answer: ["Agua"]
+    answers: ["Agua"]
 
   - prompt: "How do you say 'yes' in Spanish?"
-    answer: ["Sí", "Si"]
+    answers: ["Sí", "Si"]
 
   - prompt: "How do you say 'no' in Spanish?"
-    answer: ["No"]
+    answers: ["No"]
 
   - prompt: "What is the Spanish word for 'apple'?"
-    answer: ["Manzana"]
+    answers: ["Manzana"]
 
   - prompt: "What is the Spanish word for 'book'?"
-    answer: ["Libro"]
+    answers: ["Libro"]
 
   - prompt: "How do you say 'good morning' in Spanish?"
-    answer: ["Buenos días", "Buenos dias"]
+    answers: ["Buenos días", "Buenos dias"]
 
   - prompt: "How do you say 'good night' in Spanish?"
-    answer: ["Buenas noches"]
+    answers: ["Buenas noches"]
 
   - prompt: "What is the Spanish word for 'dog'?"
-    answer: ["Perro"]
+    answers: ["Perro"]
 
   - prompt: "What is the Spanish word for 'cat'?"
-    answer: ["Gato"]
+    answers: ["Gato"]
 
   - prompt: "How do you say 'I love you' in Spanish?"
-    answer: ["Te quiero", "Te amo"]
+    answers: ["Te quiero", "Te amo"]
 
   - prompt: "What is the Spanish word for 'school'?"
-    answer: ["Escuela"]
+    answers: ["Escuela"]
 
   - prompt: "What is the Spanish word for 'house'?"
-    answer: ["Casa"]
+    answers: ["Casa"]
 
   - prompt: "How do you say 'good' in Spanish?"
-    answer: ["Bueno", "Buena"]
+    answers: ["Bueno", "Buena"]
 
   - prompt: "What is the Spanish word for 'food'?"
-    answer: ["Comida"]
+    answers: ["Comida"]
 
   - prompt: "How do you say 'I don't understand' in Spanish?"
-    answer: ["No entiendo"]
+    answers: ["No entiendo"]
 
   - prompt: "What is the Spanish word for 'family'?"
-    answer: ["Familia"]
+    answers: ["Familia"]
 
   - prompt: "What is the Spanish word for 'city'?"
-    answer: ["Ciudad"]
+    answers: ["Ciudad"]
 
   - prompt: "How do you say 'Where are you from?' in Spanish?"
-    answer: ["¿De dónde eres?", "De donde eres"]
+    answers: ["¿De dónde eres?", "De donde eres"]
 
   - prompt: "How do you say 'How are you?' in Spanish?"
-    answer: ["¿Cómo estás?", "Como estas"]
+    answers: ["¿Cómo estás?", "Como estas"]
 
   - prompt: "What is the Spanish word for 'money'?"
-    answer: ["Dinero"]
+    answers: ["Dinero"]
 
   - prompt: "How do you say 'friend' (feminine) in Spanish?"
-    answer: ["Amiga"]
+    answers: ["Amiga"]
 
   - prompt: "What is the Spanish word for 'boy'?"
-    answer: ["Niño", "Nino"]
+    answers: ["Niño", "Nino"]
 
   - prompt: "What is the Spanish word for 'girl'?"
-    answer: ["Niña", "Nina"]
+    answers: ["Niña", "Nina"]
 
   - prompt: "How do you say 'today' in Spanish?"
-    answer: ["Hoy"]
+    answers: ["Hoy"]
 
   - prompt: "How do you say 'tomorrow' in Spanish?"
-    answer: ["Mañana", "Manana"]
+    answers: ["Mañana", "Manana"]
 
   - prompt: "How do you say 'yesterday' in Spanish?"
-    answer: ["Ayer"]
+    answers: ["Ayer"]
 
   - prompt: "How do you say 'good evening' in Spanish?"
-    answer: ["Buenas tardes"]
+    answers: ["Buenas tardes"]
 
   - prompt: "What is the Spanish word for 'store'?"
-    answer: ["Tienda"]
+    answers: ["Tienda"]
 
   - prompt: "How do you say 'I am hungry' in Spanish?"
-    answer: ["Tengo hambre"]
+    answers: ["Tengo hambre"]
 
   - prompt: "What is the Spanish word for 'car'?"
-    answer: ["Coche"]
+    answers: ["Coche"]
 
   - prompt: "What is the Spanish word for 'train'?"
-    answer: ["Tren"]
+    answers: ["Tren"]
 
   - prompt: "How do you say 'I'm sorry' in Spanish?"
-    answer: ["Lo siento"]
+    answers: ["Lo siento"]
 
   - prompt: "What is the Spanish word for 'music'?"
-    answer: ["Música", "Musica"]
+    answers: ["Música", "Musica"]
 
   - prompt: "How do you say 'I am tired' in Spanish?"
-    answer: ["Estoy cansado", "Estoy cansada"]
+    answers: ["Estoy cansado", "Estoy cansada"]
 
   - prompt: "What is the Spanish word for 'shoe'?"
-    answer: ["Zapato"]
+    answers: ["Zapato"]
 
   - prompt: "How do you say 'I don't know' in Spanish?"
-    answer: ["No sé", "No se"]
+    answers: ["No sé", "No se"]
 
   - prompt: "How do you say 'my name is' in Spanish?"
-    answer: ["Me llamo"]
+    answers: ["Me llamo"]
 
   - prompt: "What is the Spanish word for 'television'?"
-    answer: ["Televisión", "Television"]
+    answers: ["Televisión", "Television"]
 
   - prompt: "What is the Spanish word for 'computer'?"
-    answer: ["Computadora", "Ordenador"]
+    answers: ["Computadora", "Ordenador"]
 
   - prompt: "How do you say 'see you later' in Spanish?"
-    answer: ["Hasta luego"]
+    answers: ["Hasta luego"]
 
   - prompt: "What is the Spanish word for 'beach'?"
-    answer: ["Playa"]
+    answers: ["Playa"]
 
   - prompt: "What is the Spanish word for 'mountain'?"
-    answer: ["Montaña", "Montana"]
+    answers: ["Montaña", "Montana"]
 
   - prompt: "How do you say 'where' in Spanish?"
-    answer: ["Dónde", "Donde"]
+    answers: ["Dónde", "Donde"]
 
   - prompt: "What is the Spanish word for 'friend' (male)?"
-    answer: ["Amigo"]
+    answers: ["Amigo"]
 
   - prompt: "What is the Spanish word for 'song'?"
-    answer: ["Canción", "Cancion"]
+    answers: ["Canción", "Cancion"]
 
   - prompt: "What is the Spanish word for 'table'?"
-    answer: ["Mesa"]
+    answers: ["Mesa"]
 
   - prompt: "What is the Spanish word for 'window'?"
-    answer: ["Ventana"]
+    answers: ["Ventana"]
 
   - prompt: "How do you say 'I am thirsty' in Spanish?"
-    answer: ["Tengo sed"]
+    answers: ["Tengo sed"]
 
   - prompt: "How do you say 'today is a good day' in Spanish?"
-    answer: ["Hoy es un buen día", "Hoy es un buen dia"]
+    answers: ["Hoy es un buen día", "Hoy es un buen dia"]

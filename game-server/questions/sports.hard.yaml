@@ -2,61 +2,61 @@ title: Gen Sports (Hard)
 category: Sports
 questions:
   - prompt: "Who won the first Super Bowl?"
-    answer: ["Green Bay Packers", "Packers"]
+    answers: ["Green Bay Packers", "Packers"]
 
   - prompt: "Which country won the most medals at the 1936 Olympics?"
-    answer: ["Germany"]
+    answers: ["Germany"]
 
   - prompt: "Who is the only athlete to play in both a Super Bowl and World Series?"
-    answer: ["Deion Sanders", "Sanders"]
+    answers: ["Deion Sanders", "Sanders"]
 
   - prompt: "What was the name of the defunct NHL team from Quebec?"
-    answer: ["Nordiques"]
+    answers: ["Nordiques"]
 
   - prompt: "Who was the first black head coach to win a Super Bowl?"
-    answer: ["Tony Dungy", "Dungy"]
+    answers: ["Tony Dungy", "Dungy"]
 
   - prompt: "Which nation boycotted the 1980 Moscow Olympics?"
-    answer: ["United States", "USA"]
+    answers: ["United States", "USA"]
 
   - prompt: "Which horse won the Triple Crown in 1973?"
-    answer: ["Secretariat"]
+    answers: ["Secretariat"]
 
   - prompt: "Who did Billie Jean King defeat in the Battle of the Sexes?"
-    answer: ["Bobby Riggs", "Riggs"]
+    answers: ["Bobby Riggs", "Riggs"]
 
   - prompt: "Which NFL team had the 'Purple People Eaters' defense?"
-    answer: ["Minnesota Vikings", "Vikings"]
+    answers: ["Minnesota Vikings", "Vikings"]
 
   - prompt: "What famous college football team has 'Touchdown Jesus' overlooking the field?"
-    answer: ["Notre Dame"]
+    answers: ["Notre Dame"]
 
   - prompt: "Who won the first UFC event in 1993?"
-    answer: ["Royce Gracie", "Gracie"]
+    answers: ["Royce Gracie", "Gracie"]
 
   - prompt: "Which tennis legend won 8 consecutive Grand Slam finals?"
-    answer: ["Roger Federer", "Federer"]
+    answers: ["Roger Federer", "Federer"]
 
   - prompt: "What year did the modern NBA 3-point line debut?"
-    answer: ["1979"]
+    answers: ["1979"]
 
   - prompt: "Which baseball player hit .406 in a single season?"
-    answer: ["Ted Williams", "Williams"]
+    answers: ["Ted Williams", "Williams"]
 
   - prompt: "Who was the first woman to win Olympic gold for boxing?"
-    answer: ["Nicola Adams", "Adams"]
+    answers: ["Nicola Adams", "Adams"]
 
   - prompt: "What team did Jackie Robinson debut with in MLB?"
-    answer: ["Brooklyn Dodgers", "Dodgers"]
+    answers: ["Brooklyn Dodgers", "Dodgers"]
 
   - prompt: "What Olympic event combines cross-country skiing and shooting?"
-    answer: ["Biathlon"]
+    answers: ["Biathlon"]
 
   - prompt: "Which F1 driver died at Imola in 1994?"
-    answer: ["Ayrton Senna", "Senna"]
+    answers: ["Ayrton Senna", "Senna"]
 
   - prompt: "What is the only country to win gold in every Summer Olympics?"
-    answer: ["Great Britain", "UK", "United Kingdom"]
+    answers: ["Great Britain", "UK", "United Kingdom"]
 
   - prompt: "What legendary NBA player was known as 'The Logo'?"
-    answer: ["Jerry West", "West"]
+    answers: ["Jerry West", "West"]

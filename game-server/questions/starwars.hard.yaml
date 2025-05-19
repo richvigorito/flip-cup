@@ -2,62 +2,62 @@ title: Hard
 category: Star Wars
 questions:
   - prompt: "Who was the first Jedi to appear in the prequel trilogy?"
-    answer: ["Qui-Gon Jinn", "Qui Gon Jinn"]
+    answers: ["Qui-Gon Jinn", "Qui Gon Jinn"]
 
   - prompt: "Who kills Jabba the Hutt?"
-    answer: ["Leia Organa", "Princess Leia"]
+    answers: ["Leia Organa", "Princess Leia"]
 
   - prompt: "What is the name of Anakin Skywalker's apprentice?"
-    answer: ["Ahsoka Tano"]
+    answers: ["Ahsoka Tano"]
 
   - prompt: "What is the home planet of the Wookiees?"
-    answer: ["Kashyyyk", "Kashyyk"]
+    answers: ["Kashyyyk", "Kashyyk"]
 
   - prompt: "What is the name of the city where Obi-Wan and Anakin duel in Episode III?"
-    answer: ["Mustafar"]
+    answers: ["Mustafar"]
 
   - prompt: "What is the name of the creature that lives in the Sarlacc Pit?"
-    answer: ["Sarlacc"]
+    answers: ["Sarlacc"]
 
   - prompt: "Who is the Sith Lord who kills Qui-Gon Jinn?"
-    answer: ["Darth Maul"]
+    answers: ["Darth Maul"]
 
   - prompt: "What is the name of the ice planet in The Empire Strikes Back?"
-    answer: ["Hoth"]
+    answers: ["Hoth"]
 
   - prompt: "What phrase does Darth Vader say when revealing his true identity to Luke?"
-    answer: ["I am your father", "No, I am your father"]
+    answers: ["I am your father", "No, I am your father"]
 
   - prompt: "Which planet is destroyed by the second Death Star?"
-    answer: ["Endor"]
+    answers: ["Endor"]
 
   - prompt: "Which clone trooper is known for his distinctive helmet and armor?"
-    answer: ["Captain Rex", "Rex"]
+    answers: ["Captain Rex", "Rex"]
 
   - prompt: "Who becomes the Emperor after Darth Sidious?"
-    answer: ["No one", "Palpatine returns in Episode IX, The Rise of Skywalker"]
+    answers: ["No one", "Palpatine returns in Episode IX, The Rise of Skywalker"]
 
   - prompt: "What type of droid is C-3PO?"
-    answer: ["Protocol droid"]
+    answers: ["Protocol droid"]
 
   - prompt: "Who becomes the leader of the Resistance after Leia Organa's death?"
-    answer: ["Rey"]
+    answers: ["Rey"]
 
   - prompt: "Which Jedi Master trained Anakin Skywalker?"
-    answer: ["Obi-Wan Kenobi", "Obi-Wan"]
+    answers: ["Obi-Wan Kenobi", "Obi-Wan"]
 
   - prompt: "What species is Watto, the junk dealer on Tatooine?"
-    answer: ["Toydarian", "Toydarien"]
+    answers: ["Toydarian", "Toydarien"]
 
   - prompt: "What is the name of the planet where the Clone Wars begin?"
-    answer: ["Geonosis"]
+    answers: ["Geonosis"]
 
   - prompt: "Who is the bounty hunter that captures Han Solo in The Empire Strikes Back?"
-    answer: ["Boba Fett"]
+    answers: ["Boba Fett"]
 
   - prompt: "What was the name of the leader of the Separatists during the Clone Wars?"
-    answer: ["Count Dooku", "Dooku"]
+    answers: ["Count Dooku", "Dooku"]
 
   - prompt: "Which Sith Lord is also known as Darth Plagueis?"
-    answer: ["Plagueis", "Darth Plagueis"]
+    answers: ["Plagueis", "Darth Plagueis"]
 
