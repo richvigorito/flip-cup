@@ -10,6 +10,38 @@ Try it out here: https://flipcup.fly.dev
 
 This was a fun side project to explore Go and Svelte — my first functionaly project in either. It's still a work in progress, so be gentle with the feedback 😄. That said, all contributions and ideas are welcome!
 
+## 🛠 Project Overview
+```text
+├── game-server                      // houses backend Go game server
+│   ├── cmd
+│   │   └── flipcup                     -- entrypoint
+│   ├── internal
+│   │   ├── game                        -- game-domain model/game-play files (game, team, player, etc)
+│   │   ├── quiz                        -- quiz-domain models 
+│   │   ├── transport                   -- http routing for rest endpoints and websocket handler for game play
+│   │   │   ├── api
+│   │   │   ├── types
+│   │   │   └── ws
+│   │   └── utils
+│   ├── public                          -- for single container depoyments stores ui build
+│   └── questions                       -- stores all question yaml files
+└── ui                              // houses Svelte-kit frontend app
+    ├── public
+    └── src
+        ├── assets
+        │   └── fonts
+        ├── components
+        ├── lib
+        │   ├── models
+        │   ├── transport
+        │   │   └── http
+        │   ├── types
+        │   └── utils
+        └── styles
+
+```
+
+
 ## 🛠 Local Development
 
 To run the game locally using Docker Compose:
