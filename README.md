@@ -1,6 +1,6 @@
 # FlipCup
 
-A multiplayer quiz game where teams compete by flipping cups—by answering questions correctly. Inspired by Flip Cup, minus the beers. 🧠🥤
+A multiplayer quiz game where teams compete by flipping cups—by answering questions correctly. Inspired by Flip Cup, minus the beers. 🥤😎
 
 ## 🚀 Live Demo
 
