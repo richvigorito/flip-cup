@@ -6,8 +6,7 @@ import (
 	"net/http"
 	"flip-cup/internal/game"
 	"flip-cup/internal/transport/ws"
-	"flip-cup/internal/api"
-
+	"flip-cup/internal/transport/api"
 	"github.com/gorilla/mux"
 )
 

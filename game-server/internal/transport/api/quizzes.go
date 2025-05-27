@@ -1,4 +1,4 @@
-// internal/api/quizzes.go
+// internal/transport/api/quizzes.go
 package api
 
 import (
@@ -18,6 +18,10 @@ type QuizMeta struct {
 	Category string `json:"category"`
 }
 
+
+//
+// GET: /api/quizzies
+//
 func fetchQuestionFiles() http.HandlerFunc {
     return func(w http.ResponseWriter, r *http.Request) {
         log.Println("🎯 fetchQuestionFiles called") 

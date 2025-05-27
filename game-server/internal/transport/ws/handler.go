@@ -1,4 +1,4 @@
-// ws/handler.go
+// internal/transport/ws/handler.go
 package ws
 
 import (
@@ -94,7 +94,7 @@ func HandleWebSocketConnection(manager *game.GameManager) http.HandlerFunc {
 		}
 		p = g.AddPlayer(conn, name)
 
-		// Handle the WebSocket messages for this game
+		// From here, game is responsible for handling game specific messages
 		g.HandleConnection(p)
 	}
 }

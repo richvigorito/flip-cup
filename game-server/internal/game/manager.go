@@ -3,6 +3,8 @@ package game
 import (
     "sync"
     "flip-cup/internal/quiz" 
+	"flip-cup/internal/utils"
+	"fmt"
 )
 
 type GameManager struct {
@@ -18,7 +20,7 @@ func NewGameManager() *GameManager {
 
 func (gm *GameManager) NewGame(questionFile *quiz.QuestionFile) *Game {
     g := NewGame(questionFile)
-    g.ID = RandID()
+    g.ID = utils.RandID()
 
     gm.mu.Lock()
     defer gm.mu.Unlock()
@@ -42,3 +44,16 @@ func (gm *GameManager) GetAllGames() []*Game {
     }
     return all
 }
+
+func (gm *GameManager) DeleteGameByID(id string) error {
+    gm.mu.Lock()
+    defer gm.mu.Unlock()
+
+    if _, exists := gm.games[id]; !exists {
+        return fmt.Errorf("game with ID %s not found", id)
+    }
+
+    delete(gm.games, id)
+    return nil
+}
+

@@ -1,4 +1,4 @@
-// http/cors.go
+// internal/transport/api/cors.go
 package api
 
 import "net/http"

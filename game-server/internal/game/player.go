@@ -3,6 +3,7 @@ package game
 
 import (
 	"github.com/gorilla/websocket"
+	"flip-cup/internal/utils"
 )
 
 type Player struct {
@@ -18,7 +19,7 @@ type PlayerSnapshot struct {
 
 func NewPlayer(conn *websocket.Conn, name string) * Player {
 	 return &Player{
-		ID:   RandID(),
+		ID:   utils.RandID(),
 		Conn: conn,
 		Name: name,
 	};

@@ -10,7 +10,7 @@ export async function fetchGames(): Promise<Games[]>  {
         // but api defined as :
         //      games/{?$activeOrInactive}
         //      
-        const httpUrl = `${baseHttpUrl}/games/active`;
+        const httpUrl = `${baseHttpUrl}/games/inactive`;
 
         const res = await fetch(httpUrl);
         const rawGames: RawGameState[] = await res.json();

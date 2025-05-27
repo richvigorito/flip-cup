@@ -1,18 +1,18 @@
-// game/game.go package game
 package game
 
 import (
 	"encoding/json"
-	"flip-cup/internal/transport/types"
-	"flip-cup/internal/utils"
-	"flip-cup/internal/quiz"
 	"fmt"
-	"time"
-	"math/rand"
 	"log"
 	"sync"
+	"time"
+	"math/rand"
 
 	"github.com/gorilla/websocket"
+
+	"flip-cup/internal/quiz"
+	"flip-cup/internal/transport/types"
+	"flip-cup/internal/utils"
 )
 
 type GameSnapshot struct {
@@ -35,6 +35,7 @@ type Game struct {
 
 func NewGame(questionFile *quiz.QuestionFile) *Game {
     return &Game{
+        ID: utils.RandID(),
         TeamA: &Team{Players: []*Player{}, Name: "A-Team",  Turn: 0},
         TeamB: &Team{Players: []*Player{}, Name: "B-squad", Turn: 0},
         QuestionFile: questionFile,
@@ -42,6 +43,7 @@ func NewGame(questionFile *quiz.QuestionFile) *Game {
     }
 }
 
+// Snapshot & Display
 func (g *Game) Snapshot() GameSnapshot {
     return GameSnapshot{ 
         ID: g.ID,
@@ -51,77 +53,71 @@ func (g *Game) Snapshot() GameSnapshot {
         Active: g.Active,
     }
 }
+
 func (g *Game) DisplayTeamSnapshots() {
-    snapshotTeamA := g.TeamA.Snapshot() 
-    snapshotTeamB := g.TeamB.Snapshot() 
-
-    aBytes, _ := json.Marshal(snapshotTeamA)
-    g.TeamBroadcast(types.Envelope{
-        Type: "my_current_team",
-        Payload: aBytes,
-    }, g.TeamA)
-
-    bBytes, _ := json.Marshal(snapshotTeamB)
-    g.TeamBroadcast(types.Envelope{
-        Type: "my_current_team",
-        Payload: bBytes,
-    }, g.TeamB)
+	for _, team := range []*Team{g.TeamA, g.TeamB} {
+		data, _ := json.Marshal(team.Snapshot())
+		g.TeamBroadcast(types.Envelope{
+			Type:    "my_current_team",
+			Payload: data,
+		}, team)
+	}
 }
 
 func (g *Game) DisplayGameSnapshot(action string, p *Player) {
-    log.Printf("Game Active: %v\n", g.Active)
+	log.Printf("Game Active: %v\n", g.Active)
+	snapshot := map[string]interface{}{
+		"game_snapshot":       g.Snapshot(),
+		"action_performed_by": safeSnapshot(p),
+	}
+	data, _ := json.Marshal(snapshot)
 
-    var performedBy interface{}
-    if p != nil {
-        performedBy = p.Snapshot()
-    } else {
-        performedBy = nil 
-    }
-
-    snapshot := map[string]interface{}{
-        "game_snapshot":        g.Snapshot(),
-        "action_performed_by":  performedBy,
-    }
-
-    log.Printf("Game Snapshot: %+v\n", snapshot)
-   
-    snapshotBytes, _ := json.Marshal(snapshot)
-    g.Broadcast(types.Envelope{
-        Type: action,
-        Payload: snapshotBytes,
-    })
+	g.Broadcast(types.Envelope{
+		Type:    action,
+		Payload: data,
+	})
 }
 
-func (g *Game) GetTeam(p *Player) *Team {
-    for _, player := range g.TeamB.Players {
-        if p.ID == player.ID {
-            return g.TeamB
-        }
-    }
-
-    for _, player := range g.TeamA.Players {
-        if p.ID == player.ID {
-            return g.TeamA
-        }
-    }
-
-    return nil
+func safeSnapshot(p *Player) interface{} {
+	if p != nil {
+		return p.Snapshot()
+	}
+	return nil
 }
 
+// Broadcast
+func (g *Game) Broadcast(msg types.Envelope) {
+    g.TeamBroadcast(msg, g.TeamA)
+    g.TeamBroadcast(msg, g.TeamB)
+}
+
+func (g *Game) TeamBroadcast(msg types.Envelope, t *Team) {
+	  for _, p := range t.Players {
+        g.PlayerBroadcast(msg, p)
+    }
+}
+
+func (g *Game) PlayerBroadcast(msg types.Envelope, p *Player) {
+    data, _ := json.Marshal(msg)
+    var logString = "🟦🔉↗️  Broadcast following Message to "+p.Name
+    utils.LogPrettyJSON(logString, msg)
+		p.Conn.WriteMessage(websocket.TextMessage, data)
+}
+
+
+// Player Management
 func (g *Game) AddPlayer(conn *websocket.Conn, name string) *Player {
 	g.mu.Lock()
 	defer g.mu.Unlock()
 
 	player := NewPlayer(conn, name)
-	
-  if len(g.TeamB.Players) <  len(g.TeamA.Players) {
+    if len(g.TeamB.Players) <  len(g.TeamA.Players) {
 		 log.Println("%s to team A: ", name)
-      g.TeamB.AddPlayer(player)
-  } else {
+         g.TeamB.AddPlayer(player)
+    } else {
 		 log.Println("%s to team B: ", name)
-      g.TeamA.AddPlayer(player)
-  }
-    
+        g.TeamA.AddPlayer(player)
+    }
 	return player
 }
 
@@ -132,9 +128,20 @@ func (g *Game) RemovePlayer(p *Player) {
     g.TeamB.RemovePlayer(p)
 }
 
+func (g *Game) GetTeam(p *Player) *Team {
+	for _, team := range []*Team{g.TeamA, g.TeamB} {
+		for _, player := range team.Players {
+			if p.ID == player.ID {
+				return team
+			}
+		}
+	}
+	return nil
+}
 
+
+// Game Flow
 func (g *Game) StartGame() {
-    // reset everything
     g.Active = true
     g.TeamA.Turn = 0 
     g.TeamB.Turn = 0 
@@ -151,13 +158,39 @@ func (g *Game) StartGame() {
 }
 
 func (g *Game) RestartGame() {
-    // Start first question for both teams
     g.TeamA.Turn = 0
     g.TeamB.Turn = 0
     g.QuestionFile.ShuffleQuestions()
     g.Active = false
 }
 
+func (g *Game) NextQuestion(t *Team) bool{
+    if t.Turn > (len(t.Players) - 1) {
+        return false
+    }
+    currentPlayer := t.GetCurrentPlayer()
+    q := g.QuestionFile.Questions[t.Turn]
+
+    g.PlayerBroadcast(types.Envelope{Type: "question", Name: q.Prompt}, currentPlayer)
+    return true
+}
+
+func (g *Game) EndGame(t *Team) {
+    g.Active = false
+    g.Broadcast(types.Envelope{Type: "winner", Name: t.Name})
+}
+
+func (g *Game) UpdateQuiz(p *Player, payload *UpdateQuiz) {
+    qf, err := quiz.NewQuestionFile(payload.Filename)
+    if err != nil {
+        log.Println("Error reading quiz file:", err)
+        return
+    }
+    g.QuestionFile = qf;
+}
+
+
+// Handlers
 func (g *Game) handleReassignTeams() {
     g.mu.Lock()
     defer g.mu.Unlock()
@@ -232,7 +265,7 @@ func (g *Game) handleAssignPlayerName(p *Player, addPlayerPayload *AddPlayerPayl
 		g.PlayerBroadcast(types.Envelope{Type: "joined_success", Name: p.Name}, p)
 }
 
-//func (g *Game) HandleMessage(conn *websocket.Conn, msg types.Envelope) {
+// WebSocket Lifecycle
 func (g *Game) HandleConnection(player *Player) {
 
    // player has entered game loop
@@ -265,9 +298,7 @@ func (g *Game) HandleConnection(player *Player) {
 }
 
 func (g *Game) HandleMessage(p *Player, msg types.Envelope) {
-
         switch msg.Type {
-
             case "add_player":
                 var addPlayerPayload AddPlayerPayload
                 utils.MustUnmarshal(p.Conn, msg.Payload, &addPlayerPayload)
@@ -302,52 +333,4 @@ func (g *Game) HandleMessage(p *Player, msg types.Envelope) {
                 g.UpdateQuiz(p, &updateQuizPayload)
                 g.DisplayGameSnapshot("quiz_updated", p)
         }
-}
-
-func (g *Game) TeamBroadcast(msg types.Envelope, t *Team) {
-	  for _, p := range t.Players {
-        g.PlayerBroadcast(msg, p)
-    }
-}
-
-func (g *Game) PlayerBroadcast(msg types.Envelope, p *Player) {
-    data, _ := json.Marshal(msg)
-    var logString = "🟦🔉↗️  Broadcast following Message to "+p.Name
-    utils.LogPrettyJSON(logString, msg)
-		p.Conn.WriteMessage(websocket.TextMessage, data)
-}
-
-func (g *Game) Broadcast(msg types.Envelope) {
-    g.TeamBroadcast(msg, g.TeamA)
-    g.TeamBroadcast(msg, g.TeamB)
-}
-
-
-func (g *Game) EndGame(t *Team) {
-    g.Active = false
-    g.Broadcast(types.Envelope{Type: "winner", Name: t.Name})
-}
-
-func (g *Game) NextQuestion(t *Team) bool{
-    if t.Turn > (len(t.Players) - 1) {
-        return false
-    }
-    currentPlayer := t.GetCurrentPlayer()
-    q := g.QuestionFile.Questions[t.Turn]
-
-    g.PlayerBroadcast(types.Envelope{Type: "question", Name: q.Prompt}, currentPlayer)
-    return true
-}
-
-func (g *Game) UpdateQuiz(p *Player, payload *UpdateQuiz) {
-    qf, err := quiz.NewQuestionFile(payload.Filename)
-    if err != nil {
-        log.Println("Error reading quiz file:", err)
-        return
-    }
-    g.QuestionFile = qf;
-}
-
-func RandID() string {
-	return fmt.Sprintf("%x", rand.Intn(999999))
 }

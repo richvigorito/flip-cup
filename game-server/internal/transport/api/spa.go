@@ -1,3 +1,4 @@
+// internal/transport/api/spa.go
 package api
 
 import (
@@ -8,6 +9,8 @@ import (
 
 // SPAHandler returns an http.Handler that serves static files from the "public" directory,
 // and falls back to serving index.html for SPA client-side routing.
+// 
+// The purpose for this is serving ui build from this repo. 
 func SPAHandler(staticDir string) http.Handler {
     fs := http.Dir(staticDir)
     fileServer := http.FileServer(fs)
