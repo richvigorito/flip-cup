@@ -1,0 +1,144 @@
+title: Solve for X 
+category: Software Development
+
+questions:
+  - prompt: "What is the output?\n\nx = 5\ny = 3\nprint(x + y)"
+    answers: ["8"]
+
+  - prompt: "What does this return?\n\nfunction sum(a, b) {\n  return a + b;\n}\nsum(4, 6);"
+    answers: ["10"]
+
+  - prompt: "Fill in the blank to get 'Hello, World!':\n\nprint(___)"
+    answers: ["Hello, World!"]
+  
+  - prompt: "What is the output?\n\n php>$var = 'var'; $$var = 'arg'; echo $var "
+    answers: ["arg"]
+
+  - prompt: "What is the output?\n\nx = [1, 2, 3]\nprint(len(x))"
+    answers: ["3"]
+
+  - prompt: "What will this print?\n\nfor (int i = 0; i < 3; i++) {\n  printf(\"%d \", i);\n}"
+    answers: ["0 1 2"]
+
+  - prompt: "What is the result?\n\nlet str = 'abc';\nconsole.log(str.toUpperCase());"
+    answers: ["ABC"]
+
+  - prompt: "Complete to return true if number is even:\n\ndef is_even(n):\n    return n % 2 == ___"
+    answers: ["0"]
+
+  - prompt: "What is the output?\n\nlet x = 10;\nx += 5;\nconsole.log(x);"
+    answers: ["15"]
+
+  - prompt: "What is printed?\n\nSystem.out.println(2 * 3 + 4);"
+    answers: ["10"]
+
+  - prompt: "What is the output?\n\necho 2 + 2;"
+    answers: ["4"]
+
+  - prompt: "Write the output:\n\nfmt.Println(\"Go Lang\")"
+    answers: ["Go Lang"]
+
+  - prompt: "What is the result of:\n\nx = 3.5\nprint(int(x))"
+    answers: ["3"]
+
+  - prompt: "What is the return value?\n\nfunction double(n) {\n  return n * 2;\n}\ndouble(7);"
+    answers: ["14"]
+
+  - prompt: "What is the missing keyword in C++ to define a function that returns nothing?"
+    answers: ["void"]
+
+  - prompt: "What is the missing keyword in PHP to start a block of code?"
+    answers: ["function"]
+
+  - prompt: "What is printed?\n\nx = 'abc'\nprint(x[1])"
+    answers: ["b"]
+
+  - prompt: "Complete this to loop 3 times:\n\nfor (let i = 0; i < ___; i++)"
+    answers: ["3"]
+
+  - prompt: "What is the output?\n\nprint('5' + '6')"
+    answers: ["56"]
+
+  - prompt: "What is printed?\n\nint x = 4;\nint y = x++;\nprintf(\"%d\", y);"
+    answers: ["4"]
+
+  - prompt: "Complete the function:\n\nfunction greet(name) {\n  return 'Hello, ' + ___;\n}"
+    answers: ["name"]
+
+  - prompt: "What is the result?\n\nx = [10, 20, 30]\nprint(x[-1])"
+    answers: ["30"]
+
+  - prompt: "What is printed?\n\nputs \"Ruby\".reverse"
+    answers: ["ybuR"]
+
+  - prompt: "What keyword defines a constant in Go?"
+    answers: ["const"]
+
+  - prompt: "Complete:\n\nlet x = null;\nconsole.log(typeof x);"
+    answers: ["object"]
+
+  - prompt: "What is printed?\n\nchar s[] = \"C\";\nprintf(\"%s\", s);"
+    answers: ["C"]
+
+  - prompt: "Complete to print each element:\n\nfor item in arr:\n    ___(item)"
+    answers: ["print"]
+
+  - prompt: "What will this print?\n\nx = '42'\nprint(int(x) + 1)"
+    answers: ["43"]
+
+  - prompt: "What will be the result?\n\nfunction foo() {\n  return 2 == '2';\n}"
+    answers: ["true"]
+
+  - prompt: "What does this evaluate to?\n\n4 ** 2"
+    answers: ["16"]
+
+  - prompt: "What is the value of x?\n\nx = 10\nx //= 3\nprint(x)"
+    answers: ["3"]
+
+  - prompt: "What is printed?\n\nlet arr = [1, 2, 3];\nconsole.log(arr.length);"
+    answers: ["3"]
+
+  - prompt: "What keyword exits a loop early?"
+    answers: ["break"]
+
+  - prompt: "What is the result?\n\nx = bool(0)\nprint(x)"
+    answers: ["False"]
+
+  - prompt: "What is printed?\n\nint a = 5, b = 6;\nprintf(\"%d\", a < b);"
+    answers: ["1"]
+
+  - prompt: "What is the return value?\n\ndef greet():\n    return \"Hi\"\nprint(greet())"
+    answers: ["Hi"]
+
+  - prompt: "What is the output?\n\nprint(\"{} + {} = {}\".format(2, 3, 5))"
+    answers: ["2 + 3 = 5"]
+
+  - prompt: "What keyword starts a loop in Go?"
+    answers: ["for"]
+
+  - prompt: "What is the value of x?\n\nlet x = 10 % 4;"
+    answers: ["2"]
+
+  - prompt: "What is returned?\n\nMath.pow(2, 3);"
+    answers: ["8"]
+
+  - prompt: "What will be printed?\n\nx = [1, 2, 3]\nprint(x[1])"
+    answers: ["2"]
+
+  - prompt: "Complete the output:\n\nprint(\"Hello\", end=___)"
+    answers: ['""']
+
+  - prompt: "What is the keyword to define a class in Python?"
+    answers: ["class"]
+
+  - prompt: "What function reads input in C?"
+    answers: ["scanf"]
+
+  - prompt: "What is the output?\n\n php>$foo = 'bar'; $$foo = 'foo'; echo $foo.$bar ;"
+    answers: ["boofar"]
+
+  - prompt: "What is returned?\n\nfunction isEven(x) {\n return x % 2 === 0;\n}\nisEven(4);"
+    answers: ["true"]
+
+  - prompt: "What will be printed?\n\nx = 'code'\nprint(x.upper())"
+    answers: ["CODE"]

@@ -13,6 +13,7 @@
     import Lobby from './components/Lobby.svelte';
     import GameView from './components/GameView.svelte';
     import EventLog from './components/EventLog.svelte';
+    import Instructions from './components/Instructions.svelte';
 
     import { fetchQuizzes } from '$lib/transport/http/Quizzes';
     import { questionSets } from '$lib/store';
@@ -25,6 +26,7 @@
 
 
 </script>
+
 
 {#if $mode === 'welcome'}
     <Welcome /> 
@@ -39,6 +41,9 @@
 {:else}
     <p>Unknown mode: {$mode}</p>
 {/if}
+
+
+<Instructions />
 
 <EventLog />
 

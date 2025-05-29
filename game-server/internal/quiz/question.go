@@ -12,8 +12,9 @@ type Question struct {
 }
 
 func (q *Question) CheckAnswer(input string) bool {
+    fmt.Println("checkanswer: ",input)
     normalizedInput := normalize(input)
-    fmt.Print(q)
+    fmt.Print("checkanswer func, q:", q)
     for _, correct := range q.Answers {
         fmt.Println("input: ", normalizedInput, "correct", normalize(correct),  "condtinional:", normalize(correct) == normalizedInput)
         if normalize(correct) == normalizedInput {

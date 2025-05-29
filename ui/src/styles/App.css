@@ -156,4 +156,29 @@ label[for="qs-select"] {
   color: #fff;
   font-size: 1rem;
 }
- 
+
+.instructions-container {
+  margin-left: 1rem;
+  margin-top: 0.25rem;
+}
+
+.instructions-button {
+  border: 1px solid #aaa;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.instructions-button:hover {
+  opacity: 1;
+}
+
+.instructions-dialog {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}

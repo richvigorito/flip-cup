@@ -33,7 +33,7 @@ export class GameState {
   }
 
   canStart(): boolean {
-    return this.teamA.players.length === this.teamB.players.length;
+    return this.teamA.players.length > 0 && this.teamB.players.length > 0;
   }
   
   get allPlayers(): Player[] {

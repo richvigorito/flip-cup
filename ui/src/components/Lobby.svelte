@@ -20,7 +20,7 @@
             mode.set('game');
         } else {
             console.log("Please assign teams before starting the game.");
-            alert('Please assign teams before starting the game. Teams must have an equal number.');
+            alert('Please assign teams before starting the game. Teams must have at least 1 player.');
         }
     };
 
