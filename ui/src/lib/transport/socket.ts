@@ -164,6 +164,7 @@ const handlePlayerJoined = (message: any) => {
         console.warn('⚠️ No player instance to update');
     }
     logEvent(`${message.name} joined the game`, 'success');
+    logEvent(`${message.name} ... please note, if you are just coming here and dont have anyone to play with i monitor activity and at least for now i'll try to pop on a play a game. So if you wait a couple minutes is possible i'll join you`, 'info');
         
 };
 
