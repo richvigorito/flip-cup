@@ -1,0 +1,64 @@
+title: Inception (Trivia)
+category: Movies
+
+questions:
+  - prompt: "Who directed the movie Inception?"
+    answers: ["Christopher Nolan", "Nolan"]
+
+  - prompt: "Who plays the main character, Dom Cobb?"
+    answers: ["Leonardo DiCaprio", "Leo DiCaprio", "DiCaprio", "Leo"]
+
+  - prompt: "What is Dom Cobb’s profession?"
+    answers: ["Extractor", "Extraction specialist", "Dream thief"]
+
+  - prompt: "What object does Cobb use as his totem?"
+    answers: ["Spinning top", "Top"]
+
+  - prompt: "What is the term for planting an idea into someone's mind via dreams?"
+    answers: ["Inception"]
+
+  - prompt: "Who composed the score for Inception?"
+    answers: ["Hans Zimmer"]
+
+  - prompt: "What’s the name of the architect who designs the dream worlds?"
+    answers: ["Ariadne"]
+
+  - prompt: "What actor plays Eames, the forger?"
+    answers: ["Tom Hardy"]
+
+  - prompt: "What’s the name of Cobb’s deceased wife?"
+    answers: ["Mal", "Mal Cobb"]
+
+  - prompt: "What actor plays Arthur, Cobb’s partner?"
+    answers: ["Joseph Gordon-Levitt", "Joseph Gordon Levitt"]
+
+  - prompt: "What phrase is used to trigger the dream collapse?"
+    answers: ["The kick"]
+
+  - prompt: "What company does Saito want to break up via inception?"
+    answers: ["Fischer", "Fischer Morrow", "Fischer Corporation"]
+
+  - prompt: "What’s the deepest level of dream layering referred to in the movie?"
+    answers: ["Limbo"]
+
+  - prompt: "What year was Inception released?"
+    answers: ["2010"]
+
+  - prompt: "What song is used to signal the impending kick?"
+    answers: ["Non, Je Ne Regrette Rien", "Je Ne Regrette Rien", "Edith Piaf"]
+
+  - prompt: "Which actor plays Robert Fischer?"
+    answers: ["Cillian Murphy"]
+
+  - prompt: "How does Cobb test whether he’s dreaming?"
+    answers: ["Spins his top", "Spinning top", "Top"]
+
+  - prompt: "Which of these actors is NOT in Inception? (Tom Hardy, Ellen Page, Christian Bale)"
+    answers: ["Christian Bale"]
+
+  - prompt: "What happens if you die in a dream too deep?"
+    answers: ["You go to limbo", "Limbo"]
+
+  - prompt: "Who convinces Cobb to try inception instead of extraction?"
+    answers: ["Saito"]
+
