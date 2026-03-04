@@ -70,5 +70,11 @@ cat "VITE_WS_URL=<your-local-ip>:8080" > .env
    http://<your-local-ip>:5173 or 
    http://localhost:5173
 
+## 🤖 AI-Assisted Development
+
+Recent improvements to this project (UI redesign, E2E test suite) were built with the help of GitHub Copilot. A full breakdown of what was delegated, how decisions were made, and what changed lives here:
+
+👉 **[docs/ai-approach.md](docs/ai-approach.md)**
+
 ## 🤝 Contributing
 Got feedback, ideas, or issues? Open an issue or a pull request — would love to hear what you think! Lastly, for the record, no i was not in a frat. 
