@@ -5,6 +5,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
+
 	"flip-cup/internal/game"
 	"flip-cup/internal/transport/ws"
 	"flip-cup/internal/transport/api"
@@ -15,6 +17,16 @@ func main() {
     log.Println("✅ Flip Cup server started")
 	
 	manager := game.NewGameManager()
+
+	// Start background cleanup task
+	go func() {
+		// Run cleanup every 30 minutes, removing games inactive for > 1 hour
+		ticker := time.NewTicker(30 * time.Minute)
+		defer ticker.Stop()
+		for range ticker.C {
+			manager.CleanupStaleGames(1 * time.Hour)
+		}
+	}()
 
 	// Create a new router
 	r := mux.NewRouter()

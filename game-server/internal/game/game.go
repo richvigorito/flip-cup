@@ -30,6 +30,7 @@ type Game struct {
 	  TeamB         *Team
 	  QuestionFile  *quiz.QuestionFile
 	  Active  	    bool
+	  LastActivity  time.Time
 	  mu            sync.Mutex
 }
 
@@ -40,7 +41,14 @@ func NewGame(questionFile *quiz.QuestionFile) *Game {
         TeamB: &Team{Players: []*Player{}, Name: "B-squad", Turn: 0},
         QuestionFile: questionFile,
         Active: false,
+        LastActivity: time.Now(),
     }
+}
+
+func (g *Game) UpdateActivity() {
+    g.mu.Lock()
+    defer g.mu.Unlock()
+    g.LastActivity = time.Now()
 }
 
 // Snapshot & Display
@@ -97,7 +105,14 @@ func (g *Game) TeamBroadcast(msg types.Envelope, t *Team) {
     }
 }
 
+func (g *Game) IsStale(threshold time.Duration) bool {
+    g.mu.Lock()
+    defer g.mu.Unlock()
+    return time.Since(g.LastActivity) > threshold
+}
+
 func (g *Game) PlayerBroadcast(msg types.Envelope, p *Player) {
+    g.UpdateActivity()
     data, _ := json.Marshal(msg)
     var logString = "🟦🔉↗️  Broadcast following Message to "+p.Name
     utils.LogPrettyJSON(logString, msg)
@@ -131,10 +146,10 @@ func (g *Game) AddPlayer(conn *websocket.Conn, name string) *Player {
 
 	player := NewPlayer(conn, name)
     if len(g.TeamB.Players) <  len(g.TeamA.Players) {
-		 log.Println("%s to team A: ", name)
+		 log.Printf("%s to team A: ", name)
          g.TeamB.AddPlayer(player)
     } else {
-		 log.Println("%s to team B: ", name)
+		 log.Printf("%s to team B: ", name)
         g.TeamA.AddPlayer(player)
     }
 	return player
