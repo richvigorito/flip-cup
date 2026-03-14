@@ -171,8 +171,8 @@ const handleGameStarted = (message: any) => {
 };
 
 const handleMyTeamAssignment = (message: any) => {
-    const newTeam = new Team(message.payload);
-    myTeam.set(newTeam);
+    // myTeam is now derived from gameState and me, so we don't need to set it manually.
+    // However, we can still log the event.
     logEvent(`joined team: ${message.payload.name}`, 'info');
 };
 

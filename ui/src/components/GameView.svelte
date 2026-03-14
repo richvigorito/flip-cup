@@ -70,13 +70,13 @@
     <!-- Game Board -->
     <div 
       class="game-board"
-      class:team-a-view={$myTeam?.id === $gameState.teamA.id}
-      class:team-b-view={$myTeam?.id === $gameState.teamB.id}
+      class:team-a-view={$myTeam?.name === $gameState.teamA.name}
+      class:team-b-view={$myTeam?.name === $gameState.teamB.name}
     >
       <div class="board-label">
-        {#if $myTeam?.id === $gameState.teamA.id}
+        {#if $myTeam?.name === $gameState.teamA.name}
           Game Board (Team A View)
-        {:else if $myTeam?.id === $gameState.teamB.id}
+        {:else if $myTeam?.name === $gameState.teamB.name}
           Game Board (Team B View)
         {:else}
           Game Board (Spectator View)
