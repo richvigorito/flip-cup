@@ -52,7 +52,16 @@ function handleMessage(message: any) {
   console.log("↙️ handle incomin message:", JSON.stringify(message));
   switch (message.type) {
 
-     case 'game_player_initialized':
+     case 'join_existing_game':
+        // This is an outbound message type, but maybe the server echoes it? 
+        // Actually the server sends 'joined_existing_game'
+        break;
+
+    case 'joined_existing_game':
+        handleJoinedExistingGame(message);
+        break;
+
+    case 'game_player_initialized':
         currentPlayer = new Player(message.payload);
         me.set(currentPlayer);
         if (typeof sessionStorage !== 'undefined') {
@@ -152,6 +161,12 @@ export const send = (msg: object) => {
 
 const logEvent = (message: string, type: 'success' | 'error' | 'info') => {
     eventLog.update((log) => [...log, { message, type }]);
+};
+
+const handleJoinedExistingGame = (message: any) => {
+    const newState = new GameState(message.payload.game_snapshot);
+    gameState.set(newState);
+    logEvent(`Joined game ${newState.id}`, 'success');
 };
 
 const handleGameRestarted = (message: any) => {

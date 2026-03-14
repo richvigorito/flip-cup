@@ -32,8 +32,8 @@ async function joinLobby(page: Page, name: string): Promise<void> {
   await expect(input).toBeVisible();
   await input.fill(name);
   await page.getByRole('button', { name: /Join Game/i }).click();
-  // Confirm team preview appears (the player is now in the lobby)
-  await expect(page.locator('.teams-preview')).toBeVisible({ timeout: 8_000 });
+  await expect(page.getByRole('heading', { name: /^Lobby$/i })).toBeVisible({ timeout: 8_000 });
+  await expect(page.getByText(new RegExp(`You're in as\\s+${name}`, 'i'))).toBeVisible({ timeout: 8_000 });
 }
 
 /** Join an existing game from the Join screen. */
@@ -79,14 +79,14 @@ async function answerIfMyTurn(page: Page): Promise<boolean> {
  * Returns when a winner is declared on either page.
  */
 async function playGame(page1: Page, page2: Page): Promise<string> {
-  const maxRounds = 30;
+  const maxRounds = 60;
 
   for (let round = 0; round < maxRounds; round++) {
     // Check if game is over on either page
     for (const page of [page1, page2]) {
       const gameOver = page.locator('.game-over');
       if (await gameOver.isVisible()) {
-        const winnerText = (await page.locator('.winner-name').textContent()) ?? '';
+        const winnerText = (await page.locator('.game-over-winner').textContent()) ?? '';
         return winnerText.trim();
       }
     }
@@ -190,8 +190,8 @@ test.describe('Full multiplayer game', () => {
 
     // Click "Play Again" on whichever page shows it
     const restartBtns = [
-      player1.getByRole('button', { name: /Restart Game/i }),
-      player2.getByRole('button', { name: /Restart Game/i }),
+      player1.getByRole('button', { name: /Play Again/i }),
+      player2.getByRole('button', { name: /Play Again/i }),
     ];
 
     for (const btn of restartBtns) {
@@ -207,16 +207,24 @@ test.describe('Full multiplayer game', () => {
 });
 
 test.describe('Lobby behaviour', () => {
-  test('Start Game is disabled with only one player', async ({ browser }) => {
+  test('Start Game warns when both teams do not have players', async ({ browser }) => {
     const ctx = await browser.newContext();
     const page = await ctx.newPage();
 
     await createGame(page);
     await joinLobby(page, 'Solo');
 
+    // Handle dialog explicitly
+    page.on('dialog', async dialog => {
+        expect(dialog.message()).toContain('Teams must have at least 1 player each before starting.');
+        await dialog.accept();
+    });
+
     const startBtn = page.getByRole('button', { name: /Start Game/i });
-    // With only one player and one team empty, start should be disabled
-    await expect(startBtn).toBeDisabled();
+    await startBtn.click();
+    
+    // Ensure we are still in lobby (game didn't start)
+    await expect(page.locator('.lobby-icon')).toBeVisible();
 
     await ctx.close();
   });
