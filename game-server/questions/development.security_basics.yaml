@@ -1,0 +1,45 @@
+title: Developer Security Basics
+category: Software Development
+
+questions:
+  - prompt: "What does XSS stand for?"
+    answers: ["Cross Site Scripting", "Cross-Site Scripting"]
+
+  - prompt: "What is the primary goal of SQL injection?"
+    answers: ["Access unauthorized data", "Extract data", "Execute arbitrary SQL"]
+
+  - prompt: "Which HTTP header can help prevent clickjacking?"
+    answers: ["X-Frame-Options"]
+
+  - prompt: "What is the purpose of hashing a password?"
+    answers: ["Store passwords securely", "Prevent password recovery", "Obfuscate passwords"]
+
+  - prompt: "What does CSRF stand for?"
+    answers: ["Cross Site Request Forgery", "Cross-Site Request Forgery"]
+
+  - prompt: "What principle grants the minimum permissions necessary?"
+    answers: ["Principle of Least Privilege", "Least Privilege", "Least Privilege Principle"]
+
+  - prompt: "What port does HTTPS use by default?"
+    answers: ["443"]
+
+  - prompt: "What is a common way to protect against brute-force login attacks?"
+    answers: ["Rate limiting", "Account lockout", "Captcha"]
+
+  - prompt: "What type of vulnerability allows an attacker to run code on your server?"
+    answers: ["Remote Code Execution", "RCE"]
+
+  - prompt: "Which response header instructs the browser to only access the site over HTTPS?"
+    answers: ["Strict-Transport-Security", "HSTS"]
+
+  - prompt: "What does 2FA stand for?"
+    answers: ["Two Factor Authentication", "Two-Factor Authentication"]
+  
+  - prompt: "Why shouldn’t you log full JWTs in production?"
+    answers: ["They contain sensitive information", "They can be replayed", "They expose tokens"]
+
+  - prompt: "What kind of attack might involve intercepting traffic over public Wi-Fi?"
+    answers: ["Man in the middle", "MITM", "Man-in-the-middle"]
+
+  - prompt: "What is the first step of responsible disclosure if you find a bug?"
+    answers: ["Report it privately", "Contact the maintainers", "Use their security contact"]

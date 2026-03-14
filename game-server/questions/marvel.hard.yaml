@@ -3,7 +3,7 @@ category: Marvel Universe
 
 questions:
   - prompt: "What is the real name of Moon Knight?"
-    answers: ["Marc Spector", "Marc Specter"]
+    answers: ["Marc Spector"]
 
   - prompt: "Which Marvel character was a KGB assassin before defecting to S.H.I.E.L.D.?"
     answers: ["Black Widow", "Natasha Romanoff", "Natasha Romanova"]
@@ -17,18 +17,17 @@ questions:
   - prompt: "What planet is Ronan the Accuser from?"
     answers: ["Hala"]
 
-  - prompt: "In the comics, who kills Thanos?"
+  - prompt: "In Marvel's Annihilation storyline, who kills Thanos?"
     answers: ["Drax", "Drax the Destroyer"]
 
   - prompt: "What is the name of the group formed by Doctor Strange, Iron Man, and others to make high-level decisions?"
     answers: ["The Illuminati"]
 
   - prompt: "What does S.W.O.R.D. stand for?"
-    answers: ["Sentient Weapon Observation and Response Division"]
+    answers: ["Sentient World Observation and Response Department"]
 
   - prompt: "What is the full name of the Winter Soldier?"
     answers: ["James Buchanan Barnes", "Bucky Barnes"]
 
   - prompt: "What is the name of the AI that replaces JARVIS?"
     answers: ["F.R.I.D.A.Y.", "Friday"]
-

@@ -35,7 +35,7 @@ questions:
   answers: ["Au"]
 
 - prompt: "What is the freezing point of water in Celsius?"
-  answers: ["0°C", "0 degrees Celsius", "0 C"]
+  answers: ["0", "zero", "0°C", "0 degrees Celsius", "0 C"]
 
 - prompt: "What is the term for animals that only eat plants?"
   answers: ["Herbivores", "Herbivore"]
@@ -61,5 +61,5 @@ questions:
 - prompt: "What is the main component of the air we breathe?"
   answers: ["Nitrogen", "N2", "N₂"]
 
-- prompt: "Which element is essential for breathing and is the most abundant gas in Earth's atmosphere?"
+- prompt: "Which element is essential for breathing?"
   answers: ["Oxygen", "O2", "O₂"]

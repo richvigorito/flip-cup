@@ -2,6 +2,7 @@
 package game 
 
 import (
+	"sync"
 	"github.com/gorilla/websocket"
 	"flip-cup/internal/utils"
 )
@@ -10,6 +11,7 @@ type Player struct {
 	ID   string
 	Name string
 	Conn *websocket.Conn
+	mu   sync.Mutex
 }
 
 type PlayerSnapshot struct {

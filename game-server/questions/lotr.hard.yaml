@@ -5,23 +5,23 @@ questions:
   - prompt: "What is the name of the horse that Gandalf rides in The Two Towers?"
     answers: ["Shadowfax"]
 
-  - prompt: "What is the name of the sword that was reforged from the shards of Narsil?"
+  - prompt: "What is the name of the sword reforged from the shards of Narsil?"
     answers: ["Andúril", "Anduril"]
 
   - prompt: "Who killed the Witch-king of Angmar?"
     answers: ["Éowyn", "Eowyn"]
 
-  - prompt: "What elven city did Galadriel and Celeborn rule over?"
+  - prompt: "What elven realm did Galadriel and Celeborn rule over?"
     answers: ["Lothlórien", "Lothlorien"]
 
-  - prompt: "What is the name of the orc that betrayed Saruman and led the Uruk-hai?"
-    answers: ["Gríma Wormtongue", "Wormtongue"]
+  - prompt: "What is the name of King Théoden's counselor who serves Saruman?"
+    answers: ["Gríma Wormtongue", "Grima Wormtongue", "Wormtongue"]
 
-  - prompt: "What is the name of the giant spider that resides in Mirkwood?"
+  - prompt: "What is the name of the giant spider Frodo encounters near Cirith Ungol?"
     answers: ["Shelob"]
 
   - prompt: "What gift does Galadriel give Frodo in Lothlórien?"
-    answers: ["Phial of Galadriel", "The Phial"]
+    answers: ["Phial of Galadriel", "The Phial", "Phial"]
 
   - prompt: "Who is the Lord of the Rings that created the One Ring?"
     answers: ["Sauron"]
@@ -29,56 +29,56 @@ questions:
   - prompt: "Who was the first king of Númenor?"
     answers: ["Elros Tar-Minyatur", "Elros"]
 
-  - prompt: "What is the name of the race that lives in the Undying Lands?"
+  - prompt: "What race sails to the Undying Lands?"
     answers: ["Elves"]
 
-  - prompt: "What is the name of the dwarf city that was destroyed by the dragon Smaug?"
+  - prompt: "What is the name of the dwarf city under the Lonely Mountain?"
     answers: ["Erebor"]
 
-  - prompt: "What is the elvish language that was spoken by the high elves?"
+  - prompt: "What Elvish language was spoken by the High Elves?"
     answers: ["Quenya"]
 
   - prompt: "What is the name of Aragorn's mother?"
     answers: ["Gilraen"]
 
-  - prompt: "What was the name of the fortress in the land of Gondor that was once the seat of the kings?"
+  - prompt: "What is the name of Gondor's great white city?"
     answers: ["Minas Tirith"]
 
-  - prompt: "Who speaks the prophecy of the One Ring before the Council of Elrond?"
+  - prompt: "Who identifies and recites the writing on the One Ring at the Council of Elrond?"
     answers: ["Gandalf"]
 
-  - prompt: "What was the name of the ship that carried the Ring-bearers to the Undying Lands at the end of The Return of the King?"
+  - prompt: "What is the name of the harbor from which the Ring-bearers sail to the Undying Lands?"
     answers: ["The Grey Havens", "Grey Havens"]
 
-  - prompt: "What is the name of the sword that cuts the Ring from Sauron’s hand in the Battle of Dagorlad?"
-    answers: ["Andúril", "Anduril"]
+  - prompt: "What is the name of the sword that cuts the Ring from Sauron's hand?"
+    answers: ["Narsil"]
 
-  - prompt: "What is the name of the creature who acts as a guide to Frodo and Sam in Mordor?"
-    answers: ["Gollum"]
+  - prompt: "What is the name of the creature who guides Frodo and Sam through Mordor?"
+    answers: ["Gollum", "Smeagol", "Sméagol"]
 
   - prompt: "Who is the rightful heir to the throne of Gondor?"
-    answers: ["Aragorn"]
+    answers: ["Aragorn", "Aragorn II Elessar", "Elessar"]
 
-  - prompt: "Who is the chief of the Balrog encountered by Gandalf in Moria?"
+  - prompt: "What is the name given to the Balrog of Moria?"
     answers: ["Durin's Bane"]
 
-  - prompt: "Which Elven lord creates the first Ring of Power?"
+  - prompt: "Which Elven smith forged the Rings of Power?"
     answers: ["Celebrimbor"]
 
   - prompt: "What language is the inscription on the One Ring written in?"
     answers: ["Black Speech"]
 
-  - prompt: "What event did Saruman attempt to cause by using the palantír?"
-    answers: ["He tried to communicate with Sauron", "Communicate with Sauron"]
+  - prompt: "What did Saruman use the palantír to do?"
+    answers: ["Communicate with Sauron", "He tried to communicate with Sauron"]
 
-  - prompt: "Who was the captain of the corsairs who sailed to Minas Tirith?"
-    answers: ["Pirates of Umbar", "Corsairs of Umbar"]
+  - prompt: "What group of raiders sailed from the south and threatened Gondor?"
+    answers: ["Corsairs of Umbar", "Pirates of Umbar"]
 
   - prompt: "What is the name of the dark fortress in Mordor?"
     answers: ["Barad-dûr", "Barad-dur"]
 
-  - prompt: "What was the name of the hobbit who attempted to resist Saruman's influence and was killed in The Two Towers?"
-    answers: ["This is a trick question; no hobbit was killed by Saruman or his agents in The Two Towers."]
-
-  - prompt: "What is the elvish word for 'friend' that opens the doors of Moria?"
+  - prompt: "What is the Elvish word for 'friend' that opens the Doors of Moria?"
     answers: ["Mellon"]
+
+  - prompt: "What is the name of Saruman's tower in Isengard?"
+    answers: ["Orthanc"]

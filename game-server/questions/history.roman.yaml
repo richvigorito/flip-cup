@@ -3,7 +3,7 @@ category: History
 
 questions:
   - prompt: "Who was the first emperor of Rome?"
-    answers: ["Augustus"]
+    answers: ["Augustus", "Octavian", "Octavian Augustus"]
 
   - prompt: "What was the capital of the Roman Empire?"
     answers: ["Rome"]
@@ -53,7 +53,7 @@ questions:
   - prompt: "What large Roman province was in modern-day France?"
     answers: ["Gaul"]
 
-  - prompt: "Which Roman general invaded Britain in 43 AD?"
+  - prompt: "Which Roman emperor ordered the invasion of Britain in 43 AD?"
     answers: ["Claudius"]
 
   - prompt: "What was the basic clothing worn by Roman men?"
@@ -68,7 +68,7 @@ questions:
   - prompt: "What animal symbolized the Roman Empire?"
     answers: ["Eagle"]
 
-  - prompt: "What was a Roman senate?"
+  - prompt: "What was the Roman Senate?"
     answers: ["A governing council"]
 
   - prompt: "What famous Carthaginian general fought Rome?"
@@ -98,7 +98,7 @@ questions:
   - prompt: "What was the Colosseum used for?"
     answers: ["Public entertainment"]
 
-  - prompt: "What was a Roman god of love called?"
+  - prompt: "Who was the Roman god of love?"
     answers: ["Cupid"]
 
   - prompt: "Who led a slave rebellion against Rome?"
@@ -114,7 +114,7 @@ questions:
     answers: ["Nero"]
 
   - prompt: "What was a Roman aquila?"
-    answers: ["Military standard"]
+    answers: ["Military standard", "Legionary standard", "Eagle standard"]
 
   - prompt: "What region is modern-day Turkey that was once part of Rome?"
     answers: ["Asia Minor"]
@@ -132,10 +132,10 @@ questions:
     answers: ["Pantheon"]
 
   - prompt: "Who were plebeians?"
-    answers: ["Common citizens"]
+    answers: ["Common citizens", "Commoners"]
 
   - prompt: "Who were patricians?"
-    answers: ["Wealthy elite class"]
+    answers: ["Wealthy elite class", "Aristocrats", "Nobility"]
 
   - prompt: "What was the purpose of Roman roads?"
     answers: ["Military and trade travel"]

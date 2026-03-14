@@ -2,65 +2,65 @@ title: LOTR (Medium)
 category: Lord of the Rings
 
 questions:
-  - prompt: "What is the name of the wizard who turns Saruman’s staff white?"
+  - prompt: "What wizard breaks Saruman's staff and casts him from the order?"
     answers: ["Gandalf"]
 
   - prompt: "What is the name of the tree that speaks to Merry and Pippin in Fangorn Forest?"
     answers: ["Treebeard"]
 
-  - prompt: "What race is Gollum?"
-    answers: ["Stoor Hobbit", "Stoor"]
+  - prompt: "What race was Gollum originally?"
+    answers: ["Stoor Hobbit", "Stoor", "Hobbit"]
 
   - prompt: "What is the name of the dwarf who accompanies the Fellowship?"
     answers: ["Gimli"]
 
-  - prompt: "Who is the steward of Gondor at the time of the War of the Ring?"
+  - prompt: "Who is the Steward of Gondor during the War of the Ring?"
     answers: ["Denethor", "Denethor II"]
 
   - prompt: "Who is the elven lord who helps guide the Fellowship?"
     answers: ["Elrond"]
 
-  - prompt: "What is the name of the golden ring that controls the other Rings of Power?"
+  - prompt: "What is the name of the ring that rules the other Rings of Power?"
     answers: ["The One Ring", "One Ring", "The Ring"]
 
-  - prompt: "What language does Aragorn speak when he reveals his true identity?"
-    answers: ["Elvish", "Sindarin"]
+  - prompt: "What Elvish language is Aragorn especially associated with speaking?"
+    answers: ["Sindarin", "Elvish"]
 
-  - prompt: "Who is the lady of the wood that gives gifts to the Fellowship?"
+  - prompt: "Who is the Lady of the Wood that gives gifts to the Fellowship?"
     answers: ["Galadriel"]
 
   - prompt: "What is the name of the elven realm that the Fellowship travels through?"
     answers: ["Lothlórien", "Lothlorien"]
 
-  - prompt: "Who is the leader of the Riders of Rohan after King Theoden?"
+  - prompt: "Who becomes king of Rohan after Théoden?"
     answers: ["Éomer", "Eomer"]
 
-  - prompt: "Who is the commander of the Uruk-hai army?"
+  - prompt: "Who is the commander of the Uruk-hai army sent after the Fellowship in the films?"
     answers: ["Lurtz"]
 
-  - prompt: "Who are the two hobbits that leave the Shire with Frodo?"
-    answers: ["Samwise and Pippin", "Samwise Gamgee and Peregrin Took", "Sam and Pippin"]
+  - prompt: "Which hobbit leaves the Shire with Frodo and serves as his gardener?"
+    answers: ["Samwise Gamgee", "Samwise", "Sam"]
 
   - prompt: "Who does Aragorn marry?"
     answers: ["Arwen"]
 
-  - prompt: "What is the name of the first battle where Aragorn proves himself as a warrior?"
-    answers: ["Helm's Deep", "The Battle of Helm's Deep", "Battle of the Hornburg"]
+  - prompt: "What is the name of the battle at Helm's Deep?"
+    answers: ["Helm's Deep", "Battle of Helm's Deep", "Battle of the Hornburg"]
 
   - prompt: "What is the name of the land where Gollum takes Frodo and Sam?"
     answers: ["Mordor"]
 
-  - prompt: "Which elf prince leads the elves to Helm’s Deep?"
-    answers: ["Legolas"]
+  - prompt: "Which elf leads the Elven reinforcements to Helm's Deep in Peter Jackson's film adaptation?"
+    answers: ["Haldir"]
 
-  - prompt: "What is the name of the hobbit who borrows Bilbo’s sword, Sting?"
+  - prompt: "What is the name of the hobbit who carries Sting?"
     answers: ["Frodo Baggins", "Frodo"]
 
-  - prompt: "Who destroys the One Ring?"
-    answers: ["Frodo Baggins", "Gollum", "Frodo Baggins, but Gollum bites it off his finger"]
+  - prompt: "Who ultimately falls into Mount Doom with the One Ring?"
+    answers: ["Gollum", "Smeagol", "Sméagol"]
 
   - prompt: "What is the name of the mountain where the One Ring must be destroyed?"
     answers: ["Mount Doom", "Orodruin"]
 
-  - prompt: "Who says, 'There is some good in this world, Mr. Frodo, and it’s worth fighting for'?"
+  - prompt: "Who says, 'There is some good in this world, Mr. Frodo, and it's worth fighting for'?"
     answers: ["Samwise Gamgee", "Sam"]

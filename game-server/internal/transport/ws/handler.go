@@ -64,6 +64,60 @@ func HandleWebSocketConnection(manager *game.GameManager) http.HandlerFunc {
 					return
 				}
 
+				if joinPayload.PlayerID != "" {
+					var t *game.Team
+					p, t = g.ReconnectPlayer(joinPayload.PlayerID, conn)
+					if p != nil {
+						log.Printf("Reconnected player %s to game %s", p.ID, g.ID)
+
+						// Send me info FIRST
+						payload := game.PlayerJoinedPayload{
+							PlayerID: p.ID,
+							Name:     p.Name,
+						}
+						g.PlayerBroadcast(types.Envelope{
+							Type:    "game_player_initialized",
+							GameID:  g.ID,
+							Payload: utils.MustMarshal(payload),
+						}, p)
+						
+						// Send current state to reconnected player
+						snapshot := map[string]interface{}{
+							"game_snapshot":       g.Snapshot(),
+							"action_performed_by": p.Snapshot(),
+						}
+
+						// Always send team info on reconnect
+						if t != nil {
+							log.Printf("Restoring team state for player %s (Team: %s)", p.Name, t.Name)
+							teamData := utils.MustMarshal(t.Snapshot())
+							g.PlayerBroadcast(types.Envelope{
+								Type:    "my_current_team",
+								Payload: teamData,
+							}, p)
+						} else {
+							log.Printf("⚠️ Reconnected player %s has no team!", p.ID)
+						}
+						
+						if g.Active {
+							g.PlayerBroadcast(types.Envelope{Type: "game_started", Payload: utils.MustMarshal(snapshot)}, p)
+
+							// Resend current question
+							if t != nil {
+								if t.Turn < len(g.QuestionFile.Questions) {
+									q := g.QuestionFile.Questions[t.Turn]
+									g.PlayerBroadcast(types.Envelope{Type: "question", Name: q.Prompt}, p)
+								} else {
+									log.Printf("⚠️ Team %s turn %d exceeds question count %d", t.Name, t.Turn, len(g.QuestionFile.Questions))
+								}
+							}
+						} else {
+							// For inactive games, send teams_assigned to sync lobby state
+							g.PlayerBroadcast(types.Envelope{Type: "teams_assigned", Payload: utils.MustMarshal(snapshot)}, p)
+						}
+					}
+				}
+
 			case "create_game":
 				// It's a Start Game payload
 				var startPayload game.StartGamePayload
@@ -92,7 +146,21 @@ func HandleWebSocketConnection(manager *game.GameManager) http.HandlerFunc {
 				log.Println("Unknown message type:", envelope.Type)
 				return
 		}
-		p = g.AddPlayer(conn, name)
+		
+		if p == nil {
+			p = g.AddPlayer(conn, name)
+
+			// Send initialization message for new player
+			payload := game.PlayerJoinedPayload{
+				PlayerID: p.ID,
+				Name:     p.Name,
+			}
+			g.PlayerBroadcast(types.Envelope{
+				Type:    "game_player_initialized",
+				GameID:  g.ID,
+				Payload: utils.MustMarshal(payload),
+			}, p)
+		}
 
 		// From here, game is responsible for handling game specific messages
 		g.HandleConnection(p)

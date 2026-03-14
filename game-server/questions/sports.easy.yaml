@@ -1,7 +1,7 @@
 title: Gen Sports (Easy)
 category: Sports
 questions:
-  - prompt: "Which country hosted the 2012 Summer Olympics?"
+  - prompt: "Which country hosted the 2012 Summer Olympics in London?"
     answers: ["United Kingdom", "UK", "Great Britain", "Britain"]
 
   - prompt: "Who is known as 'The King' in basketball?"
@@ -11,7 +11,7 @@ questions:
     answers: ["France"]
 
   - prompt: "Who has won the most Olympic gold medals?"
-    answers: ["Michael Phelps"]
+    answers: ["Michael Phelps", "Phelps"]
 
   - prompt: "Which sport is associated with Wimbledon?"
     answers: ["Tennis"]
@@ -28,7 +28,7 @@ questions:
   - prompt: "Who is known as the 'Great One' in hockey?"
     answers: ["Wayne Gretzky"]
 
-  - prompt: "Which country invented soccer?"
+  - prompt: "Which country codified modern association football (soccer)?"
     answers: ["England"]
 
   - prompt: "What number is used to identify a touchdown in football?"
@@ -46,8 +46,8 @@ questions:
   - prompt: "What color jersey is worn by the Tour de France leader?"
     answers: ["Yellow"]
 
-  - prompt: "Which female tennis player has won the most Grand Slams?"
-    answers: ["Serena Williams"]
+  - prompt: "Which female player holds the Open Era record for Grand Slam singles titles?"
+    answers: ["Serena Williams", "Serena"]
 
   - prompt: "In golf, what is a score of one under par on a hole called?"
     answers: ["Birdie"]
@@ -55,8 +55,8 @@ questions:
   - prompt: "What is the term for a score of zero in tennis?"
     answers: ["Love"]
 
-  - prompt: "Which NFL team has won the most Super Bowls?"
-    answers: ["Pittsburgh Steelers"]
+  - prompt: "Name an NFL team tied for the most Super Bowl wins."
+    answers: ["Pittsburgh Steelers", "Steelers", "New England Patriots", "Patriots"]
 
   - prompt: "Which sport uses a pommel horse?"
     answers: ["Gymnastics"]

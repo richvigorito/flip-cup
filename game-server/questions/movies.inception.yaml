@@ -18,13 +18,13 @@ questions:
     answers: ["Inception"]
 
   - prompt: "Who composed the score for Inception?"
-    answers: ["Hans Zimmer"]
+    answers: ["Hans Zimmer", "Zimmer"]
 
   - prompt: "What’s the name of the architect who designs the dream worlds?"
     answers: ["Ariadne"]
 
   - prompt: "What actor plays Eames, the forger?"
-    answers: ["Tom Hardy"]
+    answers: ["Tom Hardy", "Hardy"]
 
   - prompt: "What’s the name of Cobb’s deceased wife?"
     answers: ["Mal", "Mal Cobb"]
@@ -33,10 +33,10 @@ questions:
     answers: ["Joseph Gordon-Levitt", "Joseph Gordon Levitt"]
 
   - prompt: "What phrase is used to trigger the dream collapse?"
-    answers: ["The kick"]
+    answers: ["The kick", "Kick"]
 
-  - prompt: "What company does Saito want to break up via inception?"
-    answers: ["Fischer", "Fischer Morrow", "Fischer Corporation"]
+  - prompt: "Which business heir does Saito hire Cobb to target with inception?"
+    answers: ["Robert Fischer", "Fischer"]
 
   - prompt: "What’s the deepest level of dream layering referred to in the movie?"
     answers: ["Limbo"]
@@ -45,10 +45,10 @@ questions:
     answers: ["2010"]
 
   - prompt: "What song is used to signal the impending kick?"
-    answers: ["Non, Je Ne Regrette Rien", "Je Ne Regrette Rien", "Edith Piaf"]
+    answers: ["Non, Je Ne Regrette Rien", "Non Je Ne Regrette Rien", "Je Ne Regrette Rien", "Edith Piaf"]
 
   - prompt: "Which actor plays Robert Fischer?"
-    answers: ["Cillian Murphy"]
+    answers: ["Cillian Murphy", "Murphy"]
 
   - prompt: "How does Cobb test whether he’s dreaming?"
     answers: ["Spins his top", "Spinning top", "Top"]
@@ -61,4 +61,3 @@ questions:
 
   - prompt: "Who convinces Cobb to try inception instead of extraction?"
     answers: ["Saito"]
-

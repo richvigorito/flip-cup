@@ -6,7 +6,7 @@ questions:
     answers: ["Ciao"]
 
   - prompt: "How do you say 'goodbye' in Italian?"
-    answers: ["Addio"]
+    answers: ["Addio", "Arrivederci"]
 
   - prompt: "What is the Italian word for 'friend'?"
     answers: ["Amico"]
@@ -36,7 +36,7 @@ questions:
     answers: ["Buongiorno"]
 
   - prompt: "How do you say 'good night' in Italian?"
-    answers: ["Buona notte"]
+    answers: ["Buona notte", "Buonanotte"]
 
   - prompt: "What is the Italian word for 'dog'?"
     answers: ["Cane"]
@@ -54,7 +54,7 @@ questions:
     answers: ["Casa"]
 
   - prompt: "How do you say 'good' in Italian?"
-    answers: ["Bene"]
+    answers: ["Bene", "Buono", "Buona"]
 
   - prompt: "What is the Italian word for 'food'?"
     answers: ["Cibo"]
@@ -96,7 +96,7 @@ questions:
     answers: ["Ieri"]
 
   - prompt: "How do you say 'good evening' in Italian?"
-    answers: ["Buona sera"]
+    answers: ["Buona sera", "Buonasera"]
 
   - prompt: "What is the Italian word for 'store'?"
     answers: ["Negozio"]
@@ -117,7 +117,7 @@ questions:
     answers: ["Musica"]
 
   - prompt: "How do you say 'I am tired' in Italian?"
-    answers: ["Sono stanco"]
+    answers: ["Sono stanco", "Sono stanca"]
 
   - prompt: "What is the Italian word for 'shoe'?"
     answers: ["Scarpa"]
@@ -153,7 +153,7 @@ questions:
     answers: ["Canzone"]
 
   - prompt: "How do you say 'I am tired' in Italian?"
-    answers: ["Sono stanco"]
+    answers: ["Sono stanco", "Sono stanca"]
 
   - prompt: "What is the Italian word for 'table'?"
     answers: ["Tavolo"]

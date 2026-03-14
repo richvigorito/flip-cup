@@ -5,17 +5,17 @@ questions:
   - prompt: "Which social media platform became extremely popular in the 2020s for its short-form videos?"
     answers: ["TikTok"]
 
-  - prompt: "Which 2020s show features characters like Joe Goldberg?"
+  - prompt: "Which thriller series, hugely popular in the 2020s, features Joe Goldberg?"
     answers: ["You"]
 
   - prompt: "Which film won the Academy Award for Best Picture in 2021?"
     answers: ["Nomadland"]
 
-  - prompt: "What popular 2020s TV show revolves around a group of people trying to survive a zombie apocalypse?"
+  - prompt: "What long-running TV show revolves around survivors trying to make it through a zombie apocalypse?"
     answers: ["The Walking Dead"]
 
   - prompt: "Which 2020s movie features the character Harley Quinn?"
-    answers: ["Birds of Prey"]
+    answers: ["Birds of Prey", "Birds of Prey and the Fantabulous Emancipation of One Harley Quinn"]
 
   - prompt: "Which Netflix series was based on the video game 'The Witcher'?"
     answers: ["The Witcher"]
@@ -29,7 +29,7 @@ questions:
   - prompt: "Which Disney+ series features the characters Wanda and Vision?"
     answers: ["WandaVision"]
 
-  - prompt: "What popular 2020s game became a worldwide sensation involving building and surviving in a virtual world?"
+  - prompt: "What game remained a worldwide sensation in the 2020s, involving building and surviving in a blocky virtual world?"
     answers: ["Minecraft"]
 
   - prompt: "Which 2020s film became the highest-grossing movie after its release in 2022?"
@@ -38,9 +38,8 @@ questions:
   - prompt: "Which 2020s artist is known for the album 'Sour'?"
     answers: ["Olivia Rodrigo"]
 
-  - prompt: "Which popular 2020s animated series features a futuristic family?"
+  - prompt: "Which popular animated sci-fi series features Rick Sanchez and Morty Smith?"
     answers: ["Rick and Morty"]
 
-  - prompt: "Which 2020s film franchise brought back the character 'Jurassic Park'?"
-    answers: ["Jurassic World: Dominion", "Jurassic World"]
-
+  - prompt: "Which 2022 film in the Jurassic World franchise brought back legacy Jurassic Park characters?"
+    answers: ["Jurassic World: Dominion", "Dominion"]

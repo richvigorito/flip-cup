@@ -37,18 +37,19 @@ questions:
   - prompt: "Who painted the Mona Lisa?"
     answers: 
       - "Leonardo da Vinci"
-      - "Leonardo di Vinci"
       - "Leonardo Da Vinci"
       - "da Vinci"
       - "Da Vinci"
       - "DaVinci"
+      - "Leonardo"
 
   - prompt: "Which element has the chemical symbol 'O'?"
     answers: 
       - "Oxygen"
 
-  - prompt: "What is the longest river in the world?"
+  - prompt: "What is the largest river in the world by volume?"
     answers: 
       - "The Amazon River"
       - "Amazon River"
-      - "Amazon River"
+      - "Amazon"
+      - "The Amazon"

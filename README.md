@@ -8,7 +8,7 @@ Try it out here: https://flipcup.fly.dev
 
 ## 🎯 Purpose
 
-This was a fun side project to explore Go and Svelte — my first functionaly project in either. It's still a work in progress, so be gentle with the feedback 😄. That said, all contributions and ideas are welcome!
+This was a fun side project to explore Go and Svelte — my first functional project in either. It's still a work in progress, so be gentle with the feedback 😄. That said, all contributions and ideas are welcome!
 
 ## 🛠 Project Overview
 ```text
@@ -23,7 +23,7 @@ This was a fun side project to explore Go and Svelte — my first functionaly pr
 │   │   │   ├── types
 │   │   │   └── ws
 │   │   └── utils
-│   ├── public                          -- for single container depoyments stores ui build
+│   ├── public                          -- for single container deployments stores ui build
 │   └── questions                       -- stores all question yaml files
 └── ui                              // houses Svelte-kit frontend app
     ├── public
@@ -69,6 +69,53 @@ cat "VITE_WS_URL=<your-local-ip>:8080" > .env
 
    http://<your-local-ip>:5173 or 
    http://localhost:5173
+
+## 🧪 Testing
+
+We use [Playwright](https://playwright.dev/) for End-to-End (E2E) testing. The tests simulate real user interactions (creating games, joining, answering questions) to ensure the full stack works together.
+
+### Prerequisites
+
+Ensure both the backend and frontend are running locally:
+
+1.  **Start the Backend**:
+    ```bash
+    cd game-server
+    go run cmd/flipcup/main.go
+    ```
+2.  **Start the Frontend**:
+    ```bash
+    cd ui
+    npm install
+    npm run dev
+    ```
+
+### Running Tests
+
+Run all tests:
+```bash
+cd ui
+npx playwright test
+```
+
+Run a specific test file (e.g., disconnection logic):
+```bash
+npx playwright test e2e/disconnect.spec.ts
+```
+
+Run tests with a visual UI (great for debugging):
+```bash
+npx playwright test --ui
+```
+
+### Writing Tests
+
+Tests are located in `ui/e2e/`. To add a new test:
+1.  Create a file like `ui/e2e/my-feature.spec.ts`.
+2.  Import `test` and `expect` from `@playwright/test`.
+3.  Use `page` fixtures to interact with the game.
+
+**Note**: We use `sessionStorage` for player state, allowing you to simulate multiple players in a single browser instance by using different `BrowserContext`s. See `e2e/disconnect.spec.ts` for an example of multi-player testing.
 
 ## 🤝 Contributing
 Got feedback, ideas, or issues? Open an issue or a pull request — would love to hear what you think! Lastly, for the record, no i was not in a frat. 

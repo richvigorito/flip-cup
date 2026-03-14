@@ -6,22 +6,22 @@ questions:
     answers: ["1861"]
 
   - prompt: "What event officially started the Civil War?"
-    answers: ["The attack on Fort Sumter"]
+    answers: ["The attack on Fort Sumter", "Fort Sumter", "Battle of Fort Sumter"]
 
   - prompt: "Who was President of the Confederate States of America?"
     answers: ["Jefferson Davis"]
 
   - prompt: "Which general led the Confederate Army of Northern Virginia?"
-    answers: ["Robert E. Lee", "Lee"]
+    answers: ["Robert E. Lee", "Lee", "General Lee"]
 
   - prompt: "What Union general became famous for his March to the Sea?"
-    answers: ["William Tecumseh Sherman", "William Sherman"]
+    answers: ["William Tecumseh Sherman", "William Sherman", "Sherman"]
 
   - prompt: "What was the main cause of the Civil War?"
-    answers: ["Slavery"]
+    answers: ["Slavery", "Slavery and secession", "Slavery and states' rights"]
 
   - prompt: "Which battle is considered the bloodiest single day in American history?"
-    answers: ["Battle of Antietam"]
+    answers: ["Battle of Antietam", "Antietam"]
 
   - prompt: "Who was the President of the United States during the Civil War?"
     answers: ["Abraham Lincoln", "Lincoln"]
@@ -39,7 +39,7 @@ questions:
     answers: ["Ulysses S. Grant", "Grant"]
 
   - prompt: "Which battle is considered the turning point of the war?"
-    answers: ["Battle of Gettysburg"]
+    answers: ["Battle of Gettysburg", "Gettysburg"]
 
   - prompt: "What famous speech did Lincoln deliver after the Battle of Gettysburg?"
     answers: ["Gettysburg Address"]
@@ -87,7 +87,7 @@ questions:
     answers: ["West Virginia"]
 
   - prompt: "What was the Union army's first major defeat?"
-    answers: ["First Battle of Bull Run"]
+    answers: ["First Battle of Bull Run", "First Manassas", "First Battle of Manassas"]
 
   - prompt: "What famous African American regiment fought in the war?"
     answers: ["54th Massachusetts Infantry"]
@@ -142,4 +142,3 @@ questions:
 
   - prompt: "What did the Conscription Act of 1863 establish?"
     answers: ["Military draft for the Union"]
-

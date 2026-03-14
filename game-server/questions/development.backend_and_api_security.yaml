@@ -1,0 +1,69 @@
+title: Backend & API Security
+category: Software Development
+
+questions:
+  - prompt: "What is SQL injection?"
+    answers: ["An attack that inserts malicious SQL into a query", "SQLi"]
+
+  - prompt: "Which HTTP method is considered safe and idempotent?"
+    answers: ["GET"]
+
+  - prompt: "What should you always do before inserting user input into a SQL query?"
+    answers: ["Sanitize it", "Use parameterized queries", "Escape it properly"]
+
+  - prompt: "What is the purpose of an API key?"
+    answers: ["Authenticate the client", "Track and control usage"]
+
+  - prompt: "What attack tricks a user into submitting a request they didn’t intend?"
+    answers: ["CSRF", "Cross-Site Request Forgery"]
+
+  - prompt: "What’s a secure alternative to basic authentication for APIs?"
+    answers: ["OAuth", "JWT", "Bearer tokens"]
+
+  - prompt: "What authentication method sends credentials as base64 with each request?"
+    answers: ["Basic authentication", "Basic Auth"]
+
+  - prompt: "Which authentication method hashes the credentials before sending?"
+    answers: ["Digest authentication", "Digest Auth"]
+
+  - prompt: "What’s one reason Digest authentication is more secure than Basic?"
+    answers: ["Doesn’t send credentials in plain base64", "Uses a challenge-response hash"]
+
+  - prompt: "What does rate limiting help prevent?"
+    answers: ["Denial-of-service attacks", "Abuse", "Brute-force attacks", "Excessive requests","DoS attacks"]
+
+  - prompt: "What HTTP status code indicates unauthorized access?"
+    answers: ["401"]
+
+  - prompt: "What status code means ‘Forbidden’?"
+    answers: ["403"]
+
+  - prompt: "What does input validation on the backend protect against?"
+    answers: ["Injection attacks", "Invalid/malicious data"]
+
+  - prompt: "What should you avoid returning in API error messages?"
+    answers: ["Stack traces", "Sensitive info", "Internal implementation details", "Verbose error messages", "Personal data", "Sensitive data", "Passwords", "API keys"]
+
+  - prompt: "What is the principle of least privilege?"
+    answers: ["Give users the minimum access necessary", "Give least privilege", "Give minimal access", "Give minimal permissions necessary"]
+
+  - prompt: "What does RBAC stand for?"
+    answers: ["Role-Based Access Control", "Role Based Access Control"]
+
+  - prompt: "What is a core idea of RBAC?"
+    answers: ["Users are assigned roles, and roles have permissions", "Users get permissions through roles", "Users are assigned roles that have permissions", "Permissions are assigned to roles, not directly to users"]
+
+  - prompt: "What does ZTA stand for in security?"
+    answers: ["Zero Trust Architecture", "Zero Trust"]
+
+  - prompt: "What does FGA stand for?"
+    answers: ["Fine-Grained Authorization", "Fine Grained Authorization"]
+
+  - prompt: "What is a core tenet of Zero Trust?"
+    answers: ["Never trust, always verify", "Assume breach", "Verify everything", "Trust no one"]
+
+  - prompt: "What’s a common misconfiguration that can expose internal APIs?"
+    answers: ["Disabling authentication", "Leaving debug routes open", "Exposing sensitive endpoints", "Exposing internal APIs to the public"]
+
+  - prompt: "What tool can you use to scan for vulnerabilities in your web app or API?"
+    answers: ["OWASP ZAP", "Burp Suite", "Nikto"]

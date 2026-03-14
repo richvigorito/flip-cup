@@ -6,7 +6,7 @@ questions:
     answers: ["Anche se pioveva, siamo andati a fare una passeggiata", "Anche se pioveva siamo andati a fare una passeggiata"]
 
   - prompt: "What does 'Non appena sarò libero, ti chiamerò' mean?"
-    answers: ["As soon as I’m free, I will call you", "As soon as I am free, I will call you"]
+    answers: ["As soon as I’m free, I will call you", "As soon as I am free, I will call you", "As soon as I'm free, I will call you"]
 
   - prompt: "Translate: 'Had I known, I wouldn’t have come.'"
     answers: ["Se lo avessi saputo, non sarei venuto", "Se lo avessi saputo non sarei venuto"]
@@ -30,7 +30,7 @@ questions:
     answers: ["Saremmo partiti prima se lo avessimo saputo", "Saremmo partiti prima, se lo avessimo saputo"]
 
   - prompt: "What does 'Avrei voluto vedere quel film' mean?"
-    answers: ["I would have liked to see that movie"]
+    answers: ["I would have liked to see that movie", "I'd have liked to see that movie"]
 
   - prompt: "Translate: 'Despite being tired, he kept working.'"
     answers: ["Nonostante fosse stanco, ha continuato a lavorare", "Nonostante fosse stanco ha continuato a lavorare"]
@@ -42,7 +42,7 @@ questions:
     answers: ["Dubito che abbia già finito", "Dubito che abbia gia finito"]
 
   - prompt: "What does 'Speravo che tu venissi' mean?"
-    answers: ["I hoped that you would come"]
+    answers: ["I hoped that you would come", "I was hoping you would come"]
 
   - prompt: "Translate: 'Let’s hope everything goes well.'"
     answers: ["Speriamo che tutto vada bene"]
@@ -54,7 +54,7 @@ questions:
     answers: ["Se non avesse piovuto, saremmo andati al mare", "Se non avesse piovuto saremmo andati al mare"]
 
   - prompt: "What does 'Temo che sia troppo tardi' mean?"
-    answers: ["I fear it is too late", "I’m afraid it is too late"]
+    answers: ["I fear it is too late", "I’m afraid it is too late", "I'm afraid it is too late"]
 
   - prompt: "Translate: 'He wanted you to tell the truth.'"
     answers: ["Voleva che tu dicessi la verità", "Voleva che tu dicessi la verita"]

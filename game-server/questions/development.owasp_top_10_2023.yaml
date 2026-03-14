@@ -1,0 +1,45 @@
+title: OWASP Top 10 (2023)
+category: Software Development
+
+questions:
+  - prompt: "What does OWASP stand for?"
+    answers: ["Open Web Application Security Project"]
+
+  - prompt: "Which OWASP category includes injection attacks like SQL injection?"
+    answers: ["Injection", "A03 Injection"]
+
+  - prompt: "What OWASP risk involves weak password storage and exposure of sensitive information?"
+    answers: ["Cryptographic Failures"]
+
+  - prompt: "Which OWASP item refers to flaws that let attackers impersonate users or compromise authentication?"
+    answers: ["Identification and Authentication Failures"]
+
+  - prompt: "What is a common cause of 'Security Misconfiguration'?"
+    answers: ["Default credentials", "Unpatched software", "Verbose error messages"]
+
+  - prompt: "Which OWASP risk involves flaws that let users perform unauthorized functions?"
+    answers: ["Broken Access Control"]
+
+  - prompt: "What OWASP risk involves issues with JWT, session tokens, and cookies?"
+    answers: ["Identification and Authentication Failures"]
+
+  - prompt: "What is the primary defense against Cross-Site Scripting (XSS)?"
+    answers: ["Output encoding", "Escaping user input"]
+
+  - prompt: "What kind of risks does 'Software and Data Integrity Failures' refer to?"
+    answers: ["Supply chain attacks", "Tampered updates", "Untrusted sources", ]
+
+  - prompt: "What OWASP risk involves failing to log security events or monitor traffic?"
+    answers: ["Security Logging and Monitoring Failures"]
+
+  - prompt: "Which OWASP API Security risk covers unauthorized access to objects through APIs?"
+    answers: ["Broken Object Level Authorization", "BOLA"]
+
+  - prompt: "What should be done before releasing a major web application update?"
+    answers: ["Security testing", "Penetration testing", "Threat modeling"]
+
+  - prompt: "Which OWASP risk includes leaving admin panels exposed without authentication?"
+    answers: ["Security Misconfiguration"]
+
+  - prompt: "Why is dependency scanning important?"
+    answers: ["Detect vulnerable libraries", "Prevent supply chain attacks"]
