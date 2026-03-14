@@ -68,8 +68,20 @@
     {/if}
 
     <!-- Game Board -->
-    <div class="game-board">
-      <div class="board-label">Game Board</div>
+    <div 
+      class="game-board"
+      class:team-a-view={$myTeam?.id === $gameState.teamA.id}
+      class:team-b-view={$myTeam?.id === $gameState.teamB.id}
+    >
+      <div class="board-label">
+        {#if $myTeam?.id === $gameState.teamA.id}
+          Game Board (Team A View)
+        {:else if $myTeam?.id === $gameState.teamB.id}
+          Game Board (Team B View)
+        {:else}
+          Game Board
+        {/if}
+      </div>
       <div class="board-teams">
 
         <!-- Team A -->
@@ -304,14 +316,27 @@
 
   /* ── Game Board ── */
   .game-board {
-    background: #e5e5e5; /* Cheap plastic table color */
-    border: 8px solid #d4d4d4; /* Table edge */
+    background: #e5e5e5; /* Default: Cheap plastic table */
+    border: 8px solid #d4d4d4; 
     border-radius: var(--r-lg);
     padding: 1.5rem 1.25rem 1.75rem;
     box-shadow: 
-      inset 0 0 40px rgba(0,0,0,0.05), /* Subtle texture/stain */
-      0 10px 30px rgba(0,0,0,0.3); /* Table shadow */
+      inset 0 0 40px rgba(0,0,0,0.05),
+      0 10px 30px rgba(0,0,0,0.3); 
     position: relative;
+    transition: background-color 0.5s ease;
+  }
+  
+  /* Team A Perspective: Warmer/Reddish table tone */
+  .game-board.team-a-view {
+    background: #f0e6e6; 
+    border-color: #e0d0d0;
+  }
+  
+  /* Team B Perspective: Cooler/Blueish table tone */
+  .game-board.team-b-view {
+    background: #e6eaf0;
+    border-color: #d0d8e0;
   }
   
   /* Wood grain / Garage texture hint */
@@ -374,14 +399,9 @@
     border-radius: var(--r-md);
   }
 
-  /* Distinct backgrounds for teams */
-  .team-col:first-child { /* Team A */
-    background: rgba(239, 68, 68, 0.15); /* Red tint - increased opacity */
-    border: 2px solid rgba(239, 68, 68, 0.3);
-  }
-  .team-col:last-child { /* Team B */
-    background: rgba(59, 130, 246, 0.15); /* Blue tint - increased opacity */
-    border: 2px solid rgba(59, 130, 246, 0.3);
+  /* Distinct backgrounds for teams - REMOVED per feedback */
+  .team-col {
+    /* No unique background per column, relying on board tint */
   }
 
   .team-name-row {
