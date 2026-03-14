@@ -171,9 +171,19 @@
 {#if $winner}
   <div class="game-over">
     <div class="game-over-card">
-      <div class="trophy">🏆</div>
-      <p class="game-over-label">Winner!</p>
-      <h2 class="game-over-winner">{$winner}</h2>
+      {#if $myTeam && $winner === $myTeam.name}
+         <div class="trophy">🏆</div>
+         <p class="game-over-label">Victory!</p>
+         <h2 class="game-over-winner">You Won!</h2>
+      {:else if $myTeam}
+         <div class="trophy">☠️</div>
+         <p class="game-over-label">Defeat</p>
+         <h2 class="game-over-winner">{$winner} Won</h2>
+      {:else}
+         <div class="trophy">🏆</div>
+         <p class="game-over-label">Winner!</p>
+         <h2 class="game-over-winner">{$winner}</h2>
+      {/if}
       <button class="restart-btn" on:click={resetGame}>
         Play Again
       </button>
