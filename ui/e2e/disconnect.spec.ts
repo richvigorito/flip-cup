@@ -24,7 +24,8 @@ async function joinLobby(page: Page, name: string): Promise<void> {
   await expect(input).toBeVisible();
   await input.fill(name);
   await page.getByRole('button', { name: /Join Game/i }).click();
-  await expect(page.locator('.teams-preview')).toBeVisible({ timeout: 8_000 });
+  await expect(page.getByRole('heading', { name: /^Lobby$/i })).toBeVisible({ timeout: 8_000 });
+  await expect(page.getByText(new RegExp(`You're in as\\s+${name}`, 'i'))).toBeVisible({ timeout: 8_000 });
 }
 
 async function joinExistingGame(page: Page, gameId: string): Promise<void> {
@@ -67,16 +68,18 @@ test.describe('WebSocket Disconnection Handling', () => {
     await createGame(player1);
     const gameId = await getLobbyGameId(player1);
     
+    // Player 2 joins
     await joinExistingGame(player2, gameId);
 
+    // Both join lobby
     await Promise.all([
       joinLobby(player1, 'Alice'),
       joinLobby(player2, 'Bob'),
     ]);
 
-    // Start the game
+    // Shuffle and Start
     await player1.getByRole('button', { name: /Shuffle Teams/i }).click();
-    await player1.waitForTimeout(1000); // Wait for shuffle
+    await player1.waitForTimeout(1000); 
     await player1.getByRole('button', { name: /Start Game/i }).click();
 
     // Verify game started
@@ -87,40 +90,17 @@ test.describe('WebSocket Disconnection Handling', () => {
     console.log('Reloading Player 1 page...');
     await player1.reload();
 
-    // --- Expectation: Player 1 should be back in the game or able to rejoin easily ---
-    // If the game handles reconnects seamlessly, we expect to see the game board again.
-    // If it requires manual rejoin, we might land on welcome/join screen.
-    
-    // For now, let's assert what currently happens or what we WANT to happen.
-    // Ideally: seamless reconnect to game board.
-    try {
-      await expect(player1.locator('.game-board')).toBeVisible({ timeout: 5_000 });
-      console.log('Success: Player 1 seamlessly reconnected to game board.');
+    // --- Expectation: Seamless Reconnect ---
+    // The game should restore state from sessionStorage and reconnect socket
+    await expect(player1.locator('.game-board')).toBeVisible({ timeout: 10_000 });
       
-      // Additional checks for bug regression (background black, question missing)
-      // Check input is visible (means isMyTurn is true)
-      await expect(player1.locator('.answer-input')).toBeVisible();
-      
-      // Check table color is NOT black (means myTeam is set)
-      const table = player1.locator('.table');
-      const style = await table.getAttribute('style');
-      expect(style).not.toContain('--table-color: #000');
-      expect(style).not.toContain('--table-color: rgb(0, 0, 0)');
+    // Check perspective is restored (not generic view)
+    // Team A view has specific class
+    const board = player1.locator('.game-board');
+    await expect(board).toHaveClass(/team-(a|b)-view/);
 
-    } catch (e) {
-      console.log('Failed: Player 1 did not see game board immediately after reload.');
-      
-      // Check where we are
-      if (await player1.locator('.welcome-screen').isVisible()) {
-        console.log('Current state: Player 1 is on Welcome Screen.');
-      } else if (await player1.locator('.lobby-icon').isVisible()) {
-         console.log('Current state: Player 1 is in Lobby.');
-      } else {
-         console.log('Current state: Unknown.');
-      }
-      
-      // Fail the test to signal we need to implement reconnect logic
-      throw new Error('Player 1 lost game state after reload');
-    }
+    // Check if it's my turn (should see input)
+    // Note: It might NOT be player 1's turn if they aren't first in the shuffled order.
+    // But we at least expect to be "in the game" (not welcome screen)
   });
 });

@@ -70,13 +70,23 @@ cat "VITE_WS_URL=<your-local-ip>:8080" > .env
    http://<your-local-ip>:5173 or 
    http://localhost:5173
 
+## 🤖 AI-Assisted Development
+
+Recent improvements to this project (UI redesign, E2E test suite) were built with the help of GitHub Copilot. A full breakdown of what was delegated, how decisions were made, and what changed lives here:
+
+👉 **[docs/ai-approach.md](docs/ai-approach.md)**
+
 ## 🧪 Testing
 
 We use [Playwright](https://playwright.dev/) for End-to-End (E2E) testing. The tests simulate real user interactions (creating games, joining, answering questions) to ensure the full stack works together.
 
+GitHub Actions now runs the test pipeline on every push and pull request. The first-pass required check for protecting `main` is `tests`, and `main` should be configured to only accept changes through pull requests after that check passes.
+
 ### Prerequisites
 
-Ensure both the backend and frontend are running locally:
+Playwright now starts the backend and frontend automatically when you run the E2E suite, so the manual startup flow below is mainly useful for interactive local development.
+
+If you want to run the app by hand, ensure both the backend and frontend are running locally:
 
 1.  **Start the Backend**:
     ```bash
