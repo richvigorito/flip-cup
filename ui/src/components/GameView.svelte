@@ -79,7 +79,7 @@
         {:else if $myTeam?.id === $gameState.teamB.id}
           Game Board (Team B View)
         {:else}
-          Game Board
+          Game Board (Spectator View)
         {/if}
       </div>
       <div class="board-teams">
@@ -329,22 +329,22 @@
   
   /* Team A Perspective: Warmer/Reddish table tone */
   .game-board.team-a-view {
-    background: #f0e6e6; 
-    border-color: #e0d0d0;
+    background: #5c4242; /* Darker Red/Brown */
+    border-color: #8f5c5c;
   }
   
   /* Team B Perspective: Cooler/Blueish table tone */
   .game-board.team-b-view {
-    background: #e6eaf0;
-    border-color: #d0d8e0;
+    background: #424e5c; /* Darker Blue/Grey */
+    border-color: #5c748f;
   }
-  
+
   /* Wood grain / Garage texture hint */
   .game-board::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.02) 10px, rgba(0,0,0,0.02) 20px);
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.1) 20px);
     pointer-events: none;
     opacity: 0.4;
     border-radius: var(--r-lg);
@@ -355,10 +355,10 @@
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #555; /* Darker label for contrast on light table */
+    color: #ccc; /* Lighter label for contrast on dark table */
     text-align: center;
     margin-bottom: 1.25rem;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    text-shadow: 0 1px 0 rgba(0,0,0,0.5);
   }
   .board-teams {
     display: flex;
