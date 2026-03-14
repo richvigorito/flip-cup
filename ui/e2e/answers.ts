@@ -12,7 +12,8 @@ export const DEFAULT_QUIZ_ANSWERS: Record<string, string> = {
   'What is the tallest mountain in the world?': 'Mount Everest',
   'Who painted the Mona Lisa?': 'Leonardo da Vinci',
   "Which element has the chemical symbol 'O'?": 'Oxygen',
-  'What is the longest river in the world?': 'The Amazon River',
+  'What is the largest river in the world by volume?': 'The Amazon River',
+  'What is the longest river in the world?': 'The Amazon River', // Legacy support
 };
 
 /** Fallback: try every known answer until one works. */
