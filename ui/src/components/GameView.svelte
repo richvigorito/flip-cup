@@ -376,12 +376,12 @@
 
   /* Distinct backgrounds for teams */
   .team-col:first-child { /* Team A */
-    background: rgba(239, 68, 68, 0.08); /* Red tint */
-    border: 1px solid rgba(239, 68, 68, 0.2);
+    background: rgba(239, 68, 68, 0.15); /* Red tint - increased opacity */
+    border: 2px solid rgba(239, 68, 68, 0.3);
   }
   .team-col:last-child { /* Team B */
-    background: rgba(59, 130, 246, 0.08); /* Blue tint */
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    background: rgba(59, 130, 246, 0.15); /* Blue tint - increased opacity */
+    border: 2px solid rgba(59, 130, 246, 0.3);
   }
 
   .team-name-row {
