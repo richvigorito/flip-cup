@@ -71,9 +71,9 @@ The `frontend-dev-expert` sub-agent was given full autonomy over the `ui/src` di
 
 ### What the AI did NOT change
 
-- No game logic or WebSocket handling was touched
-- No Go backend files were modified
+- No significant game logic (only perspective fixes and store updates)
 - No dependencies were added (purely CSS/markup changes within existing Svelte components)
+- `Playwright` was added for testing, but no production dependencies.
 
 ### Decisions made autonomously
 

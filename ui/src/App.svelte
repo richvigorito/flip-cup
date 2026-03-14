@@ -41,14 +41,6 @@
 
 <svelte:head>
   <title>FlipQuiz — Answer. Flip. Win.</title>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZYGJ21LB9B"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-ZYGJ21LB9B');
-  </script>
 </svelte:head>
 
 <!-- ── Fixed Header ── -->
@@ -65,7 +57,7 @@
 </header>
 
 <!-- ── Main Content ── -->
-<main class="main-content" class:game-active={$mode === 'game'}>
+<main class="main-content" class:has-sidebar={['lobby', 'game'].includes($mode)}>
   {#if $mode === 'welcome'}
     <Welcome />
   {:else if $mode === 'new'}
@@ -81,15 +73,17 @@
   {/if}
 </main>
 
-<!-- ── Always-present Sidebar ── -->
-<EventLog />
+<!-- ── Sidebar (Lobby & Game only) ── -->
+{#if ['lobby', 'game'].includes($mode)}
+  <EventLog />
+{/if}
 
 <style>
   .main-content {
     padding-top: 64px;
     min-height: 100vh;
   }
-  .main-content.game-active {
+  .main-content.has-sidebar {
     padding-right: 264px;
   }
   .header-right {

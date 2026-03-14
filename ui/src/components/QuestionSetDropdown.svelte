@@ -6,8 +6,6 @@
 
   let selectedQuestionSet = $gameState?.quizfile ?? '';
 
-  export const onSelect: ((file: string) => void) | null = null;
-
   const dispatch = createEventDispatcher();
 
   function handleChange(event: Event) {
