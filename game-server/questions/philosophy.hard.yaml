@@ -12,7 +12,7 @@ questions:
     answers: ["John Rawls", "Rawls"]
 
   - prompt: "What is 'modus tollens' in logic?"
-    answers: ["Denying the consequent"]
+    answers: ["Denying the consequent", "If p then q, not q, therefore not p"]
 
   - prompt: "Who is known for the concept of 'eternal recurrence'?"
     answers: ["Friedrich Nietzsche", "Nietzsche"]
@@ -24,7 +24,7 @@ questions:
     answers: ["Gilles Deleuze", "Deleuze"]
 
   - prompt: "What is the Gettier problem concerned with?"
-    answers: ["Justified true belief"]
+    answers: ["Justified true belief", "Whether justified true belief is sufficient for knowledge"]
 
   - prompt: "Who wrote 'Phenomenology of Spirit'?"
     answers: ["Georg Wilhelm Friedrich Hegel", "Hegel"]

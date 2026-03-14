@@ -5,30 +5,38 @@ import (
 	"encoding/json"
 	"net/http"
 	"log"
+	"time"
 	"flip-cup/internal/game"
 	"github.com/gorilla/mux"
 )
 
 //
-// GET: /api/games/{active|inactive}
+// GET: /api/games/{active|inactive|stale}
 //
 func fetchGames(manager *game.GameManager) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		vars := mux.Vars(r)              // get path variables
-		status := vars["status"]         // "active" or "inactive"
+		status := vars["status"]         // "active" or "inactive" or "stale"
         var activeFilter *bool = nil
 
 
 		// Fetch all games from the manager
         log.Println("🎯 fetchGames called") 
-		games := manager.GetAllGames()
+		var games []*game.Game
 
+		if status == "stale" {
+			games = manager.GetStaleGames(30 * time.Minute)
+		} else {
+			games = manager.GetAllGames()
+		}
 
 		var response = []game.GameSnapshot{}
         if status == "active" {
             activeFilter = boolPtr(true)
         } else if status == "inactive" {
             activeFilter = boolPtr(false)
+        } else if status == "stale" {
+			// No extra filter needed, GetStaleGames already filtered
         } else {
 			// if you want, return 404 or 400 on invalid status
 			http.Error(w, "Invalid status", http.StatusBadRequest)
@@ -36,7 +44,9 @@ func fetchGames(manager *game.GameManager) http.HandlerFunc {
 		}
 
 		for _, g := range games {
-			if activeFilter == nil || g.Active == *activeFilter {
+			if status == "stale" {
+				response = append(response, g.Snapshot())
+			} else if activeFilter == nil || g.Active == *activeFilter {
 				response = append(response, g.Snapshot())
 			}
 		}

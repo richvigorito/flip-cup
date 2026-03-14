@@ -3,22 +3,22 @@ category: Foreign Languages
 
 questions:
   - prompt: "How do you say 'I am going to the store' in Italian?"
-    answers: ["Vado al negozio"]
+    answers: ["Vado al negozio", "Sto andando al negozio"]
 
   - prompt: "Translate: 'She is my sister.'"
     answers: ["Lei è mia sorella", "Lei e mia sorella"]
 
   - prompt: "What does 'posso aiutarti?' mean?"
-    answers: ["Can I help you?"]
+    answers: ["Can I help you?", "May I help you?"]
 
   - prompt: "How do you say 'I don't have any money' in Italian?"
-    answers: ["Non ho soldi"]
+    answers: ["Non ho soldi", "Non ho denaro"]
 
   - prompt: "Translate: 'We live in Rome.'"
     answers: ["Abitiamo a Roma"]
 
   - prompt: "What does 'Sto imparando l'italiano' mean?"
-    answers: ["I am learning Italian"]
+    answers: ["I am learning Italian", "I'm learning Italian"]
 
   - prompt: "Translate: 'He works at the hospital.'"
     answers: ["Lui lavora all'ospedale"]
@@ -30,10 +30,10 @@ questions:
     answers: ["Il caffè è caldo", "Il caffe e caldo"]
 
   - prompt: "How do you say 'I lost my keys' in Italian?"
-    answers: ["Ho perso le mie chiavi"]
+    answers: ["Ho perso le mie chiavi", "Ho perso le chiavi"]
 
   - prompt: "What does 'Mi piace questo posto' mean?"
-    answers: ["I like this place"]
+    answers: ["I like this place", "I like this spot"]
 
   - prompt: "Translate: 'They are eating pasta.'"
     answers: ["Stanno mangiando la pasta"]
@@ -51,7 +51,7 @@ questions:
     answers: ["Lei ha bisogno di aiuto"]
 
   - prompt: "What does 'Sono stanco ma felice' mean?"
-    answers: ["I am tired but happy"]
+    answers: ["I am tired but happy", "I'm tired but happy"]
 
   - prompt: "How do you say 'We want to go out tonight' in Italian?"
     answers: ["Vogliamo uscire stasera"]
@@ -60,4 +60,4 @@ questions:
     answers: ["Questo è il mio libro preferito", "Questo e il mio libro preferito"]
 
   - prompt: "How do you say 'Be careful!' in Italian?"
-    answers: ["Stai attento!", "Stai attento"]
+    answers: ["Stai attento!", "Stai attento", "Stai attenta!", "Stai attenta"]

@@ -94,7 +94,7 @@ questions:
   - prompt: "How do you say 'yesterday' in Spanish?"
     answers: ["Ayer"]
 
-  - prompt: "How do you say 'good evening' in Spanish?"
+  - prompt: "How do you say 'good afternoon' in Spanish?"
     answers: ["Buenas tardes"]
 
   - prompt: "What is the Spanish word for 'store'?"
@@ -104,7 +104,7 @@ questions:
     answers: ["Tengo hambre"]
 
   - prompt: "What is the Spanish word for 'car'?"
-    answers: ["Coche"]
+    answers: ["Coche", "Carro", "Auto"]
 
   - prompt: "What is the Spanish word for 'train'?"
     answers: ["Tren"]

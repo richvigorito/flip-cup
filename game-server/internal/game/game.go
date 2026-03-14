@@ -30,6 +30,7 @@ type Game struct {
 	  TeamB         *Team
 	  QuestionFile  *quiz.QuestionFile
 	  Active  	    bool
+	  LastActivity  time.Time
 	  mu            sync.Mutex
 }
 
@@ -40,7 +41,14 @@ func NewGame(questionFile *quiz.QuestionFile) *Game {
         TeamB: &Team{Players: []*Player{}, Name: "B-squad", Turn: 0},
         QuestionFile: questionFile,
         Active: false,
+        LastActivity: time.Now(),
     }
+}
+
+func (g *Game) UpdateActivity() {
+    g.mu.Lock()
+    defer g.mu.Unlock()
+    g.LastActivity = time.Now()
 }
 
 // Snapshot & Display
@@ -97,25 +105,51 @@ func (g *Game) TeamBroadcast(msg types.Envelope, t *Team) {
     }
 }
 
+func (g *Game) IsStale(threshold time.Duration) bool {
+    g.mu.Lock()
+    defer g.mu.Unlock()
+    return time.Since(g.LastActivity) > threshold
+}
+
 func (g *Game) PlayerBroadcast(msg types.Envelope, p *Player) {
+    g.UpdateActivity()
     data, _ := json.Marshal(msg)
     var logString = "🟦🔉↗️  Broadcast following Message to "+p.Name
     utils.LogPrettyJSON(logString, msg)
+		p.mu.Lock()
+		defer p.mu.Unlock()
 		p.Conn.WriteMessage(websocket.TextMessage, data)
 }
 
 
 // Player Management
+func (g *Game) ReconnectPlayer(playerID string, conn *websocket.Conn) (*Player, *Team) {
+	g.mu.Lock()
+	defer g.mu.Unlock()
+
+	for _, team := range []*Team{g.TeamA, g.TeamB} {
+		for _, p := range team.Players {
+			if p.ID == playerID {
+				p.mu.Lock()
+				p.Conn = conn
+				p.mu.Unlock()
+				return p, team
+			}
+		}
+	}
+	return nil, nil
+}
+
 func (g *Game) AddPlayer(conn *websocket.Conn, name string) *Player {
 	g.mu.Lock()
 	defer g.mu.Unlock()
 
 	player := NewPlayer(conn, name)
     if len(g.TeamB.Players) <  len(g.TeamA.Players) {
-		 log.Println("%s to team A: ", name)
+		 log.Printf("%s to team A: ", name)
          g.TeamB.AddPlayer(player)
     } else {
-		 log.Println("%s to team B: ", name)
+		 log.Printf("%s to team B: ", name)
         g.TeamA.AddPlayer(player)
     }
 	return player
@@ -141,11 +175,14 @@ func (g *Game) GetTeam(p *Player) *Team {
 
 
 // Game Flow
-func (g *Game) StartGame() {
+func (g *Game) StartGame(p *Player) {
     g.Active = true
     g.TeamA.Turn = 0 
     g.TeamB.Turn = 0 
     g.QuestionFile.ShuffleQuestions()
+    
+    // Broadcast game started BEFORE sending questions
+    g.DisplayGameSnapshot("game_started", p)
 
 
     // Start first question for both teams
@@ -271,15 +308,7 @@ func (g *Game) HandleConnection(player *Player) {
    // player has entered game loop
    // boardcast they joined then 
    // start reading messages
-    payload := PlayerJoinedPayload{
-        PlayerID: player.ID,
-    }
-    g.PlayerBroadcast(types.Envelope{
-        Type: "game_player_initialized",
-        GameID: g.ID,
-        Payload: utils.MustMarshal(payload),
-    }, player)
-
+    
     for{     
         _, msg, err := player.Conn.ReadMessage()
         if err != nil {
@@ -322,8 +351,7 @@ func (g *Game) HandleMessage(p *Player, msg types.Envelope) {
                 utils.MustUnmarshal(p.Conn, msg.Payload, &answerPayload)
                 g.handleCheckAnswer(p,  &answerPayload)
             case "start":
-                g.StartGame()
-                g.DisplayGameSnapshot("game_started", p)
+                g.StartGame(p)
             case "restart_game":
                 g.RestartGame()
                 g.DisplayGameSnapshot("game_restarted", p)

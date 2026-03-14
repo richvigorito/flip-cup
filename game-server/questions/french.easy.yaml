@@ -3,7 +3,7 @@ category: Foreign Languages
 
 questions:
   - prompt: "How do you say 'hello' in French?"
-    answers: ["Bonjour"]
+    answers: ["Bonjour", "Salut"]
 
   - prompt: "How do you say 'goodbye' in French?"
     answers: ["Au revoir"]
@@ -15,7 +15,7 @@ questions:
     answers: ["Merci"]
 
   - prompt: "How do you say 'please' in French?"
-    answers: ["S'il vous plaît", "Sil vous plait"]
+    answers: ["S'il vous plaît", "S’il vous plaît", "Sil vous plait", "S il vous plait"]
 
   - prompt: "What is the French word for 'water'?"
     answers: ["Eau"]
@@ -45,7 +45,7 @@ questions:
     answers: ["Chat"]
 
   - prompt: "How do you say 'I love you' in French?"
-    answers: ["Je t'aime", "Je taime"]
+    answers: ["Je t'aime", "Je t’aime", "Je taime"]
 
   - prompt: "What is the French word for 'school'?"
     answers: ["École", "Ecole"]
@@ -57,5 +57,4 @@ questions:
     answers: ["Je ne comprends pas"]
 
   - prompt: "How do you say 'How are you?' in French?"
-    answers: ["Comment ça va?", "Comment ca va?"]
-
+    answers: ["Comment ça va?", "Comment ca va?", "Comment ça va", "Comment ca va"]

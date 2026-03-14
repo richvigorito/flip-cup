@@ -1,6 +1,6 @@
 <script lang="ts">
   import { send } from '$lib/transport/socket';
-  import { mode, currentQuestion, gameState, myTeam, me, winner } from '$lib/store';
+  import { mode, currentQuestion, gameState, myTeam, me, winner, gameId, currentPlayerName } from '$lib/store';
 
   let currentAnswer = '';
 
@@ -14,6 +14,16 @@
 
   const resetGame = () => send({ type: 'restart_game' });
 
+  const quitGame = () => {
+      if (confirm('Are you sure you want to quit the game? This will clear your session.')) {
+          if (typeof sessionStorage !== 'undefined') {
+              sessionStorage.removeItem('flipcup_player_id');
+              sessionStorage.removeItem('flipcup_game_id');
+          }
+          window.location.reload();
+      }
+  };
+
   const handleKey = (e: KeyboardEvent) => {
     if (e.key === 'Enter') submitAnswer();
   };
@@ -21,6 +31,8 @@
 
 {#if $mode === 'game'}
   <div class="game-wrap">
+    <!-- Quit button adapted for new UI -->
+    <button class="quit-btn-floating" on:click={quitGame}>Quit Game</button>
 
     <!-- Question card (only shown to the active player) -->
     {#if $me?.isMyTurn && $currentQuestion && !$winner}
@@ -165,6 +177,27 @@
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    position: relative;
+  }
+
+  .quit-btn-floating {
+      position: absolute;
+      top: 0; 
+      right: 0;
+      margin-top: -30px; /* Pull it up a bit */
+      padding: 0.4rem 0.8rem;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      font-size: 0.7rem;
+      cursor: pointer;
+      transition: all 0.2s;
+  }
+  .quit-btn-floating:hover {
+      color: var(--error);
+      border-color: var(--error);
+      background: rgba(239, 68, 68, 0.1);
   }
 
   /* ── Question card ── */

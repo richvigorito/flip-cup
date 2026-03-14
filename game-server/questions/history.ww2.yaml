@@ -24,7 +24,7 @@ questions:
     answers: ["Benito Mussolini", "Mussolini"]
 
   - prompt: "What conference in 1945 planned post-war Europe?"
-    answers: ["Yalta Conference"]
+    answers: ["Yalta Conference", "Yalta"]
 
   - prompt: "Which battle marked the turning point on the Eastern Front?"
     answers: ["Battle of Stalingrad", "Stalingrad"]
@@ -72,8 +72,8 @@ questions:
       "Nazi genocide"
     ]
 
-  - prompt: "What kind of camps did Nazis use for mass murder?"
-    answers: ["Concentration camps", "Death camps"]
+  - prompt: "What kinds of camps did Nazis use to imprison and murder millions?"
+    answers: ["Concentration camps", "Death camps", "Extermination camps"]
 
   - prompt: "What beach did American forces land on during D-Day?"
     answers: ["Omaha Beach"]
@@ -114,8 +114,8 @@ questions:
   - prompt: "Which U.S. island base was attacked on December 7, 1941?"
     answers: ["Pearl Harbor"]
 
-  - prompt: "What group judged Nazi war crimes after WWII?"
-    answers: ["Nuremberg Trials"]
+  - prompt: "What trials judged Nazi war criminals after WWII?"
+    answers: ["Nuremberg Trials", "The Nuremberg Trials"]
 
   - prompt: "Which German city was heavily bombed in 1945?"
     answers: ["Dresden"]
@@ -138,14 +138,14 @@ questions:
   - prompt: "Which city was the site of the Warsaw Uprising?"
     answers: ["Warsaw"]
 
-  - prompt: "Which battle halted Japanese expansion in 1942?"
-    answers: ["Battle of Coral Sea", "Coral Sea"]
+  - prompt: "Which 1942 Pacific battle helped halt Japanese expansion?"
+    answers: ["Battle of Coral Sea", "Coral Sea", "Battle of Midway", "Midway"]
 
   - prompt: "What was the nickname for WWII American female factory workers?"
     answers: ["Rosie the Riveter", "Rosie"]
 
-  - prompt: "What agreement split Germany into four zones post-war?"
-    answers: ["Yalta Agreement", "Yalta Conference"]
+  - prompt: "Which conference helped establish the Allied occupation of Germany after WWII?"
+    answers: ["Yalta Conference", "Potsdam Conference", "Yalta", "Potsdam"]
 
   - prompt: "What new international organization was founded after WWII?"
     answers: ["United Nations", "UN"]

@@ -3,13 +3,13 @@ category: History
 
 questions:
   - prompt: "Who was the first President of the United States?"
-    answers: ["George Washington"]
+    answers: ["George Washington", "Washington"]
 
   - prompt: "What year was the Declaration of Independence signed?"
     answers: ["1776"]
 
   - prompt: "Who wrote the Declaration of Independence?"
-    answers: ["Thomas Jefferson"]
+    answers: ["Thomas Jefferson", "Jefferson"]
 
   - prompt: "What war was fought for American independence?"
     answers: ["Revolutionary War", "American Revolutionary War", "American War of Independence"]
@@ -30,7 +30,7 @@ questions:
     answers: ["1865"]
 
   - prompt: "What document freed the slaves?"
-    answers: ["Emancipation Proclamation"]
+    answers: ["Emancipation Proclamation", "The Emancipation Proclamation"]
 
   - prompt: "Who was the main author of the U.S. Constitution?"
     answers: ["James Madison"]
@@ -45,7 +45,7 @@ questions:
     answers: ["50", "fifty"]
 
   - prompt: "What is the capital of the United States?"
-    answers: ["Washington, D.C.", "Washington DC", "D.C.", "DC"]
+    answers: ["Washington, D.C.", "Washington D.C.", "Washington DC", "Washington, DC", "D.C.", "DC"]
 
   - prompt: "What ocean is on the east coast of the U.S.?"
     answers: ["Atlantic Ocean", "Atlantic"]
@@ -63,7 +63,7 @@ questions:
     answers: ["1920"]
 
   - prompt: "What amendment gave women the right to vote?"
-    answers: ["19th", "Nineteenth"]
+    answers: ["19th", "19th Amendment", "Nineteenth", "Nineteenth Amendment"]
 
   - prompt: "Who was President during World War I?"
     answers: ["Woodrow Wilson"]
@@ -84,7 +84,7 @@ questions:
     answers: ["1941"]
 
   - prompt: "Who was the civil rights leader who gave the 'I Have a Dream' speech?"
-    answers: ["Martin Luther King Jr.", "MLK Jr.", "Martin Luther King"]
+    answers: ["Martin Luther King Jr.", "MLK Jr.", "Martin Luther King", "Dr. Martin Luther King Jr."]
 
   - prompt: "What law ended segregation in public places?"
     answers: ["Civil Rights Act", "Civil Rights Act of 1964"]
@@ -123,9 +123,9 @@ questions:
     answers: ["South"]
 
   - prompt: "What was the main cause of the Civil War?"
-    answers: ["Slavery"]
+    answers: ["Slavery", "Slavery and states' rights", "States' rights over slavery"]
 
-  - prompt: "Who discovered America in 1492?"
+  - prompt: "Which explorer reached the Americas in 1492?"
     answers: ["Christopher Columbus", "Columbus"]
 
   - prompt: "What city did the Boston Tea Party happen in?"
@@ -146,5 +146,5 @@ questions:
   - prompt: "Who was President during the Great Depression?"
     answers: ["Herbert Hoover"]
 
-  - prompt: "What project built dams and created jobs in the 1930s?"
-    answers: ["New Deal"]
+  - prompt: "What broad set of programs created jobs and funded public works in the 1930s?"
+    answers: ["New Deal", "The New Deal"]

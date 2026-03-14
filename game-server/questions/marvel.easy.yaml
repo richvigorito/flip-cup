@@ -15,7 +15,7 @@ questions:
     answers: ["Green"]
 
   - prompt: "Who is Tony Stark's AI assistant?"
-    answers: ["JARVIS"]
+    answers: ["JARVIS", "Jarvis"]
 
   - prompt: "What is Captain America's shield made of?"
     answers: ["Vibranium"]
@@ -24,19 +24,19 @@ questions:
     answers: ["Spider-Man", "Spiderman"]
 
   - prompt: "What city is Spider-Man from?"
-    answers: ["New York"]
+    answers: ["New York", "New York City", "NYC"]
 
   - prompt: "What is Black Panther’s real name?"
-    answers: ["T'Challa", "T’Challa"]
+    answers: ["T'Challa", "T’Challa", "T Challa"]
 
   - prompt: "What is the name of Thor’s hammer?"
     answers: ["Mjolnir"]
 
-  - prompt: "Who is the leader of the Avengers?"
+  - prompt: "Who often serves as the field leader of the Avengers?"
     answers: ["Captain America", "Steve Rogers"]
 
   - prompt: "What is the real name of Black Widow?"
-    answers: ["Natasha Romanoff", "Natasha Rostova"]
+    answers: ["Natasha Romanoff", "Natasha Romanova"]
 
   - prompt: "What raccoon-like character is part of the Guardians of the Galaxy?"
     answers: ["Rocket", "Rocket Raccoon"]
@@ -50,8 +50,8 @@ questions:
   - prompt: "Who plays Iron Man in the MCU?"
     answers: ["Robert Downey Jr.", "RDJ"]
 
-  - prompt: "Who is Thanos trying to impress with his actions?"
-    answers: ["Death"]
+  - prompt: "Who is the main villain of Avengers: Infinity War?"
+    answers: ["Thanos"]
 
   - prompt: "Who is Spider-Man’s aunt?"
     answers: ["Aunt May", "May Parker"]

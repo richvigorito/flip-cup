@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { mode, joined, currentPlayerName, gameState, gamesCompleted } from '$lib/store';
+  import { mode, joined, currentPlayerName, gameState, gamesCompleted, gameId } from '$lib/store';
   import { send } from '$lib/transport/socket';
   import QuestionSetDropdown from './QuestionSetDropdown.svelte';
 
@@ -24,6 +24,16 @@
   function handleNewQuiz(selectedFile: string) {
     send({ type: 'update_quiz', payload: { quizfile: selectedFile } });
   }
+
+  const leaveGame = () => {
+    if (confirm('Are you sure you want to leave the game? This will clear your session.')) {
+        if (typeof sessionStorage !== 'undefined') {
+            sessionStorage.removeItem('flipcup_player_id');
+            sessionStorage.removeItem('flipcup_game_id');
+        }
+        window.location.reload();
+    }
+  };
 </script>
 
 <div class="lobby-wrap">
@@ -37,7 +47,13 @@
           <span class="game-code-label">Game ID</span>
           <span class="game-code-value">{$gameState.id}</span>
         </div>
+      {:else if $gameId}
+         <div class="game-code">
+          <span class="game-code-label">Game ID</span>
+          <span class="game-code-value">{$gameId}</span>
+        </div>
       {/if}
+      <button class="leave-btn-icon" on:click={leaveGame} title="Leave Game">🚪</button>
     </div>
 
     <!-- Step: Enter your name -->
@@ -141,6 +157,18 @@
 </div>
 
 <style>
+  .leave-btn-icon {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      margin-left: 1rem;
+      transition: transform 0.2s;
+  }
+  .leave-btn-icon:hover {
+      transform: scale(1.1);
+  }
+
   .lobby-wrap {
     display: flex;
     align-items: center;

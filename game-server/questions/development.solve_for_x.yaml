@@ -126,7 +126,7 @@ questions:
     answers: ["2"]
 
   - prompt: "Complete the output:\n\nprint(\"Hello\", end=___)"
-    answers: ['""']
+    answers: ["empty string"]
 
   - prompt: "What is the keyword to define a class in Python?"
     answers: ["class"]
@@ -135,7 +135,7 @@ questions:
     answers: ["scanf"]
 
   - prompt: "What is the output?\n\n php>$foo = 'bar'; $$foo = 'foo'; echo $foo.$bar ;"
-    answers: ["boofar"]
+    answers: ["barfoo"]
 
   - prompt: "What is returned?\n\nfunction isEven(x) {\n return x % 2 === 0;\n}\nisEven(4);"
     answers: ["true"]

@@ -14,6 +14,7 @@ type StartGamePayload struct {
 // (subsequent players) Step 1b, enter an existing game
 type JoinExistingGamePayload struct {
 	GameID string `json:"game_id"`
+	PlayerID string `json:"player_id"`
 	Name string `json:"name"`
 }
 

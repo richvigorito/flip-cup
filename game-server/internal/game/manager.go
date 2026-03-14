@@ -2,6 +2,7 @@ package game
 
 import (
     "sync"
+    "time"
     "flip-cup/internal/quiz" 
 	"flip-cup/internal/utils"
 	"fmt"
@@ -55,5 +56,35 @@ func (gm *GameManager) DeleteGameByID(id string) error {
 
     delete(gm.games, id)
     return nil
+}
+
+func (gm *GameManager) GetStaleGames(maxAge time.Duration) []*Game {
+    gm.mu.Lock()
+    defer gm.mu.Unlock()
+    stale := []*Game{}
+    for _, g := range gm.games {
+        if g.IsStale(maxAge) {
+            stale = append(stale, g)
+        }
+    }
+    return stale
+}
+
+func (gm *GameManager) CleanupStaleGames(maxAge time.Duration) {
+    gm.mu.Lock()
+    defer gm.mu.Unlock()
+
+    count := 0
+    for id, g := range gm.games {
+        // We use a small method on Game to safely check time
+        if g.IsStale(maxAge) {
+             fmt.Printf("🧹 Cleaning up stale game: %s\n", id)
+            delete(gm.games, id)
+            count++
+        }
+    }
+    if count > 0 {
+        fmt.Printf("🧹 Cleaned up %d stale games\n", count)
+    }
 }
 

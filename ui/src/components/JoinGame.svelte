@@ -62,7 +62,7 @@
             <div class="teams-preview">
               <div class="team-preview">
                 <span class="team-badge team-a">A</span>
-                <span class="team-info">
+                <div class="team-info">
                   <span class="team-label">{game.teamA.name}</span>
                   <span class="team-players">
                     {#if game.teamA.players.length > 0}
@@ -71,14 +71,14 @@
                       No players yet
                     {/if}
                   </span>
-                </span>
+                </div>
               </div>
 
               <div class="team-vs">vs</div>
 
               <div class="team-preview">
                 <span class="team-badge team-b">B</span>
-                <span class="team-info">
+                <div class="team-info">
                   <span class="team-label">{game.teamB.name}</span>
                   <span class="team-players">
                     {#if game.teamB.players.length > 0}
@@ -87,7 +87,7 @@
                       No players yet
                     {/if}
                   </span>
-                </span>
+                </div>
               </div>
             </div>
             <div class="join-hint">Tap to join →</div>
@@ -121,6 +121,7 @@
     background: none;
     border: none;
     transition: color 0.15s;
+    cursor: pointer;
   }
   .back-btn:hover { color: var(--text-primary); }
 
@@ -193,6 +194,8 @@
     border-radius: var(--r-md);
     box-shadow: 0 4px 14px rgba(124,58,237,0.35);
     transition: all 0.2s;
+    border: none;
+    cursor: pointer;
   }
   .create-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,58,237,0.5); }
 

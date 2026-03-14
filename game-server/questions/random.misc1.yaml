@@ -28,6 +28,5 @@ questions:
   - prompt: "Which element has the chemical symbol 'O'?"
     answers: ["Oxygen"]
 
-  - prompt: "What is the longest river in the world?"
-    answers: ["Amazon River", "Amazon"]
-
+  - prompt: "What is the largest river in the world by volume?"
+    answers: ["Amazon River", "Amazon", "The Amazon River", "The Amazon"]

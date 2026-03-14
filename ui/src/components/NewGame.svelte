@@ -92,6 +92,7 @@
     border: none;
     text-align: left;
     transition: color 0.15s;
+    cursor: pointer;
   }
   .back-btn:hover { color: var(--text-primary); }
 
@@ -188,6 +189,7 @@
     border: none;
     box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
     transition: all 0.2s var(--ease);
+    cursor: pointer;
   }
   .submit-btn:hover:not(:disabled) {
     transform: translateY(-2px);

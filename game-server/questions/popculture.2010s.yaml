@@ -41,9 +41,9 @@ questions:
     answers: ["Stranger Things"]
 
   - prompt: "Which 2010s movie series featured the characters Finn and Rey?"
-    answers: ["Star Wars: The Force Awakens", "Star Wars"]
+    answers: ["Star Wars: The Force Awakens", "The Force Awakens", "Star Wars Episode VII", "Episode VII"]
 
-  - prompt: "Which popular TV show first aired in 2015 and featured characters like Daenerys Targaryen and Jon Snow?"
+  - prompt: "Which popular TV show featured characters like Daenerys Targaryen and Jon Snow?"
     answers: ["Game of Thrones", "GoT"]
 
   - prompt: "Which 2010s movie features a world where dinosaurs are cloned and interact with humans?"
