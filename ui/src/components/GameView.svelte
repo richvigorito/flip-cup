@@ -304,20 +304,36 @@
 
   /* ── Game Board ── */
   .game-board {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--r-xl);
+    background: #e5e5e5; /* Cheap plastic table color */
+    border: 8px solid #d4d4d4; /* Table edge */
+    border-radius: var(--r-lg);
     padding: 1.5rem 1.25rem 1.75rem;
-    box-shadow: var(--shadow-card);
+    box-shadow: 
+      inset 0 0 40px rgba(0,0,0,0.05), /* Subtle texture/stain */
+      0 10px 30px rgba(0,0,0,0.3); /* Table shadow */
+    position: relative;
   }
+  
+  /* Wood grain / Garage texture hint */
+  .game-board::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.02) 10px, rgba(0,0,0,0.02) 20px);
+    pointer-events: none;
+    opacity: 0.4;
+    border-radius: var(--r-lg);
+  }
+
   .board-label {
-    font-size: 0.7rem;
-    font-weight: 700;
+    font-size: 0.8rem;
+    font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: #555; /* Darker label for contrast on light table */
     text-align: center;
     margin-bottom: 1.25rem;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
   }
   .board-teams {
     display: flex;
@@ -354,6 +370,18 @@
     flex-direction: column;
     gap: 0.5rem;
     min-width: 0;
+    padding: 1rem 0.5rem;
+    border-radius: var(--r-md);
+  }
+
+  /* Distinct backgrounds for teams */
+  .team-col:first-child { /* Team A */
+    background: rgba(239, 68, 68, 0.08); /* Red tint */
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+  .team-col:last-child { /* Team B */
+    background: rgba(59, 130, 246, 0.08); /* Blue tint */
+    border: 1px solid rgba(59, 130, 246, 0.2);
   }
 
   .team-name-row {

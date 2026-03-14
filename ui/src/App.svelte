@@ -55,7 +55,7 @@
 <header class="site-header">
   <div class="header-inner">
     <span class="logo-link" role="button" tabindex="0" on:click={() => mode.set('welcome')} on:keydown={(e) => e.key === 'Enter' && mode.set('welcome')}>
-      <span class="logo-icon">🥤</span>
+      <img src="/solo-cup.png" alt="Solo Cup" class="logo-icon-img" />
       <span class="logo-text">Flip<span class="logo-accent">Quiz</span></span>
     </span>
     <div class="header-right">
