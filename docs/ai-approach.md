@@ -1,170 +1,141 @@
 # AI-Assisted Development Approach
 
-This document describes how AI tooling (GitHub Copilot) was used to improve this project — what was delegated, how decisions were made, and what the AI actually changed.
-
----
+This document explains how GitHub Copilot was used to ship the work that landed in [PR #6](https://github.com/richvigorito/flip-cup/pull/6): a frontend redesign, reconnect hardening, stale-game cleanup, expanded E2E coverage, CI automation, and the PR artifacts themselves.
 
 ## Overview
 
-Two separate workstreams were handed to AI agents:
+The important detail is that Copilot was not only used to generate code. It was also used to:
 
-| Branch | What changed |
-|--------|-------------|
-| `feat/ui-redesign` | Full visual redesign of the Svelte frontend |
-| `feat/playwright-e2e-tests` | End-to-end test suite using Playwright |
+- inspect the codebase and identify weaknesses
+- propose and implement the redesign
+- patch frontend and backend logic needed to support the redesign safely
+- write the Playwright coverage used to verify the changes
+- generate the before/after screenshots included in the PR
+- draft and update the PR summary/comments during review
 
-Both were produced in a single session using [GitHub Copilot CLI](https://githubnext.com) with a `dev-problem-coordinator` agent that broke work into tasks and delegated to specialised sub-agents.
+In other words, the code changes, the PR body and follow-up comments, and the screenshot comparison workflow were all produced through a Copilot-led, agentic workflow.
 
----
+## What PR #6 actually shipped
 
-## Step 1 — Codebase Audit
+Although the branch started as a UI redesign, the merged PR ended up covering more than styling.
 
-Before any changes, the AI was asked to:
+| Area | What changed |
+|------|--------------|
+| UI | Full visual redesign of the Svelte frontend with a "garage / folding table" feel |
+| Frontend state | Reworked team-state handling with a derived `myTeam` store so players see the correct board perspective |
+| WebSockets | Reconnect flow improved, with `sessionStorage` used to preserve per-tab player/game identity |
+| Backend | Added stale-game tracking and cleanup via `LastActivity` plus manager cleanup helpers |
+| Testing | Expanded Playwright coverage to include reconnect behavior |
+| CI | Added a GitHub Actions workflow that runs Go tests, UI build, and Playwright on pushes/PRs |
+| Documentation | Added and refined this document during the PR review cycle |
 
-1. Explain how to get the project running
-2. Identify what could be improved
+That broader scope matters because it shows how the AI workflow evolved: a design prompt surfaced product and reliability issues that then got fixed in the same branch.
 
-The agent explored all source files, read `gameflow.md`, inspected Docker config, WebSocket message types, and Go game logic. It produced a ranked list of issues across five areas:
+## Step 1 — Audit first, then build
 
-| Severity | Category | Examples found |
-|----------|----------|----------------|
-| 🔴 Critical | Server crashes | `must.go` panics on bad JSON; nil deref in `handler.go` |
-| 🔴 Critical | Race conditions | Turn state; concurrent shuffle |
-| 🟠 High | Reliability | No reconnection logic; dead games never cleaned up |
-| 🟡 Medium | UX gaps | No mobile CSS; no answer feedback; awkward quiz picker |
-| 🟢 Low | Features | No leaderboard; no spectator mode |
+Before implementation, Copilot was used to explore the repo, read the game flow, inspect the WebSocket path, and identify the most obvious gaps.
 
-This audit became the backlog for subsequent work.
+The audit surfaced a few themes:
 
----
+- the UI looked inconsistent and unfinished
+- reconnect behavior was weak for a multiplayer WebSocket app
+- there was no automated safety net around key flows
+- inactive games could accumulate on the backend
 
-## Step 2 — UI Redesign (`feat/ui-redesign`)
+That audit effectively became the backlog for the PR.
 
-### Why
+## Step 2 — Frontend redesign
 
-The original UI had no design system, inconsistent spacing, a large banner image header, and zero mobile responsiveness. The request was blunt: *"the ui on it is trash, would like to look waaay more cleaner"*.
+The initial user request was essentially: make the UI look much cleaner.
 
-### What the AI did
+Copilot then drove the redesign across the Svelte app:
 
-The `frontend-dev-expert` sub-agent was given full autonomy over the `ui/src` directory. It made no changes to the Go backend.
+- introduced a more coherent design system with CSS custom properties
+- replaced the older basic screens with card-based layouts and stronger visual hierarchy
+- improved `Welcome`, `NewGame`, `JoinGame`, `Lobby`, `GameView`, `EventLog`, and `Instructions`
+- added a more opinionated game presentation, including team-specific perspective and richer game-over states
 
-**Design system (`app.css`)**
-- Introduced CSS custom properties for the entire token set: colours, radii, shadows, motion easing, font scale
-- Colour palette: deep navy base (`#0b0b18`), vivid purple/indigo brand accent, semantic green/red/amber for game states
-- Typography: Inter (Google Fonts), weight 400–900, tight letter-spacing on headings
+Most of the visual direction was chosen autonomously by Copilot. The user did not specify a detailed design system, component map, or animation spec ahead of time.
 
-**Layout changes**
-- Replaced the old banner image header with a frosted-glass fixed header containing a gradient logo
-- `EventLog` sidebar properly constrained below the header via `top: 64px`
+## Step 3 — Reliability work discovered during implementation
 
-**Component-by-component changes**
+As the redesign was integrated, Copilot also patched issues that directly affected the experience:
 
-| Component | Before | After |
-|-----------|--------|-------|
-| `Welcome.svelte` | Plain buttons on white | Hero layout, floating animated cup emoji, gradient wordmark, pill tags |
-| `NewGame.svelte` | Unstyled form | Card with custom styled `<select>`, disabled submit until selection |
-| `JoinGame.svelte` | Flat list | Responsive card grid, team badges, hover glow, empty state |
-| `Lobby.svelte` | Raw inputs | Two-step flow (name → team preview), A/B columns, colour-coded badges |
-| `GameView.svelte` | Basic layout | Two-column VS board, glowing active cups, smooth flip animation |
-| `EventLog.svelte` | Unstyled list | Slide-in entries, colour-coded by type (info/success/error) |
-| `Instructions.svelte` | Inline text | Native `<dialog>` with blur backdrop, structured sections |
+### Reconnect and session continuity
 
-### What the AI did NOT change
+On the frontend, the socket flow was updated so game/player identity survives reloads per browser tab using `sessionStorage` instead of `localStorage`. That was especially useful for testing multi-player flows in parallel tabs/contexts.
 
-- No significant game logic (only perspective fixes and store updates)
-- No dependencies were added (purely CSS/markup changes within existing Svelte components)
-- `Playwright` was added for testing, but no production dependencies.
+The frontend state layer was also adjusted to derive `myTeam` from `gameState` plus `me`, which fixed cases where a reconnecting player could render the wrong team perspective.
 
-### Decisions made autonomously
+### Backend stale-game cleanup
 
-The AI chose the colour palette, component layout patterns, and animation approach without being asked. The only human constraint was "cleaner."
+On the Go side, the `Game` model gained `LastActivity` tracking plus helper methods such as `UpdateActivity()` and `IsStale()`. `GameManager` then added stale-game discovery and cleanup helpers so long-dead games can be removed automatically instead of accumulating forever.
 
----
+This is a good example of Copilot going beyond the visible UI task and handling adjacent operational issues uncovered during the work.
 
-## Step 3 — E2E Tests (`feat/playwright-e2e-tests`)
+## Step 4 — Testing and CI
 
-### Why
+Copilot also built the verification story around the PR.
 
-There were zero tests in the project. Any change to game logic or UI had no safety net.
+### Playwright coverage
 
-### What the AI did
+The project already had the basic gameplay E2E suite by the end of this work, and PR #6 extended that with reconnect coverage in `ui/e2e/disconnect.spec.ts`.
 
-Installed Playwright (`@playwright/test`) into the `ui/` package and wrote **12 tests** across two files.
+That reconnect test:
 
-**`welcome.spec.ts`** — 7 tests, no server required
-- Logo, tagline, and CTAs render correctly
-- Navigation to Create / Join screens
-- Back button and logo return to Welcome
-- Submit button disabled until a quiz category is selected
-- How to Play dialog opens and closes
+- creates a game in one browser context
+- joins from a second context
+- starts the match
+- reloads one player page
+- verifies the player returns to the active game instead of dropping back to a cold start
+- checks the board still renders with the correct team-specific view
 
-**`game.spec.ts`** — 5 tests, requires game server running
-- **Full 2-player game**: two browser contexts (Player 1, Player 2) create → join → enter names → shuffle teams → start game → answer questions turn-by-turn using known Q&A pairs → verify winner declared
-- **Play Again**: winner screen → lobby reset
-- Start Game disabled with only 1 player
-- Game ID displayed prominently
-- Join button disabled until name is typed
+### GitHub Actions
 
-**`answers.ts`** — known question/answer pairs from `_.default.yaml` used to automate actual gameplay.
+Copilot also added `.github/workflows/ci.yml`, which runs:
 
-### How the multiplayer test works
+- `go test ./...`
+- `npm ci`
+- `npm run build`
+- `npm run test:e2e`
 
-Playwright's `browser.newContext()` creates isolated browser sessions. Two contexts simulate two independent players connecting over WebSocket:
+That turned the PR from "looks better" into "looks better and is validated end-to-end."
 
-```
-Context 1 (Alice) ──── creates game ──────────────── gets gameId
-Context 2 (Bob)   ──── joins game by gameId ─────────────────────
-                                          ↓
-                                 both enter names
-                                 Alice shuffles teams
-                                 Alice starts game
-                                          ↓
-                        loop: check which page has "Your Turn"
-                              answer question on that page
-                              until .game-over appears
-```
+## Screenshots from the PR
 
-### Test runner
+The PR included a before/after screenshot comparison, and those screenshots were also produced via Copilot.
 
-```bash
-cd ui
+Copilot generated the capture workflow, used Playwright-based screenshot automation to create the image set, and assembled the comparison into the PR discussion. The checked-in artifacts live under `docs/screenshots/`.
 
-# Run all tests (requires: docker-compose up -d first)
-npm run test:e2e
+| Screen | Before | After |
+|------|--------|-------|
+| Welcome | ![Legacy Welcome](./screenshots/before/01_welcome.png) | ![Redesigned Welcome](./screenshots/after/01_welcome.png) |
+| New Game | ![Legacy New Game](./screenshots/before/02_new_game.png) | ![Redesigned New Game](./screenshots/after/02_new_game.png) |
+| Lobby | ![Legacy Lobby](./screenshots/before/03_lobby_empty.png) | ![Redesigned Lobby](./screenshots/after/03_lobby_empty.png) |
+| Game View | ![Legacy Game View](./screenshots/before/06_game_view_team_b.png) | ![Redesigned Game View](./screenshots/after/06_game_view_team_b.png) |
 
-# Interactive mode with browser UI
-npm run test:e2e:ui
+Those images are useful because they show the practical output of the workflow, not just the code behind it.
 
-# View last run report
-npm run test:e2e:report
-```
+## PR operations handled with Copilot
 
----
+One of the more interesting parts of PR #6 is that Copilot was used for the operational work around the code as well:
 
-## Reflections
+- drafting the PR body itself
+- updating the PR summary as scope changed
+- documenting follow-up fixes requested during review
+- resolving merge conflicts against `main` while preserving the redesign
+- verifying the build after conflict resolution
 
-### What worked well
+That means the AI contribution was not limited to a one-shot code generation phase. It stayed involved through implementation, review, conflict resolution, verification, and documentation.
 
-- **Codebase audit first** — having the AI map the whole project before touching anything meant changes were targeted and didn't introduce regressions into areas it didn't understand
-- **Separation of concerns** — UI work and test work were kept on separate branches, making review and rollback clean
-- **Specificity of prompts** — vague asks ("make it cleaner") worked fine for aesthetic work; functional asks ("write tests that actually play the game") needed more structure
+## What worked well
 
-### What to watch
+- Starting with exploration gave Copilot enough context to make better changes.
+- Keeping Playwright involved made it easier to safely change a multiplayer WebSocket flow.
+- Using AI for both implementation and PR hygiene reduced the handoff friction between "write code" and "explain what changed."
 
-- The AI redesigned components based on class names and markup it could see — if the underlying component structure changes significantly, styles may need revisiting
-- The game tests depend on the `_.default.yaml` question file staying intact; if that file is removed or renamed the full-game tests will need updating
-- Several critical server bugs (panics, nil dereferences, race conditions) were identified in the audit but not fixed — those are tracked separately as the next priority
+## What to watch
 
----
-
-## Next Steps (from the audit)
-
-These were identified but not yet addressed:
-
-1. Replace `panic()` calls in `must.go` with graceful error returns
-2. Fix nil dereference in `handler.go` (check `g != nil` *before* calling methods on it)
-3. Fix uninitialized player name (`name` var never populated before `AddPlayer`)
-4. Add bounds checking before `g.QuestionFile.Questions[t.Turn]`
-5. Add WebSocket reconnection logic in `socket.ts`
-6. Call `DeleteGameByID()` on game completion to prevent memory leak
-7. Add `@media` queries for mobile responsiveness
+- The screenshot comparisons are only as good as the scripted capture flow; if screens change significantly, the capture scripts and artifacts need refreshing.
+- The reconnect logic depends on the current client/server message contract staying stable.
+- This workflow was strong for UI polish plus targeted reliability fixes, but it still benefits from human review for surprising changes or scope creep.

@@ -42,34 +42,6 @@ This was a fun side project to explore Go and Svelte — my first functional pro
 ```
 
 
-## 🛠 Local Development
-
-To run the game locally using Docker Compose:
-
-1. Clone the repo:
-
-   git clone https://github.com/yourname/flip-cup.git  
-   cd flip-cup
-
-2. Update your `.env` file with your machine’s local IP address (needed for WebSocket connection):
-
-```bash
-cd ui
-cat "VITE_WS_URL=<your-local-ip>:8080" > .env
-```
-
-###   Example:
-``VITE_WS_URL=192.168.1.12:8080``
-
-3. Start the app locally:
-
-   docker-compose down && docker-compose build --no-cache && docker-compose up -d
-
-4. Open your browser and go to:
-
-   http://<your-local-ip>:5173 or 
-   http://localhost:5173
-
 ## 🤖 AI-Assisted Development
 
 Recent improvements to this project (UI redesign, E2E test suite) were built with the help of GitHub Copilot. A full breakdown of what was delegated, how decisions were made, and what changed lives here:
