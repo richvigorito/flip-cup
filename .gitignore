@@ -84,3 +84,4 @@ target/
 *.tmp
 *.bak
 
+test-results/
