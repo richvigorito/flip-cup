@@ -2,7 +2,7 @@ import { get, writable } from 'svelte/store';
 import { GameState } from '$lib/models/GameState';
 import { Team } from '$lib/models/Team';
 import { Player } from '$lib/models/Player';
-import { gameState, myTeam, me, mode, joined, eventLog, currentQuestion, winner, gamesCompleted } from '$lib/store';
+import { gameState, myTeam, me, mode, joined, eventLog, currentQuestion, winner, gamesCompleted, gameId } from '$lib/store';
 
 
 import { baseWsUrl } from '$lib/utils/config';
@@ -12,24 +12,35 @@ export const socket = writable<WebSocket | null>(null);
 let ws: WebSocket;
 
 export function connectSocket(initmsg: object) {
+    console.log('INSIDE CONNECT SOCKET START');
+    try {
+        console.log(`Initializing WebSocket connection to ${baseWsUrl}`);
+        ws = new WebSocket(baseWsUrl);
 
-    ws = new WebSocket(baseWsUrl);
+        socket.set(ws);
+        
+        ws.onopen = () => {
+          console.log('Connected to WebSocket');
+          console.log(JSON.stringify(initmsg));
+          ws.send(JSON.stringify(initmsg));
+        };
 
-    socket.set(ws);
-    
-    ws.onopen = () => {
-      console.log('Connected to WebSocket');
-      console.log(JSON.stringify(initmsg));
-      ws.send(JSON.stringify(initmsg));
-    };
+        ws.onmessage = (event) => {
+          const message = JSON.parse(event.data);
+          handleMessage(message);
+        };
 
-    ws.onmessage = (event) => {
-      const message = JSON.parse(event.data);
-      handleMessage(message);
-    };
-
-    ws.onclose = () => console.log('Disconnected');
-    ws.onerror = (err) => console.error('WebSocket error', err);
+        ws.onclose = (event) => {
+            console.log(`Disconnected: Code ${event.code}, Reason: ${event.reason}`);
+        };
+        
+        ws.onerror = (err) => {
+            console.error('WebSocket error event:', err);
+        };
+        
+    } catch (error) {
+        console.error('Error creating WebSocket:', error);
+    }
 }
 
 function handleMessage(message: any) {
@@ -44,6 +55,12 @@ function handleMessage(message: any) {
      case 'game_player_initialized':
         currentPlayer = new Player(message.payload);
         me.set(currentPlayer);
+        if (typeof sessionStorage !== 'undefined') {
+            sessionStorage.setItem('flipcup_player_id', currentPlayer.id);
+            if (message.gameId) {
+                 sessionStorage.setItem('flipcup_game_id', message.gameId);
+            }
+        }
         break;
 
     case 'player_joined':
@@ -88,6 +105,10 @@ function handleMessage(message: any) {
 
       break;
 */
+
+    case 'game_created':
+        gameId.set(message.gameId);
+        break;
 
     case 'game_started':
       handleGameStarted(message)
@@ -142,6 +163,7 @@ const handleGameRestarted = (message: any) => {
 };
 
 const handleGameStarted = (message: any) => {
+    console.log('HANDLING GAME STARTED, setting mode to game');
     mode.set('game');
     const newState = new GameState(message.payload.game_snapshot);
     gameState.set(newState);
@@ -179,8 +201,10 @@ const handleTeamAssignments = (message: any) => {
 
 const handleAdministerQuestion = (message: any) => {
     const currentPlayer = get(me);
-    currentPlayer.isMyTurn = true;
-    me.set(currentPlayer);
+    if (currentPlayer) {
+        currentPlayer.isMyTurn = true;
+        me.set(currentPlayer);
+    }
     currentQuestion.set(message.name);
 };
 

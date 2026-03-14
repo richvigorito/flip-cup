@@ -34,7 +34,7 @@
   {:else}
     <div class="game-grid">
       {#each availableGames as game}
-        <button on:click={() => {
+        <button class="game-card" on:click={() => {
             gameId.set(game.id);
             currentPlayerName.set('');
             joinExistingGame();

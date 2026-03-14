@@ -3,7 +3,7 @@
 </header>
 <script lang="ts">
     import '$styles/App.css';
-    import { socket } from '$lib/transport/socket';
+    import { socket, connectSocket } from '$lib/transport/socket';
     import { onMount } from 'svelte';
     import { mode } from '$lib/store';
 
@@ -16,12 +16,29 @@
     import Instructions from './components/Instructions.svelte';
 
     import { fetchQuizzes } from '$lib/transport/http/Quizzes';
-    import { questionSets } from '$lib/store';
-
+    import { questionSets, gameId } from '$lib/store';
 
     onMount(async () => {
         const tmp = await fetchQuizzes();
         questionSets.set(tmp);
+
+        // Attempt reconnect if session exists
+        if (typeof sessionStorage !== 'undefined') {
+            const pid = sessionStorage.getItem('flipcup_player_id');
+            const gid = sessionStorage.getItem('flipcup_game_id');
+            if (pid && gid) {
+                connectSocket({
+                    type: 'join_existing_game',
+                    payload: {
+                        game_id: gid,
+                        player_id: pid
+                    }
+                });
+
+                mode.set('lobby'); 
+                gameId.set(gid); // Ensure gameId is set for Lobby display
+            }
+        }
     });
 
 

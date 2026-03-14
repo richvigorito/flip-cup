@@ -190,8 +190,8 @@ test.describe('Full multiplayer game', () => {
 
     // Click "Play Again" on whichever page shows it
     const restartBtns = [
-      player1.getByRole('button', { name: /Play Again/i }),
-      player2.getByRole('button', { name: /Play Again/i }),
+      player1.getByRole('button', { name: /Restart Game/i }),
+      player2.getByRole('button', { name: /Restart Game/i }),
     ];
 
     for (const btn of restartBtns) {

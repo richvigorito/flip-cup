@@ -3,7 +3,7 @@ category: Lord of the Rings
 
 questions:
   - prompt: "Who is the author of The Lord of the Rings?"
-    answers: ["J.R.R. Tolkien", "JRRTolkien", "J R R Tolkien"]
+    answers: ["J.R.R. Tolkien", "JRRTolkien", "J R R Tolkien", "Tolkien"]
 
   - prompt: "What is the name of the main character who carries the One Ring?"
     answers: ["Frodo Baggins", "Frodo"]
@@ -21,16 +21,16 @@ questions:
     answers: ["Elf", "Elven"]
 
   - prompt: "Who is the king of Rohan?"
-    answers: ["Theoden", "Théoden"]
+    answers: ["Theoden", "Théoden", "King Theoden", "King Théoden"]
 
-  - prompt: "What is the name of Aragorn’s sword?"
-    answers: ["Anduril"]
+  - prompt: "What is the name of Aragorn's sword after it is reforged?"
+    answers: ["Anduril", "Andúril"]
 
-  - prompt: "What is the name of Frodo's home village?"
+  - prompt: "What is the name of Frodo's homeland?"
     answers: ["The Shire", "Shire"]
 
   - prompt: "What type of creature is Gollum?"
-    answers: ["Hobbit"]
+    answers: ["Hobbit", "Stoor Hobbit", "Stoor"]
 
   - prompt: "What does Gollum call the One Ring?"
     answers: ["My Precious", "Precious"]
@@ -38,7 +38,7 @@ questions:
   - prompt: "What is the name of the dark lord who created the One Ring?"
     answers: ["Sauron"]
 
-  - prompt: "What is the name of Aragorn’s mother?"
+  - prompt: "What is the name of Aragorn's mother?"
     answers: ["Gilraen"]
 
   - prompt: "Which group is formed to destroy the One Ring?"
@@ -47,19 +47,19 @@ questions:
   - prompt: "Which dwarf is part of the Fellowship?"
     answers: ["Gimli"]
 
-  - prompt: "Who is the leader of the Fellowship?"
+  - prompt: "Who is the leader of the Fellowship at the start of the quest?"
     answers: ["Gandalf"]
 
   - prompt: "What race is Boromir?"
     answers: ["Man", "Human"]
 
-  - prompt: "What is the name of the city where Boromir and Faramir are from?"
-    answers: ["Gondor"]
+  - prompt: "What is the name of the city Boromir and Faramir are from?"
+    answers: ["Minas Tirith"]
 
-  - prompt: "What creature guards the gates of Mordor?"
-    answers: ["The Black Gate", "Black Gate"]
+  - prompt: "What is the name of the main gate into Mordor?"
+    answers: ["The Black Gate", "Black Gate", "Morannon"]
 
-  - prompt: "What is the name of Frodo’s sword?"
+  - prompt: "What is the name of Frodo's sword?"
     answers: ["Sting"]
 
   - prompt: "Who is the elf that joins the Fellowship?"
@@ -68,13 +68,13 @@ questions:
   - prompt: "What creature does Gandalf fight at the bridge in Moria?"
     answers: ["Balrog"]
 
-  - prompt: "What are the names of Frodo's uncles?"
-    answers: ["Bilbo and Sam", "Bilbo", "Sam"]
+  - prompt: "What is the name of Frodo's uncle?"
+    answers: ["Bilbo", "Bilbo Baggins"]
 
-  - prompt: "What is the name of the forest that protects Lothlórien?"
-    answers: ["The Golden Wood", "Golden Wood", "Lothlórien"]
+  - prompt: "What is another name for the woods of Lothlórien?"
+    answers: ["The Golden Wood", "Golden Wood", "Lothlórien", "Lothlorien"]
 
-  - prompt: "Who rules Lothlórien?"
+  - prompt: "Who rules Lothlórien alongside Celeborn?"
     answers: ["Galadriel"]
 
   - prompt: "What is the name of Galadriel's husband?"
@@ -89,47 +89,44 @@ questions:
   - prompt: "What kind of animal is Shadowfax?"
     answers: ["Horse"]
 
-  - prompt: "What is the name of the tree that guards the forest of Fangorn?"
+  - prompt: "What kind of beings guard Fangorn Forest?"
     answers: ["Ent", "Ents"]
 
   - prompt: "Who is the leader of the Ents?"
     answers: ["Treebeard"]
 
-  - prompt: "What are the name of the giant spider creatures in Mirkwood?"
+  - prompt: "What is the name of the giant spider Frodo encounters near Mordor?"
     answers: ["Shelob"]
 
-  - prompt: "What is the name of the cave where Frodo and Sam hide from the orcs?"
+  - prompt: "What is the name of the mountain where Frodo and Sam go to destroy the Ring?"
     answers: ["Mount Doom", "Orodruin"]
 
-  - prompt: "What is the name of the king of Gondor who claims the throne?"
-    answers: ["Aragorn"]
-
-  - prompt: "What creature carries the torch of the Ring in Mount Doom?"
-    answers: ["Frodo"]
+  - prompt: "Who carries the Ring into Mount Doom?"
+    answers: ["Frodo", "Frodo Baggins"]
 
   - prompt: "Who is the brother of Boromir?"
     answers: ["Faramir"]
 
-  - prompt: "Who is the leader of the Riders of Rohan?"
-    answers: ["Theoden", "Théoden"]
+  - prompt: "Who leads the Riders of Rohan as king?"
+    answers: ["Theoden", "Théoden", "King Theoden", "King Théoden"]
 
-  - prompt: "What creature does Gandalf ride when he arrives at Helm’s Deep?"
+  - prompt: "What does Gandalf ride when he arrives at Helm's Deep?"
     answers: ["Shadowfax"]
 
-  - prompt: "What is the name of the city that was taken over by Saruman?"
+  - prompt: "What is the name of Saruman's stronghold?"
     answers: ["Isengard"]
 
-  - prompt: "What is the name of the sword that cuts the Ring from Sauron’s hand?"
-    answers: ["Anduril"]
+  - prompt: "What is the name of the sword that cuts the Ring from Sauron's hand before it is reforged?"
+    answers: ["Narsil"]
 
   - prompt: "What character says, 'Even the smallest person can change the course of the future'?"
     answers: ["Galadriel"]
 
   - prompt: "Who is the captain of the Army of the Dead?"
-    answers: ["The King of the Dead"]
+    answers: ["The King of the Dead", "King of the Dead"]
 
-  - prompt: "What is the name of the tree that Frodo and Sam hide under in the Shire?"
-    answers: ["Old Took's Tree", "Old Took Tree"]
+  - prompt: "What eerie swamp do Frodo and Sam cross on the way to Mordor?"
+    answers: ["The Dead Marshes", "Dead Marshes"]
 
   - prompt: "What is the name of the creature that guides Frodo to Mount Doom?"
     answers: ["Gollum"]
@@ -137,14 +134,11 @@ questions:
   - prompt: "What group does Saruman lead?"
     answers: ["The Uruk-hai", "Uruk-hai"]
 
-  - prompt: "Who was the first to befriend Frodo on his journey?"
+  - prompt: "Who was the first to befriend Frodo on his journey out of the Shire?"
     answers: ["Samwise Gamgee", "Sam"]
 
-  - prompt: "Who is the elf who warns the Fellowship of danger at the border of Lothlórien?"
+  - prompt: "Who is the elf who warns the Fellowship at the border of Lothlórien in the films?"
     answers: ["Haldir"]
 
   - prompt: "What is the name of the inn where Frodo and his friends stay in Bree?"
     answers: ["The Prancing Pony", "Prancing Pony"]
-
-  - prompt: "What creature did Frodo and Sam encounter in the land of the dead?"
-    answers: ["The Dead Marshes", "Dead Marshes"]

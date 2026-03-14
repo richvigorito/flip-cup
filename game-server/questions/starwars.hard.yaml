@@ -2,18 +2,18 @@ title: Hard
 category: Star Wars
 questions:
   - prompt: "Who was the first Jedi to appear in the prequel trilogy?"
-    answers: ["Qui-Gon Jinn", "Qui Gon Jinn"]
+    answers: ["Qui-Gon Jinn", "Qui Gon Jinn", "Qui-Gon"]
 
   - prompt: "Who kills Jabba the Hutt?"
     answers: ["Leia Organa", "Princess Leia"]
 
   - prompt: "What is the name of Anakin Skywalker's apprentice?"
-    answers: ["Ahsoka Tano"]
+    answers: ["Ahsoka Tano", "Ahsoka"]
 
   - prompt: "What is the home planet of the Wookiees?"
     answers: ["Kashyyyk", "Kashyyk"]
 
-  - prompt: "What is the name of the city where Obi-Wan and Anakin duel in Episode III?"
+  - prompt: "What is the name of the planet where Obi-Wan and Anakin duel in Episode III?"
     answers: ["Mustafar"]
 
   - prompt: "What is the name of the creature that lives in the Sarlacc Pit?"
@@ -28,20 +28,20 @@ questions:
   - prompt: "What phrase does Darth Vader say when revealing his true identity to Luke?"
     answers: ["I am your father", "No, I am your father"]
 
-  - prompt: "Which planet is destroyed by the second Death Star?"
-    answers: ["Endor"]
+  - prompt: "Which moon does the second Death Star orbit in Return of the Jedi?"
+    answers: ["Endor", "Forest Moon of Endor"]
 
   - prompt: "Which clone trooper is known for his distinctive helmet and armor?"
     answers: ["Captain Rex", "Rex"]
 
-  - prompt: "Who becomes the Emperor after Darth Sidious?"
-    answers: ["No one", "Palpatine returns in Episode IX, The Rise of Skywalker"]
+  - prompt: "Who becomes Supreme Leader after Snoke's death?"
+    answers: ["Kylo Ren", "Ben Solo"]
 
   - prompt: "What type of droid is C-3PO?"
     answers: ["Protocol droid"]
 
-  - prompt: "Who becomes the leader of the Resistance after Leia Organa's death?"
-    answers: ["Rey"]
+  - prompt: "Who takes the Skywalker name at the end of The Rise of Skywalker?"
+    answers: ["Rey", "Rey Skywalker"]
 
   - prompt: "Which Jedi Master trained Anakin Skywalker?"
     answers: ["Obi-Wan Kenobi", "Obi-Wan"]
@@ -60,4 +60,3 @@ questions:
 
   - prompt: "Which Sith Lord is also known as Darth Plagueis?"
     answers: ["Plagueis", "Darth Plagueis"]
-

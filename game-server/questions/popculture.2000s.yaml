@@ -22,7 +22,7 @@ questions:
   - prompt: "Which pop star married Kevin Federline in the 2000s?"
     answers: ["Britney Spears"]
 
-  - prompt: "Which film featured the famous line 'I am the king of the world'?"
+  - prompt: "Which blockbuster film featured the famous line 'I am the king of the world'?"
     answers: ["Titanic"]
 
   - prompt: "Which 2000s band released the hit song 'Hey Ya!'?"
@@ -49,11 +49,11 @@ questions:
   - prompt: "Which company introduced the first iPod in 2001?"
     answers: ["Apple", "Apple Inc."]
 
-  - prompt: "Which animated TV show first aired in the 2000s and features the characters Peter, Lois, and Stewie?"
+  - prompt: "Which animated TV show remained hugely popular in the 2000s and features the characters Peter, Lois, and Stewie?"
     answers: ["Family Guy"]
 
   - prompt: "Who released the 2000s hit song 'Poker Face'?"
     answers: ["Lady Gaga"]
 
   - prompt: "Which 2000s TV show featured the character Lorelai Gilmore?"
-    answers: ["Gilmore Girls", "Gilmore Girls: A Year in the Life"]
+    answers: ["Gilmore Girls"]

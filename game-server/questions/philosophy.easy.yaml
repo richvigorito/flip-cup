@@ -3,7 +3,7 @@ category: Philosophy
 
 questions:
   - prompt: "Who is known as the father of Western philosophy?"
-    answers: ["Socrates"]
+    answers: ["Socrates", "Sokrates"]
 
   - prompt: "Which philosopher wrote 'The Republic'?"
     answers: ["Plato"]

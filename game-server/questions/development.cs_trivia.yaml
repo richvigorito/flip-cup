@@ -12,9 +12,9 @@ questions:
     answers: ["1989"]
 
   - prompt: "Who invented the World Wide Web?"
-    answers: ["Tim Berners-Lee", "Tim Berners Lee"]
+    answers: ["Tim Berners-Lee", "Tim Berners Lee", "Sir Tim Berners-Lee"]
 
-  - prompt: "What company created the first widely used personal computer?"
+  - prompt: "What company created the Apple II personal computer?"
     answers: ["Apple", "Apple Inc", "Apple Inc."]
 
   - prompt: "What does ENIAC stand for?"
@@ -29,7 +29,7 @@ questions:
   - prompt: "What does 'CPU' stand for?"
     answers: ["Central Processing Unit"]
 
-  - prompt: "Who invended the Linux operating system? was developed by Linus Torvalds?"
+  - prompt: "Who developed the Linux operating system?"
     answers: ["Linus Torvalds", "Linus", "Torvalds"]
 
   - prompt: "What does 'GUI' stand for?"
@@ -39,7 +39,7 @@ questions:
     answers: ["Fortran"]
 
   - prompt: "Who co-founded Microsoft?"
-    answers: ["Bill Gates"]
+    answers: ["Bill Gates", "Paul Allen"]
 
   - prompt: "What company created the Macintosh computer?"
     answers: ["Apple", "Apple Inc", "Apple Inc."]
@@ -110,10 +110,10 @@ questions:
   - prompt: "What does 'DOS' stand for in MS-DOS?"
     answers: ["Disk Operating System"]
 
-  - prompt: "What was the first video game?"
+  - prompt: "What game is often cited as one of the first commercially successful video games?"
     answers: ["Pong"]
 
-  - prompt: "Which tech giant was started in a garage in California?"
+  - prompt: "Which tech company founded by Steve Jobs and Steve Wozniak started in a California garage?"
     answers: ["Apple"]
 
   - prompt: "What company created the first commercial microprocessor?"
@@ -131,8 +131,8 @@ questions:
   - prompt: "What does 'SQL' stand for?"
     answers: ["Structured Query Language"]
 
-  - prompt: "Who developed the Unix operating system?"
-    answers: ["Ken Thompson and Dennis Ritchie", "Dennis Ritchie and Ken Thompson", "Ritchie Thompson", "Tompson Ritchie"]
+  - prompt: "Which two Bell Labs researchers are most associated with creating Unix?"
+    answers: ["Ken Thompson and Dennis Ritchie", "Dennis Ritchie and Ken Thompson"]
 
   - prompt: "What device stores data permanently?"
     answers: ["Hard Drive", "Hard Disk", "HDD"]

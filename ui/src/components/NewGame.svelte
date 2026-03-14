@@ -52,6 +52,7 @@
     </select>
 
     <button
+      class="submit-btn"
       on:click={createGame}
       disabled={!selectedQuestionSet}
     >

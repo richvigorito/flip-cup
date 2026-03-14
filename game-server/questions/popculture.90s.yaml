@@ -16,7 +16,7 @@ questions:
   - prompt: "Which popular toy was launched in 1996 featuring tiny interactive pets?"
     answers: ["Tamagotchi"]
 
-  - prompt: "Who was the host of the TV show 'The Fresh Prince of Bel-Air'?"
+  - prompt: "Who starred in the TV show 'The Fresh Prince of Bel-Air'?"
     answers: ["Will Smith"]
 
   - prompt: "Which movie was the highest-grossing film of the 90s?"
@@ -35,7 +35,7 @@ questions:
     answers: ["Toy Story"]
 
   - prompt: "What was the name of the first Star Wars prequel released in 1999?"
-    answers: ["The Phantom Menace", "Star Wars: Episode I – The Phantom Menace"]
+    answers: ["The Phantom Menace", "Star Wars: Episode I - The Phantom Menace", "Star Wars Episode I The Phantom Menace"]
 
   - prompt: "Which boy band was known for hits like 'I Want It That Way'?"
     answers: ["Backstreet Boys"]

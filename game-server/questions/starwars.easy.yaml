@@ -10,8 +10,8 @@ questions:
   - prompt: "What color is Yoda’s lightsaber?"
     answers: ["Green"]
 
-  - prompt: "Who says, 'May the Force be with you'?"
-    answers: ["Multiple characters"]
+  - prompt: "What phrase is commonly said by multiple characters in Star Wars?"
+    answers: ["May the Force be with you"]
 
   - prompt: "What is the name of the desert planet where Luke grows up?"
     answers: ["Tatooine"]
@@ -32,7 +32,7 @@ questions:
     answers: ["Gungan"]
 
   - prompt: "What type of creature does Luke Skywalker milk in The Last Jedi?"
-    answers: ["Thala-siren"]
+    answers: ["Thala-siren", "Thala siren"]
 
   - prompt: "What is the name of the robot who speaks fluent binary in the Star Wars series?"
     answers: ["R2-D2"]
@@ -41,7 +41,7 @@ questions:
     answers: ["Alderaan"]
 
   - prompt: "What was the name of the first Star Wars movie released?"
-    answers: ["Star Wars: A New Hope", "A New Hope"]
+    answers: ["Star Wars", "Star Wars: A New Hope", "A New Hope"]
 
-  - prompt: "Who is the leader of the Rebel Alliance?"
+  - prompt: "Which princess is a prominent leader in the Rebel Alliance?"
     answers: ["Princess Leia", "Leia Organa"]

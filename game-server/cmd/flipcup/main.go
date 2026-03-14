@@ -4,6 +4,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 	"flip-cup/internal/game"
 	"flip-cup/internal/transport/ws"
 	"flip-cup/internal/transport/api"
@@ -25,7 +26,11 @@ func main() {
 	api.SetupRoutes(manager, r)
 
 	// Start the server
-	log.Println("Server running at http://localhost:8080")
-	log.Fatal(http.ListenAndServe("0.0.0.0:8080", api.WithCORS(r)))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	log.Printf("Server running at http://localhost:%s", port)
+	log.Fatal(http.ListenAndServe(":"+port, api.WithCORS(r)))
 }
 

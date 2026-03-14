@@ -2,7 +2,7 @@ title: Gen Sports (Medium)
 category: Sports
 questions:
   - prompt: "Which country has hosted the most Summer Olympic Games?"
-    answers: ["United States", "USA"]
+    answers: ["United States", "USA", "United States of America"]
 
   - prompt: "Who was the first female gymnast to score a perfect 10?"
     answers: ["Nadia Comăneci", "Nadia Comaneci"]
@@ -20,7 +20,7 @@ questions:
     answers: ["Uruguay"]
 
   - prompt: "Who won the NBA MVP in 2021?"
-    answers: ["Nikola Jokic", "Jokic"]
+    answers: ["Nikola Jokic", "Nikola Jokić", "Jokic", "Jokić"]
 
   - prompt: "In what year did women first compete in the Olympics?"
     answers: ["1900"]
@@ -35,7 +35,7 @@ questions:
     answers: ["Sebastian Vettel", "Vettel"]
 
   - prompt: "Which tennis tournament is played on clay courts?"
-    answers: ["French Open"]
+    answers: ["French Open", "Roland Garros"]
 
   - prompt: "What athlete lit the Olympic torch in Barcelona 1992?"
     answers: ["Antonio Rebollo", "Rebollo"]
@@ -60,4 +60,3 @@ questions:
 
   - prompt: "What event did Bruce Jenner win in the 1976 Olympics?"
     answers: ["Decathlon"]
-

@@ -9,6 +9,10 @@ export const DEFAULT_QUIZ_ANSWERS: Record<string, string> = {
   'What is the largest planet in our solar system?': 'Jupiter',
   'In which year did the Titanic sink?': '1912',
   'What is the smallest country in the world?': 'Vatican City',
+  'What is the tallest mountain in the world?': 'Mount Everest',
+  'Who painted the Mona Lisa?': 'Leonardo da Vinci',
+  "Which element has the chemical symbol 'O'?": 'Oxygen',
+  'What is the longest river in the world?': 'The Amazon River',
 };
 
 /** Fallback: try every known answer until one works. */

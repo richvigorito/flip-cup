@@ -14,7 +14,7 @@
     console.log('gsx', $gameState);
 
     const startGame = () => {
-        if ($gameState.canStart()){
+        if ($gameState && $gameState.canStart()){
             console.log("Sending start message");
             send({ type: 'start' });
             mode.set('game');
@@ -49,20 +49,54 @@
 
     };
 
+    const leaveGame = () => {
+        if (confirm('Are you sure you want to leave the game? This will clear your session.')) {
+            sessionStorage.removeItem('flipcup_player_id');
+            sessionStorage.removeItem('flipcup_game_id');
+            window.location.reload();
+        }
+    };
+
 </script>
 
 <div class="lobby">
-    {#if !$joined && $mode == 'lobby' }
-        <input type="text" placeholder="Enter name" bind:value={localPlayerName} />
+    <div class="lobby-header">
+        <span class="lobby-icon" on:click={leaveGame} style="cursor: pointer;" title="Leave Game">🏠</span>
+        <h2>Lobby Code: <span class="game-code-value">{$gameId}</span></h2>
+    </div>
 
-        <button on:click={() => {
+    {#if !$joined && $mode == 'lobby' }
+        <input type="text" placeholder="Enter your name…" bind:value={localPlayerName} />
+
+        <button disabled={!localPlayerName} on:click={() => {
             currentPlayerName.set(localPlayerName); 
             joinGame(localPlayerName);
         }}>Join Game</button>
 
     {:else}
-        <button on:click={assignTeams}>Assign Teams</button>
-        <button on:click={startGame}>Start Game</button>
+        <div class="teams-preview">
+            <div class="team">
+                <h3>{$gameState?.teamA?.name || 'Team A'}</h3>
+                <ul>
+                    {#each $gameState?.teamA?.players || [] as player}
+                        <li>{player.name}</li>
+                    {/each}
+                </ul>
+            </div>
+            <div class="team">
+                <h3>{$gameState?.teamB?.name || 'Team B'}</h3>
+                <ul>
+                    {#each $gameState?.teamB?.players || [] as player}
+                        <li>{player.name}</li>
+                    {/each}
+                </ul>
+            </div>
+        </div>
+        <button on:click={assignTeams}>Shuffle Teams</button>
+        <button disabled={!$gameState || !$gameState.canStart()} on:click={startGame}>Start Game</button>
+        <div style="margin-top: 1rem;">
+             <button class="secondary" on:click={leaveGame}>Leave Game</button>
+        </div>
     {/if}
 
     {#if $gamesCompleted > 0 }

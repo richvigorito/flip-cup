@@ -1,0 +1,90 @@
+title: Wes Anderson Film Quiz
+category: Movies
+
+questions:
+  - prompt: "Which Wes Anderson film features a concierge named Gustave H.?"
+    answers: ["The Grand Budapest Hotel", "Grand Budapest"]
+
+  - prompt: "What is the name of the private school in 'Rushmore'?"
+    answers: ["Rushmore Academy", "Rushmore"]
+
+  - prompt: "Which Wes Anderson movie centers around three estranged brothers on a train in India?"
+    answers: ["The Darjeeling Limited"]
+
+  - prompt: "Which stop-motion animated film features a clever fox voiced by George Clooney?"
+    answers: ["Fantastic Mr. Fox"]
+
+  - prompt: "Who plays the role of Royal Tenenbaum in 'The Royal Tenenbaums'?"
+    answers: ["Gene Hackman"]
+
+  - prompt: "Which film involves a boy scout named Sam and a girl named Suzy who run away together?"
+    answers: ["Moonrise Kingdom"]
+
+  - prompt: "Which frequent Wes Anderson collaborator played Steve Zissou?"
+    answers: ["Bill Murray"]
+
+  - prompt: "What fictional Eastern European country is the setting for 'The Grand Budapest Hotel'?"
+    answers: ["Zubrowka"]
+
+  - prompt: "Which Wes Anderson film is narrated by Alec Baldwin?"
+    answers: ["The Royal Tenenbaums"]
+
+  - prompt: "In which movie does a character write plays such as 'Heaven and Hell' and 'Waterloo'?"
+    answers: ["Rushmore"]
+
+  - prompt: "What is the name of the oceanographic vessel in 'The Life Aquatic with Steve Zissou'?"
+    answers: ["Belafonte"]
+
+  - prompt: "Which animated Wes Anderson film is set in a dystopian Japan and features dogs exiled to an island?"
+    answers: ["Isle of Dogs"]
+
+  - prompt: "Which Wes Anderson film is set in the fictional town of Ennui-sur-Blasé?"
+    answers: ["The French Dispatch"]
+
+  - prompt: "Which Wes Anderson film was released in 2021?"
+    answers: ["The French Dispatch"]
+
+  - prompt: "Which actor has appeared in nearly every Wes Anderson movie since 'Bottle Rocket'?"
+    answers: ["Owen Wilson"]
+
+  - prompt: "Who composed the original scores for many Wes Anderson films including 'Moonrise Kingdom' and 'Fantastic Mr. Fox'?"
+    answers: ["Alexandre Desplat", "Desplat"]
+
+  - prompt: "What is the name of the raccoon character in 'Fantastic Mr. Fox'?"
+    answers: ["Kylie"]
+
+  - prompt: "Which film features a dysfunctional family of prodigies?"
+    answers: ["The Royal Tenenbaums"]
+
+  - prompt: "Which film was Wes Anderson’s first feature-length movie?"
+    answers: ["Bottle Rocket"]
+
+  - prompt: "Name one co-writer of 'The Darjeeling Limited' besides Wes Anderson."
+    answers: ["Jason Schwartzman", "Roman Coppola"]
+
+  - prompt: "Which actor plays the villainous Dmitri in 'The Grand Budapest Hotel'?"
+    answers: ["Adrien Brody"]
+
+  - prompt: "Who plays the young lobby boy Zero in 'The Grand Budapest Hotel'?"
+    answers: ["Tony Revolori"]
+
+  - prompt: "Which Wes Anderson movie includes a stop-motion scene involving sushi preparation?"
+    answers: ["Isle of Dogs"]
+
+  - prompt: "Which movie's fictional magazine is modeled after The New Yorker?"
+    answers: ["The French Dispatch"]
+
+  - prompt: "Which movie has a scene where the characters float on an inflatable raft with a jaguar shark?"
+    answers: ["The Life Aquatic with Steve Zissou"]
+
+  - prompt: "Which director has a signature symmetrical shot style and center framing?"
+    answers: ["Wes Anderson"]
+
+  - prompt: "Which Wes Anderson film features prep-school student Max Fischer?"
+    answers: ["Rushmore"]
+
+  - prompt: "Which movie is inspired in part by Stefan Zweig’s writing?"
+    answers: ["The Grand Budapest Hotel"]
+
+  - prompt: "What recurring visual motif is often seen in Wes Anderson's cinematography?"
+    answers: ["Symmetry", "Centered framing", "Color-coded sets"]

@@ -32,12 +32,12 @@ questions:
   answers: ["Nucleus"]
 
 - prompt: "What is the unit of electric current?"
-  answers: ["Ampere", "Amp"]
+  answers: ["Ampere", "Amp", "Amperes", "Amps"]
 
 - prompt: "Which planet is known as the 'Giant Planet' and has a Great Red Spot?"
   answers: ["Jupiter"]
 
-- prompt: "What is the name of the nearest galaxy to the Milky Way?"
+- prompt: "What is the nearest major galaxy to the Milky Way?"
   answers: ["Andromeda Galaxy", "Andromeda"]
 
 - prompt: "What is the process of water changing from a gas to a liquid called?"
@@ -49,7 +49,7 @@ questions:
 - prompt: "What is the common name for the substance H2O in its solid form?"
   answers: ["Ice"]
 
-- prompt: "Which type of electromagnetic wave is used for communication?"
+- prompt: "Which type of electromagnetic wave is commonly used for radio communication?"
   answers: ["Radio waves", "Radio wave"]
 
 - prompt: "What type of bond is formed when two atoms share electrons?"
@@ -63,4 +63,3 @@ questions:
 
 - prompt: "What type of rock is formed from cooled and solidified magma?"
   answers: ["Igneous rock", "Igneous"]
-

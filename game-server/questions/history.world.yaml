@@ -3,7 +3,7 @@ category: History
 
 questions:
   - prompt: "Who was the first emperor of Rome?"
-    answers: ["Augustus", "Octavian"]
+    answers: ["Augustus", "Octavian", "Octavian Augustus"]
 
   - prompt: "Which ancient civilization built the pyramids?"
     answers: ["Egyptians", "Ancient Egyptians"]
@@ -21,7 +21,7 @@ questions:
     answers: ["England", "Great Britain", "United Kingdom"]
 
   - prompt: "Who conquered much of the known world and died at 32?"
-    answers: ["Alexander the Great"]
+    answers: ["Alexander the Great", "Alexander"]
 
   - prompt: "What wall was built to protect China from invaders?"
     answers: ["Great Wall", "Great Wall of China"]
@@ -41,7 +41,7 @@ questions:
   - prompt: "Which city was destroyed by a volcano in 79 AD?"
     answers: ["Pompeii"]
 
-  - prompt: "Who discovered America in 1492?"
+  - prompt: "Which explorer reached the Americas in 1492?"
     answers: ["Christopher Columbus", "Columbus"]
 
   - prompt: "Which war was fought between the Allies and Axis powers?"
@@ -74,8 +74,8 @@ questions:
   - prompt: "Who was the first female Prime Minister of the UK?"
     answers: ["Margaret Thatcher", "Thatcher"]
 
-  - prompt: "What country built the Colosseum?"
-    answers: ["Italy", "Roman Empire"]
+  - prompt: "What civilization built the Colosseum?"
+    answers: ["Ancient Rome", "Romans", "Roman Empire"]
 
   - prompt: "What was the capital of the Aztec Empire?"
     answers: ["Tenochtitlan"]
@@ -99,7 +99,7 @@ questions:
     answers: ["Berlin Wall"]
 
   - prompt: "Which ancient civilization invented democracy?"
-    answers: ["Greeks", "Ancient Greeks"]
+    answers: ["Greeks", "Ancient Greeks", "Athenians", "Ancient Athenians"]
 
   - prompt: "Which German monk started the Protestant Reformation?"
     answers: ["Martin Luther"]
@@ -125,7 +125,7 @@ questions:
   - prompt: "Which Chinese philosopher emphasized respect and order?"
     answers: ["Confucius"]
 
-  - prompt: "What is the name of the first human civilization?"
+  - prompt: "What is the name of one of the earliest known civilizations in Mesopotamia?"
     answers: ["Sumer", "Sumerians"]
 
   - prompt: "Who was the famous Greek philosopher who taught Plato?"

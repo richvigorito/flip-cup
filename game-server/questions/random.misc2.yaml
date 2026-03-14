@@ -14,7 +14,7 @@ questions:
     answers: ["Mars"]
 
   - prompt: "What is the boiling point of water in Celsius?"
-    answers: ["100", "100°C", "100 degrees Celsius"]
+    answers: ["100", "100°C", "100 degrees Celsius", "100 C"]
 
   - prompt: "Which country gifted the Statue of Liberty to the USA?"
     answers: ["France"]
@@ -29,10 +29,10 @@ questions:
     answers: ["Mandarin Chinese", "Mandarin"]
 
   - prompt: "What is the currency of the United Kingdom?"
-    answers: ["Pound Sterling", "Pound", "GBP"]
+    answers: ["Pound Sterling", "Pound", "British Pound", "GBP"]
 
   - prompt: "Who painted the ceiling of the Sistine Chapel?"
-    answers: ["Michelangelo"]
+    answers: ["Michelangelo", "Michelangelo Buonarroti"]
 
   - prompt: "What is the square root of 81?"
     answers: ["9", "nine"]
@@ -59,4 +59,4 @@ questions:
     answers: ["8", "eight"]
 
   - prompt: "What is the largest mammal in the world?"
-    answers: ["Blue whale", "Blue Whale"]
+    answers: ["Blue whale", "Blue Whale", "The blue whale"]
