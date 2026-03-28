@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { mode } from '$lib/store';
+  import { mode, resetClientGameState } from '$lib/store';
   import { connectSocket } from '$lib/transport/socket';
   import type { QuestionSet } from '$lib/types/QuestionSet';
   import { questionSets } from '$lib/store';
@@ -8,6 +8,11 @@
 
   const createGame = () => {
     if (!selectedQuestionSet) return;
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.removeItem('flipcup_player_id');
+      sessionStorage.removeItem('flipcup_game_id');
+    }
+    resetClientGameState();
     connectSocket({
       type: 'create_game',
       payload: { file: selectedQuestionSet }
