@@ -29,6 +29,18 @@ export const eventLog = writable<{ message: string; type: 'info' | 'success' | '
 export const gameState = writable<GameState | null >(null);
 export const me = writable<Player | null >(null);
 
+export function resetClientGameState() {
+  gameId.set(null);
+  joined.set(false);
+  currentPlayerName.set(null);
+  currentQuestion.set(null);
+  winner.set(null);
+  gamesCompleted.set(0);
+  eventLog.set([]);
+  gameState.set(null);
+  me.set(null);
+}
+
 // Derived store to automatically determine myTeam based on gameState and me
 export const myTeam = derived([gameState, me], ([$gameState, $me]) => {
   if (!$gameState || !$me) return null;

@@ -2,7 +2,7 @@ import { get, writable } from 'svelte/store';
 import { GameState } from '$lib/models/GameState';
 import { Team } from '$lib/models/Team';
 import { Player } from '$lib/models/Player';
-import { gameState, myTeam, me, mode, joined, eventLog, currentQuestion, winner, gamesCompleted, gameId } from '$lib/store';
+import { gameState, myTeam, me, mode, joined, eventLog, currentQuestion, winner, gamesCompleted, gameId, currentPlayerName } from '$lib/store';
 
 
 import { baseWsUrl } from '$lib/utils/config';
@@ -64,6 +64,8 @@ function handleMessage(message: any) {
     case 'game_player_initialized':
         currentPlayer = new Player(message.payload);
         me.set(currentPlayer);
+        currentPlayerName.set(currentPlayer.name || null);
+        joined.set(Boolean(currentPlayer.name));
         if (typeof sessionStorage !== 'undefined') {
             sessionStorage.setItem('flipcup_player_id', currentPlayer.id);
             if (message.gameId) {
@@ -166,6 +168,7 @@ const logEvent = (message: string, type: 'success' | 'error' | 'info') => {
 const handleJoinedExistingGame = (message: any) => {
     const newState = new GameState(message.payload.game_snapshot);
     gameState.set(newState);
+    mode.set('lobby');
     logEvent(`Joined game ${newState.id}`, 'success');
 };
 
@@ -234,4 +237,3 @@ const handleQuestionAnsweredCorrectly = (message: any) => {
     const newState = new GameState(message.payload.game_snapshot);
     gameState.set(newState);
 };
-

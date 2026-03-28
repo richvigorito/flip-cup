@@ -259,4 +259,22 @@ test.describe('Lobby behaviour', () => {
     await ctx1.close();
     await ctx2.close();
   });
+
+  test('Creating a new game after joining still requires entering a name', async ({ browser }) => {
+    const ctx = await browser.newContext();
+    const page = await ctx.newPage();
+
+    await createGame(page);
+    await joinLobby(page, 'Alice');
+
+    await page.locator('.logo-link').click();
+    await page.getByRole('button', { name: /Create New Game/i }).click();
+    await page.locator('#qs-select').selectOption({ index: 1 });
+    await page.locator('.submit-btn').click();
+
+    await expect(page.locator('input[placeholder="Enter your name…"]')).toBeVisible();
+    await expect(page.getByRole('button', { name: /Join Game/i })).toBeDisabled();
+
+    await ctx.close();
+  });
 });

@@ -3,14 +3,18 @@
   import { connectSocket } from '$lib/transport/socket';
   import { fetchGames } from '$lib/transport/http/Games';
   import type { GameState } from '$lib/models/GameState';
-  import { mode, gameId, currentPlayerName } from '$lib/store';
+  import { mode, gameId, resetClientGameState } from '$lib/store';
 
   let availableGames: GameState[] = [];
   let loading = true;
 
   function joinGame(id: string) {
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.removeItem('flipcup_player_id');
+      sessionStorage.removeItem('flipcup_game_id');
+    }
+    resetClientGameState();
     gameId.set(id);
-    currentPlayerName.set('');
     connectSocket({
       type: 'join_existing_game',
       payload: { game_id: id }
