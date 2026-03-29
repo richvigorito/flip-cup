@@ -30,11 +30,6 @@
       </button>
     </div>
 
-    <div class="hero-tags">
-      <span class="tag">Red Cup Relay</span>
-      <span class="tag">House Party Trivia</span>
-      <span class="tag">Team vs Team</span>
-    </div>
   </div>
 </div>
 
@@ -102,7 +97,7 @@
     flex-direction: column;
     gap: 0.75rem;
     max-width: 320px;
-    margin: 0 auto 2rem;
+    margin: 0 auto;
   }
 
   .btn {
@@ -144,21 +139,4 @@
     transform: translateY(-2px);
   }
 
-  .hero-tags {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    padding: 0.3rem 0.75rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    background: rgba(255, 237, 213, 0.04);
-    border: 1px solid rgba(248, 113, 113, 0.14);
-    border-radius: var(--r-full);
-    letter-spacing: 0.01em;
-  }
 </style>
