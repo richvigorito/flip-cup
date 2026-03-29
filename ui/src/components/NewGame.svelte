@@ -183,7 +183,7 @@
     font-size: 1rem;
     font-weight: 700;
     border-radius: var(--r-md);
-    background: linear-gradient(135deg, var(--accent), var(--indigo));
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
     color: #fff;
     border: none;
     box-shadow: 0 4px 16px rgba(220, 38, 38, 0.28);

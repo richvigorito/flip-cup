@@ -11,7 +11,7 @@
       <div class="hero-cup-scene">
         <div class="hero-cup-shadow"></div>
         <div class="hero-beer"></div>
-        <img src="/solo-cup.png" alt="" class="hero-icon" />
+        <img src="/solo-cup-hero.png" alt="" class="hero-icon" width="256" height="256" />
       </div>
     </div>
 
@@ -249,7 +249,7 @@
   }
 
   .btn-primary {
-    background: linear-gradient(135deg, var(--accent), var(--indigo));
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
     color: #fff;
     border: none;
     box-shadow: 0 4px 20px rgba(220, 38, 38, 0.32);

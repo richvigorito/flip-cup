@@ -204,7 +204,7 @@
   .create-btn {
     display: inline-flex;
     padding: 0.7rem 1.5rem;
-    background: linear-gradient(135deg, var(--accent), var(--indigo));
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
     color: #fff;
     font-weight: 700;
     border-radius: var(--r-md);

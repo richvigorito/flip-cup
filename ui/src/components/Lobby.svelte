@@ -267,7 +267,7 @@
     padding: 0.8rem 1.5rem;
     font-size: 0.9375rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--accent), var(--indigo));
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
     color: #fff;
     border: none;
     border-radius: var(--r-md);
@@ -383,7 +383,7 @@
   }
 
   .action-btn.primary {
-    background: linear-gradient(135deg, var(--accent), var(--indigo));
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
     color: #fff;
     box-shadow: 0 4px 12px rgba(220, 38, 38, 0.28);
   }

@@ -17,8 +17,8 @@
   --accent-glow:     0 0 24px rgba(220, 38, 38, 0.4);
   --accent-border:   rgba(248, 113, 113, 0.42);
 
-  --indigo:          #f59e0b;
-  --indigo-hover:    #d97706;
+  --accent-secondary:       #f59e0b;
+  --accent-secondary-hover: #d97706;
 
   /* ── Backgrounds ── */
   --bg-base:         #120a09;
@@ -169,7 +169,7 @@ button:disabled {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.7rem 1.5rem;
-  background: linear-gradient(135deg, var(--accent), var(--indigo));
+  background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
   color: #fff;
   border-radius: var(--r-md);
   box-shadow: 0 4px 14px rgba(220, 38, 38, 0.28);
