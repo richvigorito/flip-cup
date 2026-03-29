@@ -21,11 +21,11 @@
 
     <div class="hero-actions">
       <button class="btn btn-primary" on:click={startNewGame}>
-        <span>🏁</span>
+        <span>🍺</span>
         Create New Game
       </button>
       <button class="btn btn-secondary" on:click={joinExistingGame}>
-        <span>👥</span>
+        <span>🍻</span>
         Join Existing Game
       </button>
     </div>
