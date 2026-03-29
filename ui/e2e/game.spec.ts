@@ -1,78 +1,5 @@
 import { test, expect, type Page, type BrowserContext } from '@playwright/test';
-import { DEFAULT_QUIZ_ANSWERS } from './answers';
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-/** Create a game as player 1 and return to the lobby page. */
-async function createGame(page: Page): Promise<void> {
-  await page.goto('/');
-  await page.getByRole('button', { name: /Create New Game/i }).click();
-  await expect(page.locator('#qs-select')).toBeVisible();
-
-  // Select "General Quiz Set 1" (_.default) — first real option
-  await page.locator('#qs-select').selectOption({ index: 1 });
-  await page.locator('.submit-btn').click();
-
-  // Should land in lobby
-  await expect(page.locator('.lobby-icon')).toBeVisible();
-}
-
-/** Read the Game ID from the lobby. */
-async function getLobbyGameId(page: Page): Promise<string> {
-  const el = page.locator('.game-code-value');
-  await expect(el).toBeVisible();
-  return (await el.textContent()) ?? '';
-}
-
-/** Enter a player name and join the lobby. */
-async function joinLobby(page: Page, name: string): Promise<void> {
-  const input = page.locator('input[placeholder="Enter your name…"]');
-  await expect(input).toBeVisible();
-  await input.fill(name);
-  await page.getByRole('button', { name: /Join Game/i }).click();
-  await expect(page.getByRole('heading', { name: /^Lobby$/i })).toBeVisible({ timeout: 8_000 });
-  await expect(page.getByText(new RegExp(`You're in as\\s+${name}`, 'i'))).toBeVisible({ timeout: 8_000 });
-}
-
-/** Join an existing game from the Join screen. */
-async function joinExistingGame(page: Page, gameId: string): Promise<void> {
-  await page.goto('/');
-  await page.getByRole('button', { name: /Join Existing Game/i }).click();
-
-  // Wait for game cards to load
-  await expect(page.locator('.game-card').first()).toBeVisible({ timeout: 10_000 });
-
-  // Click the card matching the game ID
-  const card = page.locator('.game-card', { hasText: gameId });
-  await expect(card).toBeVisible();
-  await card.click();
-
-  await expect(page.locator('.lobby-icon')).toBeVisible();
-}
-
-/**
- * Answer the question shown on `page` if it's that player's turn.
- * Returns true if an answer was submitted, false if it wasn't this player's turn.
- */
-async function answerIfMyTurn(page: Page): Promise<boolean> {
-  const questionCard = page.locator('.question-card');
-  const isVisible = await questionCard.isVisible();
-  if (!isVisible) return false;
-
-  // Read the question text
-  const questionText = (await page.locator('.question-text').textContent()) ?? '';
-
-  // Find the answer (exact match first, then try all known answers)
-  const answer = DEFAULT_QUIZ_ANSWERS[questionText.trim()] ?? Object.values(DEFAULT_QUIZ_ANSWERS)[0];
-
-  const input = page.locator('.answer-input');
-  await input.fill(answer);
-  await page.locator('.submit-btn').click();
-
-  return true;
-}
+import { answerIfMyTurn, createGame, getLobbyGameId, joinExistingGame, joinLobby } from './helpers/game';
 
 /**
  * Play through the entire game, alternating turns between page1 and page2.
@@ -165,6 +92,12 @@ test.describe('Full multiplayer game', () => {
     const anyGameOver =
       (await p1GameOver.isVisible()) || (await p2GameOver.isVisible());
     expect(anyGameOver).toBe(true);
+
+    const gameOverPage = (await p1GameOver.isVisible()) ? player1 : player2;
+    await expect(gameOverPage.locator('.game-over-team')).toHaveCount(2);
+    await expect(gameOverPage.locator('.game-over-cup-name')).toHaveCount(2);
+    await expect(gameOverPage.locator('.game-over-cup.flipped')).toHaveCount(1);
+    await expect(gameOverPage.locator('.game-over-cup.filled')).toHaveCount(1);
   });
 
   test('Play Again resets the game and returns to lobby', async () => {

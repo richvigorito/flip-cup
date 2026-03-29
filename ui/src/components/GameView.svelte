@@ -1,8 +1,17 @@
 <script lang="ts">
   import { send } from '$lib/transport/socket';
   import { mode, currentQuestion, gameState, myTeam, me, winner } from '$lib/store';
+  import type { Team } from '$lib/models/Team';
 
   let currentAnswer = '';
+
+  const getClearedCupCount = (team: Team, winnerName: string | null) => {
+    if (winnerName && team.name === winnerName) {
+      return team.players.length;
+    }
+
+    return Math.min(team.turn, team.players.length);
+  };
 
   const submitAnswer = () => {
     if (!currentAnswer.trim()) return;
@@ -137,18 +146,46 @@
   <div class="game-over">
     <div class="game-over-card">
       {#if $myTeam && $winner === $myTeam.name}
-        <img src="/solo-cup.png" alt="" class="trophy trophy-cup" />
         <p class="game-over-label">Table cleared</p>
         <h2 class="game-over-winner">You ran the table!</h2>
       {:else if $myTeam}
-        <img src="/solo-cup.png" alt="" class="trophy trophy-cup loss" />
         <p class="game-over-label">Next round</p>
         <h2 class="game-over-winner">{$winner} ran the table</h2>
       {:else}
-        <img src="/solo-cup.png" alt="" class="trophy trophy-cup" />
         <p class="game-over-label">Winner</p>
         <h2 class="game-over-winner">{$winner} cleared the table</h2>
       {/if}
+
+      {#if $gameState}
+        <div class="game-over-table">
+          {#each [$gameState.teamA, $gameState.teamB] as team, teamIndex}
+            {@const clearedCupCount = getClearedCupCount(team, $winner)}
+            <section
+              class="game-over-team"
+              class:winner-team={team.name === $winner}
+              class:my-team={$myTeam?.name === team.name}
+            >
+              <div class="game-over-team-header">
+                <span class="game-over-team-name">{team.name}</span>
+                <span class="game-over-team-status">
+                  {team.name === $winner ? 'Table cleared' : `${team.turn} of ${team.players.length} cups cleared`}
+                </span>
+              </div>
+
+              <div class="game-over-cups" class:right={teamIndex === 1}>
+                {#each team.players as player, index}
+                  {@const flipped = index < clearedCupCount}
+                  <div class="game-over-cup-slot">
+                    <div class="cup game-over-cup" class:flipped class:filled={!flipped} title={player.name}></div>
+                    <span class="game-over-cup-name">{player.name}</span>
+                  </div>
+                {/each}
+              </div>
+            </section>
+          {/each}
+        </div>
+      {/if}
+
       <button class="restart-btn" on:click={resetGame}>
         Play Again
       </button>
@@ -455,6 +492,8 @@
   .cup {
     width: 44px;
     height: 44px;
+    position: relative;
+    overflow: hidden;
     background-image: url('/solo-cup.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -546,21 +585,6 @@
     to { opacity: 1; transform: scale(1); }
   }
 
-  .trophy {
-    margin-bottom: 0.75rem;
-  }
-
-  .trophy-cup {
-    width: 92px;
-    height: auto;
-    filter: drop-shadow(0 14px 24px rgba(220, 38, 38, 0.22));
-  }
-
-  .trophy-cup.loss {
-    transform: rotate(180deg);
-    opacity: 0.7;
-  }
-
   .game-over-label {
     font-size: 0.75rem;
     font-weight: 700;
@@ -578,7 +602,100 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    margin-bottom: 1.5rem;
+  }
+
+  .game-over-table {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .game-over-team {
+    padding: 1rem 1.125rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--r-lg);
+    background: rgba(19, 24, 39, 0.58);
+  }
+
+  .game-over-team.winner-team {
+    border-color: rgba(251, 191, 36, 0.32);
+    box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.08);
+  }
+
+  .game-over-team.my-team {
+    background: rgba(32, 19, 17, 0.72);
+  }
+
+  .game-over-team-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .game-over-team-name {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #fff7ed;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .game-over-team-status {
+    font-size: 0.78rem;
+    color: rgba(255, 237, 213, 0.72);
+  }
+
+  .game-over-cups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    justify-content: flex-start;
+  }
+
+  .game-over-cups.right {
+    justify-content: flex-end;
+  }
+
+  .game-over-cup-slot {
+    width: 68px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .game-over-cup {
+    width: 52px;
+    height: 52px;
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.28));
+  }
+
+  .game-over-cup.filled::after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    top: 8px;
+    height: 12px;
+    border-radius: 999px 999px 10px 10px;
+    background: linear-gradient(180deg, rgba(250, 204, 21, 0.92), rgba(217, 119, 6, 0.88));
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.18) inset,
+      0 0 0 1px rgba(120, 53, 15, 0.24);
+  }
+
+  .game-over-cup-name {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: rgba(255, 237, 213, 0.86);
+    text-align: center;
+    line-height: 1.25;
+    word-break: break-word;
   }
 
   .restart-btn {
@@ -596,5 +713,26 @@
   .restart-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 22px rgba(220, 38, 38, 0.42);
+  }
+
+  @media (max-width: 640px) {
+    .game-over-card {
+      width: min(100% - 1.5rem, 560px);
+      padding: 2rem 1.25rem;
+    }
+
+    .game-over-winner {
+      font-size: 2rem;
+    }
+
+    .game-over-team-header {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .game-over-cups.right {
+      justify-content: flex-start;
+    }
   }
 </style>
