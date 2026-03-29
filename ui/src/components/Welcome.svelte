@@ -8,10 +8,13 @@
 <div class="welcome">
   <div class="hero">
     <div class="hero-icon-wrap" aria-hidden="true">
-      <div class="hero-cup-scene">
-        <div class="hero-cup-shadow"></div>
-        <div class="hero-beer"></div>
-        <img src="/solo-cup-hero.png" alt="" class="hero-icon" width="256" height="256" />
+      <div class="hero-cup-stage">
+        <div class="hero-table"></div>
+        <div class="hero-cup-scene">
+          <div class="hero-cup-shadow"></div>
+          <div class="hero-beer"></div>
+          <img src="/solo-cup-hero.png" alt="" class="hero-icon" width="256" height="256" />
+        </div>
       </div>
     </div>
 
@@ -58,14 +61,36 @@
     margin-bottom: 2rem;
   }
 
+  .hero-cup-stage {
+    position: relative;
+    width: min(180px, 36vw);
+    height: min(150px, 30vw);
+  }
+
   .hero-cup-scene {
     position: relative;
     width: min(120px, 24vw);
     display: flex;
     justify-content: center;
-    transform: translateY(-10px);
-    transform-origin: 50% 70%;
-    animation: flip-cup-sequence 6.5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    align-items: flex-end;
+    height: 100%;
+    margin: 0 auto;
+    transform: translateY(-6px);
+    transform-origin: 50% 50%;
+    animation: flip-cup-sequence 6.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+
+  .hero-table {
+    position: absolute;
+    left: 50%;
+    bottom: 6px;
+    width: 180%;
+    height: 8px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(120, 53, 15, 0) 0%, rgba(180, 83, 9, 0.4) 18%, rgba(217, 119, 6, 0.52) 50%, rgba(180, 83, 9, 0.4) 82%, rgba(120, 53, 15, 0) 100%);
+    z-index: 0;
+    opacity: 0.9;
   }
 
   .hero-icon {
@@ -79,22 +104,22 @@
   .hero-cup-shadow {
     position: absolute;
     left: 50%;
-    bottom: 4px;
+    bottom: 2px;
     width: 62%;
     height: 14px;
     background: rgba(0, 0, 0, 0.22);
     border-radius: 999px;
     transform: translateX(-50%);
     filter: blur(8px);
-    animation: cup-shadow 6.5s ease-in-out infinite;
+    animation: cup-shadow 6.2s ease-in-out infinite;
   }
 
   .hero-beer {
     position: absolute;
-    top: 6%;
+    top: 25%;
     left: 50%;
-    width: 60%;
-    height: 22%;
+    width: 46%;
+    height: 12%;
     transform: translateX(-50%);
     border-radius: 50%;
     background:
@@ -104,16 +129,16 @@
       0 0 0 2px rgba(255, 251, 235, 0.26),
       0 8px 18px rgba(217, 119, 6, 0.24);
     z-index: 4;
-    animation: beer-level 6.5s ease-in-out infinite;
+    animation: beer-level 6.2s ease-in-out infinite;
   }
 
   .hero-beer::before {
     content: '';
     position: absolute;
     left: 50%;
-    top: -6%;
-    width: 78%;
-    height: 24%;
+    top: 0;
+    width: 74%;
+    height: 16%;
     transform: translateX(-50%);
     border-radius: 999px;
     background: rgba(255, 251, 235, 0.92);
@@ -134,27 +159,41 @@
 
   @keyframes flip-cup-sequence {
     0%,
-    12% {
-      transform: translateY(-10px) rotate(-4deg);
+    14% {
+      transform: translateY(-6px) rotate(-4deg);
     }
-    18% {
-      transform: translateY(-16px) rotate(2deg);
+    20% {
+      transform: translateY(-12px) rotate(2deg);
     }
-    24%,
-    34% {
-      transform: translateY(-18px) rotate(0deg);
+    28%,
+    31% {
+      transform: translateY(-8px) rotate(0deg);
     }
-    52% {
-      transform: translateY(-6px) rotate(180deg);
+    31.1%,
+    50% {
+      transform: translateY(26px) rotate(180deg);
     }
-    68% {
-      transform: translateY(-10px) rotate(180deg);
+    61% {
+      transform: translateY(24px) rotate(180deg);
     }
-    82% {
-      transform: translateY(-18px) rotate(360deg);
+    62.5% {
+      transform: translate(5px, 24px) rotate(192deg);
     }
+    64.5% {
+      transform: translate(11px, 2px) rotate(228deg);
+    }
+    66.5% {
+      transform: translate(12px, -12px) rotate(276deg);
+    }
+    68.5% {
+      transform: translate(7px, -22px) rotate(326deg);
+    }
+    70% {
+      transform: translate(1px, -16px) rotate(350deg);
+    }
+    71.5%,
     100% {
-      transform: translateY(-10px) rotate(356deg);
+      transform: translateY(-6px) rotate(360deg);
     }
   }
 
@@ -164,15 +203,15 @@
       opacity: 1;
       transform: translateX(-50%) scaleY(1);
     }
-    22% {
+    20% {
       opacity: 0.96;
       transform: translateX(-50%) translateY(2px) scaleX(0.96) scaleY(0.66);
     }
-    28% {
+    26% {
       opacity: 0.18;
       transform: translateX(-50%) translateY(5px) scaleX(0.82) scaleY(0.16);
     }
-    32%,
+    30%,
     100% {
       opacity: 0;
       transform: translateX(-50%) scaleY(0.08);
@@ -181,23 +220,39 @@
 
   @keyframes cup-shadow {
     0%,
-    18%,
+    28%,
     100% {
       opacity: 0.3;
       transform: translateX(-50%) scaleX(1);
     }
-    28% {
+    31.1%,
+    50% {
+      opacity: 0.34;
+      transform: translateX(-50%) scaleX(1.28);
+    }
+    61% {
       opacity: 0.22;
-      transform: translateX(-50%) scaleX(0.9);
+      transform: translateX(-50%) scaleX(1.08);
     }
-    52%,
-    68% {
+    62.5% {
+      opacity: 0.2;
+      transform: translateX(-46%) scaleX(1.02);
+    }
+    64.5% {
+      opacity: 0.17;
+      transform: translateX(-41%) scaleX(0.84);
+    }
+    66.5% {
       opacity: 0.16;
-      transform: translateX(-50%) scaleX(1.12);
+      transform: translateX(-42%) scaleX(0.72);
     }
-    82% {
-      opacity: 0.24;
-      transform: translateX(-50%) scaleX(0.94);
+    68.5% {
+      opacity: 0.2;
+      transform: translateX(-47%) scaleX(0.76);
+    }
+    70% {
+      opacity: 0.26;
+      transform: translateX(-49%) scaleX(0.86);
     }
   }
 

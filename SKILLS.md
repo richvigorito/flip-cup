@@ -17,6 +17,7 @@ What you should learn fast:
 - when teams are assigned
 - how turns and questions progress
 - where websocket messages are handled
+- how the real Flip Cup mechanic works when it affects UI, copy, or animation: drink from an upright cup, set it upside down on the table edge, then pop-flip it upright
 
 ## Skill: run the project locally
 
@@ -73,6 +74,7 @@ Checklist:
 - inspect the target Svelte component and related utilities
 - confirm whether the change is visual, state-related, or websocket-related
 - keep existing component structure and styling conventions where possible
+- for flip-cup-themed visuals or copy, preserve the real drinking-game sequence instead of generic spinning cup motion
 - validate with:
 
 ```bash

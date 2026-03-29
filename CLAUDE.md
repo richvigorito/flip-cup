@@ -27,6 +27,7 @@ Use `SKILLS.md` as the supplemental task and command reference.
 - Reuse existing patterns before adding helpers or abstractions.
 - If a task touches gameplay, reason through multiplayer side effects.
 - If a task touches UI-only styling, avoid backend churn.
+- If a task references the real-world Flip Cup game, keep the mechanic accurate: players drink from an upright cup, place it upside down on the table edge, then fingertip-pop it so it lands upright.
 
 ## Commands you will likely need
 
