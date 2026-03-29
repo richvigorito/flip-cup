@@ -4,8 +4,8 @@ test.describe('Welcome screen', () => {
   test('renders logo, tagline, and both CTAs', async ({ page }) => {
     await page.goto('/');
 
-    await expect(page.getByRole('heading', { name: /FlipQuiz/i })).toBeVisible();
-    await expect(page.locator('.hero-tagline')).toContainText('Answer trivia');
+    await expect(page.getByRole('heading', { name: /FlipCup/i })).toBeVisible();
+    await expect(page.locator('.hero-tagline')).toContainText('red cups');
     await expect(page.getByRole('button', { name: /Create New Game/i })).toBeVisible();
     await expect(page.getByRole('button', { name: /Join Existing Game/i })).toBeVisible();
   });
@@ -25,24 +25,6 @@ test.describe('Welcome screen', () => {
     await expect(page.getByRole('heading', { name: /Join a Game/i })).toBeVisible();
   });
 
-/*
-  test('back button returns to welcome', async ({ page }) => {
-    await page.goto('/');
-    await page.getByRole('button', { name: /Create New Game/i }).click();
-    await page.getByRole('button', { name: /← Back/i }).click();
-
-    await expect(page.getByRole('button', { name: /Create New Game/i })).toBeVisible();
-  });
-
-  test('logo click always returns to welcome', async ({ page }) => {
-    await page.goto('/');
-    await page.getByRole('button', { name: /Create New Game/i }).click();
-    await page.locator('.logo-link').click();
-
-    await expect(page.getByRole('button', { name: /Create New Game/i })).toBeVisible();
-  });
-*/
-
   test('"Create Game" button is disabled until a quiz is selected', async ({ page }) => {
     await page.goto('/');
     await page.getByRole('button', { name: /Create New Game/i }).click();
@@ -58,8 +40,8 @@ test.describe('Welcome screen', () => {
     await page.goto('/');
     await page.getByRole('button', { name: /How to Play/i }).click();
 
-    await expect(page.getByText('How to Play FlipQuiz')).toBeVisible();
+    await expect(page.getByText('How to Play FlipCup')).toBeVisible();
     await page.getByRole('button', { name: /Close/i }).click();
-    await expect(page.getByText('How to Play FlipQuiz')).not.toBeVisible();
+    await expect(page.getByText('How to Play FlipCup')).not.toBeVisible();
   });
 });

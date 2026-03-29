@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────────
-   Design System — FlipQuiz
+   Design System — FlipCup
    ───────────────────────────────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -11,22 +11,22 @@
 
 :root {
   /* ── Brand ── */
-  --accent:          #7c3aed;
-  --accent-hover:    #6d28d9;
-  --accent-dim:      rgba(124, 58, 237, 0.15);
-  --accent-glow:     0 0 24px rgba(124, 58, 237, 0.45);
-  --accent-border:   rgba(124, 58, 237, 0.45);
+  --accent:          #dc2626;
+  --accent-hover:    #b91c1c;
+  --accent-dim:      rgba(220, 38, 38, 0.14);
+  --accent-glow:     0 0 24px rgba(220, 38, 38, 0.4);
+  --accent-border:   rgba(248, 113, 113, 0.42);
 
-  --indigo:          #4f46e5;
-  --indigo-hover:    #4338ca;
+  --accent-secondary:       #f59e0b;
+  --accent-secondary-hover: #d97706;
 
   /* ── Backgrounds ── */
-  --bg-base:         #0b0b18;
-  --bg-subtle:       #0f0f22;
-  --bg-card:         #14142a;
-  --bg-surface:      #1a1a36;
-  --bg-elevated:     #20203f;
-  --bg-hover:        #262650;
+  --bg-base:         #120a09;
+  --bg-subtle:       #1b100f;
+  --bg-card:         #211311;
+  --bg-surface:      #2a1816;
+  --bg-elevated:     #341f1b;
+  --bg-hover:        #422621;
 
   /* ── Semantic ── */
   --success:         #10b981;
@@ -39,13 +39,13 @@
   --warning-dim:     rgba(245, 158, 11, 0.15);
 
   /* ── Text ── */
-  --text-primary:    #f1f5f9;
-  --text-secondary:  #94a3b8;
-  --text-muted:      #4b5470;
+  --text-primary:    #fff7ed;
+  --text-secondary:  #d6c0b2;
+  --text-muted:      #8f7667;
 
   /* ── Borders ── */
-  --border:          rgba(255, 255, 255, 0.07);
-  --border-strong:   rgba(255, 255, 255, 0.14);
+  --border:          rgba(255, 237, 213, 0.08);
+  --border-strong:   rgba(255, 237, 213, 0.18);
 
   /* ── Radius ── */
   --r-sm:    6px;
@@ -85,9 +85,9 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--bg-base);
-  /* Subtle radial glow from top-center */
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124, 58, 237, 0.12) 0%, transparent 70%);
+    radial-gradient(ellipse 75% 50% at 50% -10%, rgba(220, 38, 38, 0.16) 0%, transparent 68%),
+    radial-gradient(circle at 20% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 28%);
 }
 
 #app {
@@ -169,14 +169,14 @@ button:disabled {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.7rem 1.5rem;
-  background: linear-gradient(135deg, var(--accent), var(--indigo));
+  background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
   color: #fff;
   border-radius: var(--r-md);
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.28);
 }
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.38);
 }
 .btn-primary:active:not(:disabled) { transform: translateY(0); }
 

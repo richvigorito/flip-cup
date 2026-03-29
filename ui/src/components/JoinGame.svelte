@@ -31,15 +31,13 @@
 </script>
 
 <div class="page-wrap">
-
   <button class="back-btn" on:click={goBack}>← Back</button>
 
   <div class="join-container">
-
     <div class="page-header">
-      <div class="page-icon">🎮</div>
+      <img src="/solo-cup.png" alt="" class="page-icon" />
       <h2 class="page-title">Join a Game</h2>
-      <p class="page-subtitle">Select an open game below to jump in</p>
+      <p class="page-subtitle">Find an open table and jump into the lineup.</p>
     </div>
 
     {#if loading}
@@ -47,17 +45,15 @@
         <div class="spinner"></div>
         <p>Scanning for games…</p>
       </div>
-
     {:else if availableGames.length === 0}
       <div class="empty-state">
-        <div class="empty-icon">🕵️</div>
+        <img src="/solo-cup.png" alt="" class="empty-icon" />
         <p class="empty-title">No open games found</p>
-        <p class="empty-sub">Be the first — create one!</p>
+        <p class="empty-sub">Be the first one to set the cups.</p>
         <button class="create-btn" on:click={() => mode.set('new')}>
           Create New Game →
         </button>
       </div>
-
     {:else}
       <div class="game-grid">
         {#each availableGames as game}
@@ -70,7 +66,7 @@
                   <span class="team-label">{game.teamA.name}</span>
                   <span class="team-players">
                     {#if game.teamA.players.length > 0}
-                      {game.teamA.players.map(p => p.name).join(', ')}
+                      {game.teamA.players.map((p) => p.name).join(', ')}
                     {:else}
                       No players yet
                     {/if}
@@ -78,7 +74,7 @@
                 </div>
               </div>
 
-              <div class="team-vs">vs</div>
+              <div class="team-vs">table</div>
 
               <div class="team-preview">
                 <span class="team-badge team-b">B</span>
@@ -86,7 +82,7 @@
                   <span class="team-label">{game.teamB.name}</span>
                   <span class="team-players">
                     {#if game.teamB.players.length > 0}
-                      {game.teamB.players.map(p => p.name).join(', ')}
+                      {game.teamB.players.map((p) => p.name).join(', ')}
                     {:else}
                       No players yet
                     {/if}
@@ -99,7 +95,6 @@
         {/each}
       </div>
     {/if}
-
   </div>
 </div>
 
@@ -127,30 +122,37 @@
     transition: color 0.15s;
     cursor: pointer;
   }
+
   .back-btn:hover { color: var(--text-primary); }
 
   .join-container {
     width: 100%;
   }
 
-  /* Header */
   .page-header {
     text-align: center;
     margin-bottom: 2rem;
   }
-  .page-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+
+  .page-icon {
+    width: 72px;
+    height: auto;
+    margin-bottom: 0.75rem;
+    filter: drop-shadow(0 10px 18px rgba(220, 38, 38, 0.18));
+  }
+
   .page-title {
     font-size: 1.75rem;
     font-weight: 800;
     letter-spacing: -0.035em;
     margin-bottom: 0.375rem;
   }
+
   .page-subtitle {
     font-size: 0.9rem;
     color: var(--text-secondary);
   }
 
-  /* Loading */
   .loading-state {
     display: flex;
     flex-direction: column;
@@ -160,6 +162,7 @@
     color: var(--text-muted);
     font-size: 0.9rem;
   }
+
   .spinner {
     width: 28px;
     height: 28px;
@@ -168,9 +171,9 @@
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
   }
+
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* Empty state */
   .empty-state {
     text-align: center;
     padding: 3rem 2rem;
@@ -178,39 +181,50 @@
     border: 1px solid var(--border);
     border-radius: var(--r-xl);
   }
-  .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+  .empty-icon {
+    width: 84px;
+    height: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 10px 18px rgba(220, 38, 38, 0.18));
+  }
+
   .empty-title {
     font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: 0.375rem;
   }
+
   .empty-sub {
     font-size: 0.875rem;
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
   }
+
   .create-btn {
     display: inline-flex;
     padding: 0.7rem 1.5rem;
-    background: linear-gradient(135deg, var(--accent), var(--indigo));
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
     color: #fff;
     font-weight: 700;
     border-radius: var(--r-md);
-    box-shadow: 0 4px 14px rgba(124,58,237,0.35);
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.28);
     transition: all 0.2s;
     border: none;
     cursor: pointer;
   }
-  .create-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,58,237,0.5); }
 
-  /* Game grid */
+  .create-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.38);
+  }
+
   .game-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 0.875rem;
   }
 
-  /* Game card */
   .game-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -224,6 +238,7 @@
     cursor: pointer;
     width: 100%;
   }
+
   .game-card:hover {
     border-color: var(--accent-border);
     background: var(--bg-surface);
@@ -263,8 +278,9 @@
     font-weight: 800;
     flex-shrink: 0;
   }
-  .team-a { background: rgba(124, 58, 237, 0.25); color: #a78bfa; }
-  .team-b { background: rgba(56, 189, 248, 0.2);  color: #38bdf8; }
+
+  .team-a { background: rgba(220, 38, 38, 0.24); color: #fecaca; }
+  .team-b { background: rgba(245, 158, 11, 0.22); color: #fde68a; }
 
   .team-info {
     display: flex;
@@ -272,6 +288,7 @@
     gap: 0.1rem;
     min-width: 0;
   }
+
   .team-label {
     font-size: 0.8rem;
     font-weight: 700;
@@ -280,6 +297,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   .team-players {
     font-size: 0.75rem;
     color: var(--text-muted);
@@ -305,5 +323,6 @@
     padding-top: 0.625rem;
     transition: color 0.15s;
   }
+
   .game-card:hover .join-hint { color: var(--accent); }
 </style>

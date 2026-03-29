@@ -66,14 +66,14 @@ test('capture old UI screenshots', async ({ browser }) => {
 
     // Back to Host - Shuffle?
     await page.bringToFront();
-    const shuffleBtn = page.getByRole('button', { name: /Shuffle Teams/i });
+    const shuffleBtn = page.getByRole('button', { name: /Mix Teams/i });
     if (await shuffleBtn.isVisible()) {
         await shuffleBtn.click();
         await page.waitForTimeout(500);
         await page.screenshot({ path: path.join(SCREENSHOT_DIR, '04_lobby_ready.png'), fullPage: true });
     
         // 6. Start Game
-        await page.getByRole('button', { name: /Start Game/i }).click();
+        await page.getByRole('button', { name: /Rack Cups & Start/i }).click();
         await page.waitForTimeout(1000);
         await page.screenshot({ path: path.join(SCREENSHOT_DIR, '05_game_view_team_a.png'), fullPage: true });
     }
