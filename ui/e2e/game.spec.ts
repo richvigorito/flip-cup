@@ -141,13 +141,13 @@ test.describe('Full multiplayer game', () => {
       joinLobby(player2, 'Bob'),
     ]);
 
-    // --- Step 4: Player 1 shuffles teams then starts the game ---
-    await player1.getByRole('button', { name: /Shuffle Teams/i }).click();
+    // --- Step 4: Player 1 mixes teams then starts the game ---
+    await player1.getByRole('button', { name: /Mix Teams/i }).click();
 
     // Wait for team assignments to reflect
     await player1.waitForTimeout(1_000);
 
-    const startBtn = player1.getByRole('button', { name: /Start Game/i });
+    const startBtn = player1.getByRole('button', { name: /Rack Cups & Start/i });
     await expect(startBtn).toBeEnabled({ timeout: 5_000 });
     await startBtn.click();
 
@@ -180,9 +180,9 @@ test.describe('Full multiplayer game', () => {
       joinLobby(player2, 'Bob'),
     ]);
 
-    await player1.getByRole('button', { name: /Shuffle Teams/i }).click();
+    await player1.getByRole('button', { name: /Mix Teams/i }).click();
     await player1.waitForTimeout(1_000);
-    await player1.getByRole('button', { name: /Start Game/i }).click();
+    await player1.getByRole('button', { name: /Rack Cups & Start/i }).click();
 
     await expect(player1.locator('.game-board')).toBeVisible({ timeout: 10_000 });
 
@@ -207,7 +207,7 @@ test.describe('Full multiplayer game', () => {
 });
 
 test.describe('Lobby behaviour', () => {
-  test('Start Game warns when both teams do not have players', async ({ browser }) => {
+  test('Rack Cups & Start warns when both teams do not have players', async ({ browser }) => {
     const ctx = await browser.newContext();
     const page = await ctx.newPage();
 
@@ -220,7 +220,7 @@ test.describe('Lobby behaviour', () => {
         await dialog.accept();
     });
 
-    const startBtn = page.getByRole('button', { name: /Start Game/i });
+    const startBtn = page.getByRole('button', { name: /Rack Cups & Start/i });
     await startBtn.click();
     
     // Ensure we are still in lobby (game didn't start)

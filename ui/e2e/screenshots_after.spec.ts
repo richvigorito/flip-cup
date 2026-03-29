@@ -48,15 +48,15 @@ test('capture new UI screenshots', async ({ browser }) => {
     await page2.locator('input[placeholder="Enter your name…"]').fill('GuestPlayer');
     await page2.getByRole('button', { name: /Join Game/i }).click();
 
-    // Back to Host - Shuffle
+    // Back to Host - Mix teams
     await page.bringToFront();
-    await page.getByRole('button', { name: /Shuffle Teams/i }).click();
+    await page.getByRole('button', { name: /Mix Teams/i }).click();
     await page.waitForTimeout(1000); 
     
     await page.screenshot({ path: path.join(SCREENSHOT_DIR, '04_lobby_ready.png'), fullPage: true });
 
     // 6. Game View (Team A Perspective)
-    await page.getByRole('button', { name: /Start Game/i }).click();
+    await page.getByRole('button', { name: /Rack Cups & Start/i }).click();
     await expect(page.locator('.game-board')).toBeVisible();
     await page.waitForTimeout(2000); // Wait for animations
     await page.screenshot({ path: path.join(SCREENSHOT_DIR, '05_game_view_team_a.png'), fullPage: true });

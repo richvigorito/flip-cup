@@ -77,10 +77,10 @@ test.describe('WebSocket Disconnection Handling', () => {
       joinLobby(player2, 'Bob'),
     ]);
 
-    // Shuffle and Start
-    await player1.getByRole('button', { name: /Shuffle Teams/i }).click();
+    // Mix teams and start
+    await player1.getByRole('button', { name: /Mix Teams/i }).click();
     await player1.waitForTimeout(1000); 
-    await player1.getByRole('button', { name: /Start Game/i }).click();
+    await player1.getByRole('button', { name: /Rack Cups & Start/i }).click();
 
     // Verify game started
     await expect(player1.locator('.game-board')).toBeVisible({ timeout: 10_000 });
