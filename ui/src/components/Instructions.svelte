@@ -1,57 +1,55 @@
 <script lang="ts">
   let dialog: HTMLDialogElement;
-  const open  = () => dialog.showModal();
+  const open = () => dialog.showModal();
   const close = () => dialog.close();
 </script>
 
 <button class="instructions-trigger" on:click={open}>
-  📘 How to Play
+  How to Play
 </button>
 
 <dialog bind:this={dialog}>
   <div class="dialog-inner">
-
     <div class="dialog-header">
-      <h2 class="dialog-title">How to Play FlipQuiz</h2>
+      <h2 class="dialog-title">How to Play FlipCup</h2>
       <button class="dialog-close" on:click={close} aria-label="Close">✕</button>
     </div>
 
     <div class="dialog-body">
-      <p><strong>Goal:</strong> Answer trivia questions correctly — first team to flip all their cups wins!</p>
+      <p><strong>Goal:</strong> Bring the real flip cup energy to trivia: answer correctly, flip your cup, and race the other side to clear the table first.</p>
 
-      <h3>🎯 Starting a Game</h3>
+      <h3>Set the table</h3>
       <ol>
         <li>Click <strong>Create New Game</strong> and pick a question set</li>
         <li>Share the Game ID with friends</li>
         <li>Everyone enters their name and clicks <strong>Join Game</strong></li>
       </ol>
 
-      <h3>🎮 Joining a Friend's Game</h3>
+      <h3>Join a table</h3>
       <ol>
         <li>Click <strong>Join Existing Game</strong></li>
         <li>Find the game card and click it</li>
         <li>Enter your name and join</li>
       </ol>
 
-      <h3>⚡ Before You Start</h3>
+      <h3>Before the first flip</h3>
       <ul>
-        <li>Click <strong>Shuffle Teams</strong> to auto-assign players</li>
-        <li>The host clicks <strong>Start Game</strong> when ready</li>
+        <li>Click <strong>Mix Teams</strong> to auto-assign players</li>
+        <li>The host clicks <strong>Rack Cups & Start</strong> when ready</li>
         <li>Both teams need at least 1 player</li>
       </ul>
 
-      <h3>🏆 During the Game</h3>
+      <h3>During the round</h3>
       <ul>
         <li>Each player takes a turn answering a question</li>
-        <li>Get it right → your cup flips!</li>
-        <li>First team with all cups flipped wins 🎉</li>
+        <li>Get it right and your red cup flips</li>
+        <li>The first team to flip every cup wins the round</li>
       </ul>
     </div>
 
     <div class="dialog-footer">
       <button class="close-btn" on:click={close}>Got it!</button>
     </div>
-
   </div>
 </dialog>
 
@@ -70,6 +68,7 @@
     cursor: pointer;
     transition: all 0.15s;
   }
+
   .instructions-trigger:hover {
     color: var(--text-primary);
     border-color: var(--border-strong);
@@ -125,6 +124,7 @@
     cursor: pointer;
     transition: all 0.15s;
   }
+
   .dialog-close:hover {
     color: var(--text-primary);
     background: var(--bg-elevated);
@@ -142,6 +142,7 @@
     color: var(--text-secondary);
     margin-bottom: 0.75rem;
   }
+
   .dialog-body p strong { color: var(--text-primary); }
 
   .dialog-body h3 {
@@ -167,6 +168,7 @@
     color: var(--text-secondary);
     line-height: 1.5;
   }
+
   .dialog-body li strong { color: var(--text-primary); }
 
   .dialog-footer {
@@ -186,12 +188,12 @@
     border: none;
     border-radius: var(--r-md);
     cursor: pointer;
-    box-shadow: 0 3px 10px rgba(124,58,237,0.35);
+    box-shadow: 0 3px 10px rgba(220, 38, 38, 0.28);
     transition: all 0.2s;
   }
+
   .close-btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 5px 16px rgba(124,58,237,0.5);
+    box-shadow: 0 5px 16px rgba(220, 38, 38, 0.38);
   }
 </style>
-

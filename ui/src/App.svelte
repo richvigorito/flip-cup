@@ -40,15 +40,15 @@
 </script>
 
 <svelte:head>
-  <title>FlipQuiz — Answer. Flip. Win.</title>
+  <title>FlipCup — Answer. Flip. Win.</title>
 </svelte:head>
 
 <!-- ── Fixed Header ── -->
 <header class="site-header">
   <div class="header-inner">
     <span class="logo-link" role="button" tabindex="0" on:click={() => mode.set('welcome')} on:keydown={(e) => e.key === 'Enter' && mode.set('welcome')}>
-      <img src="/solo-cup.png" alt="Solo Cup" class="logo-icon-img" />
-      <span class="logo-text">Flip<span class="logo-accent">Quiz</span></span>
+      <img src="/solo-cup.png" alt="Red solo cup" class="logo-icon-img" />
+      <span class="logo-text">Flip<span class="logo-accent">Cup</span></span>
     </span>
     <div class="header-right">
       <Instructions />
@@ -92,4 +92,3 @@
     gap: 0.75rem;
   }
 </style>
-

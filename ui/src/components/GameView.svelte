@@ -1,10 +1,8 @@
 <script lang="ts">
   import { send } from '$lib/transport/socket';
-  import { mode, currentQuestion, gameState, myTeam, me, winner, gameId, currentPlayerName } from '$lib/store';
+  import { mode, currentQuestion, gameState, myTeam, me, winner } from '$lib/store';
 
   let currentAnswer = '';
-
-  $: tableColor = $myTeam?.color ?? '#333';
 
   const submitAnswer = () => {
     if (!currentAnswer.trim()) return;
@@ -15,13 +13,13 @@
   const resetGame = () => send({ type: 'restart_game' });
 
   const quitGame = () => {
-      if (confirm('Are you sure you want to quit the game? This will clear your session.')) {
-          if (typeof sessionStorage !== 'undefined') {
-              sessionStorage.removeItem('flipcup_player_id');
-              sessionStorage.removeItem('flipcup_game_id');
-          }
-          window.location.reload();
+    if (confirm('Are you sure you want to quit the game? This will clear your session.')) {
+      if (typeof sessionStorage !== 'undefined') {
+        sessionStorage.removeItem('flipcup_player_id');
+        sessionStorage.removeItem('flipcup_game_id');
       }
+      window.location.reload();
+    }
   };
 
   const handleKey = (e: KeyboardEvent) => {
@@ -31,14 +29,12 @@
 
 {#if $mode === 'game'}
   <div class="game-wrap">
-    <!-- Quit button adapted for new UI -->
-    <button class="quit-btn-floating" on:click={quitGame}>Quit Game</button>
+    <button class="quit-btn-floating" on:click={quitGame}>Leave Table</button>
 
-    <!-- Question card (only shown to the active player) -->
     {#if $me?.isMyTurn && $currentQuestion && !$winner}
       <div class="question-card">
         <div class="question-meta">
-          <span class="your-turn-badge">✦ Your Turn</span>
+          <span class="your-turn-badge">Your Cup</span>
         </div>
         <p class="question-text">{$currentQuestion}</p>
         <div class="answer-row">
@@ -49,42 +45,34 @@
             placeholder="Type your answer…"
             on:keydown={handleKey}
           />
-          <button
-            class="submit-btn"
-            on:click={submitAnswer}
-            disabled={!currentAnswer.trim()}
-          >
-            Submit
+          <button class="submit-btn" on:click={submitAnswer} disabled={!currentAnswer.trim()}>
+            Flip It
           </button>
         </div>
       </div>
-
     {:else if !$winner}
-      <!-- Waiting indicator -->
       <div class="waiting-card">
         <div class="waiting-dot"></div>
-        <span>Waiting for another player's turn…</span>
+        <span>Waiting for the next player to step up…</span>
       </div>
     {/if}
 
-    <!-- Game Board -->
-    <div 
+    <div
       class="game-board"
       class:team-a-view={$myTeam?.name === $gameState.teamA.name}
       class:team-b-view={$myTeam?.name === $gameState.teamB.name}
     >
       <div class="board-label">
         {#if $myTeam?.name === $gameState.teamA.name}
-          Game Board (Team A View)
+          Table View (Team A Side)
         {:else if $myTeam?.name === $gameState.teamB.name}
-          Game Board (Team B View)
+          Table View (Team B Side)
         {:else}
-          Game Board (Spectator View)
+          Table View (Spectator Side)
         {/if}
       </div>
-      <div class="board-teams">
 
-        <!-- Team A -->
+      <div class="board-teams">
         <div class="team-col">
           <div class="team-name-row">
             <span class="team-badge a">A</span>
@@ -92,25 +80,16 @@
           </div>
           <div class="cups-list">
             {#each $gameState.teamA.players as player, i}
-              {@const flipped  = $gameState.teamA.turn > i}
+              {@const flipped = $gameState.teamA.turn > i}
               {@const isCurrent = $gameState.teamA.turn === i}
               <div class="cup-row" class:current={isCurrent}>
                 <div class="cup-wrapper">
-                  <div
-                    class="cup"
-                    class:flipped
-                    class:current={isCurrent}
-                    title={player.name}
-                  ></div>
+                  <div class="cup" class:flipped class:current={isCurrent} title={player.name}></div>
                   {#if isCurrent}
                     <div class="cup-glow"></div>
                   {/if}
                 </div>
-                <span
-                  class="cup-player-name"
-                  class:active={isCurrent}
-                  class:done={flipped}
-                >
+                <span class="cup-player-name" class:active={isCurrent} class:done={flipped}>
                   {player.name}
                   {#if flipped}<span class="done-icon">✓</span>{/if}
                 </span>
@@ -119,14 +98,12 @@
           </div>
         </div>
 
-        <!-- Divider -->
         <div class="vs-col">
           <div class="vs-bar"></div>
-          <span class="vs-text">VS</span>
+          <span class="vs-text">table</span>
           <div class="vs-bar"></div>
         </div>
 
-        <!-- Team B -->
         <div class="team-col">
           <div class="team-name-row right">
             <span class="team-name-txt">{$gameState.teamB.name}</span>
@@ -134,24 +111,15 @@
           </div>
           <div class="cups-list">
             {#each $gameState.teamB.players as player, i}
-              {@const flipped   = $gameState.teamB.turn > i}
+              {@const flipped = $gameState.teamB.turn > i}
               {@const isCurrent = $gameState.teamB.turn === i}
               <div class="cup-row right" class:current={isCurrent}>
-                <span
-                  class="cup-player-name right"
-                  class:active={isCurrent}
-                  class:done={flipped}
-                >
+                <span class="cup-player-name right" class:active={isCurrent} class:done={flipped}>
                   {#if flipped}<span class="done-icon">✓</span>{/if}
                   {player.name}
                 </span>
                 <div class="cup-wrapper">
-                  <div
-                    class="cup"
-                    class:flipped
-                    class:current={isCurrent}
-                    title={player.name}
-                  ></div>
+                  <div class="cup" class:flipped class:current={isCurrent} title={player.name}></div>
                   {#if isCurrent}
                     <div class="cup-glow"></div>
                   {/if}
@@ -160,29 +128,26 @@
             {/each}
           </div>
         </div>
-
       </div>
     </div>
-
   </div>
 {/if}
 
-<!-- Game Over Overlay -->
 {#if $winner}
   <div class="game-over">
     <div class="game-over-card">
       {#if $myTeam && $winner === $myTeam.name}
-         <div class="trophy">🏆</div>
-         <p class="game-over-label">Victory!</p>
-         <h2 class="game-over-winner">You Won!</h2>
+        <img src="/solo-cup.png" alt="" class="trophy trophy-cup" />
+        <p class="game-over-label">Table cleared</p>
+        <h2 class="game-over-winner">You ran the table!</h2>
       {:else if $myTeam}
-         <div class="trophy">☠️</div>
-         <p class="game-over-label">Defeat</p>
-         <h2 class="game-over-winner">{$winner} Won</h2>
+        <img src="/solo-cup.png" alt="" class="trophy trophy-cup loss" />
+        <p class="game-over-label">Next round</p>
+        <h2 class="game-over-winner">{$winner} ran the table</h2>
       {:else}
-         <div class="trophy">🏆</div>
-         <p class="game-over-label">Winner!</p>
-         <h2 class="game-over-winner">{$winner}</h2>
+        <img src="/solo-cup.png" alt="" class="trophy trophy-cup" />
+        <p class="game-over-label">Winner</p>
+        <h2 class="game-over-winner">{$winner} cleared the table</h2>
       {/if}
       <button class="restart-btn" on:click={resetGame}>
         Play Again
@@ -203,42 +168,44 @@
   }
 
   .quit-btn-floating {
-      position: absolute;
-      top: 0; 
-      right: 0;
-      margin-top: -30px; /* Pull it up a bit */
-      padding: 0.4rem 0.8rem;
-      background: transparent;
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-      border-radius: var(--r-md);
-      font-size: 0.7rem;
-      cursor: pointer;
-      transition: all 0.2s;
-  }
-  .quit-btn-floating:hover {
-      color: var(--error);
-      border-color: var(--error);
-      background: rgba(239, 68, 68, 0.1);
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -30px;
+    padding: 0.4rem 0.8rem;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s;
   }
 
-  /* ── Question card ── */
+  .quit-btn-floating:hover {
+    color: #fecaca;
+    border-color: var(--danger-border);
+    background: rgba(239, 68, 68, 0.1);
+  }
+
   .question-card {
     background: var(--bg-card);
     border: 1px solid var(--accent-border);
     border-radius: var(--r-xl);
     padding: 1.5rem 1.75rem;
-    box-shadow: 0 0 0 1px var(--accent-border), 0 4px 20px rgba(124,58,237,0.15);
+    box-shadow: 0 0 0 1px var(--accent-border), 0 4px 20px rgba(220, 38, 38, 0.14);
     animation: slideDown 0.3s var(--ease);
   }
+
   @keyframes slideDown {
-    from { opacity:0; transform: translateY(-8px); }
-    to   { opacity:1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .question-meta {
     margin-bottom: 0.75rem;
   }
+
   .your-turn-badge {
     display: inline-flex;
     align-items: center;
@@ -265,6 +232,7 @@
     display: flex;
     gap: 0.625rem;
   }
+
   .answer-input {
     flex: 1;
     padding: 0.65rem 0.875rem;
@@ -277,10 +245,12 @@
     outline: none;
     transition: border-color 0.15s, box-shadow 0.15s;
   }
+
   .answer-input:focus {
     border-color: var(--accent-border);
     box-shadow: 0 0 0 3px var(--accent-dim);
   }
+
   .submit-btn {
     padding: 0.65rem 1.25rem;
     font-size: 0.875rem;
@@ -290,16 +260,20 @@
     border-radius: var(--r-md);
     border: none;
     white-space: nowrap;
-    box-shadow: 0 3px 10px rgba(124,58,237,0.35);
+    box-shadow: 0 3px 10px rgba(220, 38, 38, 0.28);
     transition: all 0.2s var(--ease);
   }
+
   .submit-btn:hover:not(:disabled) {
     transform: translateY(-1px);
-    box-shadow: 0 5px 15px rgba(124,58,237,0.5);
+    box-shadow: 0 5px 15px rgba(220, 38, 38, 0.38);
   }
-  .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-  /* ── Waiting indicator ── */
+  .submit-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
   .waiting-card {
     display: flex;
     align-items: center;
@@ -311,6 +285,7 @@
     font-size: 0.875rem;
     color: var(--text-muted);
   }
+
   .waiting-dot {
     width: 8px;
     height: 8px;
@@ -319,44 +294,49 @@
     animation: pulse 1.4s ease-in-out infinite;
     flex-shrink: 0;
   }
+
   @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50%       { opacity: 0.5; transform: scale(0.8); }
+    50% { opacity: 0.5; transform: scale(0.8); }
   }
 
-  /* ── Game Board ── */
   .game-board {
-    background: #e5e5e5; /* Default: Cheap plastic table */
-    border: 8px solid #d4d4d4; 
+    background:
+      linear-gradient(180deg, rgba(84, 45, 32, 0.96), rgba(58, 28, 20, 0.98)),
+      #4a281d;
+    border: 8px solid #6b3428;
     border-radius: var(--r-lg);
     padding: 1.5rem 1.25rem 1.75rem;
-    box-shadow: 
-      inset 0 0 40px rgba(0,0,0,0.05),
-      0 10px 30px rgba(0,0,0,0.3); 
+    box-shadow:
+      inset 0 0 40px rgba(0,0,0,0.16),
+      0 10px 30px rgba(0,0,0,0.3);
     position: relative;
     transition: background-color 0.5s ease;
   }
-  
-  /* Team A Perspective: Warmer/Reddish table tone */
+
   .game-board.team-a-view {
-    background: #5c4242; /* Darker Red/Brown */
-    border-color: #8f5c5c;
-  }
-  
-  /* Team B Perspective: Cooler/Blueish table tone */
-  .game-board.team-b-view {
-    background: #424e5c; /* Darker Blue/Grey */
-    border-color: #5c748f;
+    background:
+      linear-gradient(180deg, rgba(112, 39, 30, 0.96), rgba(73, 24, 19, 0.98)),
+      #5f251d;
+    border-color: #8b3326;
   }
 
-  /* Wood grain / Garage texture hint */
+  .game-board.team-b-view {
+    background:
+      linear-gradient(180deg, rgba(93, 58, 18, 0.96), rgba(64, 39, 13, 0.98)),
+      #5f3b12;
+    border-color: #8c5a18;
+  }
+
   .game-board::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.1) 10px, rgba(0,0,0,0.1) 20px);
+    background-image:
+      linear-gradient(90deg, rgba(255,255,255,0.03), transparent 18%, rgba(0,0,0,0.08) 50%, transparent 78%),
+      repeating-linear-gradient(0deg, transparent, transparent 17px, rgba(255,255,255,0.02) 17px, rgba(255,255,255,0.02) 18px);
     pointer-events: none;
-    opacity: 0.4;
+    opacity: 0.5;
     border-radius: var(--r-lg);
   }
 
@@ -365,18 +345,18 @@
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #ccc; /* Lighter label for contrast on dark table */
+    color: rgba(255, 237, 213, 0.78);
     text-align: center;
     margin-bottom: 1.25rem;
     text-shadow: 0 1px 0 rgba(0,0,0,0.5);
   }
+
   .board-teams {
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
   }
 
-  /* ── VS column ── */
   .vs-col {
     display: flex;
     flex-direction: column;
@@ -386,19 +366,21 @@
     gap: 0.375rem;
     flex-shrink: 0;
   }
+
   .vs-text {
     font-size: 0.65rem;
     font-weight: 900;
     letter-spacing: 0.12em;
-    color: var(--text-muted);
+    color: rgba(255, 237, 213, 0.56);
+    text-transform: uppercase;
   }
+
   .vs-bar {
     width: 1px;
     height: 30px;
-    background: var(--border);
+    background: rgba(255, 237, 213, 0.14);
   }
 
-  /* ── Team columns ── */
   .team-col {
     flex: 1;
     display: flex;
@@ -407,11 +389,7 @@
     min-width: 0;
     padding: 1rem 0.5rem;
     border-radius: var(--r-md);
-  }
-
-  /* Distinct backgrounds for teams - REMOVED per feedback */
-  .team-col {
-    /* No unique background per column, relying on board tint */
+    background: rgba(24, 12, 10, 0.16);
   }
 
   .team-name-row {
@@ -420,9 +398,11 @@
     gap: 0.5rem;
     margin-bottom: 0.375rem;
   }
+
   .team-name-row.right {
     justify-content: flex-end;
   }
+
   .team-badge {
     width: 22px;
     height: 22px;
@@ -434,13 +414,14 @@
     font-weight: 800;
     flex-shrink: 0;
   }
-  .team-badge.a { background: rgba(124,58,237,0.25); color: #a78bfa; }
-  .team-badge.b { background: rgba(56,189,248,0.2);  color: #38bdf8; }
+
+  .team-badge.a { background: rgba(220, 38, 38, 0.24); color: #fecaca; }
+  .team-badge.b { background: rgba(245, 158, 11, 0.22); color: #fde68a; }
 
   .team-name-txt {
     font-size: 0.8rem;
     font-weight: 700;
-    color: var(--text-secondary);
+    color: rgba(255, 237, 213, 0.9);
     text-transform: uppercase;
     letter-spacing: 0.04em;
     white-space: nowrap;
@@ -448,7 +429,6 @@
     text-overflow: ellipsis;
   }
 
-  /* ── Cups ── */
   .cups-list {
     display: flex;
     flex-direction: column;
@@ -463,8 +443,9 @@
     border-radius: var(--r-md);
     transition: background 0.2s;
   }
+
   .cup-row.right { flex-direction: row-reverse; }
-  .cup-row.current { background: var(--accent-dim); }
+  .cup-row.current { background: rgba(248, 113, 113, 0.14); }
 
   .cup-wrapper {
     position: relative;
@@ -481,32 +462,35 @@
     border-radius: 4px;
     transition: transform 0.4s var(--ease), opacity 0.4s var(--ease), filter 0.4s var(--ease);
   }
+
   .cup.flipped {
     transform: rotate(180deg);
     opacity: 0.3;
     filter: grayscale(0.6);
   }
+
   .cup.current {
-    filter: drop-shadow(0 0 6px rgba(124,58,237,0.8));
+    filter: drop-shadow(0 0 6px rgba(248, 113, 113, 0.82));
   }
 
   .cup-glow {
     position: absolute;
     inset: -4px;
     border-radius: 8px;
-    background: radial-gradient(circle, rgba(124,58,237,0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(248, 113, 113, 0.3) 0%, transparent 70%);
     pointer-events: none;
     animation: glow-pulse 1.6s ease-in-out infinite;
   }
+
   @keyframes glow-pulse {
     0%, 100% { opacity: 0.7; }
-    50%       { opacity: 0.2; }
+    50% { opacity: 0.2; }
   }
 
   .cup-player-name {
     font-size: 0.78rem;
     font-weight: 500;
-    color: var(--text-muted);
+    color: rgba(255, 237, 213, 0.66);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -514,18 +498,22 @@
     min-width: 0;
     transition: color 0.2s;
   }
+
   .cup-player-name.right { text-align: right; }
-  .cup-player-name.active { color: var(--accent); font-weight: 700; }
-  .cup-player-name.done   { color: var(--success); opacity: 0.75; }
+  .cup-player-name.active { color: #fff7ed; font-weight: 700; }
+  .cup-player-name.done { color: #bbf7d0; opacity: 0.82; }
 
   .done-icon {
     font-size: 0.7rem;
     margin-right: 0.2rem;
     color: var(--success);
   }
-  .cup-player-name.right .done-icon { margin-right: 0; margin-left: 0.2rem; }
 
-  /* ── Game Over ── */
+  .cup-player-name.right .done-icon {
+    margin-right: 0;
+    margin-left: 0.2rem;
+  }
+
   .game-over {
     position: fixed;
     inset: 0;
@@ -537,9 +525,10 @@
     z-index: 300;
     animation: fadeIn 0.35s var(--ease);
   }
+
   @keyframes fadeIn {
     from { opacity: 0; }
-    to   { opacity: 1; }
+    to { opacity: 1; }
   }
 
   .game-over-card {
@@ -548,15 +537,29 @@
     border: 1px solid var(--border-strong);
     border-radius: var(--r-xl);
     padding: 3rem 4rem;
-    box-shadow: var(--shadow-lg), 0 0 80px rgba(124,58,237,0.2);
+    box-shadow: var(--shadow-lg), 0 0 80px rgba(220, 38, 38, 0.18);
     animation: popIn 0.4s var(--ease);
   }
+
   @keyframes popIn {
     from { opacity: 0; transform: scale(0.88); }
-    to   { opacity: 1; transform: scale(1); }
+    to { opacity: 1; transform: scale(1); }
   }
 
-  .trophy { font-size: 4rem; margin-bottom: 0.75rem; }
+  .trophy {
+    margin-bottom: 0.75rem;
+  }
+
+  .trophy-cup {
+    width: 92px;
+    height: auto;
+    filter: drop-shadow(0 14px 24px rgba(220, 38, 38, 0.22));
+  }
+
+  .trophy-cup.loss {
+    transform: rotate(180deg);
+    opacity: 0.7;
+  }
 
   .game-over-label {
     font-size: 0.75rem;
@@ -571,7 +574,7 @@
     font-size: 2.5rem;
     font-weight: 900;
     letter-spacing: -0.04em;
-    background: linear-gradient(135deg, #a78bfa, #818cf8, #38bdf8);
+    background: linear-gradient(135deg, #f87171, #fb923c, #fbbf24);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -586,11 +589,12 @@
     color: #fff;
     border: none;
     border-radius: var(--r-md);
-    box-shadow: 0 4px 16px rgba(124,58,237,0.4);
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3);
     transition: all 0.2s var(--ease);
   }
+
   .restart-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 22px rgba(124,58,237,0.55);
+    box-shadow: 0 6px 22px rgba(220, 38, 38, 0.42);
   }
 </style>

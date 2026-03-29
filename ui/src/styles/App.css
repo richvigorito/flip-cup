@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────────
-   Shared Game Layout — FlipQuiz
+   Shared Game Layout — FlipCup
    ───────────────────────────────────────────────────────────────── */
 
 /* ── Site Header ── */
@@ -10,7 +10,7 @@
   right: 0;
   z-index: 100;
   height: 64px;
-  background: rgba(11, 11, 24, 0.85);
+  background: rgba(18, 10, 9, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
@@ -42,7 +42,7 @@
   height: 40px;
   width: auto;
   display: block;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.28));
 }
 
 .logo-text {
@@ -53,7 +53,7 @@
 }
 
 .logo-accent {
-  background: linear-gradient(135deg, #a78bfa, #818cf8);
+  background: linear-gradient(135deg, #f87171, #f59e0b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -68,12 +68,9 @@
   justify-content: center;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  background-color: #1a1a1a;
-  background-image: 
-    radial-gradient(#333 1px, transparent 1px),
-    radial-gradient(#2a2a2a 1px, transparent 1px);
-  background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
+  background:
+    radial-gradient(circle at top, rgba(220, 38, 38, 0.08), transparent 32%),
+    linear-gradient(180deg, #140b09 0%, #1f110f 100%);
 }
 
 .page.game-active {
@@ -298,7 +295,7 @@
 }
 
 .cup.current {
-  filter: drop-shadow(0 0 8px rgba(124, 58, 237, 0.7));
+  filter: drop-shadow(0 0 8px rgba(248, 113, 113, 0.7));
 }
 
 .player-name {
@@ -341,7 +338,7 @@
   border: 1px solid var(--border-strong);
   border-radius: var(--r-xl);
   padding: 3rem 4rem;
-  box-shadow: var(--shadow-lg), 0 0 60px rgba(124, 58, 237, 0.2);
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(220, 38, 38, 0.18);
   animation: popIn 0.4s var(--ease);
 }
 
@@ -365,7 +362,7 @@
   font-size: 2.5rem;
   font-weight: 900;
   letter-spacing: -0.04em;
-  background: linear-gradient(135deg, #a78bfa, #818cf8, #38bdf8);
+  background: linear-gradient(135deg, #f87171, #fb923c, #fbbf24);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -524,4 +521,3 @@ dialog::backdrop {
   display: flex;
   justify-content: flex-end;
 }
-

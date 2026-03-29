@@ -1,7 +1,6 @@
 <script lang="ts">
   import { mode, resetClientGameState } from '$lib/store';
   import { connectSocket } from '$lib/transport/socket';
-  import type { QuestionSet } from '$lib/types/QuestionSet';
   import { questionSets } from '$lib/store';
 
   let selectedQuestionSet = '';
@@ -24,22 +23,17 @@
 </script>
 
 <div class="page-wrap">
-
-  <!-- Back button -->
   <button class="back-btn" on:click={goBack}>
     ← Back
   </button>
 
   <div class="form-card">
-
-    <!-- Header -->
     <div class="card-header">
-      <div class="card-icon">🎯</div>
+      <img src="/solo-cup.png" alt="" class="card-icon" />
       <h2 class="card-title">Create a Game</h2>
-      <p class="card-subtitle">Pick a quiz category to get started</p>
+      <p class="card-subtitle">Pick a category and set the table.</p>
     </div>
 
-    <!-- Quiz Picker -->
     <div class="field">
       <label class="field-label" for="qs-select">Question Set</label>
       <div class="qs-select-wrapper">
@@ -62,15 +56,9 @@
       </div>
     </div>
 
-    <!-- Action -->
-    <button
-      class="submit-btn"
-      on:click={createGame}
-      disabled={!selectedQuestionSet}
-    >
+    <button class="submit-btn" on:click={createGame} disabled={!selectedQuestionSet}>
       Create Game →
     </button>
-
   </div>
 </div>
 
@@ -99,6 +87,7 @@
     transition: color 0.15s;
     cursor: pointer;
   }
+
   .back-btn:hover { color: var(--text-primary); }
 
   .form-card {
@@ -111,30 +100,34 @@
     box-shadow: var(--shadow-card);
   }
 
-  /* Card header */
   .card-header {
     text-align: center;
     margin-bottom: 2rem;
   }
+
   .card-icon {
-    font-size: 2.5rem;
+    width: 72px;
+    height: auto;
     margin-bottom: 0.75rem;
+    filter: drop-shadow(0 10px 18px rgba(220, 38, 38, 0.18));
   }
+
   .card-title {
     font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: -0.03em;
     margin-bottom: 0.375rem;
   }
+
   .card-subtitle {
     font-size: 0.875rem;
     color: var(--text-secondary);
   }
 
-  /* Field */
   .field {
     margin-bottom: 1.5rem;
   }
+
   .field-label {
     display: block;
     font-size: 0.8rem;
@@ -145,10 +138,10 @@
     margin-bottom: 0.5rem;
   }
 
-  /* Wrapper with chevron */
   .qs-select-wrapper {
     position: relative;
   }
+
   .qs-select-wrapper::after {
     content: '▾';
     position: absolute;
@@ -159,6 +152,7 @@
     pointer-events: none;
     font-size: 0.85rem;
   }
+
   .qs-select-wrapper select {
     width: 100%;
     padding-right: 2.5rem;
@@ -177,12 +171,12 @@
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
+
   .qs-select-wrapper select:focus {
     border-color: var(--accent-border);
     box-shadow: 0 0 0 3px var(--accent-dim);
   }
 
-  /* Submit */
   .submit-btn {
     width: 100%;
     padding: 0.875rem 1.5rem;
@@ -192,14 +186,16 @@
     background: linear-gradient(135deg, var(--accent), var(--indigo));
     color: #fff;
     border: none;
-    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
+    box-shadow: 0 4px 16px rgba(220, 38, 38, 0.28);
     transition: all 0.2s var(--ease);
     cursor: pointer;
   }
+
   .submit-btn:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 6px 22px rgba(124, 58, 237, 0.5);
+    box-shadow: 0 6px 22px rgba(220, 38, 38, 0.38);
   }
+
   .submit-btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;

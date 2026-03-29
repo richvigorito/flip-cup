@@ -142,8 +142,8 @@ function handleMessage(message: any) {
       winner.set(message.name);
       var tmp = 1 + get(gamesCompleted);
       gamesCompleted.set(tmp);
-      //eventLog.update((log) => [...log, { message: `🏆 Winner: ${message.name}`, type: 'success' }]);
-      logEvent(`🏆 Winner: ${message.name}`,'success');
+      //eventLog.update((log) => [...log, { message: `${message.name} cleared the table`, type: 'success' }]);
+      logEvent(`${message.name} cleared the table`, 'success');
       break;
 
     case 'game_restarted':
