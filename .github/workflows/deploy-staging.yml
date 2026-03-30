@@ -1,0 +1,55 @@
+name: Deploy staging
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    uses: ./.github/workflows/validate.yml
+
+  deploy:
+    name: deploy
+    needs: validate
+    runs-on:
+      - self-hosted
+      - Linux
+      - ARM64
+      - staging
+    environment: staging
+    env:
+      STAGING_NOMAD_DATACENTER: ${{ vars.STAGING_NOMAD_DATACENTER || 'rv_homelab' }}
+      STAGING_NOMAD_NODE: ${{ vars.STAGING_NOMAD_NODE || 'rv-hstack-node1-pi4' }}
+      STAGING_HOSTNAME: ${{ vars.STAGING_HOSTNAME }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate staging configuration
+        run: |
+          : "${STAGING_HOSTNAME:?Set repository variable STAGING_HOSTNAME before deploying staging.}"
+
+      - name: Verify runner prerequisites
+        run: |
+          command -v docker >/dev/null
+          command -v nomad >/dev/null
+          docker info >/dev/null
+          nomad status >/dev/null
+
+      - name: Build image and deploy Nomad job
+        run: |
+          SHORT_SHA="${GITHUB_SHA::7}"
+          docker build -t "flipcup:staging-${SHORT_SHA}" .
+          nomad job run \
+            -var "image=flipcup:staging-${SHORT_SHA}" \
+            -var "hostname=${STAGING_HOSTNAME}" \
+            -var "datacenter=${STAGING_NOMAD_DATACENTER}" \
+            -var "node_name=${STAGING_NOMAD_NODE}" \
+            deploy/nomad/flipcup.nomad.hcl
