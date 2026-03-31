@@ -1,103 +1,160 @@
 # FlipCup
 
-A multiplayer quiz game where teams compete by flipping cups—by answering questions correctly. Inspired by Flip Cup, minus the beers. 🥤😎
+FlipCup is a real-time multiplayer trivia game built with a Go backend and a Svelte frontend. Players join a shared lobby, get split into teams, and race through quiz questions over WebSockets until one side wins.
 
-## 🚀 Live Demo
+The repo now has enough moving parts that the README is best treated as a guided index: it should help you understand what is here, where to look next, and how the pieces fit together without forcing every detail into one page.
 
-Try it out here: https://flipcup.fly.dev
+## What is in this repo?
 
-## 🎯 Purpose
+At a high level, FlipCup is made of five main parts:
 
-This was a fun side project to explore Go and Svelte — my first functional project in either. It's still a work in progress, so be gentle with the feedback 😄. That said, all contributions and ideas are welcome!
+- `game-server/` — the Go backend that owns HTTP routes, WebSocket sessions, game state, question loading, and stale-game cleanup
+- `ui/` — the Svelte frontend that renders the lobby/game screens and talks to the backend over HTTP + WebSockets
+- `ui/e2e/` — Playwright coverage for the multiplayer flows
+- `deploy/` — staging deployment assets, currently centered on a Nomad job definition for the homelab Pi cluster
+- `docs/` — project guides for architecture, gameplay, development, testing, deployment, and AI-assisted work
 
-## 🛠 Project Overview
+Quick repo map:
+
 ```text
-├── game-server                      // houses backend Go game server
-│   ├── cmd
-│   │   └── flipcup                     -- entrypoint
-│   ├── internal
-│   │   ├── game                        -- game-domain model/game-play files (game, team, player, etc)
-│   │   ├── quiz                        -- quiz-domain models 
-│   │   ├── transport                   -- http routing for rest endpoints and websocket handler for game play
-│   │   │   ├── api
-│   │   │   ├── types
-│   │   │   └── ws
-│   │   └── utils
-│   ├── public                          -- for single container deployments stores ui build
-│   └── questions                       -- stores all question yaml files
-└── ui                              // houses Svelte-kit frontend app
-    ├── public
-    └── src
-        ├── assets
-        │   └── fonts
-        ├── components
-        ├── lib
-        │   ├── models
-        │   ├── transport
-        │   │   └── http
-        │   ├── types
-        │   └── utils
-        └── styles
-
+.
+├── game-server/                # Go service, websocket/game logic, quiz loading
+├── ui/                         # Svelte client
+├── deploy/nomad/              # Staging Nomad job definition
+├── docs/                      # Project guides and supporting docs
+├── docker-compose.yml         # Local full-stack dev entry point
+├── Dockerfile                 # Shared deployment image for staging / Fly
+├── fly.toml                   # Fly.io production config
+└── gameflow.md                # Message-level websocket/game flow reference
 ```
 
+## Documentation map
 
-## 🤖 AI-Assisted Development
+If you did not write most of this code, start here:
 
-Recent improvements to this project (UI redesign, E2E test suite) were built with the help of GitHub Copilot. A full breakdown of what was delegated, how decisions were made, and what changed lives here:
+- [`docs/architecture.md`](docs/architecture.md) — codebase tour and component responsibilities
+- [`docs/gameplay.md`](docs/gameplay.md) — the game lifecycle from lobby to winner, with links to protocol details
+- [`docs/development.md`](docs/development.md) — local setup, common workflows, and where to start debugging
+- [`docs/testing.md`](docs/testing.md) — backend, frontend, Playwright, and CI coverage
+- [`docs/deployment.md`](docs/deployment.md) — local Docker Compose, staging on the Pi/Nomad stack, and Fly production
+- [`docs/ai-approach.md`](docs/ai-approach.md) — how Copilot was used across implementation, testing, docs, and repo operations
+- [`gameflow.md`](gameflow.md) — lower-level WebSocket message flow reference
 
-👉 **[docs/ai-approach.md](docs/ai-approach.md)**
+## Components at a glance
 
-## 🧪 Testing
+### Game server
 
-We use [Playwright](https://playwright.dev/) for End-to-End (E2E) testing. The tests simulate real user interactions (creating games, joining, answering questions) to ensure the full stack works together.
+The backend is a Go service under `game-server/` using Gorilla Mux and Gorilla WebSocket. It serves the API, upgrades `/ws` connections, manages game state in memory, loads quiz YAML, and handles cleanup of stale games.
 
-GitHub Actions now runs the test pipeline on every push and pull request. The first-pass required check for protecting `main` is `tests`, and `main` should be configured to only accept changes through pull requests after that check passes.
+Start with:
 
-### Prerequisites
+- `game-server/cmd/flipcup/`
+- `game-server/internal/game/`
+- `game-server/internal/transport/`
 
-Playwright now starts the backend and frontend automatically when you run the E2E suite, so the manual startup flow below is mainly useful for interactive local development.
+### UI
 
-If you want to run the app by hand, ensure both the backend and frontend are running locally:
+The frontend lives in `ui/` and is built with Svelte + Vite. It renders the welcome flow, lobby, active game, reconnect state, and endgame screens while deriving the runtime HTTP/WS host from either `VITE_WS_URL` or the current browser host.
 
-1.  **Start the Backend**:
-    ```bash
-    cd game-server
-    go run cmd/flipcup/main.go
-    ```
-2.  **Start the Frontend**:
-    ```bash
-    cd ui
-    npm install
-    npm run dev
-    ```
+Start with:
 
-### Running Tests
+- `ui/src/components/`
+- `ui/src/lib/`
+- `ui/src/lib/utils/config.ts`
 
-Run all tests:
+### Tests
+
+There are three practical layers of validation:
+
+- Go unit/integration tests under `game-server/`
+- frontend production build validation in `ui/`
+- Playwright end-to-end tests in `ui/e2e/`
+
+GitHub Actions runs the same test pipeline on pushes and pull requests. See [`docs/testing.md`](docs/testing.md) for the suite breakdown.
+
+### Deployments and environments
+
+FlipCup currently has three important environments:
+
+- local development via `docker-compose.yml`
+- staging on a Raspberry Pi homelab using a self-hosted GitHub runner, Nomad, Consul, Traefik, and Vault-backed runtime config
+- production on Fly.io via `fly.toml`
+
+The repo-root `Dockerfile` is the shared deployment image for staging and Fly. Local Compose does **not** use that file; it builds the backend from `game-server/` and the frontend from `ui/`, both in dev mode.
+
+See [`docs/deployment.md`](docs/deployment.md) for the environment-by-environment story.
+
+## Quick start
+
+### Local full stack with Docker Compose
+
+```bash
+docker-compose up -d
+```
+
+That starts:
+
+- the Go server on `http://localhost:8080`
+- the Svelte dev server on `http://localhost:5173`
+
+### Run the apps directly
+
+Backend:
+
+```bash
+cd game-server
+go run cmd/flipcup/main.go
+```
+
+Frontend:
+
 ```bash
 cd ui
-npx playwright test
+npm install
+npm run dev
 ```
 
-Run a specific test file (e.g., disconnection logic):
+## Testing commands
+
+Backend tests:
+
 ```bash
-npx playwright test e2e/disconnect.spec.ts
+cd game-server
+go test ./...
 ```
 
-Run tests with a visual UI (great for debugging):
+Frontend build:
+
 ```bash
-npx playwright test --ui
+cd ui
+npm ci
+npm run build
 ```
 
-### Writing Tests
+Playwright:
 
-Tests are located in `ui/e2e/`. To add a new test:
-1.  Create a file like `ui/e2e/my-feature.spec.ts`.
-2.  Import `test` and `expect` from `@playwright/test`.
-3.  Use `page` fixtures to interact with the game.
+```bash
+cd ui
+npx playwright install --with-deps chromium
+npm run test:e2e
+```
 
-**Note**: We use `sessionStorage` for player state, allowing you to simulate multiple players in a single browser instance by using different `BrowserContext`s. See `e2e/disconnect.spec.ts` for an example of multi-player testing.
+More detail on what these actually cover lives in [`docs/testing.md`](docs/testing.md).
 
-## 🤝 Contributing
-Got feedback, ideas, or issues? Open an issue or a pull request — would love to hear what you think! Lastly, for the record, no i was not in a frat. 
+## AI-assisted development
+
+This project includes a meaningful amount of GitHub Copilot-assisted work: UI redesign, reconnect handling, stale-game cleanup, Playwright coverage, GitHub Actions wiring, staging deployment setup, and documentation updates.
+
+The detailed write-up is in [`docs/ai-approach.md`](docs/ai-approach.md).
+
+## Contributing / navigating
+
+If you are exploring the codebase for the first time:
+
+1. read [`docs/architecture.md`](docs/architecture.md)
+2. skim [`docs/gameplay.md`](docs/gameplay.md)
+3. use [`docs/development.md`](docs/development.md) for local setup
+4. use [`docs/testing.md`](docs/testing.md) before changing behavior
+5. use [`docs/deployment.md`](docs/deployment.md) before touching staging or Fly
+
+And yes, for the record: no, this project did not require being in a frat.
