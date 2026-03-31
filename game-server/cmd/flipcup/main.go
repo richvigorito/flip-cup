@@ -2,47 +2,93 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"time"
 
 	"flip-cup/internal/game"
-	"flip-cup/internal/transport/ws"
 	"flip-cup/internal/transport/api"
+	"flip-cup/internal/transport/ws"
 	"github.com/gorilla/mux"
 )
 
+type runtimeConfig struct {
+	port            string
+	cleanupInterval time.Duration
+	staleAfter      time.Duration
+}
+
 func main() {
-    log.Println("✅ Flip Cup server started")
-	
+	log.Println("✅ Flip Cup server started")
+
+	config, err := loadRuntimeConfig()
+	if err != nil {
+		log.Fatalf("invalid runtime configuration: %v", err)
+	}
+
 	manager := game.NewGameManager()
 
-	// Start background cleanup task
 	go func() {
-		// Run cleanup every 30 minutes, removing games inactive for > 1 hour
-		ticker := time.NewTicker(30 * time.Minute)
+		ticker := time.NewTicker(config.cleanupInterval)
 		defer ticker.Stop()
+
 		for range ticker.C {
-			manager.CleanupStaleGames(1 * time.Hour)
+			manager.CleanupStaleGames(config.staleAfter)
 		}
 	}()
 
-	// Create a new router
 	r := mux.NewRouter()
-
-	//  WebSocket route *  handler
 	r.HandleFunc("/ws", ws.HandleWebSocketConnection(manager))
+	api.SetupRoutes(manager, config.staleAfter, r)
 
-	//  HTTP routes
-	api.SetupRoutes(manager, r)
+	log.Printf(
+		"Server running at http://localhost:%s (cleanup_interval=%s stale_after=%s)",
+		config.port,
+		config.cleanupInterval,
+		config.staleAfter,
+	)
+	log.Fatal(http.ListenAndServe(":"+config.port, api.WithCORS(r)))
+}
 
-	// Start the server
+func loadRuntimeConfig() (runtimeConfig, error) {
+	cleanupInterval, err := readDurationEnv("GAME_CLEANUP_INTERVAL", game.DefaultCleanupInterval)
+	if err != nil {
+		return runtimeConfig{}, err
+	}
+
+	staleAfter, err := readDurationEnv("GAME_STALE_AFTER", game.DefaultStaleAfter)
+	if err != nil {
+		return runtimeConfig{}, err
+	}
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
 	}
-	log.Printf("Server running at http://localhost:%s", port)
-	log.Fatal(http.ListenAndServe(":"+port, api.WithCORS(r)))
+
+	return runtimeConfig{
+		port:            port,
+		cleanupInterval: cleanupInterval,
+		staleAfter:      staleAfter,
+	}, nil
 }
 
+func readDurationEnv(name string, fallback time.Duration) (time.Duration, error) {
+	raw := os.Getenv(name)
+	if raw == "" {
+		return fallback, nil
+	}
+
+	value, err := time.ParseDuration(raw)
+	if err != nil {
+		return 0, fmt.Errorf("%s must be a valid duration: %w", name, err)
+	}
+
+	if value <= 0 {
+		return 0, fmt.Errorf("%s must be greater than zero", name)
+	}
+
+	return value, nil
+}

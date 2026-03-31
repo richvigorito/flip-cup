@@ -3,122 +3,80 @@ package api
 
 import (
 	"encoding/json"
-	"net/http"
 	"log"
+	"net/http"
 	"time"
+
 	"flip-cup/internal/game"
 	"github.com/gorilla/mux"
 )
 
-//
-// GET: /api/games/{active|inactive|stale}
-//
-func fetchGames(manager *game.GameManager) http.HandlerFunc {
+type deleteGamesResponse struct {
+	Status       string   `json:"status"`
+	DeletedCount int      `json:"deletedCount"`
+	DeletedIDs   []string `json:"deletedIds"`
+}
+
+// GET: /games/{active|inactive|stale}
+func fetchGames(manager *game.GameManager, staleAfter time.Duration) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		vars := mux.Vars(r)              // get path variables
-		status := vars["status"]         // "active" or "inactive" or "stale"
-        var activeFilter *bool = nil
+		status := mux.Vars(r)["status"]
+		log.Printf("fetchGames called with status=%s", status)
 
+		var response []game.GameSnapshot
 
-		// Fetch all games from the manager
-        log.Println("🎯 fetchGames called") 
-		var games []*game.Game
-
-		if status == "stale" {
-			games = manager.GetStaleGames(30 * time.Minute)
-		} else {
-			games = manager.GetAllGames()
-		}
-
-		var response = []game.GameSnapshot{}
-        if status == "active" {
-            activeFilter = boolPtr(true)
-        } else if status == "inactive" {
-            activeFilter = boolPtr(false)
-        } else if status == "stale" {
-			// No extra filter needed, GetStaleGames already filtered
-        } else {
-			// if you want, return 404 or 400 on invalid status
-			http.Error(w, "Invalid status", http.StatusBadRequest)
+		switch status {
+		case "active":
+			for _, g := range manager.GetAllGames() {
+				if g.Active {
+					response = append(response, g.Snapshot())
+				}
+			}
+		case "inactive":
+			for _, g := range manager.GetAllGames() {
+				if !g.Active {
+					response = append(response, g.Snapshot())
+				}
+			}
+		case "stale":
+			for _, g := range manager.GetStaleGames(staleAfter) {
+				response = append(response, g.Snapshot())
+			}
+		default:
+			http.Error(w, "invalid status", http.StatusBadRequest)
 			return
 		}
 
-		for _, g := range games {
-			if status == "stale" {
-				response = append(response, g.Snapshot())
-			} else if activeFilter == nil || g.Active == *activeFilter {
-				response = append(response, g.Snapshot())
-			}
-		}
-
 		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(response)
+		_ = json.NewEncoder(w).Encode(response)
 	}
 }
 
-//
-// DELETE: /api/games/{active|inactive}
-//
-func deleteGames(manager *game.GameManager) http.HandlerFunc {
+// DELETE: /games/stale
+func deleteStaleGames(manager *game.GameManager, staleAfter time.Duration) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		vars := mux.Vars(r)              // get path variables
-		status := vars["status"]         // "active" or "inactive"
-        var activeFilter *bool = nil
-
-
-		// Fetch all games from the manager
-        log.Println("🎯 fetchGames called") 
-		games := manager.GetAllGames()
-
-
-		var response = []game.GameSnapshot{}
-        if status == "active" {
-            activeFilter = boolPtr(true)
-        } else if status == "inactive" {
-            activeFilter = boolPtr(false)
-        } else {
-			// if you want, return 404 or 400 on invalid status
-			http.Error(w, "Invalid status", http.StatusBadRequest)
-			return
-		}
-
-		for _, g := range games {
-			if activeFilter == nil || g.Active == *activeFilter {
-                err := manager.DeleteGameByID(g.ID)
-                if err != nil {
-                    http.Error(w, "Game not found or could not be deleted", http.StatusNotFound)
-                    return
-                }
-			}
-		}
+		deletedIDs := manager.PruneStaleGames(staleAfter)
 
 		w.Header().Set("Content-Type", "application/json")
-		json.NewEncoder(w).Encode(response)
+		_ = json.NewEncoder(w).Encode(deleteGamesResponse{
+			Status:       "stale",
+			DeletedCount: len(deletedIDs),
+			DeletedIDs:   deletedIDs,
+		})
 	}
 }
 
-
-
-//
-// DELETE: /api/games/{id}
-//
+// DELETE: /games/{id}
 func deleteGame(manager *game.GameManager) http.HandlerFunc {
-    return func(w http.ResponseWriter, r *http.Request) {
-        vars := mux.Vars(r)
-        id := vars["id"]
+	return func(w http.ResponseWriter, r *http.Request) {
+		id := mux.Vars(r)["id"]
+		log.Printf("deleting game with ID: %s", id)
 
-        log.Printf("Deleting game with ID: %s\n", id)
+		if err := manager.DeleteGameByID(id); err != nil {
+			http.Error(w, "game not found or could not be deleted", http.StatusNotFound)
+			return
+		}
 
-        err := manager.DeleteGameByID(id)
-        if err != nil {
-            http.Error(w, "Game not found or could not be deleted", http.StatusNotFound)
-            return
-        }
-
-        w.WriteHeader(http.StatusNoContent) // 204 No Content on success
-    }
-}
-
-func boolPtr(b bool) *bool {
-    return &b
+		w.WriteHeader(http.StatusNoContent)
+	}
 }

@@ -3,41 +3,55 @@ package game
 import (
 	"testing"
 	"time"
+
 	"flip-cup/internal/quiz"
 )
 
 func TestCleanupStaleGames(t *testing.T) {
-	// 1. Setup
 	gm := NewGameManager()
-	
-	// Create a minimal QuestionFile structure
 	qf := &quiz.QuestionFile{
-		Filename: "test.yaml",
-		// We don't need actual questions for this test
+		Filename:  "test.yaml",
 		Questions: []*quiz.Question{},
 	}
 
-	// 2. Create games
-	g1 := gm.NewGame(qf)
-	g2 := gm.NewGame(qf)
+	fresh := gm.NewGame(qf)
+	stale := gm.NewGame(qf)
 
-	// 3. Manipulate LastActivity
-	// g1 is active now (default NewGame sets to Now())
-	// g2 should be stale. We set it to 2 hours ago.
-	g2.mu.Lock()
-	g2.LastActivity = time.Now().Add(-2 * time.Hour)
-	g2.mu.Unlock()
+	stale.mu.Lock()
+	stale.LastActivity = time.Now().Add(-2 * time.Hour)
+	stale.mu.Unlock()
 
-	// 4. Run Cleanup with 1 hour threshold
-	// g2 is 2 hours old, so it > 1 hour, should be deleted.
-	gm.CleanupStaleGames(1 * time.Hour)
+	gm.CleanupStaleGames(time.Hour)
 
-	// 5. Verify
-	if gm.GetGame(g1.ID) == nil {
-		t.Errorf("Game 1 (active) should still exist")
+	if gm.GetGame(fresh.ID) == nil {
+		t.Fatalf("fresh game %s should still exist", fresh.ID)
 	}
-	if gm.GetGame(g2.ID) != nil {
-		t.Errorf("Game 2 (stale) should have been deleted")
+
+	if gm.GetGame(stale.ID) != nil {
+		t.Fatalf("stale game %s should have been deleted", stale.ID)
+	}
+}
+
+func TestPruneStaleGamesReturnsDeletedIDs(t *testing.T) {
+	gm := NewGameManager()
+	qf := &quiz.QuestionFile{Filename: "test.yaml"}
+
+	fresh := gm.NewGame(qf)
+	stale := gm.NewGame(qf)
+	stale.LastActivity = time.Now().Add(-(30*time.Minute + 5*time.Minute))
+
+	deleted := gm.PruneStaleGames(30 * time.Minute)
+
+	if len(deleted) != 1 {
+		t.Fatalf("expected 1 deleted game, got %d", len(deleted))
+	}
+
+	if deleted[0] != stale.ID {
+		t.Fatalf("expected stale game ID %s, got %s", stale.ID, deleted[0])
+	}
+
+	if gm.GetGame(fresh.ID) == nil {
+		t.Fatalf("fresh game %s should still exist", fresh.ID)
 	}
 }
 
@@ -45,27 +59,26 @@ func TestGetStaleGames(t *testing.T) {
 	gm := NewGameManager()
 	qf := &quiz.QuestionFile{Filename: "test.yaml"}
 
-	g1 := gm.NewGame(qf)
-	g2 := gm.NewGame(qf)
+	fresh := gm.NewGame(qf)
+	stale := gm.NewGame(qf)
 
-	// Make g2 stale
-	g2.mu.Lock()
-	g2.LastActivity = time.Now().Add(-40 * time.Minute)
-	g2.mu.Unlock()
+	stale.mu.Lock()
+	stale.LastActivity = time.Now().Add(-40 * time.Minute)
+	stale.mu.Unlock()
 
-	// Threshold 30m
-	stale := gm.GetStaleGames(30 * time.Minute)
+	staleGames := gm.GetStaleGames(30 * time.Minute)
 
-	if len(stale) != 1 {
-		t.Errorf("Expected 1 stale game, got %d", len(stale))
-	} else if stale[0].ID != g2.ID {
-		t.Errorf("Expected stale game ID %s, got %s", g2.ID, stale[0].ID)
+	if len(staleGames) != 1 {
+		t.Fatalf("expected 1 stale game, got %d", len(staleGames))
 	}
 
-    // Ensure g1 (active) is not returned
-    for _, s := range stale {
-        if s.ID == g1.ID {
-            t.Errorf("Active game %s should not be marked stale", g1.ID)
-        }
-    }
+	if staleGames[0].ID != stale.ID {
+		t.Fatalf("expected stale game ID %s, got %s", stale.ID, staleGames[0].ID)
+	}
+
+	for _, candidate := range staleGames {
+		if candidate.ID == fresh.ID {
+			t.Fatalf("fresh game %s should not be marked stale", fresh.ID)
+		}
+	}
 }
