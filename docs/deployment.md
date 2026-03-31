@@ -1,72 +1,105 @@
 # Deployment guide
 
-## Environment contract
+This document explains the three environment stories in the repo:
 
-FlipCup now uses one production-oriented container build at the repository root (`Dockerfile`) and keeps environment differences in runtime configuration instead of separate packaging flows.
+- local development with Docker Compose
+- staging on the homelab Pi cluster
+- production on Fly.io
+
+The key design choice is that local development keeps its own dev-focused Dockerfiles, while staging and production share the repo-root deployment `Dockerfile`.
+
+## Environment contract
 
 | Environment | Packaging path | Frontend websocket config | Backend port |
 | --- | --- | --- | --- |
-| Local dev | `docker-compose.yml` with service-specific dev Dockerfiles | `VITE_WS_URL=localhost:8080` with runtime fallback to the current LAN host when opened from another device | `PORT=8080` |
-| Staging | Root `Dockerfile`, built on the staging Nomad host | Leave `VITE_WS_URL` unset so the UI uses the current host | `PORT=8080` |
-| Production | Root `Dockerfile`, pushed to Artifact Registry and deployed to Cloud Run | Leave `VITE_WS_URL` unset so the UI uses the current host | `PORT=8080` |
+| Local dev | `docker-compose.yml` with `game-server/Dockerfile` and `ui/Dockerfile` dev targets | `VITE_WS_URL=localhost:8080` for the frontend dev server | `PORT=8080` |
+| Staging | repo-root `Dockerfile`, built by the self-hosted runner on the staging Pi | leave `VITE_WS_URL` unset so the browser host is used at runtime | `PORT` comes from Nomad |
+| Production | repo-root `Dockerfile`, deployed through Fly using `fly.toml` | leave `VITE_WS_URL` unset so the browser host is used at runtime | `PORT=8080` |
 
-The frontend local override now lives in `ui/.env.development`. That keeps `localhost:8080` out of production Vite builds while still letting remote devices on the same LAN connect through the browser's current host.
+The frontend runtime host logic lives in `ui/src/lib/utils/config.ts`, which is why staging and Fly can rely on the current host instead of baking in a hardcoded deployment URL.
 
 ## Local development
 
-Use Docker Compose for the quickest full-stack loop:
+For the quickest full-stack loop:
 
 ```bash
 docker-compose up -d
 ```
 
-You can also work in each app directly:
+Compose uses:
+
+- `game-server/Dockerfile` with target `dev`
+- `ui/Dockerfile` with target `dev`
+
+That means the repo-root deployment `Dockerfile` does **not** interfere with the local developer workflow.
+
+You can also run each app directly:
 
 ```bash
 cd game-server && go run cmd/flipcup/main.go
 cd ui && npm install && npm run dev
 ```
 
-## Staging on Nomad / Consul / Traefik
+## Staging on Nomad / Consul / Traefik / Vault
 
-The staging job definition lives at `deploy/nomad/flipcup.nomad.hcl`.
+The staging job definition lives at:
 
-Key assumptions:
+- `deploy/nomad/flipcup.nomad.hcl`
 
-- staging runs a single FlipCup allocation until the app has shared state
-- the allocation is pinned to one Nomad node so the locally built image is available to the Docker driver
-- Traefik routes the `.homelab` host alias over the `web` entrypoint to the Nomad service registered in Consul
-- the app is exposed on `/` and `/ws` from the same hostname
+The staging deploy workflow lives at:
 
-The `Deploy staging` GitHub Actions workflow does the following after validation passes:
+- `.github/workflows/deploy-staging.yml`
 
-1. runs on a self-hosted GitHub Actions runner inside the homelab
-2. builds the root `Dockerfile` locally on that runner
-3. verifies Docker and the Nomad CLI are available and can reach the cluster
-4. runs `nomad job run` with the staging hostname and node variables
+### How staging deployment works
 
-Required GitHub configuration for the workflow:
+1. `Deploy staging` is triggered in GitHub Actions
+2. GitHub schedules the deploy job onto the self-hosted runner labeled `self-hosted`, `Linux`, `ARM64`, `staging`
+3. that runner is installed on the homelab staging node
+4. the runner checks out the repo, builds the repo-root `Dockerfile`, and runs `nomad job run`
+5. Nomad schedules the `flipcup` job on the pinned node
+6. the task reads its runtime config from Vault and starts behind Traefik
 
-- repository variable `STAGING_HOSTNAME`
-- optional variables `STAGING_NOMAD_DATACENTER`, `STAGING_NOMAD_NODE`
-- a self-hosted runner labeled `self-hosted`, `Linux`, `ARM64`, and `staging`
+Important detail: GitHub does **not** push into the home network directly. The self-hosted runner inside the homelab polls GitHub for jobs and executes them locally.
 
-Defaults in this repository assume the current Raspberry Pi cluster shape:
+### Key assumptions
+
+- staging runs one allocation because the app still keeps game state in memory
+- the job is pinned to one Nomad node so the locally built Docker image is available to the Docker driver
+- Traefik routes the chosen hostname to the Nomad service
+- the app is served from the same host for HTTP and WebSocket traffic
+
+### Required GitHub repository variables
+
+- `STAGING_HOSTNAME`
+- optional `STAGING_NOMAD_DATACENTER`
+- optional `STAGING_NOMAD_NODE`
+
+Current defaults used by the workflow:
 
 - `STAGING_NOMAD_DATACENTER=rv_homelab`
 - `STAGING_NOMAD_NODE=rv-hstack-node1-pi4`
 
-The self-hosted runner should live on the same node named by `STAGING_NOMAD_NODE`. The staging job still uses a locally built Docker image and is pinned to one Nomad node, so building and deploying from a different machine would leave the target node without the image unless you switch to a shared image registry.
+### Runner requirements
 
-Override those variables only if the cluster naming changes or you want the job pinned elsewhere.
+The staging runner should:
 
-FlipCup staging runtime settings are now sourced from Vault instead of Nomad Variables.
+- run inside the homelab
+- be registered on the repo with labels `self-hosted`, `Linux`, `ARM64`, `staging`
+- have working access to Docker and Nomad
+- ideally live on the same node named by `STAGING_NOMAD_NODE`
 
-The Nomad task authenticates to Vault with:
+That last point matters because the workflow builds the Docker image locally and then runs Nomad on the same host. If you move the runner elsewhere without introducing a shared image registry, Nomad may schedule onto a node that does not have the built image.
 
-- auth mount `auth/jwt-nomad`
-- role `flipcup-staging`
-- KV v2 secret read path `secret/data/flipcup/staging`
+### Vault-backed runtime config
+
+The staging task uses Nomad's native Vault integration.
+
+Current contract:
+
+- auth mount: `auth/jwt-nomad`
+- role: `flipcup-staging`
+- secret read path in templates: `secret/data/flipcup/staging`
+- logical write path for CLI usage: `secret/flipcup/staging`
 
 Seed the secret from a machine that already has Vault access:
 
@@ -74,66 +107,85 @@ Seed the secret from a machine that already has Vault access:
 vault kv put secret/flipcup/staging cleanup_interval=30m stale_after=1h
 ```
 
-The current job reads:
+Those values are rendered into:
 
-- `cleanup_interval` → `GAME_CLEANUP_INTERVAL`
-- `stale_after` → `GAME_STALE_AFTER`
+- `GAME_CLEANUP_INTERVAL`
+- `GAME_STALE_AFTER`
 
-`PORT` still comes from Nomad's allocated service port.
+### Staging verification checklist
 
-The template stanza reads the KV v2 API path `secret/data/flipcup/staging`, while the CLI command above writes to the logical path `secret/flipcup/staging`.
+After a deploy:
 
-## Production on Cloud Run
+```bash
+nomad status flipcup
+nomad job allocs flipcup
+nomad alloc status <alloc-id>
+nomad alloc logs <alloc-id>
+curl http://flipcup.homelab/quizzes
+```
 
-Terraform lives in `infra/terraform/cloud-run` and provisions:
+## Production on Fly.io
 
-- an Artifact Registry Docker repository
-- a Cloud Run service account
-- a public Cloud Run service for the FlipCup image
+Production is described here in Fly terms because the repo still contains a live Fly config:
 
-The production workflow validates the app, bootstraps Artifact Registry via Terraform, builds the root image, pushes it, and applies the full Cloud Run configuration.
+- `fly.toml`
 
-Required GitHub configuration:
+The Fly app name is:
 
-- secret `GCP_PROJECT_ID`
-- secret `GCP_WORKLOAD_IDENTITY_PROVIDER`
-- secret `GCP_DEPLOYER_SERVICE_ACCOUNT`
-- optional variable `GCP_REGION`
-- optional variable `GCP_ARTIFACT_REPOSITORY`
-- optional variable `GCP_CLOUD_RUN_SERVICE`
+- `flipcup`
 
-### Cloud Run websocket and state notes
+That means the default Fly hostname is typically:
 
-Cloud Run supports WebSockets, but they are still long-lived HTTP requests. For this app that means:
+- `https://flipcup.fly.dev`
 
-- request timeout is set to `3600s`
-- max instances stay at `1` so in-memory game state is not split across replicas
-- websocket clients should be expected to reconnect after deploys or request timeout boundaries
-- Cloud Run is not guaranteed to stay inside the free tier because active websocket connections keep the instance billable while they are open
+### Production packaging
 
-Those defaults intentionally favor correctness over aggressive autoscaling.
+Fly should build from the repo-root `Dockerfile`:
+
+```toml
+[build]
+  dockerfile = 'Dockerfile'
+```
+
+That keeps staging and production aligned around the same deployment image.
+
+### Production deploy shape
+
+At a high level:
+
+1. build the repo-root `Dockerfile`
+2. deploy it with Fly using `fly.toml`
+3. let the browser derive its HTTP/WS host from the deployed Fly domain
+
+Typical manual command:
+
+```bash
+fly deploy
+```
+
+### Fly-specific operational note
+
+Because FlipCup still keeps game state in memory, production should stay conservative:
+
+- prefer a single machine / single active instance unless shared state is added later
+- be careful with scaling and rolling restarts
+- expect WebSocket reconnects around deploy boundaries
 
 ## CI and deployment gates
 
-Validation is centralized in `.github/workflows/validate.yml` and reused by:
+Validation is defined in:
 
-- `CI` on every push and pull request
-- `Deploy staging`
-- `Deploy production`
+- `.github/workflows/ci.yml`
+- `.github/workflows/validate.yml`
 
-That keeps Playwright, UI build, and Go test coverage consistent across normal development and deployments.
+That validation is reused by staging deploys so changes get the same Go/UI/Playwright coverage before rollout.
 
 ## Protecting `main`
 
-Configure `main` in GitHub branch protection or rulesets with these minimum rules:
+At minimum, keep `main` protected by rules that:
 
-- require pull requests before merging
+- require pull requests
 - block direct pushes
-- require the `tests` status check from the `CI` workflow
-- optionally require approvals before merge
+- require the `tests` check from the `CI` workflow
 
-The workflows in this repo assume deployment happens only after code reaches `main` through that PR flow.
-
-## Legacy Fly.io support
-
-`fly.toml` remains in the repository as an optional legacy target, but it now builds from the shared root `Dockerfile`. Cloud Run is the primary production path.
+That keeps staging deploys tied to code that has already passed the normal validation path.
