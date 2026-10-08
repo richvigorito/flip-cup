@@ -23,8 +23,9 @@ Quick repo map:
 ├── deploy/nomad/              # Staging Nomad job definition
 ├── docs/                      # Project guides and supporting docs
 ├── docker-compose.yml         # Local full-stack dev entry point
-├── Dockerfile                 # Shared deployment image for staging / Fly
-├── fly.toml                   # Fly.io production config
+├── Dockerfile                 # Shared deployment image for staging / Cloud Run
+├── infra/                     # Terraform for production on GCP Cloud Run
+├── fly.toml                   # Legacy Fly.io config (remove after cutover)
 ├── _context/                  # Agent-only context (SKILLS, plan)
 └── docs/gameflow.md           # Message-level websocket/game flow reference
 ```
@@ -37,7 +38,7 @@ If you did not write most of this code, start here:
 - [`docs/gameplay.md`](docs/gameplay.md) — the game lifecycle from lobby to winner, with links to protocol details
 - [`docs/development.md`](docs/development.md) — local setup, common workflows, and where to start debugging
 - [`docs/testing.md`](docs/testing.md) — backend, frontend, Playwright, and CI coverage
-- [`docs/deployment.md`](docs/deployment.md) — local Docker Compose, staging on the Pi/Nomad stack, and Fly production
+- [`docs/deployment.md`](docs/deployment.md) — local Docker Compose, staging on the Pi/Nomad stack, and Cloud Run production
 - [`docs/ai-approach.md`](docs/ai-approach.md) — how Copilot was used across implementation, testing, docs, and repo operations
 - [`docs/gameflow.md`](docs/gameflow.md) — lower-level WebSocket message flow reference
 
@@ -79,9 +80,9 @@ FlipCup currently has three important environments:
 
 - local development via `docker-compose.yml`
 - staging on a Raspberry Pi homelab using a self-hosted GitHub runner, Nomad, Consul, Traefik, and Vault-backed runtime config
-- production on Fly.io via `fly.toml`
+- production on Google Cloud Run (flipcup.dev) via Terraform in `infra/` and `.github/workflows/deploy-prod.yml`
 
-The repo-root `Dockerfile` is the shared deployment image for staging and Fly. Local Compose does **not** use that file; it builds the backend from `game-server/` and the frontend from `ui/`, both in dev mode.
+The repo-root `Dockerfile` is the shared deployment image for staging and Cloud Run. Local Compose does **not** use that file; it builds the backend from `game-server/` and the frontend from `ui/`, both in dev mode.
 
 See [`docs/deployment.md`](docs/deployment.md) for the environment-by-environment story.
 
@@ -156,6 +157,6 @@ If you are exploring the codebase for the first time:
 2. skim [`docs/gameplay.md`](docs/gameplay.md)
 3. use [`docs/development.md`](docs/development.md) for local setup
 4. use [`docs/testing.md`](docs/testing.md) before changing behavior
-5. use [`docs/deployment.md`](docs/deployment.md) before touching staging or Fly
+5. use [`docs/deployment.md`](docs/deployment.md) before touching staging or production
 
 And yes, for the record: no, this project did not require being in a frat.

@@ -9,12 +9,12 @@ FlipCup is a real-time multiplayer trivia app with:
 - a Go backend for HTTP, WebSockets, game state, and quiz loading
 - a Svelte frontend for the lobby/game UI
 - Playwright coverage for multiplayer browser flows
-- a shared deployment image for staging and Fly
+- a shared deployment image for staging and Cloud Run
 
 The app currently keeps game state in memory, which explains a lot of the deployment choices:
 
 - staging runs as a single Nomad allocation
-- Fly should stay conservative about scaling
+- Cloud Run is pinned to a single instance (`max-instances=1`) that scales to zero when idle
 - reconnect behavior matters because deploys and browser refreshes can interrupt live sessions
 
 ## Codebase layout
@@ -87,8 +87,9 @@ This directory holds the human-oriented guides:
 ### Root-level infrastructure files
 
 - `docker-compose.yml` — local full-stack dev
-- `Dockerfile` — shared deployment image for staging/Fly
-- `fly.toml` — Fly.io production configuration
+- `Dockerfile` — shared deployment image for staging/Cloud Run
+- `infra/` — Terraform for production on GCP (`bootstrap/` is applied once by hand)
+- `fly.toml` / `Dockerfile.fly` — legacy Fly.io config, delete after the Cloud Run cutover
 - `gameflow.md` — protocol-level message flow reference
 
 ## How requests and events move through the app
