@@ -101,7 +101,7 @@ At a high level:
 4. gameplay events are broadcast back to connected players
 5. the UI updates from that state stream
 
-For the detailed event reference, read [`../gameflow.md`](../gameflow.md).
+For the detailed event reference, read [`gameflow.md`](gameflow.md).
 
 ## Good starting points by task
 

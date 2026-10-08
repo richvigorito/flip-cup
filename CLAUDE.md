@@ -2,13 +2,13 @@
 
 This is the canonical AI-assistant instruction file for this repository.
 
-Use `SKILLS.md` as the supplemental task and command reference.
+Use `_context/SKILLS.md` as the supplemental task and command reference.
 
 ## Start here
 
 1. Read `README.md`
-2. For gameplay or socket work, read `gameflow.md`
-3. Read `SKILLS.md` if you need task-specific commands or checklists
+2. For gameplay or socket work, read `docs/gameflow.md`
+3. Read `_context/SKILLS.md` if you need task-specific commands or checklists
 4. Inspect only the files needed for the task before editing
 
 ## What this repo is
