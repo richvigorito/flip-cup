@@ -47,17 +47,6 @@ variable "domain" {
   default = "flipcup.dev"
 }
 
-variable "billing_account_id" {
-  type        = string
-  default     = ""
-  description = "Optional. When set, creates a monthly budget alert."
-}
-
-variable "budget_usd" {
-  type    = number
-  default = 5
-}
-
 # Game state is in memory, so the service must stay a single instance and
 # scale to zero when idle. Request-based CPU billing keeps idle cost at zero.
 resource "google_cloud_run_v2_service" "flipcup" {
@@ -123,31 +112,6 @@ resource "google_cloud_run_domain_mapping" "apex" {
 
   spec {
     route_name = google_cloud_run_v2_service.flipcup.name
-  }
-}
-
-resource "google_billing_budget" "flipcup" {
-  count           = var.billing_account_id == "" ? 0 : 1
-  billing_account = var.billing_account_id
-  display_name    = "flipcup monthly budget"
-
-  budget_filter {
-    projects = ["projects/${var.project_id}"]
-  }
-
-  amount {
-    specified_amount {
-      currency_code = "USD"
-      units         = tostring(var.budget_usd)
-    }
-  }
-
-  threshold_rules {
-    threshold_percent = 0.5
-  }
-
-  threshold_rules {
-    threshold_percent = 1.0
   }
 }
 

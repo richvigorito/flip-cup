@@ -149,7 +149,7 @@ Production is `https://flipcup.dev`, served by a Cloud Run service in `us-west1`
    gcloud auth application-default login
    cd infra/bootstrap
    terraform init
-   terraform apply -var project_id=<your-project-id>
+   terraform apply -var project_id=<your-project-id> -var billing_account_id=<ACCOUNT_ID>
    ```
 
    The bootstrap state is local and gitignored; keep it somewhere safe or migrate it to the state bucket.
@@ -173,9 +173,13 @@ Production is `https://flipcup.dev`, served by a Cloud Run service in `us-west1`
 
 5. After a few stable days on Cloud Run, retire Fly: `fly apps destroy flipcup`, then delete `fly.toml` and `Dockerfile.fly`.
 
-### Optional budget alert
+### Budget alert
 
-Pass `-var billing_account_id=<id>` in the workflow's `terraform apply` to create a $5/month budget alert (`budget_usd` overrides the amount).
+The bootstrap also creates a monthly budget (default $5, alerts at 50%, 90% and 100%) that emails billing admins. It does not cap spending. Pass your billing account when applying the bootstrap:
+
+```bash
+terraform apply -var project_id=<id> -var billing_account_id=<ACCOUNT_ID> [-var budget_usd=10]
+```
 
 ## CI and deployment gates
 
