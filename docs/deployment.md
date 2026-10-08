@@ -4,7 +4,7 @@ This document explains the three environment stories in the repo:
 
 - local development with Docker Compose
 - staging on the homelab Pi cluster
-- production on Fly.io
+- production on Google Cloud Run (flipcup.dev)
 
 The key design choice is that local development keeps its own dev-focused Dockerfiles, while staging and production share the repo-root deployment `Dockerfile`.
 
@@ -14,9 +14,9 @@ The key design choice is that local development keeps its own dev-focused Docker
 | --- | --- | --- | --- |
 | Local dev | `docker-compose.yml` with `game-server/Dockerfile` and `ui/Dockerfile` dev targets | `VITE_WS_URL=localhost:8080` for the frontend dev server | `PORT=8080` |
 | Staging | repo-root `Dockerfile`, built by the self-hosted runner on the staging Pi | leave `VITE_WS_URL` unset so the browser host is used at runtime | `PORT` comes from Nomad |
-| Production | repo-root `Dockerfile`, deployed through Fly using `fly.toml` | leave `VITE_WS_URL` unset so the browser host is used at runtime | `PORT=8080` |
+| Production | repo-root `Dockerfile`, deployed to Cloud Run by Terraform (`infra/`) from GitHub Actions | leave `VITE_WS_URL` unset so the browser host is used at runtime | `PORT=8080` |
 
-The frontend runtime host logic lives in `ui/src/lib/utils/config.ts`, which is why staging and Fly can rely on the current host instead of baking in a hardcoded deployment URL.
+The frontend runtime host logic lives in `ui/src/lib/utils/config.ts`, which is why staging and Cloud Run can rely on the current host instead of baking in a hardcoded deployment URL.
 
 ## Local development
 
@@ -124,52 +124,58 @@ nomad alloc logs <alloc-id>
 curl http://flipcup.homelab/quizzes
 ```
 
-## Production on Fly.io
+## Production on Google Cloud Run
 
-Production is described here in Fly terms because the repo still contains a live Fly config:
+Production is `https://flipcup.dev`, served by a Cloud Run service in `us-west1` and managed entirely by Terraform. Every push to `main` runs `.github/workflows/deploy-prod.yml`: validate (Go + Playwright), build the root `Dockerfile`, push to Artifact Registry, then `terraform apply` in `infra/`.
 
-- `fly.toml`
+### Runtime shape
 
-The Fly app name is:
+- `min-instances=0`: scales to zero when idle, so it costs ~$0 at low traffic (expect a 1–3 second cold start for the first visitor)
+- `max-instances=1`: game state is in memory, so two instances would split players across lobbies
+- request timeout 3600s: Cloud Run closes WebSockets after 60 minutes, so the client must reconnect and rejoin
+- request-based CPU billing, 256Mi memory
+- idle lobbies are lost when the instance scales to zero; live games keep it alive through their open WebSockets
 
-- `flipcup`
+### Terraform layout
 
-That means the default Fly hostname is typically:
+- `infra/bootstrap/` — applied **once by hand**: APIs, state bucket, Artifact Registry, runtime and deployer service accounts, Workload Identity Federation (only `main` of this repo can deploy; no JSON keys)
+- `infra/` — applied by CI: Cloud Run service, public invoker, `flipcup.dev` domain mapping, optional budget alert
 
-- `https://flipcup.fly.dev`
+### One-time setup
 
-### Production packaging
+1. Create a GCP project with billing enabled, then:
 
-Fly should build from the repo-root `Dockerfile`:
+   ```bash
+   gcloud auth application-default login
+   cd infra/bootstrap
+   terraform init
+   terraform apply -var project_id=<your-project-id>
+   ```
 
-```toml
-[build]
-  dockerfile = 'Dockerfile'
-```
+   The bootstrap state is local and gitignored; keep it somewhere safe or migrate it to the state bucket.
 
-That keeps staging and production aligned around the same deployment image.
+2. In GitHub (Settings → Secrets and variables → Actions → Variables), set from the bootstrap outputs:
 
-### Production deploy shape
+   | Variable | Value |
+   | --- | --- |
+   | `GCP_PROJECT_ID` | project ID |
+   | `GCP_REGION` | optional, defaults to `us-west1` |
+   | `TF_STATE_BUCKET` | `tf_state_bucket` output |
+   | `GCP_RUNTIME_SA` | `runtime_service_account` output |
+   | `GCP_DEPLOY_SA` | `deployer_service_account` output |
+   | `GCP_WIF_PROVIDER` | `workload_identity_provider` output |
 
-At a high level:
+   Also create a GitHub environment named `production`.
 
-1. build the repo-root `Dockerfile`
-2. deploy it with Fly using `fly.toml`
-3. let the browser derive its HTTP/WS host from the deployed Fly domain
+3. Verify `flipcup.dev` in [Google Search Console](https://search.google.com/search-console) and add the deployer service account email as an **owner**. Cloud Run domain mapping requires the caller to own the domain.
 
-Typical manual command:
+4. Push to `main` (or run the workflow manually). When it finishes, read the `dns_records` Terraform output (in the job log) and create those records at the flipcup.dev registrar. The managed certificate can take up to an hour after DNS propagates.
 
-```bash
-fly deploy
-```
+5. After a few stable days on Cloud Run, retire Fly: `fly apps destroy flipcup`, then delete `fly.toml` and `Dockerfile.fly`.
 
-### Fly-specific operational note
+### Optional budget alert
 
-Because FlipCup still keeps game state in memory, production should stay conservative:
-
-- prefer a single machine / single active instance unless shared state is added later
-- be careful with scaling and rolling restarts
-- expect WebSocket reconnects around deploy boundaries
+Pass `-var billing_account_id=<id>` in the workflow's `terraform apply` to create a $5/month budget alert (`budget_usd` overrides the amount).
 
 ## CI and deployment gates
 

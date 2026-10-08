@@ -51,7 +51,7 @@ Behavior summary:
 - deployed environments can leave `VITE_WS_URL` unset
 - when unset, the UI falls back to the current browser host and builds HTTP/WS URLs from there
 
-That lets staging/Fly avoid hardcoding a specific deploy hostname into the frontend build.
+That lets staging/Cloud Run avoid hardcoding a specific deploy hostname into the frontend build.
 
 ## Recommended reading order for new contributors
 
@@ -92,7 +92,8 @@ Start in:
 - `deploy/nomad/flipcup.nomad.hcl`
 - `.github/workflows/deploy-staging.yml`
 - `Dockerfile`
-- `fly.toml`
+- `infra/`
+- `.github/workflows/deploy-prod.yml`
 
 ## A few practical cautions
 
@@ -106,6 +107,6 @@ Start in:
 There are two different workflows in this repo:
 
 - **developer workflow** — Docker Compose or direct app commands
-- **deployment workflow** — build the shared root `Dockerfile` for staging/Fly
+- **deployment workflow** — build the shared root `Dockerfile` for staging/Cloud Run
 
 Keeping those separate is intentional. It preserves a fast dev loop while still letting staging and production share one deployable image.
