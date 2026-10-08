@@ -141,6 +141,8 @@ Production is `https://flipcup.dev`, served by a Cloud Run service in `us-west1`
 - `infra/bootstrap/` — applied **once by hand**: APIs, state bucket, Artifact Registry, runtime and deployer service accounts, Workload Identity Federation (only `main` of this repo can deploy; no JSON keys)
 - `infra/` — applied by CI: Cloud Run service, public invoker, `flipcup.dev` domain mapping, optional budget alert
 
+Each root is split by concern (`versions.tf`, `variables.tf`, `outputs.tf`, plus `iam.tf`, `wif.tf`, `budget.tf` in bootstrap and `cloudrun.tf`, `domain.tf`, `iam.tf` in `infra/`). Commit `.terraform.lock.hcl`; never commit `.terraform/`, state files or real `*.tfvars`.
+
 ### One-time setup
 
 1. Create a GCP project with billing enabled, then:
@@ -149,7 +151,8 @@ Production is `https://flipcup.dev`, served by a Cloud Run service in `us-west1`
    gcloud auth application-default login
    cd infra/bootstrap
    terraform init
-   terraform apply -var project_id=<your-project-id> -var billing_account_id=<ACCOUNT_ID>
+   cp terraform.tfvars.example terraform.tfvars   # gitignored; fill in project_id and billing_account_id
+   terraform apply
    ```
 
    The bootstrap state is local and gitignored; keep it somewhere safe or migrate it to the state bucket.
