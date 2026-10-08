@@ -7,7 +7,7 @@ Practical task guide for AI assistants working on `FlipCup`.
 Read in this order:
 
 1. `README.md`
-2. `gameflow.md`
+2. `docs/gameflow.md`
 3. `docs/ai-approach.md`
 4. The specific files involved in the task
 

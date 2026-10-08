@@ -2,7 +2,7 @@
 
 This document explains what the player flow is supposed to feel like and where that behavior lives in the codebase.
 
-If you need the lower-level message contract, use [`../gameflow.md`](../gameflow.md). This page is the friendlier overview.
+If you need the lower-level message contract, use [`gameflow.md`](gameflow.md). This page is the friendlier overview.
 
 ## Player journey
 
@@ -88,7 +88,7 @@ Useful places:
 
 ## If you need the protocol details
 
-Use [`../gameflow.md`](../gameflow.md) when you need:
+Use [`gameflow.md`](gameflow.md) when you need:
 
 - exact message names
 - inbound vs outbound message direction

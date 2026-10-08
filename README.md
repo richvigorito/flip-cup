@@ -25,7 +25,8 @@ Quick repo map:
 ├── docker-compose.yml         # Local full-stack dev entry point
 ├── Dockerfile                 # Shared deployment image for staging / Fly
 ├── fly.toml                   # Fly.io production config
-└── gameflow.md                # Message-level websocket/game flow reference
+├── _context/                  # Agent-only context (SKILLS, plan)
+└── docs/gameflow.md           # Message-level websocket/game flow reference
 ```
 
 ## Documentation map
@@ -38,7 +39,7 @@ If you did not write most of this code, start here:
 - [`docs/testing.md`](docs/testing.md) — backend, frontend, Playwright, and CI coverage
 - [`docs/deployment.md`](docs/deployment.md) — local Docker Compose, staging on the Pi/Nomad stack, and Fly production
 - [`docs/ai-approach.md`](docs/ai-approach.md) — how Copilot was used across implementation, testing, docs, and repo operations
-- [`gameflow.md`](gameflow.md) — lower-level WebSocket message flow reference
+- [`docs/gameflow.md`](docs/gameflow.md) — lower-level WebSocket message flow reference
 
 ## Components at a glance
 

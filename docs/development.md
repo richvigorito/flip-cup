@@ -59,7 +59,7 @@ If you are new to the repo:
 
 1. read [`architecture.md`](architecture.md)
 2. read [`gameplay.md`](gameplay.md)
-3. skim [`../gameflow.md`](../gameflow.md) if you are changing WebSocket behavior
+3. skim [`gameflow.md`](gameflow.md) if you are changing WebSocket behavior
 4. use [`testing.md`](testing.md) before changing anything risky
 
 ## Common change entry points
