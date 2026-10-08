@@ -7,6 +7,12 @@ resource "google_cloud_run_v2_service" "flipcup" {
 
   deletion_protection = false
 
+  # Service-level scaling is API-defaulted; declare it so plans stay clean.
+  scaling {
+    manual_instance_count = 0
+    min_instance_count    = 0
+  }
+
   template {
     service_account                  = var.runtime_service_account
     timeout                          = "3600s"
