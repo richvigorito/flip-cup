@@ -17,6 +17,10 @@ terraform {
 provider "google" {
   project = var.project_id
   region  = var.region
+
+  # The Budgets API needs a quota project when called with user credentials.
+  user_project_override = true
+  billing_project       = var.project_id
 }
 
 variable "project_id" {
@@ -34,6 +38,17 @@ variable "github_repository" {
   type        = string
   default     = "richvigorito/flip-cup"
   description = "owner/repo allowed to deploy through Workload Identity Federation."
+}
+
+variable "billing_account_id" {
+  type        = string
+  description = "Billing account ID (gcloud billing accounts list) for the budget alert."
+}
+
+variable "budget_usd" {
+  type        = number
+  default     = 5
+  description = "Monthly budget in USD. Alerts at 50%, 90% and 100% of actual spend."
 }
 
 locals {
@@ -165,6 +180,37 @@ resource "google_service_account_iam_member" "github_impersonates_deployer" {
   service_account_id = google_service_account.deployer.name
   role               = "roles/iam.workloadIdentityUser"
   member             = "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/attribute.repository/${var.github_repository}"
+}
+
+# Alerts by email to billing admins; it does not cap spending.
+resource "google_billing_budget" "flipcup" {
+  billing_account = var.billing_account_id
+  display_name    = "flipcup monthly budget"
+
+  budget_filter {
+    projects = ["projects/${var.project_id}"]
+  }
+
+  amount {
+    specified_amount {
+      currency_code = "USD"
+      units         = tostring(var.budget_usd)
+    }
+  }
+
+  threshold_rules {
+    threshold_percent = 0.5
+  }
+
+  threshold_rules {
+    threshold_percent = 0.9
+  }
+
+  threshold_rules {
+    threshold_percent = 1.0
+  }
+
+  depends_on = [google_project_service.apis]
 }
 
 output "tf_state_bucket" {
