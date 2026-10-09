@@ -28,6 +28,10 @@ type AnswerPayload struct {
 	Answer string `json:"answer"`
 }
 
+type QuestionsPerPlayerPayload struct {
+	Count int `json:"count"`
+}
+
 type UpdateQuiz struct {
 	Filename string `json:"quizfile"`
 }

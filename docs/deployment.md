@@ -112,6 +112,8 @@ Those values are rendered into:
 - `GAME_CLEANUP_INTERVAL`
 - `GAME_STALE_AFTER`
 
+The server also reads `FLIPCUP_SKIP_PENALTY` (default `7s`), the per-skip penalty. It is only overridden by the Playwright config.
+
 ### Staging verification checklist
 
 After a deploy:

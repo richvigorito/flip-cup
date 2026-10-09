@@ -166,3 +166,34 @@ Copilot generated the capture workflow, used Playwright-based screenshot automat
 - The screenshot comparisons are only as good as the scripted capture flow; if screens change significantly, the artifacts need refreshing.
 - Reconnect logic depends on the current client/server message contract staying stable.
 - AI is very useful for momentum and coverage here, but human review is still important for scope control and for catching subtle behavior changes.
+
+## Spec-driven development exercise: skip + questions per player
+
+For this feature we tried writing the spec first (`_context/specs/skip-and-multi-question.md`) and only coding after approving it.
+
+**Process**
+
+1. **Spec:** Copilot explored the code, asked five clarifying questions (where N is set, what skip does, whether skips stack, announcement wording, whether the penalty is configurable), and wrote the spec with acceptance criteria and the protocol changes. Scope was fixed up front: no per-game penalty setting, no scoring.
+2. **Approval:** the spec was reviewed and approved before any code changed.
+3. **Tests first:** Go unit tests for each acceptance criterion, then the implementation until they passed.
+4. **UI + E2E:** Svelte changes, then three Playwright tests.
+5. **Docs:** protocol additions went into `docs/gameflow.md`.
+
+**What the spec caught early**
+
+- `Team.Turn` doubled as player index and question index; N-per-player needed them separated, which would have been an awkward mid-implementation discovery.
+- The existing `answered_correctly` message was sent after the next question. That ordering was harmless with one question per player but would hide the next question when the same player is asked twice in a row, so it was reordered.
+- The penalty timer runs on its own goroutine, so a restart mid-penalty needed a generation check. The spec's "restart cancels the pending question" criterion made that a test instead of a bug report.
+
+**Test notes**
+
+- A fake timer (`afterFunc`) and a send hook let the unit tests check 0/7/14s penalties without sleeping. Playwright uses `FLIPCUP_SKIP_PENALTY=2s`.
+- A Playwright race (answering the old question card right after a skip, before the new one arrived) was fixed by waiting for the question text to change.
+- Locally, Playwright reuses servers already on 8080/5173, so old docker-compose containers can silently run stale code; stop them or run with `CI=1`.
+- Running the E2E suite regenerates `docs/screenshots/`; those changes were discarded.
+
+**Takeaways**
+
+- Clarifying questions up front were cheap compared to reworking a half-built feature.
+- The acceptance criteria doubled as the test list.
+- A spec is only as good as its review; the human decisions (wording, stacking, locked setting) shaped the result more than the code generation did.

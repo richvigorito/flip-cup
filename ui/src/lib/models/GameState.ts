@@ -8,6 +8,7 @@ export interface RawGameState {
   teamB: Team;
   active: boolean;
   quizfile: string;
+  questionsPerPlayer?: number;
 }
 
 export class GameState {
@@ -16,6 +17,7 @@ export class GameState {
   teamB:    Team;
   active:   boolean;
   quizfile: string;
+  questionsPerPlayer: number;
 
   constructor(data: RawGameState) {
     this.id         = data.id;
@@ -23,6 +25,7 @@ export class GameState {
     this.teamB      = data.teamB;
     this.active     = data.active;
     this.quizfile   = data.quizfile;
+    this.questionsPerPlayer = data.questionsPerPlayer ?? 1;
   }
 
   get currentTurn(): 'teamA' | 'teamB' {

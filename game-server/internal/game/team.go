@@ -16,7 +16,24 @@ type TeamSnapshot struct {
 type Team struct {
 	Players	[]*Player
 	Name		string
-	Turn		int
+	Turn		int // correct answers so far; current player is Turn % len(Players)
+
+	QuestionIdx   int    // next unused question; advances on correct answers and skips
+	Skips         int    // skips taken during the current turn, penalized after a correct answer
+	Waiting       bool   // true while serving a skip penalty
+	cancelPenalty func() // stops the pending penalty timer
+}
+
+// ResetProgress clears per-game state and any pending penalty.
+func (t *Team) ResetProgress() {
+	if t.cancelPenalty != nil {
+		t.cancelPenalty()
+		t.cancelPenalty = nil
+	}
+	t.Turn = 0
+	t.QuestionIdx = 0
+	t.Skips = 0
+	t.Waiting = false
 }
 
 func (t *Team) AddPlayer (p *Player) {
@@ -33,11 +50,18 @@ func (t *Team) RemovePlayer(p *Player) {
 }
 
 func (t *Team) GetCurrentPlayer() *Player {
-	return t.Players[t.Turn]
+	return t.Players[t.currentIndex()]
+}
+
+func (t *Team) currentIndex() int {
+	if len(t.Players) == 0 {
+		return 0
+	}
+	return t.Turn % len(t.Players)
 }
 
 func (t *Team) IsPlayerAllowedToAnswer(p *Player) bool {
-	return t.GetPlayerIndex(p) == t.Turn 
+	return len(t.Players) > 0 && t.GetPlayerIndex(p) == t.currentIndex()
 }
 
 func (t *Team) GetPlayerIndex(p *Player) int {

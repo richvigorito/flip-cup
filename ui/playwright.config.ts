@@ -20,6 +20,10 @@ export default defineConfig({
     {
       command: 'cd ../game-server && go run cmd/flipcup/main.go',
       url: 'http://127.0.0.1:8080/quizzes',
+      env: {
+        ...process.env,
+        FLIPCUP_SKIP_PENALTY: '2s', // short penalty keeps skip tests fast
+      },
       reuseExistingServer: !process.env.CI,
       timeout: 120_000,
     },

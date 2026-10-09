@@ -26,6 +26,10 @@ export const gamesCompleted = writable<number | null >(0);
 
 export const eventLog = writable<{ message: string; type: 'info' | 'success' | 'error' }[]>([]);
 
+// Transient skip UI: banner for "X skipped", and the penalty countdown for a waiting team.
+export const skipBanner = writable<string | null>(null);
+export const penaltyWait = writable<{ team: string; seconds: number } | null>(null);
+
 export const gameState = writable<GameState | null >(null);
 export const me = writable<Player | null >(null);
 
@@ -39,6 +43,8 @@ export function resetClientGameState() {
   eventLog.set([]);
   gameState.set(null);
   me.set(null);
+  skipBanner.set(null);
+  penaltyWait.set(null);
 }
 
 // Derived store to automatically determine myTeam based on gameState and me
