@@ -86,4 +86,18 @@ test.describe('Skip and questions-per-player', () => {
     await expect(host.locator('.question-card')).toHaveCount(0);
     await expect(host.locator('.question-card')).toBeVisible({ timeout: 8_000 });
   });
+
+  test('a skip delays the win when it happens on the final question', async () => {
+    await startTwoPlayerGame(host, guest);
+
+    const before = ((await host.locator('.question-text').textContent()) ?? '').trim();
+    await host.getByRole('button', { name: 'Skip' }).click();
+    await expect(host.locator('.question-text')).not.toHaveText(before);
+    await answerIfMyTurn(host); // last answer for a one-player team
+
+    await expect(host.getByTestId('penalty-wait')).toBeVisible();
+    await expect(host.locator('.game-over')).toHaveCount(0);
+    await expect(host.locator('.game-over')).toBeVisible({ timeout: 8_000 });
+    await expect(guest.locator('.game-over')).toBeVisible({ timeout: 8_000 });
+  });
 });
