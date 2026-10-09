@@ -40,6 +40,7 @@ type Game struct {
 	TeamB              *Team
 	QuestionFile       *quiz.QuestionFile
 	Active             bool
+	locked             bool // true from start until restart, even after the game ends
 	QuestionsPerPlayer int
 	LastActivity       time.Time
 	mu                 sync.Mutex
@@ -209,6 +210,7 @@ func (g *Game) StartGame(p *Player) {
 	defer g.flow.Unlock()
 
 	g.Active = true
+	g.locked = true
 	g.generation++
 	g.TeamA.ResetProgress()
 	g.TeamB.ResetProgress()
@@ -235,6 +237,7 @@ func (g *Game) RestartGame() {
 	g.TeamB.ResetProgress()
 	g.QuestionFile.ShuffleQuestions()
 	g.Active = false
+	g.locked = false
 }
 
 // SetQuestionsPerPlayer clamps count to the allowed range. It is a no-op once the game has started.
@@ -242,7 +245,7 @@ func (g *Game) SetQuestionsPerPlayer(count int) bool {
 	g.flow.Lock()
 	defer g.flow.Unlock()
 
-	if g.Active {
+	if g.locked {
 		return false
 	}
 	if count < MinQuestionsPerPlayer {
@@ -395,6 +398,7 @@ func (g *Game) startPenalty(t *Team, d time.Duration, then func()) {
 		}
 		t.Waiting = false
 		t.cancelPenalty = nil
+		g.Broadcast(types.Envelope{Type: "penalty_ended", Payload: utils.MustMarshal(map[string]string{"team": t.Name})})
 		then()
 	})
 }

@@ -315,3 +315,28 @@ func TestSkip_OtherTeamWinningCancelsPendingWin(t *testing.T) {
 		t.Fatal("pending win must not fire after the game ended")
 	}
 }
+
+func TestQuestionsPerPlayer_StaysLockedAfterGameOverUntilRestart(t *testing.T) {
+	h := newHarness(1, 1)
+	h.g.StartGame(h.a[0])
+	h.answer(h.a[0]) // team A wins, game inactive but round not reset
+
+	if h.g.SetQuestionsPerPlayer(3) {
+		t.Fatal("setting must stay locked on the game-over screen")
+	}
+	h.g.RestartGame()
+	if !h.g.SetQuestionsPerPlayer(3) {
+		t.Fatal("setting should unlock after restart")
+	}
+}
+
+func TestSkip_PenaltyEndedBroadcastToEveryone(t *testing.T) {
+	h := newHarness(2, 1)
+	h.g.StartGame(h.a[0])
+	h.g.handleSkip(h.a[0])
+	h.answer(h.a[0])
+	h.clock.fire(t)
+	if h.count("penalty_ended") != 3 {
+		t.Fatalf("expected penalty_ended for all 3 players, got %d", h.count("penalty_ended"))
+	}
+}

@@ -57,7 +57,7 @@ This document outlines the WebSocket message flow between the client (`ui/`) and
   - Broadcasts `{"type": "incorrect_answer", "name": "Alice"}` (Client shows error feedback)
 
 ### Questions per player
-In the lobby the host sends `{"type": "set_questions_per_player", "payload": {"count": 2}}` (clamped to 1–5, default 1, ignored once the game has started). The server broadcasts `questions_per_player_updated` with the same payload, and `game_snapshot.questionsPerPlayer` carries the value. Players take turns in rotation; a team wins after `players × count` correct answers.
+In the lobby the host sends `{"type": "set_questions_per_player", "payload": {"count": 2}}` (clamped to 1–5, default 1, ignored from the start of a game until it is restarted). The server broadcasts `questions_per_player_updated` with the same payload, and `game_snapshot.questionsPerPlayer` carries the value. Players take turns in rotation; a team wins after `players × count` correct answers.
 
 ### Skipping
 The active player may send `{"type": "skip_question"}` (ignored if it is not their turn, the game is inactive, or their team is serving a penalty).
@@ -65,7 +65,7 @@ The active player may send `{"type": "skip_question"}` (ignored if it is not the
 **Server** logic:
 - Broadcasts `{"type": "question_skipped", "name": "Alice", "payload": {"penalty_seconds": 7, "total_penalty_seconds": 14}}` to everyone.
 - Sends the same player a different question. The turn does not advance.
-- After that player answers correctly, the team's next question is delayed by 7s × number of skips that turn. The server broadcasts `{"type": "penalty_wait", "payload": {"team": "A-Team", "seconds": 14}}` and sends the next `question` when the wait ends. If the answer was the team's last, the `winner` message is delayed by the same penalty (unless the other team wins first). Answers and skips from that team are ignored meanwhile.
+- After that player answers correctly, the team's next question is delayed by 7s × number of skips that turn. The server broadcasts `{"type": "penalty_wait", "payload": {"team": "A-Team", "seconds": 14}}` then broadcasts `{"type": "penalty_ended", "payload": {"team": "A-Team"}}` and sends the next `question` when the wait ends. If the answer was the team's last, the `winner` message is delayed by the same penalty (unless the other team wins first). Answers and skips from that team are ignored meanwhile.
 - The penalty is `FLIPCUP_SKIP_PENALTY` (default `7s`); it is a server setting, not configurable per game.
 
 ## 6. Game Over
@@ -98,6 +98,7 @@ The active player may send `{"type": "skip_question"}` (ignored if it is not the
 | `question` | Outbound | `{name}` | Question prompt |
 | `question_skipped` | Outbound | `{penalty_seconds, total_penalty_seconds}` + `name` | Someone skipped |
 | `penalty_wait` | Outbound | `{team, seconds}` | Team waits before next question |
+| `penalty_ended` | Outbound | `{team}` | Team's penalty is over |
 | `questions_per_player_updated` | Outbound | `{count}` | Lobby setting changed |
 | `winner` | Outbound | `{name}` | Winning team name |
 | `my_current_team` | Outbound | `{players, ...}` | Team state update |

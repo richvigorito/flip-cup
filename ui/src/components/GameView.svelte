@@ -75,9 +75,9 @@
     {:else if !$winner}
       <div class="waiting-card">
         <div class="waiting-dot"></div>
-        {#if $penaltyWait}
+        {#if $myTeam && $penaltyWait[$myTeam.name]}
           <span data-testid="penalty-wait">
-            {$penaltyWait.team} is serving a {$penaltyWait.seconds}s skip penalty…
+            {$myTeam.name} is serving a {$penaltyWait[$myTeam.name]}s skip penalty…
           </span>
         {:else}
           <span>Waiting for the next player to step up…</span>
@@ -187,7 +187,7 @@
               <div class="game-over-team-header">
                 <span class="game-over-team-name">{team.name}</span>
                 <span class="game-over-team-status">
-                  {team.name === $winner ? 'Table cleared' : `${team.turn} of ${team.players.length} cups cleared`}
+                  {team.name === $winner ? 'Table cleared' : `${clearedCupCount} of ${team.players.length} cups cleared`}
                 </span>
               </div>
 

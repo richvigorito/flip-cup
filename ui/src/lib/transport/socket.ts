@@ -151,7 +151,14 @@ function handleMessage(message: any) {
       break;
 
     case 'penalty_wait':
-      penaltyWait.set({ team: message.payload.team, seconds: message.payload.seconds });
+      penaltyWait.update((w) => ({ ...w, [message.payload.team]: message.payload.seconds }));
+      break;
+
+    case 'penalty_ended':
+      penaltyWait.update((w) => {
+        const { [message.payload.team]: _, ...rest } = w;
+        return rest;
+      });
       break;
 
     case 'questions_per_player_updated':
@@ -189,7 +196,7 @@ const handleJoinedExistingGame = (message: any) => {
 
 const handleGameRestarted = (message: any) => {
     winner.set(null);
-    penaltyWait.set(null);
+    penaltyWait.set({});
     skipBanner.set(null);
     const newState = new GameState(message.payload.game_snapshot);
     gameState.set(newState);
@@ -246,7 +253,6 @@ const handleQuestionSkipped = (message: any) => {
 };
 
 const handleAdministerQuestion = (message: any) => {
-    penaltyWait.set(null);
     const currentPlayer = get(me);
     if (currentPlayer) {
         currentPlayer.isMyTurn = true;
