@@ -354,7 +354,8 @@ func (g *Game) handleCheckAnswer(p *Player, answer *AnswerPayload) {
 	skips := t.Skips
 	t.Skips = 0
 
-	if t.Turn >= g.teamTotal(t) {
+	won := t.Turn >= g.teamTotal(t)
+	if won && skips == 0 {
 		g.EndGame(t)
 		g.DisplayGameSnapshot("answered_correctly", p)
 		return
@@ -365,11 +366,18 @@ func (g *Game) handleCheckAnswer(p *Player, answer *AnswerPayload) {
 		g.NextQuestion(t)
 		return
 	}
-	g.startPenalty(t, time.Duration(skips)*SkipPenalty)
+	// Skips also delay the win, so skipping on the last question still costs the team.
+	g.startPenalty(t, time.Duration(skips)*SkipPenalty, func() {
+		if won {
+			g.EndGame(t)
+		} else {
+			g.NextQuestion(t)
+		}
+	})
 }
 
-// startPenalty holds the team's next question back for d. Callers hold g.flow.
-func (g *Game) startPenalty(t *Team, d time.Duration) {
+// startPenalty holds the team's next question (or win) back for d, then runs then. Callers hold g.flow.
+func (g *Game) startPenalty(t *Team, d time.Duration, then func()) {
 	t.Waiting = true
 	gen := g.generation
 	payload, _ := json.Marshal(map[string]interface{}{
@@ -387,7 +395,7 @@ func (g *Game) startPenalty(t *Team, d time.Duration) {
 		}
 		t.Waiting = false
 		t.cancelPenalty = nil
-		g.NextQuestion(t)
+		then()
 	})
 }
 

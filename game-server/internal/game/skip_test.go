@@ -284,3 +284,34 @@ func TestQuestionIndex_WrapsInsteadOfPanicking(t *testing.T) {
 		t.Fatal("expected a question after many skips")
 	}
 }
+
+func TestSkip_PenaltyDelaysWinOnFinalQuestion(t *testing.T) {
+	h := newHarness(1, 1)
+	h.g.StartGame(h.a[0])
+	h.g.handleSkip(h.a[0])
+	h.g.handleSkip(h.a[0])
+	h.answer(h.a[0])
+
+	if h.count("winner") != 0 {
+		t.Fatal("win must wait out the skip penalty")
+	}
+	if got := h.clock.fire(t); got != 2*SkipPenalty {
+		t.Fatalf("penalty %v, want %v", got, 2*SkipPenalty)
+	}
+	if h.count("winner") == 0 {
+		t.Fatal("expected a winner after the penalty")
+	}
+}
+
+func TestSkip_OtherTeamWinningCancelsPendingWin(t *testing.T) {
+	h := newHarness(1, 1)
+	h.g.StartGame(h.a[0])
+	h.g.handleSkip(h.a[0])
+	h.answer(h.a[0]) // A is waiting out a penalty before winning
+	h.answer(h.b[0]) // B wins first
+	winners := h.count("winner")
+	h.clock.fire(t)
+	if h.count("winner") != winners {
+		t.Fatal("pending win must not fire after the game ended")
+	}
+}

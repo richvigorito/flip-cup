@@ -65,7 +65,7 @@ The active player may send `{"type": "skip_question"}` (ignored if it is not the
 **Server** logic:
 - Broadcasts `{"type": "question_skipped", "name": "Alice", "payload": {"penalty_seconds": 7, "total_penalty_seconds": 14}}` to everyone.
 - Sends the same player a different question. The turn does not advance.
-- After that player answers correctly, the team's next question is delayed by 7s × number of skips that turn. The server broadcasts `{"type": "penalty_wait", "payload": {"team": "A-Team", "seconds": 14}}` and sends the next `question` when the wait ends. Answers and skips from that team are ignored meanwhile.
+- After that player answers correctly, the team's next question is delayed by 7s × number of skips that turn. The server broadcasts `{"type": "penalty_wait", "payload": {"team": "A-Team", "seconds": 14}}` and sends the next `question` when the wait ends. If the answer was the team's last, the `winner` message is delayed by the same penalty (unless the other team wins first). Answers and skips from that team are ignored meanwhile.
 - The penalty is `FLIPCUP_SKIP_PENALTY` (default `7s`); it is a server setting, not configurable per game.
 
 ## 6. Game Over
