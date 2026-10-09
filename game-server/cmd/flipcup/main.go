@@ -63,6 +63,12 @@ func loadRuntimeConfig() (runtimeConfig, error) {
 		return runtimeConfig{}, err
 	}
 
+	skipPenalty, err := readDurationEnv("FLIPCUP_SKIP_PENALTY", game.SkipPenalty)
+	if err != nil {
+		return runtimeConfig{}, err
+	}
+	game.SkipPenalty = skipPenalty
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"

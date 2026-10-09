@@ -1,17 +1,25 @@
 <script lang="ts">
   import { send } from '$lib/transport/socket';
-  import { mode, currentQuestion, gameState, myTeam, me, winner } from '$lib/store';
+  import { mode, currentQuestion, gameState, myTeam, me, winner, skipBanner, penaltyWait } from '$lib/store';
   import type { Team } from '$lib/models/Team';
 
   let currentAnswer = '';
 
-  const getClearedCupCount = (team: Team, winnerName: string | null) => {
+  const getClearedCupCount = (team: Team, winnerName: string | null, perPlayer: number) => {
     if (winnerName && team.name === winnerName) {
       return team.players.length;
     }
 
-    return Math.min(team.turn, team.players.length);
+    return Math.min(Math.max(0, team.turn - (perPlayer - 1) * team.players.length), team.players.length);
   };
+
+  // A cup flips once its player has answered all of their questions.
+  const isFlipped = (team: Team, i: number, perPlayer: number) =>
+    team.turn > (perPlayer - 1) * team.players.length + i;
+  const isCurrent = (team: Team, i: number, perPlayer: number) =>
+    team.turn < team.players.length * perPlayer && team.turn % team.players.length === i;
+
+  const skipQuestion = () => send({ type: 'skip_question' });
 
   const submitAnswer = () => {
     if (!currentAnswer.trim()) return;
@@ -40,6 +48,10 @@
   <div class="game-wrap">
     <button class="quit-btn-floating" on:click={quitGame}>Leave Table</button>
 
+    {#if $skipBanner}
+      <div class="skip-banner" data-testid="skip-banner">{$skipBanner}</div>
+    {/if}
+
     {#if $me?.isMyTurn && $currentQuestion && !$winner}
       <div class="question-card">
         <div class="question-meta">
@@ -57,12 +69,19 @@
           <button class="submit-btn" on:click={submitAnswer} disabled={!currentAnswer.trim()}>
             Flip It
           </button>
+          <button class="skip-btn" on:click={skipQuestion}>Skip</button>
         </div>
       </div>
     {:else if !$winner}
       <div class="waiting-card">
         <div class="waiting-dot"></div>
-        <span>Waiting for the next player to step up…</span>
+        {#if $myTeam && $penaltyWait[$myTeam.name]}
+          <span data-testid="penalty-wait">
+            {$myTeam.name} is serving a {$penaltyWait[$myTeam.name]}s skip penalty…
+          </span>
+        {:else}
+          <span>Waiting for the next player to step up…</span>
+        {/if}
       </div>
     {/if}
 
@@ -89,16 +108,16 @@
           </div>
           <div class="cups-list">
             {#each $gameState.teamA.players as player, i}
-              {@const flipped = $gameState.teamA.turn > i}
-              {@const isCurrent = $gameState.teamA.turn === i}
-              <div class="cup-row" class:current={isCurrent}>
+              {@const flipped = isFlipped($gameState.teamA, i, $gameState.questionsPerPlayer)}
+              {@const current = isCurrent($gameState.teamA, i, $gameState.questionsPerPlayer)}
+              <div class="cup-row" class:current>
                 <div class="cup-wrapper">
-                  <div class="cup" class:flipped class:current={isCurrent} title={player.name}></div>
-                  {#if isCurrent}
+                  <div class="cup" class:flipped class:current title={player.name}></div>
+                  {#if current}
                     <div class="cup-glow"></div>
                   {/if}
                 </div>
-                <span class="cup-player-name" class:active={isCurrent} class:done={flipped}>
+                <span class="cup-player-name" class:active={current} class:done={flipped}>
                   {player.name}
                   {#if flipped}<span class="done-icon">✓</span>{/if}
                 </span>
@@ -120,16 +139,16 @@
           </div>
           <div class="cups-list">
             {#each $gameState.teamB.players as player, i}
-              {@const flipped = $gameState.teamB.turn > i}
-              {@const isCurrent = $gameState.teamB.turn === i}
-              <div class="cup-row right" class:current={isCurrent}>
-                <span class="cup-player-name right" class:active={isCurrent} class:done={flipped}>
+              {@const flipped = isFlipped($gameState.teamB, i, $gameState.questionsPerPlayer)}
+              {@const current = isCurrent($gameState.teamB, i, $gameState.questionsPerPlayer)}
+              <div class="cup-row right" class:current>
+                <span class="cup-player-name right" class:active={current} class:done={flipped}>
                   {#if flipped}<span class="done-icon">✓</span>{/if}
                   {player.name}
                 </span>
                 <div class="cup-wrapper">
-                  <div class="cup" class:flipped class:current={isCurrent} title={player.name}></div>
-                  {#if isCurrent}
+                  <div class="cup" class:flipped class:current title={player.name}></div>
+                  {#if current}
                     <div class="cup-glow"></div>
                   {/if}
                 </div>
@@ -159,7 +178,7 @@
       {#if $gameState}
         <div class="game-over-table">
           {#each [$gameState.teamA, $gameState.teamB] as team, teamIndex}
-            {@const clearedCupCount = getClearedCupCount(team, $winner)}
+            {@const clearedCupCount = getClearedCupCount(team, $winner, $gameState.questionsPerPlayer)}
             <section
               class="game-over-team"
               class:winner-team={team.name === $winner}
@@ -168,7 +187,7 @@
               <div class="game-over-team-header">
                 <span class="game-over-team-name">{team.name}</span>
                 <span class="game-over-team-status">
-                  {team.name === $winner ? 'Table cleared' : `${team.turn} of ${team.players.length} cups cleared`}
+                  {team.name === $winner ? 'Table cleared' : `${clearedCupCount} of ${team.players.length} cups cleared`}
                 </span>
               </div>
 
@@ -309,6 +328,34 @@
   .submit-btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;
+  }
+
+  .skip-btn {
+    padding: 0.65rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-md);
+    white-space: nowrap;
+    transition: all 0.2s var(--ease);
+  }
+
+  .skip-btn:hover {
+    color: var(--warning);
+    border-color: var(--warning);
+  }
+
+  .skip-banner {
+    padding: 0.75rem 1.25rem;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid var(--warning);
+    border-radius: var(--r-lg);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--warning);
+    text-align: center;
   }
 
   .waiting-card {

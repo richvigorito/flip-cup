@@ -2,7 +2,7 @@ import { get, writable } from 'svelte/store';
 import { GameState } from '$lib/models/GameState';
 import { Team } from '$lib/models/Team';
 import { Player } from '$lib/models/Player';
-import { gameState, myTeam, me, mode, joined, eventLog, currentQuestion, winner, gamesCompleted, gameId, currentPlayerName } from '$lib/store';
+import { gameState, myTeam, me, mode, joined, eventLog, currentQuestion, winner, gamesCompleted, gameId, currentPlayerName, skipBanner, penaltyWait } from '$lib/store';
 
 
 import { baseWsUrl } from '$lib/utils/config';
@@ -146,6 +146,28 @@ function handleMessage(message: any) {
       logEvent(`${message.name} cleared the table`, 'success');
       break;
 
+    case 'question_skipped':
+      handleQuestionSkipped(message);
+      break;
+
+    case 'penalty_wait':
+      penaltyWait.update((w) => ({ ...w, [message.payload.team]: message.payload.seconds }));
+      break;
+
+    case 'penalty_ended':
+      penaltyWait.update((w) => {
+        const { [message.payload.team]: _, ...rest } = w;
+        return rest;
+      });
+      break;
+
+    case 'questions_per_player_updated':
+      gameState.update((s) => {
+        if (s) s.questionsPerPlayer = message.payload.count;
+        return s;
+      });
+      break;
+
     case 'game_restarted':
         handleGameRestarted(message)    
         break;
@@ -174,6 +196,8 @@ const handleJoinedExistingGame = (message: any) => {
 
 const handleGameRestarted = (message: any) => {
     winner.set(null);
+    penaltyWait.set({});
+    skipBanner.set(null);
     const newState = new GameState(message.payload.game_snapshot);
     gameState.set(newState);
     mode.set('lobby');
@@ -216,6 +240,17 @@ const handleTeamAssignments = (message: any) => {
     logEvent(`${newState.teamB.name}: ${newState.teamA.players.map(p => p.name).join(', ')}`, 'info');
 };
 
+
+let skipBannerTimer: ReturnType<typeof setTimeout> | undefined;
+
+const handleQuestionSkipped = (message: any) => {
+    const total = message.payload.total_penalty_seconds;
+    const text = `${message.name} is stuck and skipped! +${message.payload.penalty_seconds}s penalty`;
+    skipBanner.set(text);
+    logEvent(total > message.payload.penalty_seconds ? `${text} (${total}s total)` : text, 'error');
+    clearTimeout(skipBannerTimer);
+    skipBannerTimer = setTimeout(() => skipBanner.set(null), 4000);
+};
 
 const handleAdministerQuestion = (message: any) => {
     const currentPlayer = get(me);

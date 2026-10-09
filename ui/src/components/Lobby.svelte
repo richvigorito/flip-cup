@@ -16,6 +16,11 @@
     }
   };
 
+  const setQuestionsPerPlayer = (e: Event) => {
+    const count = Number((e.currentTarget as HTMLSelectElement).value);
+    send({ type: 'set_questions_per_player', payload: { count } });
+  };
+
   const joinGame = (playerName: string) => {
     joined.set(true);
     send({ type: 'add_player', payload: { name: playerName } });
@@ -126,6 +131,15 @@
             </div>
           </div>
         {/if}
+
+        <div class="change-quiz">
+          <label class="quiz-label" for="qpp-select">Questions per player</label>
+          <select id="qpp-select" value={$gameState?.questionsPerPlayer ?? 1} on:change={setQuestionsPerPlayer}>
+            {#each [1, 2, 3, 4, 5] as n}
+              <option value={n}>{n}</option>
+            {/each}
+          </select>
+        </div>
 
         <div class="lobby-actions">
           <button class="action-btn secondary" on:click={assignTeams}>
