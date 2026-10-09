@@ -1,6 +1,8 @@
 import { test, expect, type BrowserContext, type Page } from '@playwright/test';
 import { answerIfMyTurn, createGame, getLobbyGameId, joinExistingGame, joinLobby } from './helpers/game';
 
+// Generous: the suite shares one server and runs after 10-player scenarios.
+const POLL_TIMEOUT = 20_000;
 const NAMES = ['Alice', 'Bob', 'Carol', 'Dave'];
 
 async function questionText(page: Page): Promise<string> {
@@ -24,7 +26,7 @@ async function waitForActive(pages: Page[]): Promise<Page> {
         }
       }
       return false;
-    })
+    }, { timeout: POLL_TIMEOUT })
     .toBe(true);
   return active!;
 }
@@ -33,7 +35,7 @@ async function waitForActive(pages: Page[]): Promise<Page> {
 async function answerAndWait(page: Page): Promise<void> {
   const before = await questionText(page);
   await answerIfMyTurn(page);
-  await expect.poll(() => questionText(page)).not.toBe(before);
+  await expect.poll(() => questionText(page), { timeout: POLL_TIMEOUT }).not.toBe(before);
 }
 
 async function teamPages(pages: Page[], withPage: Page): Promise<Page[]> {
@@ -109,7 +111,7 @@ test.describe('Skip and questions-per-player (2v2)', () => {
     await Promise.all(
       pages.map((page) => expect(page.getByTestId('skip-banner')).toContainText('is stuck and skipped!')),
     );
-    await expect.poll(() => questionText(skipper)).not.toBe(before);
+    await expect.poll(() => questionText(skipper), { timeout: POLL_TIMEOUT }).not.toBe(before);
     await expect(skipper.locator('.question-card')).toBeVisible();
   });
 
@@ -121,7 +123,7 @@ test.describe('Skip and questions-per-player (2v2)', () => {
     const teammate = team.find((page) => page !== skipper)!;
     const before = await questionText(skipper);
     await skipper.getByRole('button', { name: 'Skip' }).click();
-    await expect.poll(() => questionText(skipper)).not.toBe(before);
+    await expect.poll(() => questionText(skipper), { timeout: POLL_TIMEOUT }).not.toBe(before);
     await answerIfMyTurn(skipper);
 
     await expect(teammate.getByTestId('penalty-wait')).toBeVisible();
@@ -144,7 +146,7 @@ test.describe('Skip and questions-per-player (2v2)', () => {
 
     const before = await questionText(last);
     await last.getByRole('button', { name: 'Skip' }).click();
-    await expect.poll(() => questionText(last)).not.toBe(before);
+    await expect.poll(() => questionText(last), { timeout: POLL_TIMEOUT }).not.toBe(before);
     await answerIfMyTurn(last);
 
     await expect(other.getByTestId('penalty-wait')).toBeVisible();
